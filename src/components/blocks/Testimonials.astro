@@ -17,6 +17,8 @@ export interface Testimonial {
 interface Props extends BlockProps {
   items: Testimonial[];
   columns?: 2 | 3;
+  /** Grid of cards, or one quote at a time. */
+  layout?: 'grid' | 'slideshow';
 }
 
 const {
@@ -30,51 +32,220 @@ const {
   titleLevel = 2,
   items,
   columns = 3,
+  layout = 'grid',
 } = Astro.props;
 
+const slideshow = layout === 'slideshow';
 const columnClass = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-3' }[columns];
 ---
 
-<Section background={background} spacing={spacing}>
-  <Container width={width} align={align} gap="lg">
-    <BlockHeader
-      eyebrow={eyebrow}
-      title={title}
-      body={body}
-      level={titleLevel}
-      centered={align === 'center'}
-    />
+<Section
+  background={slideshow ? 'inverse' : background}
+  spacing={spacing}
+  class={slideshow ? 'bg-accent-600!' : undefined}
+>
+  <Container
+    width={slideshow ? 'narrow' : width}
+    align={slideshow ? 'center' : align}
+    gap="lg"
+    data-testimonials={slideshow ? 'slideshow' : undefined}
+  >
+    {
+      !slideshow && (
+        <BlockHeader
+          eyebrow={eyebrow}
+          title={title}
+          body={body}
+          level={titleLevel}
+          centered={align === 'center'}
+        />
+      )
+    }
 
-    <ul class:list={['grid w-full gap-6', columnClass]}>
-      {
-        items.map((item) => (
-          <Card as="li" variant="elevated">
-            {item.rating && (
-              <div class="flex gap-0.5" role="img" aria-label={`${item.rating} out of 5 stars`}>
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <Icon
-                    name="lucide:star"
-                    class:list={[
-                      'size-4',
-                      index < item.rating! ? 'text-accent-500' : 'text-neutral-300',
-                    ]}
-                    aria-hidden="true"
-                  />
-                ))}
+    {
+      slideshow && (
+        <h2 class="text-ink-inverse text-sm font-semibold tracking-wide uppercase">
+          {eyebrow ?? 'Patient Stories'}
+        </h2>
+      )
+    }
+
+    {
+      slideshow ? (
+        <>
+          <div class="grid w-full" aria-live="polite">
+            {items.map((item, index) => (
+              <figure
+                data-slide={index}
+                aria-hidden={index !== 0}
+                class:list={[
+                  'col-start-1 row-start-1 flex flex-col items-center gap-6 text-center transition-opacity duration-500',
+                  index === 0 ? 'opacity-100' : 'pointer-events-none opacity-0',
+                ]}
+              >
+                {item.rating && (
+                  <div class="flex gap-1" role="img" aria-label={`${item.rating} out of 5 stars`}>
+                    {Array.from({ length: 5 }).map((_, star) => (
+                      <svg
+                        class:list={[
+                          'size-5',
+                          star < item.rating! ? 'text-brand-500' : 'text-ink-inverse/30',
+                        ]}
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    ))}
+                  </div>
+                )}
+
+                <blockquote class="font-heading text-2xl leading-normal font-normal text-balance">
+                  <p class="leading-normal">&ldquo;{item.quote}&rdquo;</p>
+                </blockquote>
+
+                <figcaption>
+                  <p class="font-medium">{item.name}</p>
+                  {item.role && <p class="text-sm opacity-70">{item.role}</p>}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
+          {
+            items.length > 1 && (
+              <div class="flex items-center gap-4">
+                <button
+                  type="button"
+                  data-prev
+                  class="text-ink-inverse hover:bg-ink-inverse/10 inline-flex size-11 items-center justify-center rounded-full"
+                  aria-label="Previous review"
+                >
+                  <Icon name="lucide:chevron-left" class="size-6" aria-hidden="true" />
+                </button>
+
+                <div class="flex items-center" role="tablist" aria-label="Reviews">
+                  {items.map((item, index) => (
+                    <button
+                      type="button"
+                      data-dot={index}
+                      aria-label={`Show review from ${item.name}`}
+                      aria-current={index === 0 ? 'true' : undefined}
+                      class="group inline-flex size-11 items-center justify-center"
+                    >
+                      <span class="bg-ink-inverse/40 group-aria-current:bg-ink-inverse size-2.5 rounded-full" />
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  type="button"
+                  data-next
+                  class="text-ink-inverse hover:bg-ink-inverse/10 inline-flex size-11 items-center justify-center rounded-full"
+                  aria-label="Next review"
+                >
+                  <Icon name="lucide:chevron-right" class="size-6" aria-hidden="true" />
+                </button>
               </div>
-            )}
+            )
+          }
+        </>
+      ) : (
+        <ul class:list={['grid w-full gap-6', columnClass]}>
+          {items.map((item) => (
+            <Card as="li" variant="elevated">
+              {item.rating && (
+                <div class="flex gap-0.5" role="img" aria-label={`${item.rating} out of 5 stars`}>
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <svg
+                      class:list={[
+                        'size-4',
+                        index < item.rating! ? 'text-brand-500' : 'text-neutral-300',
+                      ]}
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+              )}
 
-            <blockquote class="text-ink-base flex-1">
-              <p>&ldquo;{item.quote}&rdquo;</p>
-            </blockquote>
+              <blockquote class="text-ink-base flex-1">
+                <p>&ldquo;{item.quote}&rdquo;</p>
+              </blockquote>
 
-            <footer class="text-sm">
-              <p class="font-medium">{item.name}</p>
-              {item.role && <p class="text-ink-muted">{item.role}</p>}
-            </footer>
-          </Card>
-        ))
-      }
-    </ul>
+              <footer class="text-sm">
+                <p class="font-medium">{item.name}</p>
+                {item.role && <p class="text-ink-muted">{item.role}</p>}
+              </footer>
+            </Card>
+          ))}
+        </ul>
+      )
+    }
   </Container>
 </Section>
+
+<script>
+  const INTERVAL = 8000;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  for (const root of document.querySelectorAll<HTMLElement>('[data-testimonials="slideshow"]')) {
+    const slides = Array.from(root.querySelectorAll<HTMLElement>('[data-slide]'));
+    const dots = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-dot]'));
+    const prev = root.querySelector<HTMLButtonElement>('[data-prev]');
+    const next = root.querySelector<HTMLButtonElement>('[data-next]');
+    let index = 0;
+    let timer: number | undefined;
+
+    const show = (nextIndex: number) => {
+      index = (nextIndex + slides.length) % slides.length;
+
+      for (const [i, slide] of slides.entries()) {
+        const active = i === index;
+        slide.classList.toggle('opacity-100', active);
+        slide.classList.toggle('opacity-0', !active);
+        slide.classList.toggle('pointer-events-none', !active);
+        slide.setAttribute('aria-hidden', String(!active));
+      }
+
+      for (const [i, dot] of dots.entries()) {
+        if (i === index) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      }
+    };
+
+    const play = () => {
+      window.clearInterval(timer);
+      if (reduceMotion || slides.length < 2) return;
+      timer = window.setInterval(() => show(index + 1), INTERVAL);
+    };
+
+    prev?.addEventListener('click', () => {
+      show(index - 1);
+      play();
+    });
+    next?.addEventListener('click', () => {
+      show(index + 1);
+      play();
+    });
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        show(i);
+        play();
+      });
+    });
+
+    root.addEventListener('mouseenter', () => window.clearInterval(timer));
+    root.addEventListener('mouseleave', play);
+    root.addEventListener('focusin', () => window.clearInterval(timer));
+    root.addEventListener('focusout', (event) => {
+      if (!root.contains(event.relatedTarget as Node)) play();
+    });
+
+    play();
+  }
+</script>

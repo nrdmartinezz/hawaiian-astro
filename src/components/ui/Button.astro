@@ -1,7 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'inverse';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'inverse' | 'accent' | 'outline';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 type Props = {
@@ -21,6 +21,8 @@ const variants: Record<ButtonVariant, string> = {
   secondary: 'bg-transparent text-ink-brand border-brand-600 hover:bg-brand-50',
   ghost: 'bg-transparent text-current border-transparent hover:bg-current/10',
   inverse: 'bg-neutral-0 text-ink-brand border-transparent hover:bg-brand-50',
+  accent: 'bg-accent-600 text-neutral-0 hover:bg-accent-500 border-transparent',
+  outline: 'bg-transparent text-ink-inverse border-neutral-0 hover:bg-neutral-0/10',
 };
 
 // min-h keeps every size above the 44px touch target on small screens.

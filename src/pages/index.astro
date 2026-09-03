@@ -8,6 +8,7 @@ import LogoCloud from '../components/blocks/LogoCloud.astro';
 import MeetDoctor from '../components/blocks/MeetDoctor.astro';
 import Stats from '../components/blocks/Stats.astro';
 import Testimonials from '../components/blocks/Testimonials.astro';
+import LocationCards from '../components/blocks/LocationCards.astro';
 import FAQ from '../components/blocks/FAQ.astro';
 import CTABanner from '../components/blocks/CTABanner.astro';
 import { site } from '../config/site';
@@ -225,8 +226,8 @@ const faqs = [
   </MeetDoctor>
 
   <Testimonials
-    eyebrow="Reviews"
-    title="What patients say"
+    layout="slideshow"
+    eyebrow="Patient Stories"
     items={[
       {
         quote:
@@ -249,28 +250,26 @@ const faqs = [
     ]}
   />
 
-  <ServicesGrid
-    background="muted"
-    eyebrow="Offices"
-    title="Four locations, one practice"
-    body="Call or text (808) 247-6039 for any office."
-    columns={4}
-    items={locations.map((location) => ({
-      icon: 'lucide:map-pin',
-      title: location.shortName,
-      body: `${location.street}, ${location.locality}`,
-      href: `/locations/${location.slug}/`,
-    }))}
-  />
+  <LocationCards eyebrow="Find Us" items={locations}>
+    <Fragment slot="title">
+      Four Locations
+      <em class="block">Across Hawaiʻi</em>
+    </Fragment>
+  </LocationCards>
 
   <FAQ eyebrow="FAQ" title="Common questions" items={faqs} schema={false} />
 
   <CTABanner
-    title="Ready for your Hawaiian smile?"
-    body="Request a complimentary consultation — in person or virtual. We will text you back."
+    backdrop={heroImage}
+    eyebrow="Begin your journey"
+    body="Free in-person and virtual consultations available. Four convenient Hawaiʻi locations — Kaneohe, Kailua-Kona, Waimea, and Hilo."
     actions={[
-      { label: 'Request an appointment', href: '/appointment/' },
-      { label: 'View locations', href: '/locations/', variant: 'inverse' },
+      { label: "Book now — it's free", href: '/appointment/' },
+      { label: 'Patient forms', href: '/patients/forms/', variant: 'outline' },
     ]}
-  />
+  >
+    <Fragment slot="title">
+      The First Step to Your <em>Healthy Hawaiian Smile</em> Is Scheduling an Appointment.
+    </Fragment>
+  </CTABanner>
 </BaseLayout>

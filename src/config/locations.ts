@@ -2,6 +2,7 @@ export interface PracticeLocation {
   slug: string;
   name: string;
   shortName: string;
+  island: string;
   street: string;
   locality: string;
   region: string;
@@ -16,6 +17,7 @@ export const locations: PracticeLocation[] = [
     slug: 'kaneohe',
     name: 'Kaneohe Office',
     shortName: 'Kaneohe',
+    island: 'Oʻahu',
     street: '45-939 Kamehameha Hwy, Suite 103',
     locality: 'Kaneohe',
     region: 'HI',
@@ -29,6 +31,7 @@ export const locations: PracticeLocation[] = [
     slug: 'kailua-kona',
     name: 'Kailua-Kona Office',
     shortName: 'Kailua-Kona',
+    island: 'Hawaiʻi Island',
     street: '76-6225 Kuakini Hwy, Suite D-101',
     locality: 'Kailua-Kona',
     region: 'HI',
@@ -42,6 +45,7 @@ export const locations: PracticeLocation[] = [
     slug: 'kamuela',
     name: 'Kamuela Office',
     shortName: 'Kamuela',
+    island: 'Hawaiʻi Island',
     street: '65-1230 Mamalahoa Hwy, Suite A-21',
     locality: 'Kamuela',
     region: 'HI',
@@ -55,6 +59,7 @@ export const locations: PracticeLocation[] = [
     slug: 'hilo',
     name: 'Hilo Office',
     shortName: 'Hilo',
+    island: 'Hawaiʻi Island',
     street: '280 Ponahawai St, Suite 101',
     locality: 'Hilo',
     region: 'HI',
