@@ -103,7 +103,6 @@ export const site: SiteConfig = {
     phone: '(808) 247-6039',
     phoneHref: '+18082476039',
     email: 'oahusc@hawaiiansmilesortho.com',
-    fax: '(808) 247-3643',
     address: {
       street: '45-939 Kamehameha Hwy, Suite 103',
       locality: 'Kaneohe',

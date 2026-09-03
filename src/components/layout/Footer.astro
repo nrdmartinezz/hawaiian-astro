@@ -3,7 +3,8 @@ import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
 import Logo from './Logo.astro';
 import { navigation } from '../../config/navigation';
-import { site, formattedAddress } from '../../config/site';
+import { site } from '../../config/site';
+import { locations, locationAddress } from '../../config/locations';
 import { Icon } from 'astro-icon/components';
 
 const socialIcons: Record<string, string> = {
@@ -20,40 +21,42 @@ const socials = Object.entries(site.social).filter(([, href]) => Boolean(href)) 
   string,
 ][];
 const year = new Date().getFullYear();
+const locationLine = 'Kaneohe · Kailua-Kona · Waimea · Hilo';
 ---
 
 <Section as="footer" background="inverse" spacing="md">
   <Container gap="lg">
-    <div class="grid w-full gap-10 md:grid-cols-2 lg:grid-cols-5">
-      <div class="flex flex-col gap-3 lg:col-span-2">
+    <div class="grid w-full grid-cols-4 gap-10 max-lg:grid-cols-2 max-md:grid-cols-1">
+      <div class="flex flex-col gap-5">
         <Logo variant="white" />
-        <p class="max-w-reading text-neutral-300">{site.tagline}</p>
+        <p class="max-w-xs text-neutral-300">
+          Changing lives through orthodontic treatment across Kaneohe, Kailua-Kona, Waimea, and
+          Hilo, Hawaii.
+        </p>
 
-        <address class="mt-2 flex flex-col gap-2 text-neutral-300 not-italic">
-          <a
-            href={`tel:${site.business.phoneHref}`}
-            class="text-ink-inverse inline-flex min-h-11 items-center gap-2 no-underline"
-          >
-            <Icon name="lucide:phone" class="size-4" aria-hidden="true" />
-            {site.business.phone}
-          </a>
-          <a
-            href={`mailto:${site.business.email}`}
-            class="text-ink-inverse inline-flex min-h-11 items-center gap-2 no-underline"
-          >
-            <Icon name="lucide:mail" class="size-4" aria-hidden="true" />
-            {site.business.email}
-          </a>
-          <span class="flex items-start gap-2">
-            <Icon name="lucide:map-pin" class="mt-1 size-4 shrink-0" aria-hidden="true" />
-            {formattedAddress}
-          </span>
-        </address>
-
-        <dl class="mt-2 text-neutral-300">
-          <dt class="sr-only">Opening hours</dt>
-          {site.business.hours.map((line) => <dd>{line}</dd>)}
-        </dl>
+        {
+          socials.length > 0 && (
+            <ul class="flex gap-2">
+              {socials.map(([platform, href]) => (
+                <li>
+                  <a
+                    href={href}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    class="inline-flex size-11 items-center justify-center border border-neutral-500 text-neutral-0 no-underline transition-colors hover:border-neutral-0 hover:bg-neutral-0/10"
+                  >
+                    <span class="sr-only">{platform}</span>
+                    <Icon
+                      name={socialIcons[platform] ?? 'lucide:link'}
+                      class="size-4"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
       </div>
 
       {
@@ -62,12 +65,12 @@ const year = new Date().getFullYear();
             <h2 class="text-sm font-semibold tracking-wide text-neutral-400 uppercase">
               {group.heading}
             </h2>
-            <ul class="flex flex-col gap-1">
+            <ul class="flex flex-col">
               {group.links.map((link) => (
                 <li>
                   <a
                     href={link.href}
-                    class="hover:text-ink-inverse inline-flex min-h-11 items-center text-neutral-300 no-underline"
+                    class="hover:text-ink-inverse inline-flex min-h-11 items-center text-neutral-0 no-underline"
                   >
                     {link.label}
                   </a>
@@ -77,47 +80,67 @@ const year = new Date().getFullYear();
           </nav>
         ))
       }
-    </div>
 
-    {
-      socials.length > 0 && (
-        <ul class="flex gap-2">
-          {socials.map(([platform, href]) => (
-            <li>
-              <a
-                href={href}
-                rel="noopener noreferrer"
-                target="_blank"
-                class="hover:text-ink-inverse inline-flex size-11 items-center justify-center rounded-md text-neutral-300 no-underline hover:bg-neutral-800"
-              >
-                <span class="sr-only">{platform}</span>
-                <Icon
-                  name={socialIcons[platform] ?? 'lucide:link'}
-                  class="size-5"
-                  aria-hidden="true"
-                />
-              </a>
-            </li>
-          ))}
-        </ul>
-      )
-    }
+      <div class="flex flex-col gap-3">
+        <h2 class="text-sm font-semibold tracking-wide text-neutral-400 uppercase">Contact</h2>
+        <address class="flex flex-col gap-4 not-italic">
+          <a
+            href={`tel:${site.business.phoneHref}`}
+            class="text-ink-inverse inline-flex min-h-11 items-center gap-3 no-underline"
+          >
+            <Icon name="lucide:phone" class="text-brand-500 size-4 shrink-0" aria-hidden="true" />
+            {site.business.phone}
+          </a>
+
+          <a
+            href={`sms:${site.business.phoneHref}`}
+            class="text-ink-inverse inline-flex min-h-11 items-center gap-3 no-underline"
+          >
+            <Icon name="lucide:message-square" class="text-brand-500 size-4 shrink-0" aria-hidden="true" />
+            Text {site.business.phone}
+          </a>
+
+          <a
+            href={`mailto:${site.business.email}`}
+            class="text-ink-inverse inline-flex min-h-11 items-start gap-3 no-underline"
+          >
+            <Icon name="lucide:mail" class="text-accent-400 mt-0.5 size-4 shrink-0" aria-hidden="true" />
+            <span class="break-all">{site.business.email}</span>
+          </a>
+
+          <div class="text-ink-inverse flex items-start gap-3">
+            <Icon
+              name="lucide:map-pin"
+              class="text-accent-400 mt-0.5 size-4 shrink-0"
+              aria-hidden="true"
+            />
+            <ul class="flex flex-col gap-3">
+              {
+                locations.map((location) => (
+                  <li>
+                    <a
+                      href={location.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-ink-inverse hover:text-neutral-300 inline-flex min-h-11 flex-col justify-center no-underline"
+                    >
+                      <span>{location.shortName}</span>
+                      <span class="text-sm text-neutral-400">{locationAddress(location)}</span>
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </address>
+      </div>
+    </div>
 
     <div
       class="flex w-full flex-col gap-3 border-t border-neutral-800 pt-6 text-sm text-neutral-400 md:flex-row md:items-center md:justify-between"
     >
-      <p>&copy; {year} {site.legalName ?? site.name}. All rights reserved.</p>
-      <ul class="flex flex-wrap gap-4">
-        {
-          navigation.legal.map((link) => (
-            <li>
-              <a href={link.href} class="hover:text-ink-inverse text-neutral-400 no-underline">
-                {link.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+      <p>&copy; {year} {site.name}. All rights reserved.</p>
+      <p>{locationLine}, Hawaii</p>
     </div>
   </Container>
 </Section>

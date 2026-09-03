@@ -5,9 +5,10 @@
  */
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
-import BlockHeader from './BlockHeader.astro';
+import Heading from '../ui/Heading.astro';
+import Button from '../ui/Button.astro';
 import { Icon } from 'astro-icon/components';
-import type { BlockProps } from './types';
+import type { BlockProps, BlockAction } from './types';
 
 export interface FaqItem {
   question: string;
@@ -16,6 +17,7 @@ export interface FaqItem {
 
 interface Props extends BlockProps {
   items: FaqItem[];
+  actions?: BlockAction[];
   schema?: boolean;
   /** Allows several answers open at once. */
   multiple?: boolean;
@@ -24,16 +26,18 @@ interface Props extends BlockProps {
 const {
   background = 'base',
   spacing = 'md',
-  align = 'start',
-  width = 'narrow',
+  width = 'page',
   eyebrow,
   title,
   body,
   titleLevel = 2,
   items,
+  actions = [],
   schema = true,
   multiple = false,
 } = Astro.props;
+
+const hasIntro = Boolean(eyebrow || title || body || actions.length) || Astro.slots.has('title');
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -47,31 +51,61 @@ const jsonLd = {
 ---
 
 <Section background={background} spacing={spacing}>
-  <Container width={width} align={align} gap="lg">
-    <BlockHeader
-      eyebrow={eyebrow}
-      title={title}
-      body={body}
-      level={titleLevel}
-      centered={align === 'center'}
-    />
-
-    <div class="w-full">
+  <Container width={width} gap="lg">
+    <div
+      class:list={[
+        'flex w-full flex-col gap-12',
+        hasIntro && 'lg:flex-row lg:items-start lg:gap-16',
+      ]}
+    >
       {
-        items.map((item) => (
-          <details name={multiple ? undefined : 'faq'} class="border-line-base group border-b">
-            <summary class="flex min-h-14 cursor-pointer items-center justify-between gap-4 py-2 font-medium">
-              {item.question}
-              <Icon
-                name="lucide:plus"
-                class="size-5 shrink-0 transition-transform group-open:rotate-45"
-                aria-hidden="true"
-              />
-            </summary>
-            <p class="text-ink-muted max-w-reading pb-4">{item.answer}</p>
-          </details>
-        ))
+        hasIntro && (
+          <div class="flex flex-col items-start gap-5 lg:w-5/12 lg:shrink-0">
+            {eyebrow && (
+              <p class="text-brand-500 text-sm font-semibold tracking-wide uppercase">{eyebrow}</p>
+            )}
+
+            {(title || Astro.slots.has('title')) && (
+              <Heading level={titleLevel} size="2xl" weight="normal">
+                <slot name="title">{title}</slot>
+              </Heading>
+            )}
+
+            <span class="bg-brand-500 h-1 w-16" aria-hidden="true" />
+
+            {body && <p class="text-ink-muted max-w-reading text-[1rem]">{body}</p>}
+
+            {actions.length > 0 && (
+              <div class="flex flex-wrap gap-3">
+                {actions.map((action) => (
+                  <Button href={action.href} variant={action.variant ?? 'primary'}>
+                    {action.icon && <Icon name={action.icon} class="size-4" aria-hidden="true" />}
+                    {action.label}
+                  </Button>
+                ))}
+              </div>
+            )}
+          </div>
+        )
       }
+
+      <div class:list={['border-line-base w-full border-t', hasIntro && 'lg:flex-1']}>
+        {
+          items.map((item) => (
+            <details name={multiple ? undefined : 'faq'} class="border-line-base group border-b">
+              <summary class="font-heading flex min-h-14 cursor-pointer items-center justify-between gap-4 py-5 text-lg font-normal">
+                {item.question}
+                <Icon
+                  name="lucide:plus"
+                  class="text-brand-500 size-5 shrink-0 transition-transform group-open:rotate-45"
+                  aria-hidden="true"
+                />
+              </summary>
+              <p class="text-ink-muted max-w-reading pb-5">{item.answer}</p>
+            </details>
+          ))
+        }
+      </div>
     </div>
   </Container>
 </Section>

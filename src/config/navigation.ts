@@ -132,22 +132,25 @@ export const navigation: NavigationConfig = {
 
   footer: [
     {
-      heading: 'Treatments',
-      links: treatmentLinks.slice(0, 4).map(({ label, href }) => ({ label, href })),
-    },
-    {
-      heading: 'Offices',
-      links: officeLinks,
-    },
-    {
-      heading: 'Patients',
+      heading: 'Navigation',
       links: [
-        { label: 'Your First Visit', href: '/patients/first-visit/' },
+        { label: 'Home', href: '/' },
+        { label: 'Treatments', href: '/treatments/' },
+        { label: 'Invisalign®', href: '/treatments/invisalign/' },
         { label: 'Why Choose Us', href: '/why-choose-us/' },
+        { label: 'About', href: '/about/' },
+        { label: 'Blog', href: '/blog/' },
+        { label: 'Contact Us', href: '/contact/' },
+      ],
+    },
+    {
+      heading: 'For Patients',
+      links: [
+        { label: 'Book Appointment', href: '/appointment/' },
+        { label: 'Virtual Consultation', href: '/appointment/' },
         { label: 'Registration Forms', href: '/patients/forms/' },
         { label: 'Referrals', href: '/patients/referrals/' },
-        { label: 'Blog', href: '/blog/' },
-        { label: 'Contact', href: '/contact/' },
+        { label: 'Privacy Policy', href: '/privacy/' },
       ],
     },
   ],
