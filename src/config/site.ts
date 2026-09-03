@@ -90,7 +90,7 @@ export interface SiteConfig {
 export const site: SiteConfig = {
   url: 'https://hawaiiansmilesortho.com',
   name: 'Hawaiian Smiles Orthodontics',
-  legalName: 'Hawaiian Smiles Orthodontics',
+  legalName: 'Satyaprasad Nayak DMD MS Inc',
   tagline: 'Beautiful, healthy smiles across Hawaiʻi.',
   description:
     'Hawaiian Smiles Orthodontics provides braces, Invisalign, and early treatment for children, teens, and adults at offices in Kaneohe, Kailua-Kona, Kamuela, and Hilo. Voted Best Hawaii Dentist 2020–2025.',

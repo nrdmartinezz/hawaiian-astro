@@ -10,6 +10,7 @@ import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
 import MegaMenu from './MegaMenu.astro';
 import MobileNav from './MobileNav.astro';
+import Logo from './Logo.astro';
 import { navigation } from '../../config/navigation';
 import { site } from '../../config/site';
 import { Icon } from 'astro-icon/components';
@@ -41,9 +42,8 @@ const positioned = sticky !== 'static';
     gap="none"
     class="justify-between gap-4 py-4 group-data-[scrolled=true]/header:py-2"
   >
-    <a href="/" class="text-ink-base flex items-center gap-2 font-semibold no-underline">
-      <Icon name="lucide:hexagon" class="text-brand-600 size-7" aria-hidden="true" />
-      <span>{site.name}</span>
+    <a href="/" class="text-ink-base flex items-center no-underline">
+      <Logo />
     </a>
 
     <MegaMenu currentPath={currentPath} />
