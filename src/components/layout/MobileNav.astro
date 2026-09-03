@@ -175,7 +175,10 @@ const linkClass =
       }
 
       if (open) {
-        drawer.style.setProperty('--header-h', `${header?.offsetHeight ?? 0}px`);
+        drawer.style.setProperty(
+          '--header-h',
+          `${Math.ceil(header?.getBoundingClientRect().bottom ?? 0)}px`,
+        );
         drawer.querySelector<HTMLAnchorElement>('a')?.focus();
       } else {
         toggle.focus();

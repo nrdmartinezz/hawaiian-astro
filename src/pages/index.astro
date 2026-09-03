@@ -41,6 +41,7 @@ const faqs = [
   title={`${site.name} — ${site.tagline}`}
   description={site.description}
   faqs={faqs}
+  overlay
 >
   <Hero
     backdrop={heroImage}
@@ -62,6 +63,19 @@ const faqs = [
       Changing Lives, <em class="not-italic text-accent-400">One Smile</em> at a time.
     </Fragment>
   </Hero>
+
+  <Stats
+    background="inverse"
+    class="bg-[#002931]!"
+    align="center"
+    spacing="sm"
+    items={[
+      { value: '6+', label: 'Years Best Hawaii Dentist' },
+      { value: '4', label: 'Locations' },
+      { icon: 'lucide:gem', label: 'Diamond Invisalign Provider' },
+      { icon: 'lucide:calendar', label: 'Free In-Person & Virtual Consult' },
+    ]}
+  />
 
   <ServicesGrid
     eyebrow="Treatments"
@@ -87,15 +101,6 @@ const faqs = [
       'Four offices across Oʻahu and Hawaiʻi Island',
     ]}
     actions={[{ label: 'Meet the doctors', href: '/about/doctors/' }]}
-  />
-
-  <Stats
-    title="Trusted across the islands"
-    items={[
-      { value: '4', label: 'Offices' },
-      { value: '2020–2025', label: 'Best Hawaii Dentist' },
-      { value: '8–5', label: 'Monday–Friday' },
-    ]}
   />
 
   <Testimonials

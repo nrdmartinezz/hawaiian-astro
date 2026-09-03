@@ -25,9 +25,11 @@ interface Props {
   faqs?: FaqEntry[];
   service?: { name: string; description?: string };
   sticky?: HeaderSticky;
+  /** Float the header over a photo hero until the page is scrolled. */
+  overlay?: boolean;
 }
 
-const { breadcrumbs, faqs, service, sticky = 'sticky', ...seo } = Astro.props;
+const { breadcrumbs, faqs, service, sticky = 'sticky', overlay = false, ...seo } = Astro.props;
 ---
 
 <!doctype html>
@@ -64,7 +66,7 @@ const { breadcrumbs, faqs, service, sticky = 'sticky', ...seo } = Astro.props;
       Skip to content
     </a>
 
-    <Header sticky={sticky} />
+    <Header sticky={sticky} overlay={overlay} />
 
     <main id="main" class="flex-1">
       <slot />

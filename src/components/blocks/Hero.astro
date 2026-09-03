@@ -44,9 +44,13 @@ const split = Boolean(image) && !photoHero;
 
 <Section
   background={photoHero ? 'inverse' : background}
-  spacing={spacing}
+  spacing={photoHero ? 'none' : spacing}
   clip={photoHero}
-  class={photoHero ? 'relative' : undefined}
+  class={
+    photoHero
+      ? 'relative -mt-[var(--header-h,5rem)] pt-[calc(var(--spacing-section-lg)+var(--header-h,5rem))] pb-section-lg'
+      : undefined
+  }
 >
   {
     backdrop && (

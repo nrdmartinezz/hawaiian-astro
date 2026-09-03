@@ -1,7 +1,8 @@
 ---
 /**
  * Thin utility strip above the main nav: click-to-text, click-to-call,
- * email, and fax. Lives inside Header so it sticks with the rest of the bar.
+ * email, and fax. Stays in document flow so it scrolls away; the nav below
+ * is the sticky piece.
  */
 import Container from '../ui/Container.astro';
 import { site } from '../../config/site';
@@ -11,7 +12,7 @@ const linkClass =
   'inline-flex items-center gap-1.5 whitespace-nowrap text-ink-inverse no-underline hover:text-neutral-300 max-md:min-h-11';
 ---
 
-<div class="bg-surface-inverse text-ink-inverse">
+<div class="contact-bar bg-surface-inverse text-ink-inverse relative z-50">
   <Container
     as="nav"
     layout="bar"

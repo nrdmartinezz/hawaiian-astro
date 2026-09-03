@@ -5,6 +5,10 @@
  *
  * The nav slots are filled by MegaMenu (md and up) and MobileNav (below md),
  * both reading src/config/navigation.ts — one tree, two renderings.
+ *
+ * overlay: transparent bar over a photo hero until the page is scrolled, then
+ * the solid sticky treatment. Pages without a photo hero leave this off.
+ * The contact strip sits above this bar in document flow and is not sticky.
  */
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
@@ -18,25 +22,30 @@ export type HeaderSticky = 'static' | 'sticky' | 'shrink' | 'hide-on-scroll';
 
 interface Props {
   sticky?: HeaderSticky;
+  overlay?: boolean;
 }
 
-const { sticky = 'sticky' } = Astro.props;
+const { sticky = 'sticky', overlay = false } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 const positioned = sticky !== 'static';
 ---
 
+<ContactBar />
+
 <header
   data-sticky={sticky}
+  data-overlay={overlay ? 'true' : undefined}
   class:list={[
-    'group/header border-line-base bg-surface-base z-50 w-full border-b',
+    'group/header z-50 w-full border-b',
+    overlay
+      ? 'border-transparent bg-transparent data-[scrolled=true]:border-line-base data-[scrolled=true]:bg-surface-base'
+      : 'border-line-base bg-surface-base',
     // The mega panel is absolutely positioned against the header, so the header
     // must be a positioned ancestor even when it isn't sticky.
     positioned ? 'sticky top-0' : 'relative',
   ]}
 >
-  <ContactBar />
-
   <Container
     as="div"
     layout="bar"
@@ -62,10 +71,17 @@ const positioned = sticky !== 'static';
 </header>
 
 <style>
+  :global(:root) {
+    --header-h: 5rem;
+  }
+
   header {
     transition:
       transform 200ms ease,
-      padding 150ms ease;
+      padding 150ms ease,
+      background-color 200ms ease,
+      border-color 200ms ease,
+      box-shadow 200ms ease;
   }
 
   header[data-hidden='true'] {
@@ -74,6 +90,43 @@ const positioned = sticky !== 'static';
 
   header[data-scrolled='true'] {
     box-shadow: var(--shadow-sm);
+  }
+
+  /* Floating overlay: white type over the photo until the bar solidifies. */
+  header[data-overlay='true']:not([data-scrolled='true']) :global(.logo-name) {
+    color: var(--color-ink-inverse);
+  }
+
+  header[data-overlay='true']:not([data-scrolled='true']) :global(.logo-tagline) {
+    color: rgb(255 255 255 / 0.8);
+  }
+
+  header[data-overlay='true']:not([data-scrolled='true']) :global(nav.mega > ul > li > a),
+  header[data-overlay='true']:not([data-scrolled='true']) :global(nav.mega > ul > li > button) {
+    color: var(--color-ink-inverse);
+  }
+
+  header[data-overlay='true']:not([data-scrolled='true']) :global(nav.mega > ul > li > a:hover),
+  header[data-overlay='true']:not([data-scrolled='true']) :global(nav.mega > ul > li > button:hover) {
+    background-color: rgb(255 255 255 / 0.12);
+  }
+
+  header[data-overlay='true']:not([data-scrolled='true']) :global(#nav-toggle) {
+    color: var(--color-ink-inverse);
+  }
+
+  header[data-overlay='true']:not([data-scrolled='true']) :global(#nav-toggle:hover) {
+    background-color: rgb(255 255 255 / 0.12);
+  }
+
+  header :global(.logo-name),
+  header :global(.logo-tagline),
+  header :global(nav.mega > ul > li > a),
+  header :global(nav.mega > ul > li > button),
+  header :global(#nav-toggle) {
+    transition:
+      color 200ms ease,
+      background-color 200ms ease;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -87,26 +140,53 @@ const positioned = sticky !== 'static';
   }
 </style>
 
+<script is:inline>
+  (() => {
+    const header = document.querySelector('header[data-sticky]');
+    if (header) {
+      document.documentElement.style.setProperty(
+        '--header-h',
+        `${Math.ceil(header.getBoundingClientRect().height)}px`,
+      );
+    }
+  })();
+</script>
+
 <script>
   const header = document.querySelector<HTMLElement>('header[data-sticky]');
 
   if (header) {
     const mode = header.dataset.sticky;
+    const overlay = header.dataset.overlay === 'true';
+    const positioned = mode !== 'static';
+    const tracksScroll = overlay || mode === 'shrink' || mode === 'hide-on-scroll';
 
-    if (mode === 'shrink' || mode === 'hide-on-scroll') {
+    const setHeight = () => {
+      if (header.dataset.scrolled === 'true') return;
+      document.documentElement.style.setProperty(
+        '--header-h',
+        `${Math.ceil(header.getBoundingClientRect().height)}px`,
+      );
+    };
+
+    const navOpen = () =>
+      document.querySelector('#nav-toggle')?.getAttribute('aria-expanded') === 'true' ||
+      document.querySelector('.mega-item[data-open="true"]') !== null;
+
+    if (positioned && tracksScroll) {
       let lastY = window.scrollY;
       let ticking = false;
 
       const update = () => {
         const y = window.scrollY;
-        header.dataset.scrolled = String(y > 8);
+        const open = navOpen();
+        // Overlay stays transparent until the contact bar has scrolled away
+        // and this bar is actually stuck to the top of the viewport.
+        const stuck = overlay ? header.getBoundingClientRect().top <= 1 : y > 8;
+        header.dataset.scrolled = String(stuck || open);
 
         if (mode === 'hide-on-scroll') {
-          // Never retract while the drawer or a mega panel is open.
-          const navOpen =
-            document.querySelector('#nav-toggle')?.getAttribute('aria-expanded') === 'true' ||
-            document.querySelector('.mega-item[data-open="true"]') !== null;
-          header.dataset.hidden = String(!navOpen && y > lastY && y > 120);
+          header.dataset.hidden = String(!open && y > lastY && y > 120);
         }
 
         lastY = y;
@@ -124,7 +204,22 @@ const positioned = sticky !== 'static';
         { passive: true },
       );
 
+      window.addEventListener('resize', setHeight, { passive: true });
+      new ResizeObserver(setHeight).observe(header);
+
+      const toggle = document.querySelector('#nav-toggle');
+      if (toggle) {
+        new MutationObserver(update).observe(toggle, {
+          attributes: true,
+          attributeFilter: ['aria-expanded'],
+        });
+      }
+
+      setHeight();
       update();
+    } else if (positioned) {
+      setHeight();
+      window.addEventListener('resize', setHeight, { passive: true });
     }
   }
 </script>

@@ -2,15 +2,20 @@
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
 import BlockHeader from './BlockHeader.astro';
+import { Icon } from 'astro-icon/components';
 import type { BlockProps } from './types';
 
 export interface Stat {
-  value: string;
+  /** Large emphasis text (e.g. "6+" or "4"). Omit when using `icon`. */
+  value?: string;
+  /** Lucide (or other astro-icon) name shown in place of `value`. */
+  icon?: string;
   label: string;
 }
 
 interface Props extends BlockProps {
   items: Stat[];
+  class?: string;
 }
 
 const {
@@ -23,29 +28,50 @@ const {
   body,
   titleLevel = 2,
   items,
+  class: className,
 } = Astro.props;
 
-const columnClass = items.length === 4 ? 'sm:grid-cols-2 lg:grid-cols-4' : 'sm:grid-cols-3';
+const columnClass = items.length === 4 ? 'grid-cols-4' : 'sm:grid-cols-3';
+const inverse = background === 'inverse';
+const centered = align === 'center';
 ---
 
-<Section background={background} spacing={spacing}>
+<Section background={background} spacing={spacing} class={className}>
   <Container width={width} align={align} gap="lg">
     <BlockHeader
       eyebrow={eyebrow}
       title={title}
       body={body}
       level={titleLevel}
-      centered={align === 'center'}
+      centered={centered}
     />
 
-    <dl class:list={['grid w-full gap-8', columnClass]}>
+    <dl class:list={['grid w-full gap-4 sm:gap-8', columnClass]}>
       {
         items.map((stat) => (
-          <div class="flex flex-col gap-1">
+          <div class:list={['flex flex-col gap-1 sm:gap-2', centered && 'items-center text-center']}>
             {/* Value reads first visually; DOM order keeps dt before dd. */}
-            <dt class="text-ink-muted order-2">{stat.label}</dt>
-            <dd class="text-ink-brand order-1 text-4xl font-semibold tracking-tight">
-              {stat.value}
+            <dt
+              class:list={[
+                'order-2 text-pretty text-xs sm:text-base',
+                inverse ? 'text-ink-inverse/50' : 'text-ink-muted',
+              ]}
+            >
+              {stat.label}
+            </dt>
+            <dd
+              class:list={[
+                'order-1 flex min-h-10 items-center text-2xl tracking-tight sm:min-h-14 sm:text-4xl',
+                'text-brand-500',
+                !stat.icon && 'font-heading font-semibold',
+                centered && 'justify-center',
+              ]}
+            >
+              {stat.icon ? (
+                <Icon name={stat.icon} class="size-[1em]" aria-hidden="true" />
+              ) : (
+                stat.value
+              )}
             </dd>
           </div>
         ))
