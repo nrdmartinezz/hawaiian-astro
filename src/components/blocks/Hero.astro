@@ -97,7 +97,13 @@ const split = Boolean(image) && !photoHero;
         <slot name="title">{title}</slot>
       </Heading>
 
-      {body && <p class="max-w-reading text-lg opacity-90">{body}</p>}
+      {
+        body && (
+          <p class:list={['max-w-reading text-lg', photoHero ? 'text-white/75' : 'opacity-90']}>
+            {body}
+          </p>
+        )
+      }
 
       {
         bullets.length > 0 && (
@@ -105,11 +111,14 @@ const split = Boolean(image) && !photoHero;
             {bullets.map((bullet) => (
               <li class="flex items-start gap-3">
                 <Icon
-                  name="lucide:check"
-                  class="mt-1 size-5 shrink-0 opacity-80"
+                  name="lucide:circle-check"
+                  class:list={[
+                    'mt-1 size-5 shrink-0',
+                    photoHero ? 'text-brand-500' : 'opacity-80',
+                  ]}
                   aria-hidden="true"
                 />
-                <span>{bullet}</span>
+                <span class:list={[photoHero && 'text-white/50']}>{bullet}</span>
               </li>
             ))}
           </ul>
