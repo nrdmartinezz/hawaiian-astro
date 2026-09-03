@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /thank-you/
+Disallow: /styleguide/
+
+Sitemap: https://hawaiiansmilesortho.com/sitemap-index.xml
