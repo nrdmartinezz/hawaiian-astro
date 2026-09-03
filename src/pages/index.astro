@@ -5,6 +5,7 @@ import ServicesGrid from '../components/blocks/ServicesGrid.astro';
 import ValueGrid from '../components/blocks/ValueGrid.astro';
 import FeatureSplit from '../components/blocks/FeatureSplit.astro';
 import LogoCloud from '../components/blocks/LogoCloud.astro';
+import MeetDoctor from '../components/blocks/MeetDoctor.astro';
 import Stats from '../components/blocks/Stats.astro';
 import Testimonials from '../components/blocks/Testimonials.astro';
 import FAQ from '../components/blocks/FAQ.astro';
@@ -15,6 +16,7 @@ import { treatmentImages } from '../config/treatmentImages';
 import { locations } from '../config/locations';
 import { awardLogos, affiliationLogos } from '../config/credentials';
 import heroImage from '../assets/hero.jpg';
+import doctorImage from '../assets/doctors/dr-satya-nayak.jpg';
 
 const faqs = [
   {
@@ -102,7 +104,10 @@ const faqs = [
     eyebrow="Why Hawaiian Smiles"
     title="The Standard of Aloha Care"
     body="We rely on advanced technology and our signature welcoming environment to provide superior treatment options to patients of all ages across four Hawaii locations."
-    actions={[{ label: 'Our story', href: '/about/' }]}
+    actions={[
+      { label: 'Why choose us', href: '/why-choose-us/' },
+      { label: 'Our story', href: '/about/', variant: 'secondary' },
+    ]}
     items={[
       {
         icon: 'lucide:trophy',
@@ -188,6 +193,36 @@ const faqs = [
       { label: 'Professional Affiliations', items: affiliationLogos, size: 'md' },
     ]}
   />
+
+  <MeetDoctor
+    eyebrow="Meet the Doctor"
+    name="Dr. Satya Nayak"
+    credentials="D.M.D., M.S. — Lead Orthodontist"
+    image={doctorImage}
+    imageAlt="Dr. Satya Nayak and Dr. Nicole Fernandez on a Hawaiʻi beach"
+    actions={[
+      { label: 'Meet the doctors', href: '/about/doctors/' },
+      { label: 'Your first visit', href: '/patients/first-visit/', variant: 'secondary' },
+    ]}
+  >
+    <Fragment slot="title">
+      Using cutting edge treatment options and the very best in technology, we provide every
+      patient with a <em class="not-italic">beautiful, healthy smile</em> that they can't wait to
+      show off.
+    </Fragment>
+    <Fragment slot="body">
+      <p class="text-ink-muted max-w-reading text-[1rem]">
+        Dr. Nayak and the Hawaiian Smiles team bring world-class orthodontic expertise to the
+        islands — combining the latest technology with the warmth and aloha spirit that makes
+        Hawaiʻi special.
+      </p>
+      <p class="text-ink-muted max-w-reading text-[1rem]">
+        Innovation is at the heart of our practice. From the revolutionary Invisalign® system to
+        high-tech Pitts 21 self-ligating braces, we deliver superior outcomes with a signature
+        welcoming environment.
+      </p>
+    </Fragment>
+  </MeetDoctor>
 
   <Testimonials
     eyebrow="Reviews"

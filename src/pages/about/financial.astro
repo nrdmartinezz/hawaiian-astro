@@ -19,7 +19,10 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
     eyebrow="Affordable care"
     title="Your dream smile, within your budget"
     body="Insurance, payment plans, and HSA/FSA funds can make treatment affordable. Fees depend on complexity and length — we review every option at your first visit."
-    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+    actions={[
+      { label: 'Request an appointment', href: '/appointment/' },
+      { label: 'See treatment pricing', href: '/why-choose-us/', variant: 'secondary' },
+    ]}
   />
 
   <Pricing
@@ -31,7 +34,11 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
         price: 'From $189',
         cadence: 'per arch / month',
         body: 'Interest-free in-house monthly payments. Available for braces and Invisalign on qualifying plans.',
-        features: ['No surprise add-ons after you start', 'Sibling discounts available', 'Pay-in-full savings'],
+        features: [
+          'No surprise add-ons after you start',
+          'Sibling discounts available',
+          'Pay-in-full savings',
+        ],
         action: { label: 'Ask about plans', href: '/appointment/' },
         featured: true,
       },
@@ -40,7 +47,11 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
         price: 'We bill',
         cadence: 'for you',
         body: 'Many plans include orthodontic benefits. Share your insurance before the first visit so we can estimate the same day.',
-        features: ['Benefit check before your consult', 'We generate and submit claims', 'HSA and FSA welcome'],
+        features: [
+          'Benefit check before your consult',
+          'We generate and submit claims',
+          'HSA and FSA welcome',
+        ],
         action: { label: 'Contact us', href: '/contact/' },
       },
     ]}
@@ -50,7 +61,11 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
     background="muted"
     title="Transparent from the first visit"
     body="Costs vary with the severity of the problem and the appliance you choose. Financing and payment are fully discussed at your first visit so you can make the best choice for your smile."
-    bullets={['0% in-house financing options', 'Treat now, pay later on qualifying plans', 'No hard credit checks on select options']}
+    bullets={[
+      '0% in-house financing options',
+      'Treat now, pay later on qualifying plans',
+      'No hard credit checks on select options',
+    ]}
   />
 
   <CTABanner
