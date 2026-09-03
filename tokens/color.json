@@ -20,7 +20,7 @@
     },
     "neutral": {
       "0": { "$value": "#ffffff", "$type": "color" },
-      "50": { "$value": "#f4f6f7", "$type": "color" },
+      "50": { "$value": "#fffbf6", "$type": "color" },
       "100": { "$value": "#eff1f3", "$type": "color" },
       "200": { "$value": "#d6d7d9", "$type": "color" },
       "300": { "$value": "#b3b4b8", "$type": "color" },

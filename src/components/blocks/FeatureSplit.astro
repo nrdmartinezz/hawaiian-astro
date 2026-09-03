@@ -34,66 +34,76 @@ const {
 ---
 
 <Section background={background} spacing={spacing}>
-  <Container width={width} layout="row" gap="lg">
-    <div class:list={['w-full md:w-1/2', reverse ? 'md:order-2' : 'md:order-1']}>
-      {
-        image ? (
-          <Image
-            src={image}
-            alt={imageAlt}
-            widths={[480, 768, 1024]}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            loading="lazy"
-            class="w-full rounded-lg object-cover"
-          />
-        ) : (
-          <div class="bg-surface-muted aspect-4/3 w-full rounded-lg" aria-hidden="true" />
-        )
-      }
-    </div>
+  <Container width={width} gap="lg">
+    <div class="flex w-full flex-col gap-12 md:flex-row md:items-stretch md:gap-16">
+      <div class:list={['w-full md:w-1/2', reverse ? 'md:order-2' : 'md:order-1']}>
+        {
+          image ? (
+            <Image
+              src={image}
+              alt={imageAlt}
+              widths={[480, 768, 1024]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              loading="lazy"
+              class="h-full min-h-72 w-full rounded-lg object-cover"
+            />
+          ) : (
+            <div class="bg-surface-muted min-h-72 h-full w-full rounded-lg" aria-hidden="true" />
+          )
+        }
+      </div>
 
-    <div
-      class:list={[
-        'flex flex-col items-start gap-5 md:w-1/2',
-        reverse ? 'md:order-1' : 'md:order-2',
-      ]}
-    >
-      {
-        eyebrow && (
-          <p class="text-ink-brand text-sm font-semibold tracking-wide uppercase">{eyebrow}</p>
-        )
-      }
-      {title && <Heading level={titleLevel}>{title}</Heading>}
-      {body && <p class="text-ink-muted max-w-reading">{body}</p>}
+      <div
+        class:list={[
+          'flex flex-col items-start gap-5 md:w-1/2',
+          reverse ? 'md:order-1' : 'md:order-2',
+        ]}
+      >
+        {
+          eyebrow && (
+            <p class="text-brand-500 text-sm font-semibold tracking-wide uppercase">{eyebrow}</p>
+          )
+        }
 
-      {
-        bullets.length > 0 && (
-          <ul class="flex flex-col gap-2">
-            {bullets.map((bullet) => (
-              <li class="flex items-start gap-3">
-                <Icon
-                  name="lucide:check"
-                  class="text-brand-600 mt-1 size-5 shrink-0"
-                  aria-hidden="true"
-                />
-                <span>{bullet}</span>
-              </li>
-            ))}
-          </ul>
-        )
-      }
+        <Heading level={titleLevel} size="2xl" weight="normal">
+          <slot name="title">{title}</slot>
+        </Heading>
 
-      {
-        actions.length > 0 && (
-          <div class="flex flex-wrap gap-3">
-            {actions.map((action) => (
-              <Button href={action.href} variant={action.variant ?? 'primary'}>
-                {action.label}
-              </Button>
-            ))}
-          </div>
-        )
-      }
+        <span class="bg-brand-500 h-1 w-16" aria-hidden="true"></span>
+
+        <slot name="body">
+          {body && <p class="text-ink-muted max-w-reading text-[1rem]">{body}</p>}
+        </slot>
+
+        {
+          bullets.length > 0 && (
+            <ul class="flex flex-col gap-2">
+              {bullets.map((bullet) => (
+                <li class="text-ink-muted flex items-start gap-3">
+                  <span
+                    class="bg-brand-500 mt-2 size-1.5 shrink-0 rounded-full"
+                    aria-hidden="true"
+                  />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+
+        {
+          actions.length > 0 && (
+            <div class="flex flex-wrap gap-3">
+              {actions.map((action) => (
+                <Button href={action.href} variant={action.variant ?? 'primary'}>
+                  {action.icon && <Icon name={action.icon} class="size-4" aria-hidden="true" />}
+                  {action.label}
+                </Button>
+              ))}
+            </div>
+          )
+        }
+      </div>
     </div>
   </Container>
 </Section>

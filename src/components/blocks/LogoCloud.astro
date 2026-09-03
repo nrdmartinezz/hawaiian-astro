@@ -11,38 +11,76 @@ export interface Logo {
   href?: string;
 }
 
-interface Props extends Omit<BlockProps, 'body' | 'eyebrow' | 'titleLevel'> {
-  items: Logo[];
-  /** Small caption above the row, e.g. "Accredited by". */
+export type LogoSize = 'sm' | 'md' | 'lg';
+
+export interface LogoGroup {
   label?: string;
+  items: Logo[];
+  size?: LogoSize;
+  class?: string;
 }
 
-const { background = 'base', spacing = 'sm', width = 'page', items, label } = Astro.props;
+interface Props extends Omit<BlockProps, 'body' | 'eyebrow' | 'titleLevel'> {
+  items?: Logo[];
+  groups?: LogoGroup[];
+  /** Small caption above the row, e.g. "Accredited by". */
+  label?: string;
+  size?: LogoSize;
+}
+
+const {
+  background = 'base',
+  spacing = 'sm',
+  width = 'page',
+  items = [],
+  label,
+  size = 'sm',
+} = Astro.props;
+
+const groups: LogoGroup[] =
+  Astro.props.groups ?? (items.length > 0 ? [{ label, items, size }] : []);
+
+const sizes: Record<LogoSize, string> = {
+  sm: 'h-10',
+  md: 'h-12',
+  lg: 'h-16 max-md:h-12',
+};
 ---
 
 <Section background={background} spacing={spacing}>
-  <Container width={width} align="center" gap="md">
-    {label && <p class="text-ink-muted text-sm font-semibold tracking-wide uppercase">{label}</p>}
+  <Container width={width} align="center" gap="lg">
+    {
+      groups.map((group, index) => (
+        <>
+          {index > 0 && <hr class="border-accent-400/30 w-full border-t" />}
+          <div class="flex w-full flex-col items-center gap-6">
+            {group.label && (
+              <p class="text-ink-muted text-sm font-semibold tracking-wide uppercase">
+                {group.label}
+              </p>
+            )}
+            <ul class="flex w-full flex-wrap items-center justify-center gap-x-10 gap-y-6">
+              {group.items.map((logo) => {
+                const markSize = group.size ?? size;
+                const visual = logo.image ? (
+                  <Image
+                    src={logo.image}
+                    alt={logo.name}
+                    widths={[160, 320, 480]}
+                    sizes="160px"
+                    loading="lazy"
+                    class:list={['w-auto grayscale', sizes[markSize], group.class]}
+                  />
+                ) : (
+                  <span class="text-ink-muted text-lg font-semibold">{logo.name}</span>
+                );
 
-    <ul class="flex w-full flex-wrap items-center justify-center gap-x-12 gap-y-8">
-      {
-        items.map((logo) => {
-          const mark = logo.image ? (
-            <Image
-              src={logo.image}
-              alt={logo.name}
-              widths={[160, 320]}
-              sizes="160px"
-              loading="lazy"
-              class="h-10 w-auto opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0"
-            />
-          ) : (
-            <span class="text-ink-muted text-lg font-semibold">{logo.name}</span>
-          );
-
-          return <li>{logo.href ? <a href={logo.href}>{mark}</a> : mark}</li>;
-        })
-      }
-    </ul>
+                return <li>{logo.href ? <a href={logo.href}>{visual}</a> : visual}</li>;
+              })}
+            </ul>
+          </div>
+        </>
+      ))
+    }
   </Container>
 </Section>

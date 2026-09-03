@@ -1,0 +1,82 @@
+---
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+import Heading from '../ui/Heading.astro';
+import Button from '../ui/Button.astro';
+import { Icon } from 'astro-icon/components';
+import type { BlockProps, BlockAction } from './types';
+
+export interface ValueItem {
+  title: string;
+  body: string;
+  icon: string;
+}
+
+interface Props extends BlockProps {
+  items: ValueItem[];
+  actions?: BlockAction[];
+}
+
+const {
+  background = 'muted',
+  spacing = 'md',
+  width = 'page',
+  eyebrow,
+  title,
+  body,
+  titleLevel = 2,
+  items,
+  actions = [],
+} = Astro.props;
+
+const cardLevel = titleLevel === 2 ? 3 : 4;
+---
+
+<Section background={background} spacing={spacing}>
+  <Container width={width} gap="lg">
+    <div class="flex w-full flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
+      <div class="flex flex-col items-start gap-5 lg:w-5/12 lg:shrink-0">
+        {
+          eyebrow && (
+            <p class="text-brand-500 text-sm font-semibold tracking-wide uppercase">{eyebrow}</p>
+          )
+        }
+
+        <Heading level={titleLevel} size="2xl" weight="normal">
+          <slot name="title">{title}</slot>
+        </Heading>
+
+        <span class="bg-brand-500 h-1 w-16" aria-hidden="true"></span>
+
+        {body && <p class="text-ink-muted max-w-reading text-[1rem]">{body}</p>}
+
+        {
+          actions.length > 0 && (
+            <div class="flex flex-wrap gap-3">
+              {actions.map((action) => (
+                <Button href={action.href} variant={action.variant ?? 'primary'}>
+                  {action.icon && <Icon name={action.icon} class="size-4" aria-hidden="true" />}
+                  {action.label}
+                </Button>
+              ))}
+            </div>
+          )
+        }
+      </div>
+
+      <ul class="grid w-full grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:flex-1">
+        {
+          items.map((item) => (
+            <li class="flex flex-col items-start gap-3">
+              <Icon name={item.icon} class="text-brand-500 size-8" aria-hidden="true" />
+              <Heading level={cardLevel} size="sm">
+                {item.title}
+              </Heading>
+              <p class="text-ink-muted text-[1rem]">{item.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Container>
+</Section>

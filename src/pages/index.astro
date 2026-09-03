@@ -2,7 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/blocks/Hero.astro';
 import ServicesGrid from '../components/blocks/ServicesGrid.astro';
+import ValueGrid from '../components/blocks/ValueGrid.astro';
 import FeatureSplit from '../components/blocks/FeatureSplit.astro';
+import LogoCloud from '../components/blocks/LogoCloud.astro';
 import Stats from '../components/blocks/Stats.astro';
 import Testimonials from '../components/blocks/Testimonials.astro';
 import FAQ from '../components/blocks/FAQ.astro';
@@ -11,6 +13,7 @@ import { site } from '../config/site';
 import { treatments } from '../config/treatments';
 import { treatmentImages } from '../config/treatmentImages';
 import { locations } from '../config/locations';
+import { awardLogos, affiliationLogos } from '../config/credentials';
 import heroImage from '../assets/hero.jpg';
 
 const faqs = [
@@ -66,7 +69,7 @@ const faqs = [
     ]}
   >
     <Fragment slot="title">
-      Changing Lives, <em class="not-italic text-accent-400">One Smile</em> at a time.
+      Changing Lives, <em class="not-italic">One Smile</em> at a time.
     </Fragment>
   </Hero>
 
@@ -95,17 +98,95 @@ const faqs = [
     }))}
   />
 
-  <FeatureSplit
-    background="muted"
-    eyebrow="Our approach"
-    title="If you are unhappy with your smile, we are here to help"
-    body="Innovation is key at Hawaiian Smiles. Invisalign clear aligners and Pitts 21 self-ligating braces deliver a more comfortable experience, often in a shorter treatment period — in a signature welcoming environment."
-    bullets={[
-      'Advanced 3D planning',
-      'Doctors who take time to explain',
-      'Four offices across Oʻahu and Hawaiʻi Island',
+  <ValueGrid
+    eyebrow="Why Hawaiian Smiles"
+    title="The Standard of Aloha Care"
+    body="We rely on advanced technology and our signature welcoming environment to provide superior treatment options to patients of all ages across four Hawaii locations."
+    actions={[{ label: 'Our story', href: '/about/' }]}
+    items={[
+      {
+        icon: 'lucide:trophy',
+        title: 'Award-Winning Excellence',
+        body: 'Voted Best Hawaii Dentist every year from 2020 through 2025 by Hawaii Magazine readers.',
+      },
+      {
+        icon: 'lucide:gem',
+        title: 'Invisalign Diamond Provider',
+        body: 'Among the top Invisalign providers in Hawaii — recognized for exceptional patient outcomes.',
+      },
+      {
+        icon: 'lucide:microscope',
+        title: 'Cutting-Edge Technology',
+        body: 'Pitts 21 self-ligating braces and 3D digital scanning for precise, comfortable treatment.',
+      },
+      {
+        icon: 'lucide:smartphone',
+        title: 'Text-Friendly Practice',
+        body: `Life gets busy. Text us at ${site.business.phone} and we’ll make scheduling effortless for you.`,
+      },
+      {
+        icon: 'lucide:heart',
+        title: 'Aloha Spirit',
+        body: 'Our warm, welcoming team treats every patient like family — because that’s the Hawaiian way.',
+      },
+      {
+        icon: 'lucide:video',
+        title: 'Virtual Consultations',
+        body: 'Start your smile journey from the comfort of home with a free virtual consultation.',
+      },
     ]}
-    actions={[{ label: 'Meet the doctors', href: '/about/doctors/' }]}
+  >
+    <Fragment slot="title">
+      The Standard of <em>Aloha Care</em>
+    </Fragment>
+  </ValueGrid>
+
+  <FeatureSplit
+    eyebrow="Clear Aligner Therapy"
+    title="Invisalign® Virtually Invisible. Remarkably Effective."
+    image={treatmentImages.invisalign}
+    imageAlt="A smiling patient holding a clear Invisalign aligner"
+    bullets={[
+      'Virtually invisible clear trays',
+      'Removable for eating and brushing',
+      '3D digital treatment planning',
+      'Comfortable — no metal brackets',
+      'Shorter treatment time',
+    ]}
+    actions={[
+      { label: 'Learn about Invisalign', href: '/treatments/invisalign/' },
+      { label: 'Free consultation', href: '/appointment/', variant: 'secondary' },
+    ]}
+  >
+    <Fragment slot="title">
+      <span class="flex flex-col">
+        Invisalign®
+        <em>Virtually Invisible.</em>
+        Remarkably Effective.
+      </span>
+    </Fragment>
+    <Fragment slot="body">
+      <p class="text-ink-muted max-w-reading text-[1rem]">
+        Invisalign® clear aligners straighten your teeth without wires and brackets. The system
+        combines cutting-edge 3D digital technology with decades of orthodontic expertise to deliver
+        your ideal smile.
+      </p>
+      <p class="text-ink-muted max-w-reading text-[1rem]">
+        Each custom aligner set gradually moves your teeth with precision — swap trays every 1–2
+        weeks and watch your smile transform. As Hawaiʻi’s
+        <a href="/about/" class="text-ink-brand font-semibold no-underline hover:underline">
+          Invisalign Diamond Provider
+        </a>, we bring unmatched expertise to every case.
+      </p>
+    </Fragment>
+  </FeatureSplit>
+
+  <LogoCloud
+    background="muted"
+    groups={[
+      { label: 'Award Recognition', items: awardLogos, size: 'lg', class: 'opacity-50' },
+      { label: 'Professional Affiliations', items: affiliationLogos, size: 'md' },
+    ]}
   />
 
   <Testimonials

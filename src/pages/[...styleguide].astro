@@ -17,6 +17,7 @@ import Prose from '../components/ui/Prose.astro';
 import ServicesGrid from '../components/blocks/ServicesGrid.astro';
 import Hero from '../components/blocks/Hero.astro';
 import FeatureSplit from '../components/blocks/FeatureSplit.astro';
+import ValueGrid from '../components/blocks/ValueGrid.astro';
 import Testimonials from '../components/blocks/Testimonials.astro';
 import FAQ from '../components/blocks/FAQ.astro';
 import Team from '../components/blocks/Team.astro';
@@ -212,6 +213,21 @@ const faqs = [
     body="Image renders as a placeholder here. Small screens always stack image-first."
     bullets={['Reversible with the reverse prop', 'Media lazy-loads']}
     actions={[{ label: 'Learn more', href: '#', variant: 'secondary' }]}
+  />
+
+  <ValueGrid
+    eyebrow="ValueGrid"
+    title="Why patients choose us"
+    body="Intro copy sits in one column; six icon cards fill a two-column grid beside it."
+    actions={[{ label: 'Learn more', href: '#' }]}
+    items={[
+      { icon: 'lucide:trophy', title: 'Award-winning', body: 'A short reason patients pick this practice.' },
+      { icon: 'lucide:gem', title: 'Provider status', body: 'A short reason patients pick this practice.' },
+      { icon: 'lucide:microscope', title: 'Technology', body: 'A short reason patients pick this practice.' },
+      { icon: 'lucide:smartphone', title: 'Easy to reach', body: 'A short reason patients pick this practice.' },
+      { icon: 'lucide:heart', title: 'Care philosophy', body: 'A short reason patients pick this practice.' },
+      { icon: 'lucide:video', title: 'Virtual visits', body: 'A short reason patients pick this practice.' },
+    ]}
   />
 
   <ServicesGrid
