@@ -86,7 +86,10 @@ const headingLevel = titleLevel === 2 ? 3 : 4;
                     class="absolute inset-0 size-full object-cover"
                   />
                   <div
-                    class="from-accent-600/60 to-neutral-950 absolute inset-0 bg-linear-to-b"
+                    class:list={[
+                      'from-accent-600/60 to-neutral-950 absolute inset-0 bg-linear-to-b transition-opacity duration-150',
+                      item.href && 'opacity-70 group-hover:opacity-100 group-focus-visible:opacity-100',
+                    ]}
                     aria-hidden="true"
                   />
                   <div class="relative mt-auto flex flex-col items-start gap-3 p-6">
@@ -96,13 +99,7 @@ const headingLevel = titleLevel === 2 ? 3 : 4;
                     <p class="text-ink-inverse/90">{item.body}</p>
                     {item.href && (
                       <span
-                        class:list={[
-                          'mt-1 inline-flex min-h-11 items-center justify-center border bg-transparent px-4',
-                          'border-neutral-0/50 text-ink-inverse/50 text-sm font-medium tracking-wide uppercase',
-                          'transition-colors duration-150',
-                          'group-hover:border-brand-500 group-hover:text-brand-500',
-                          'group-focus-visible:border-brand-500 group-focus-visible:text-brand-500',
-                        ]}
+                        class="text-ink-inverse/50 mt-1 text-sm font-medium tracking-wide uppercase transition-colors duration-150 group-hover:text-brand-500 group-focus-visible:text-brand-500"
                       >
                         {item.cta ?? 'Learn more'}
                       </span>

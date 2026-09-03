@@ -46,11 +46,53 @@ const triggerClass =
           );
         }
 
-        const columns =
-          item.panel.kind === 'mega'
-            ? item.panel.columns
-            : [{ heading: undefined, links: item.panel.links }];
-        const featured = item.panel.kind === 'mega' ? item.panel.featured : undefined;
+        // Simple link lists sit under the trigger at content width. Mega
+        // panels stay header-width, so those items are `static` and the
+        // panel positions against the header instead.
+        if (item.panel.kind === 'links') {
+          // Last dropdown aligns to the trigger's right edge so it can't
+          // overflow the viewport on tablet, next to the header CTA.
+          const alignEnd = !navigation.primary.slice(index + 1).some((next) => next.panel);
+
+          return (
+            <li class="mega-item relative">
+              <button
+                type="button"
+                aria-expanded="false"
+                aria-controls={panelId}
+                class={triggerClass}
+              >
+                {item.label}
+                <Icon name="lucide:chevron-down" class="mega-chevron size-4" aria-hidden="true" />
+              </button>
+
+              <div
+                id={panelId}
+                class:list={[
+                  'mega-panel border-line-base bg-surface-base absolute top-full z-10 w-max min-w-full rounded-lg border p-1 shadow-lg',
+                  alignEnd ? 'right-0 left-auto' : 'left-0',
+                ]}
+              >
+                <ul class="flex flex-col">
+                  {item.panel.links.map((link) => (
+                    <li>
+                      <a
+                        href={link.href}
+                        aria-current={isCurrent(link.href) ? 'page' : undefined}
+                        class="text-ink-base aria-[current=page]:text-ink-brand aria-[current=page]:font-medium flex min-h-11 items-center whitespace-nowrap rounded-md px-3 no-underline hover:bg-neutral-100"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          );
+        }
+
+        const columns = item.panel.columns;
+        const featured = item.panel.featured;
 
         return (
           <li class="mega-item static">
