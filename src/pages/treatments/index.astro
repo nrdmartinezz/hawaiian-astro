@@ -4,6 +4,7 @@ import Hero from '../../components/blocks/Hero.astro';
 import ServicesGrid from '../../components/blocks/ServicesGrid.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
 import { treatments } from '../../config/treatments';
+import { treatmentImages } from '../../config/treatmentImages';
 
 const breadcrumbs = [
   { name: 'Home', href: '/' },
@@ -26,10 +27,10 @@ const breadcrumbs = [
   <ServicesGrid
     title="Explore your options"
     items={treatments.map((treatment) => ({
-      icon: treatment.icon,
       title: treatment.title,
       body: treatment.summary,
       href: `/treatments/${treatment.slug}/`,
+      image: treatmentImages[treatment.slug],
     }))}
   />
 

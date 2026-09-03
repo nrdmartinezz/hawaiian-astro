@@ -38,7 +38,7 @@ export const treatments: Treatment[] = [
   },
   {
     slug: 'airway',
-    title: 'Early Treatment & Airway Development',
+    title: 'Airway Development',
     eyebrow: 'Growing smiles',
     summary: 'Orthodontics that supports room to grow, breathe, and thrive.',
     body: 'Early orthodontic care can do more than straighten teeth. Expanding narrow arches and guiding jaw growth can support a healthier airway while we set up a stable, attractive smile.',

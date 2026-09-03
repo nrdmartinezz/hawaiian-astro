@@ -9,6 +9,7 @@ import FAQ from '../components/blocks/FAQ.astro';
 import CTABanner from '../components/blocks/CTABanner.astro';
 import { site } from '../config/site';
 import { treatments } from '../config/treatments';
+import { treatmentImages } from '../config/treatmentImages';
 import { locations } from '../config/locations';
 import heroImage from '../assets/hero.jpg';
 
@@ -82,12 +83,11 @@ const faqs = [
     title="Care for every smile"
     body="Children, teens, and adults — from first visits to retainers."
     items={treatments.slice(0, 6).map((treatment) => ({
-      icon: treatment.icon,
       title: treatment.title,
       body: treatment.summary,
       href: `/treatments/${treatment.slug}/`,
+      image: treatmentImages[treatment.slug],
     }))}
-    columns={3}
   />
 
   <FeatureSplit
