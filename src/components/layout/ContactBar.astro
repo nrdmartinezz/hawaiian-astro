@@ -1,0 +1,39 @@
+---
+/**
+ * Thin utility strip above the main nav: click-to-text, click-to-call,
+ * email, and fax. Lives inside Header so it sticks with the rest of the bar.
+ */
+import Container from '../ui/Container.astro';
+import { site } from '../../config/site';
+import { Icon } from 'astro-icon/components';
+
+const linkClass =
+  'inline-flex items-center gap-1.5 whitespace-nowrap text-ink-inverse no-underline hover:text-neutral-300 max-md:min-h-11';
+---
+
+<div class="bg-surface-inverse text-ink-inverse">
+  <Container
+    as="nav"
+    layout="bar"
+    gap="none"
+    aria-label="Contact"
+    class="justify-center gap-9 py-1.5 text-xs"
+  >
+    <a href={`sms:${site.business.phoneHref}`} data-source="contact-bar" class={linkClass}>
+      Text: {site.business.phone}
+    </a>
+    <a href={`tel:${site.business.phoneHref}`} data-source="contact-bar" class={linkClass}>
+      <Icon name="lucide:phone" class="size-3.5" aria-hidden="true" />
+      <span class="sr-only">Call </span>
+      {site.business.phone}
+    </a>
+    <a href={`mailto:${site.business.email}`} class:list={[linkClass, 'max-md:hidden']}>
+      {site.business.email}
+    </a>
+    {
+      site.business.fax && (
+        <span class="max-md:hidden whitespace-nowrap">Fax: {site.business.fax}</span>
+      )
+    }
+  </Container>
+</div>
