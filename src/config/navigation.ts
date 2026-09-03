@@ -126,7 +126,7 @@ export const navigation: NavigationConfig = {
     { label: 'Contact', href: '/contact/' },
   ],
 
-  cta: { label: 'Request Appointment', href: '/appointment/' },
+  cta: { label: 'Book Now', href: '/appointment/' },
 
   footer: [
     {
