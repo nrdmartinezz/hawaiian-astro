@@ -123,6 +123,7 @@ const split = Boolean(image) && !photoHero;
           <div class="flex flex-wrap gap-3">
             {actions.map((action) => (
               <Button href={action.href} variant={action.variant ?? 'primary'} size="lg">
+                {action.icon && <Icon name={action.icon} class="size-5" aria-hidden="true" />}
                 {action.label}
               </Button>
             ))}

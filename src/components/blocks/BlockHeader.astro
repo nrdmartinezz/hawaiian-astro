@@ -8,19 +8,41 @@ interface Props {
   body?: string;
   level?: 2 | 3;
   centered?: boolean;
+  /** Eyebrow + title left, body right, bottom-aligned from md up. */
+  split?: boolean;
 }
 
-const { eyebrow, title, body, level = 2, centered = false } = Astro.props;
+const { eyebrow, title, body, level = 2, centered = false, split = false } = Astro.props;
+const splitRow = split && !centered && Boolean(body);
 ---
 
 {
   (eyebrow || title || body) && (
-    <div class:list={['flex w-full flex-col gap-3', centered && 'items-center text-center']}>
-      {eyebrow && (
-        <p class="text-ink-brand text-sm font-semibold tracking-wide uppercase">{eyebrow}</p>
+    <div
+      class:list={[
+        'flex w-full gap-3',
+        centered && 'flex-col items-center text-center',
+        splitRow && 'flex-col md:flex-row md:items-end md:gap-12',
+        !centered && !splitRow && 'flex-col',
+      ]}
+    >
+      {(eyebrow || title) && (
+        <div class:list={['flex min-w-0 flex-col gap-3', splitRow && 'md:flex-1', centered && 'items-center']}>
+          {eyebrow && (
+            <p class="text-brand-500 text-sm font-semibold tracking-wide uppercase">{eyebrow}</p>
+          )}
+          {title && (
+            <Heading level={level} size="2xl" weight="normal">
+              {title}
+            </Heading>
+          )}
+        </div>
       )}
-      {title && <Heading level={level}>{title}</Heading>}
-      {body && <p class="max-w-reading text-ink-muted text-lg">{body}</p>}
+      {body && (
+        <p class:list={['max-w-reading text-ink-muted text-[1rem]', splitRow && 'md:flex-1']}>
+          {body}
+        </p>
+      )}
     </div>
   )
 }

@@ -22,4 +22,6 @@ export interface BlockAction {
   label: string;
   href: string;
   variant?: 'primary' | 'secondary' | 'ghost' | 'inverse';
+  /** Optional Lucide icon name, rendered leading in the button. */
+  icon?: string;
 }

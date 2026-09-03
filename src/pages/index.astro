@@ -57,7 +57,12 @@ const faqs = [
     ]}
     actions={[
       { label: 'Request an appointment', href: '/appointment/' },
-      { label: site.business.phone, href: `tel:${site.business.phoneHref}`, variant: 'inverse' },
+      {
+        label: site.business.phone,
+        href: `tel:${site.business.phoneHref}`,
+        variant: 'ghost',
+        icon: 'lucide:phone',
+      },
     ]}
   >
     <Fragment slot="title">
