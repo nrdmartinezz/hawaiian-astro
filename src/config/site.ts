@@ -87,6 +87,12 @@ export interface SiteConfig {
 
   /** 'none' is correct for US-only clients. Switch to 'banner' only when required. */
   consent: 'none' | 'banner';
+
+  /**
+   * Site-wide noindex. Keep true while this build is on a live host for
+   * development or client review. Flip to false before launch.
+   */
+  noindex: boolean;
 }
 
 export const site: SiteConfig = {
@@ -140,6 +146,8 @@ export const site: SiteConfig = {
   },
 
   consent: 'none',
+
+  noindex: true,
 };
 
 export const formattedAddress = [

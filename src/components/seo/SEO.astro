@@ -26,6 +26,8 @@ const {
   modifiedTime,
 } = Astro.props;
 
+const shouldNoindex = noindex || site.noindex;
+
 const pageTitle = !title
   ? `${site.name} — ${site.tagline}`
   : titleExact
@@ -40,8 +42,8 @@ const ogImage = new URL(image, site.url).href;
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
 
-{noindex && <meta name="robots" content="noindex, nofollow" />}
-{!noindex && <meta name="robots" content="index, follow, max-image-preview:large" />}
+{shouldNoindex && <meta name="robots" content="noindex, nofollow" />}
+{!shouldNoindex && <meta name="robots" content="index, follow, max-image-preview:large" />}
 
 <meta property="og:type" content={type} />
 <meta property="og:site_name" content={site.name} />
