@@ -1,6 +1,6 @@
 ---
-title: "Why early orthodontic treatment matters for kids ages 7–10"
-description: "Phase 1 care in Kaneohe can guide jaw growth, make room for adult teeth, and shorten later treatment."
+title: 'Why early orthodontic treatment matters for kids ages 7–10'
+description: 'Phase 1 care in Kaneohe can guide jaw growth, make room for adult teeth, and shorten later treatment.'
 publishDate: 2026-06-20
 author: Hawaiian Smiles Orthodontics
 category: Early Treatment

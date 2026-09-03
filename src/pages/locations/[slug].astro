@@ -55,12 +55,7 @@ const href = `/locations/${location.slug}/`;
     actions={[{ label: 'All locations', href: '/locations/' }]}
   />
 
-  <MapEmbed
-    background="muted"
-    title="Find us"
-    query={address}
-    body={address}
-  />
+  <MapEmbed background="muted" title="Find us" query={address} body={address} />
 
   <CTABanner
     title={`Visit us in ${location.shortName}`}

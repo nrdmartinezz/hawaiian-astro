@@ -39,7 +39,7 @@ const positioned = sticky !== 'static';
   class:list={[
     'group/header z-50 w-full border-b',
     overlay
-      ? 'border-transparent bg-transparent data-[scrolled=true]:border-line-base data-[scrolled=true]:bg-surface-base'
+      ? 'data-[scrolled=true]:border-line-base data-[scrolled=true]:bg-surface-base border-transparent bg-transparent'
       : 'border-line-base bg-surface-base',
     // The mega panel is absolutely positioned against the header, so the header
     // must be a positioned ancestor even when it isn't sticky.
@@ -59,7 +59,7 @@ const positioned = sticky !== 'static';
     <div class="flex items-center gap-2">
       {
         navigation.cta && (
-          <Button href={navigation.cta.href} size="sm" class="max-md:hidden !px-8">
+          <Button href={navigation.cta.href} size="sm" class="!px-8 max-md:hidden">
             {navigation.cta.label}
           </Button>
         )
@@ -107,7 +107,8 @@ const positioned = sticky !== 'static';
   }
 
   header[data-overlay='true']:not([data-scrolled='true']) :global(nav.mega > ul > li > a:hover),
-  header[data-overlay='true']:not([data-scrolled='true']) :global(nav.mega > ul > li > button:hover) {
+  header[data-overlay='true']:not([data-scrolled='true'])
+    :global(nav.mega > ul > li > button:hover) {
     background-color: rgb(255 255 255 / 0.12);
   }
 

@@ -14,8 +14,14 @@ interface Props extends Omit<HTMLAttributes<'h2'>, 'class'> {
   class?: string;
 }
 
-const { level = 2, size, weight = 'semibold', balance = true, class: className, ...rest } =
-  Astro.props;
+const {
+  level = 2,
+  size,
+  weight = 'semibold',
+  balance = true,
+  class: className,
+  ...rest
+} = Astro.props;
 
 const Tag = `h${level}` as const;
 

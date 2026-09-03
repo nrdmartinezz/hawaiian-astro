@@ -13,8 +13,7 @@ export const treatments: Treatment[] = [
     slug: 'early-treatment',
     title: 'Early Treatment',
     eyebrow: 'Children & teens',
-    summary:
-      'Guiding growth so developing smiles have room, function, and confidence.',
+    summary: 'Guiding growth so developing smiles have room, function, and confidence.',
     body: 'The American Association of Orthodontists recommends an evaluation by age 7. Early treatment can intercept crowding, crossbites, and habits while the jaws are still growing — often making later treatment shorter and simpler.',
     bullets: [
       'Evaluations starting around age 7',

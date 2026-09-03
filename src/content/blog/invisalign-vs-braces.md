@@ -1,6 +1,6 @@
 ---
-title: "Invisalign vs. braces"
-description: "Clear aligners and braces both straighten teeth. Here is how we help Kaneohe families choose."
+title: 'Invisalign vs. braces'
+description: 'Clear aligners and braces both straighten teeth. Here is how we help Kaneohe families choose.'
 publishDate: 2026-06-02
 author: Hawaiian Smiles Orthodontics
 category: Treatments

@@ -27,7 +27,13 @@ const splitRow = split && !centered && Boolean(body);
       ]}
     >
       {(eyebrow || title) && (
-        <div class:list={['flex min-w-0 flex-col gap-3', splitRow && 'md:flex-1', centered && 'items-center']}>
+        <div
+          class:list={[
+            'flex min-w-0 flex-col gap-3',
+            splitRow && 'md:flex-1',
+            centered && 'items-center',
+          ]}
+        >
           {eyebrow && (
             <p class="text-brand-500 text-sm font-semibold tracking-wide uppercase">{eyebrow}</p>
           )}

@@ -52,10 +52,7 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' });
                 {entry.data.category && <span> · {entry.data.category}</span>}
               </p>
               <Heading level={2} size="md">
-                <a
-                  href={`/blog/${entry.id}/`}
-                  class="text-ink-base no-underline hover:underline"
-                >
+                <a href={`/blog/${entry.id}/`} class="text-ink-base no-underline hover:underline">
                   {entry.data.title}
                 </a>
               </Heading>
