@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/blocks/Hero.astro';
+import FeatureSplit from '../../components/blocks/FeatureSplit.astro';
+import Pricing from '../../components/blocks/Pricing.astro';
+import CTABanner from '../../components/blocks/CTABanner.astro';
+---
+
+<BaseLayout
+  title="Financial Information"
+  description="Insurance, interest-free monthly plans, HSA/FSA, and sibling discounts at Hawaiian Smiles Orthodontics."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about/' },
+    { name: 'Financial Information', href: '/about/financial/' },
+  ]}
+>
+  <Hero
+    eyebrow="Affordable care"
+    title="Your dream smile, within your budget"
+    body="Insurance, payment plans, and HSA/FSA funds can make treatment affordable. Fees depend on complexity and length — we review every option at your first visit."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+
+  <Pricing
+    title="Ways to pay"
+    body="We will check your orthodontic insurance benefit before your consultation and handle claim submission for you."
+    items={[
+      {
+        name: 'Monthly plans',
+        price: 'From $189',
+        cadence: 'per arch / month',
+        body: 'Interest-free in-house monthly payments. Available for braces and Invisalign on qualifying plans.',
+        features: ['No surprise add-ons after you start', 'Sibling discounts available', 'Pay-in-full savings'],
+        action: { label: 'Ask about plans', href: '/appointment/' },
+        featured: true,
+      },
+      {
+        name: 'Insurance',
+        price: 'We bill',
+        cadence: 'for you',
+        body: 'Many plans include orthodontic benefits. Share your insurance before the first visit so we can estimate the same day.',
+        features: ['Benefit check before your consult', 'We generate and submit claims', 'HSA and FSA welcome'],
+        action: { label: 'Contact us', href: '/contact/' },
+      },
+    ]}
+  />
+
+  <FeatureSplit
+    background="muted"
+    title="Transparent from the first visit"
+    body="Costs vary with the severity of the problem and the appliance you choose. Financing and payment are fully discussed at your first visit so you can make the best choice for your smile."
+    bullets={['0% in-house financing options', 'Treat now, pay later on qualifying plans', 'No hard credit checks on select options']}
+  />
+
+  <CTABanner
+    title="Have a benefits question?"
+    body="Kainoa and the financial team will walk you through it in plain language."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+</BaseLayout>

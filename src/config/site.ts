@@ -31,9 +31,11 @@ export interface SiteConfig {
   business: {
     schemaType: SchemaBusinessType;
     phone: string;
-    /** Digits only, E.164 — used for tel: links. */
+    /** Digits only, E.164 — used for tel: and sms: links. */
     phoneHref: string;
     email: string;
+    /** Display fax number. Omit to hide it from the contact bar. */
+    fax?: string;
     address: {
       street: string;
       locality: string;
@@ -101,6 +103,7 @@ export const site: SiteConfig = {
     phone: '(808) 247-6039',
     phoneHref: '+18082476039',
     email: 'oahusc@hawaiiansmilesortho.com',
+    fax: '(808) 247-3643',
     address: {
       street: '45-939 Kamehameha Hwy, Suite 103',
       locality: 'Kaneohe',

@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/blocks/Hero.astro';
+import FeatureSplit from '../../components/blocks/FeatureSplit.astro';
+import CTABanner from '../../components/blocks/CTABanner.astro';
+import { treatments } from '../../config/treatments';
+
+export function getStaticPaths() {
+  return treatments.map((treatment) => ({
+    params: { slug: treatment.slug },
+    props: { treatment },
+  }));
+}
+
+interface Props {
+  treatment: (typeof treatments)[number];
+}
+
+const { treatment } = Astro.props;
+const href = `/treatments/${treatment.slug}/`;
+---
+
+<BaseLayout
+  title={treatment.title}
+  description={treatment.summary}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Treatments', href: '/treatments/' },
+    { name: treatment.title, href },
+  ]}
+  service={{ name: treatment.title, description: treatment.summary }}
+>
+  <Hero
+    eyebrow={treatment.eyebrow}
+    title={treatment.title}
+    body={treatment.summary}
+    actions={[
+      { label: 'Request an appointment', href: '/appointment/' },
+      { label: 'All treatments', href: '/treatments/', variant: 'secondary' },
+    ]}
+  />
+
+  <FeatureSplit
+    title={`About ${treatment.title.toLowerCase()}`}
+    body={treatment.body}
+    bullets={treatment.bullets}
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+
+  <CTABanner
+    title="Let’s look at your smile together"
+    body="Complimentary in-person and virtual consultations. Call or text (808) 247-6039."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+</BaseLayout>

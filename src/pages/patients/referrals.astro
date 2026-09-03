@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/blocks/Hero.astro';
+import ContactBlock from '../../components/blocks/ContactBlock.astro';
+import CTABanner from '../../components/blocks/CTABanner.astro';
+---
+
+<BaseLayout
+  title="Referrals"
+  description="Refer a patient or a friend to Hawaiian Smiles Orthodontics."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Patients', href: '/patients/' },
+    { name: 'Referrals', href: '/patients/referrals/' },
+  ]}
+>
+  <Hero
+    eyebrow="Referrals"
+    title="Know someone who would love this team?"
+    body="Dentists, physicians, and families are welcome to refer. Tell us who we should expect — we will take good care of them."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+
+  <ContactBlock
+    eyebrow="Refer a patient"
+    title="Send us the details"
+    body="Include the patient’s name, how to reach them, and anything we should know before they visit."
+    services={['Patient referral', 'Dentist referral', 'Friend or family']}
+  />
+
+  <CTABanner
+    title="Prefer to call it in?"
+    body="Call or text (808) 247-6039 and ask for the referral coordinator."
+    actions={[{ label: 'Call the office', href: 'tel:+18082476039' }]}
+  />
+</BaseLayout>

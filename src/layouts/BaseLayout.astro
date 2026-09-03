@@ -1,5 +1,4 @@
 ---
-import '@fontsource-variable/plus-jakarta-sans';
 import '../styles/global.css';
 
 import SEO from '../components/seo/SEO.astro';
@@ -39,6 +38,9 @@ const { breadcrumbs, faqs, service, sticky = 'sticky', ...seo } = Astro.props;
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+    <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+    <link rel="stylesheet" href="https://use.typekit.net/xzq1vrf.css" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Switches the nav from its CSS-only fallback to scripted control. Inline

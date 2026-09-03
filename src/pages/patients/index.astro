@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/blocks/Hero.astro';
+import ServicesGrid from '../../components/blocks/ServicesGrid.astro';
+import CTABanner from '../../components/blocks/CTABanner.astro';
+---
+
+<BaseLayout
+  title="Patients"
+  description="First-visit tips, registration forms, and referral information for Hawaiian Smiles Orthodontics patients."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Patients', href: '/patients/' },
+  ]}
+>
+  <Hero
+    eyebrow="Patients"
+    title="Everything you need before you walk in"
+    body="New patient forms, what to expect at your first visit, and how to refer a friend or colleague."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+
+  <ServicesGrid
+    columns={3}
+    items={[
+      {
+        icon: 'lucide:calendar-check',
+        title: 'Your First Visit',
+        body: 'What happens at a complimentary consultation.',
+        href: '/patients/first-visit/',
+      },
+      {
+        icon: 'lucide:clipboard-pen',
+        title: 'Registration Forms',
+        body: 'Adult and child forms — complete them before you arrive.',
+        href: '/patients/forms/',
+      },
+      {
+        icon: 'lucide:heart-handshake',
+        title: 'Referrals',
+        body: 'Refer a patient or a neighbor. We will take good care of them.',
+        href: '/patients/referrals/',
+      },
+    ]}
+  />
+
+  <CTABanner
+    title="New here?"
+    body="Request a consult and we will send forms ahead of your visit."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+</BaseLayout>

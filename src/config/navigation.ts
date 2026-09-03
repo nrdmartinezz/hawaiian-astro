@@ -5,7 +5,7 @@
  */
 
 import { locations } from './locations';
-import { treatmentNav } from './treatments';
+import { treatments } from './treatments';
 
 export interface NavLink {
   label: string;
@@ -51,62 +51,24 @@ export interface NavigationConfig {
   legal: NavLink[];
 }
 
-const ageTreatments = treatmentNav.filter((link) =>
-  ['early-treatment', 'adult-treatment'].some((slug) => link.href.includes(slug)),
+const treatmentLinks: NavLink[] = treatments.map((treatment) => ({
+  label: treatment.title,
+  href: `/treatments/${treatment.slug}/`,
+  description: treatment.summary,
+  icon: treatment.icon,
+}));
+
+const ageTreatments = treatmentLinks.filter((link) =>
+  ['early-treatment', 'adult-treatment', 'airway'].some((slug) => link.href.includes(slug)),
 );
-const applianceTreatments = treatmentNav.filter(
-  (link) => !['early-treatment', 'adult-treatment'].some((slug) => link.href.includes(slug)),
+const applianceTreatments = treatmentLinks.filter(
+  (link) => !['early-treatment', 'adult-treatment', 'airway'].some((slug) => link.href.includes(slug)),
 );
 
-/**
- * One nav tree, rendered two ways. `Header` reads it for the simple desktop
- * nav today; `MegaMenu` and `MobileNav` read the same tree in Phase 4, so the
- * upgrade is additive rather than a rewrite.
- */
-
-export interface NavLink {
-  label: string;
-  href: string;
-  description?: string;
-  /** astro-icon name, e.g. 'lucide:wrench'. */
-  icon?: string;
-}
-
-export interface MegaColumn {
-  heading?: string;
-  links: NavLink[];
-}
-
-export interface MegaPanel {
-  kind: 'mega';
-  columns: MegaColumn[];
-  featured?: {
-    title: string;
-    body: string;
-    href: string;
-    cta: string;
-  };
-}
-
-export interface LinkListPanel {
-  kind: 'links';
-  links: NavLink[];
-}
-
-export interface NavItem {
-  label: string;
-  /** Present when the top-level item is itself a destination. */
-  href?: string;
-  panel?: MegaPanel | LinkListPanel;
-}
-
-export interface NavigationConfig {
-  primary: NavItem[];
-  /** Right-hand call to action in the header. */
-  cta?: { label: string; href: string };
-  footer: { heading: string; links: NavLink[] }[];
-  legal: NavLink[];
-}
+const officeLinks: NavLink[] = locations.map((location) => ({
+  label: location.shortName,
+  href: `/locations/${location.slug}/`,
+}));
 
 export const navigation: NavigationConfig = {
   primary: [
@@ -128,13 +90,20 @@ export const navigation: NavigationConfig = {
       },
     },
     {
+      label: 'Locations',
+      href: '/locations/',
+      panel: {
+        kind: 'links',
+        links: officeLinks,
+      },
+    },
+    {
       label: 'About',
       href: '/about/',
       panel: {
         kind: 'links',
         links: [
           { label: 'Our Story', href: '/about/' },
-          { label: 'Why Choose Us', href: '/about/why-choose-us/' },
           { label: 'Meet the Doctors', href: '/about/doctors/' },
           { label: 'Meet the Staff', href: '/about/staff/' },
           { label: 'Financial Information', href: '/about/financial/' },
@@ -143,27 +112,14 @@ export const navigation: NavigationConfig = {
     },
     {
       label: 'Patients',
+      href: '/patients/',
       panel: {
         kind: 'links',
         links: [
           { label: 'Your First Visit', href: '/patients/first-visit/' },
-          { label: 'FAQ', href: '/patients/faq/' },
-          { label: 'Common Problems', href: '/patients/common-problems/' },
-          { label: 'Registration Forms', href: '/patients/registration/' },
-          { label: 'Virtual Consultation', href: '/virtual-consultation/' },
-          { label: 'Refer a Patient', href: '/referrals/' },
+          { label: 'Registration Forms', href: '/patients/forms/' },
+          { label: 'Referrals', href: '/patients/referrals/' },
         ],
-      },
-    },
-    {
-      label: 'Locations',
-      href: '/locations/',
-      panel: {
-        kind: 'links',
-        links: locations.map((office) => ({
-          label: office.name,
-          href: `/locations/${office.slug}/`,
-        })),
       },
     },
     { label: 'Contact', href: '/contact/' },
@@ -174,22 +130,18 @@ export const navigation: NavigationConfig = {
   footer: [
     {
       heading: 'Treatments',
-      links: treatmentNav.map(({ label, href }) => ({ label, href })),
+      links: treatmentLinks.slice(0, 4).map(({ label, href }) => ({ label, href })),
     },
     {
       heading: 'Offices',
-      links: locations.map((office) => ({
-        label: office.name,
-        href: `/locations/${office.slug}/`,
-      })),
+      links: officeLinks,
     },
     {
       heading: 'Patients',
       links: [
         { label: 'Your First Visit', href: '/patients/first-visit/' },
-        { label: 'Request Appointment', href: '/appointment/' },
-        { label: 'Virtual Consultation', href: '/virtual-consultation/' },
-        { label: 'FAQ', href: '/patients/faq/' },
+        { label: 'Registration Forms', href: '/patients/forms/' },
+        { label: 'Referrals', href: '/patients/referrals/' },
         { label: 'Contact', href: '/contact/' },
       ],
     },

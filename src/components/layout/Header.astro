@@ -11,9 +11,8 @@ import Button from '../ui/Button.astro';
 import MegaMenu from './MegaMenu.astro';
 import MobileNav from './MobileNav.astro';
 import Logo from './Logo.astro';
+import ContactBar from './ContactBar.astro';
 import { navigation } from '../../config/navigation';
-import { site } from '../../config/site';
-import { Icon } from 'astro-icon/components';
 
 export type HeaderSticky = 'static' | 'sticky' | 'shrink' | 'hide-on-scroll';
 
@@ -36,27 +35,19 @@ const positioned = sticky !== 'static';
     positioned ? 'sticky top-0' : 'relative',
   ]}
 >
+  <ContactBar />
+
   <Container
     as="div"
     layout="bar"
     gap="none"
     class="justify-between gap-4 py-4 group-data-[scrolled=true]/header:py-2"
   >
-    <a href="/" class="text-ink-base flex items-center no-underline">
-      <Logo />
-    </a>
+    <Logo variant="mark" />
 
     <MegaMenu currentPath={currentPath} />
 
     <div class="flex items-center gap-2">
-      <a
-        href={`tel:${site.business.phoneHref}`}
-        class="text-ink-base hidden min-h-11 items-center gap-2 px-2 font-medium no-underline lg:inline-flex"
-      >
-        <Icon name="lucide:phone" class="size-4" aria-hidden="true" />
-        {site.business.phone}
-      </a>
-
       {
         navigation.cta && (
           <Button href={navigation.cta.href} size="sm" class="max-md:hidden">

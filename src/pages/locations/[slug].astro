@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/blocks/Hero.astro';
+import FeatureSplit from '../../components/blocks/FeatureSplit.astro';
+import MapEmbed from '../../components/blocks/MapEmbed.astro';
+import CTABanner from '../../components/blocks/CTABanner.astro';
+import { locations, locationAddress } from '../../config/locations';
+import { site } from '../../config/site';
+
+export function getStaticPaths() {
+  return locations.map((location) => ({
+    params: { slug: location.slug },
+    props: { location },
+  }));
+}
+
+interface Props {
+  location: (typeof locations)[number];
+}
+
+const { location } = Astro.props;
+const address = locationAddress(location);
+const href = `/locations/${location.slug}/`;
+---
+
+<BaseLayout
+  title={`${location.shortName} Orthodontist`}
+  description={location.description}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Locations', href: '/locations/' },
+    { name: location.shortName, href },
+  ]}
+>
+  <Hero
+    eyebrow={location.name}
+    title={`Orthodontics in ${location.shortName}`}
+    body={location.body}
+    bullets={[address, `Call or text ${site.business.phone}`, 'Monday–Friday, 8:00 a.m.–5:00 p.m.']}
+    actions={[
+      { label: 'Request an appointment', href: '/appointment/' },
+      { label: 'Get directions', href: location.mapsUrl, variant: 'secondary' },
+    ]}
+  />
+
+  <FeatureSplit
+    reverse
+    title="One practice, four doors"
+    body="The same doctors, technology, and aloha at every office. Longer visits such as braces bonding and Invisalign delivery are scheduled at Kaneohe and Kona."
+    bullets={[
+      'Complimentary consultations',
+      'Text-friendly scheduling',
+      'Interest-free monthly plans',
+    ]}
+    actions={[{ label: 'All locations', href: '/locations/' }]}
+  />
+
+  <MapEmbed
+    background="muted"
+    title="Find us"
+    query={address}
+    body={address}
+  />
+
+  <CTABanner
+    title={`Visit us in ${location.shortName}`}
+    body="Request a complimentary consultation — we will follow up by phone or text."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+</BaseLayout>

@@ -1,127 +1,146 @@
 ---
-/**
- * Demo home page, assembled entirely from blocks so it doubles as a working
- * example and a build smoke test. `npm run setup` clears this per project.
- */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/blocks/Hero.astro';
 import ServicesGrid from '../components/blocks/ServicesGrid.astro';
-import ProcessSteps from '../components/blocks/ProcessSteps.astro';
+import FeatureSplit from '../components/blocks/FeatureSplit.astro';
 import Stats from '../components/blocks/Stats.astro';
 import Testimonials from '../components/blocks/Testimonials.astro';
 import FAQ from '../components/blocks/FAQ.astro';
 import CTABanner from '../components/blocks/CTABanner.astro';
 import { site } from '../config/site';
+import { treatments } from '../config/treatments';
+import { locations } from '../config/locations';
+import heroImage from '../assets/hero.jpg';
 
 const faqs = [
   {
-    question: 'Do you offer emergency callouts?',
-    answer: 'Yes — we cover emergencies around the clock, including weekends and holidays.',
+    question: 'What is an orthodontist?',
+    answer:
+      'An orthodontist is a dentist trained to diagnose, prevent, and treat teeth and jaw irregularities — for children, teens, and adults.',
   },
   {
-    question: 'Are you licensed and insured?',
-    answer: 'Fully licensed and insured. We can supply certificates on request before work starts.',
+    question: 'How often will I need to visit?',
+    answer:
+      'With braces, most patients are seen every four to eight weeks. Invisalign visits are often similar, depending on your plan.',
   },
   {
-    question: 'How quickly can you get here?',
-    answer: 'Typically within two hours across the metro area, and same-day everywhere else.',
+    question: 'When is the right time to see an orthodontist?',
+    answer:
+      'The American Association of Orthodontists recommends an evaluation by age 7. Adults are welcome any time — it is never too late for a healthy smile.',
+  },
+  {
+    question: 'How much will treatment cost?',
+    answer:
+      'Fees depend on the complexity of your case, the appliance you choose, and the length of treatment. We review insurance, HSA/FSA, and interest-free monthly plans at your consultation.',
   },
 ];
 ---
 
-<BaseLayout faqs={faqs}>
+<BaseLayout
+  titleExact
+  title={`${site.name} — ${site.tagline}`}
+  description={site.description}
+  faqs={faqs}
+>
   <Hero
-    eyebrow={`${site.business.address.locality}, ${site.business.address.region}`}
-    title={site.tagline}
-    body={site.description}
+    backdrop={heroImage}
+    backdropAlt=""
+    eyebrow="Kaneohe · Kailua-Kona · Kamuela · Hilo"
+    title="Beautiful, healthy smiles across Hawaiʻi"
+    body="Voted Best Hawaii Dentist 2020–2025. Braces, Invisalign, and early treatment with cutting-edge technology and a whole lot of aloha."
     bullets={[
-      'Licensed and insured',
-      'Upfront pricing, no surprises',
-      'Work guaranteed for 12 months',
+      'Complimentary in-person or virtual consults',
+      'Invisalign Diamond Provider',
+      'Text-friendly scheduling at (808) 247-6039',
     ]}
     actions={[
-      { label: 'Request a quote', href: '/contact/' },
-      { label: site.business.phone, href: `tel:${site.business.phoneHref}`, variant: 'secondary' },
+      { label: 'Request an appointment', href: '/appointment/' },
+      { label: site.business.phone, href: `tel:${site.business.phoneHref}`, variant: 'inverse' },
     ]}
   />
 
   <ServicesGrid
-    eyebrow="Services"
-    title="What we do"
-    body="Straightforward work across residential and commercial properties."
-    items={[
-      {
-        icon: 'lucide:wrench',
-        title: 'Repairs & Maintenance',
-        body: 'Same-week appointments for the problems that cannot wait.',
-        href: '/services/repairs/',
-      },
-      {
-        icon: 'lucide:hammer',
-        title: 'Installations',
-        body: 'New systems specified, fitted, and tested to code.',
-        href: '/services/installations/',
-      },
-      {
-        icon: 'lucide:clipboard-check',
-        title: 'Service Contracts',
-        body: 'Scheduled upkeep with priority response when something goes wrong.',
-        href: '/services/contracts/',
-      },
-    ]}
+    eyebrow="Treatments"
+    title="Care for every smile"
+    body="Children, teens, and adults — from first visits to retainers."
+    items={treatments.slice(0, 6).map((treatment) => ({
+      icon: treatment.icon,
+      title: treatment.title,
+      body: treatment.summary,
+      href: `/treatments/${treatment.slug}/`,
+    }))}
+    columns={3}
   />
 
-  <ProcessSteps
+  <FeatureSplit
     background="muted"
-    eyebrow="Process"
-    title="How it works"
-    items={[
-      { title: 'Get in touch', body: 'Call or send a message describing the problem.' },
-      { title: 'We assess', body: 'A quick look in person, or from photos where that works.' },
-      { title: 'Fixed quote', body: 'Agreed before any work begins. No surprises later.' },
-      { title: 'Work completed', body: 'Guaranteed for twelve months from the day we finish.' },
+    eyebrow="Our approach"
+    title="If you are unhappy with your smile, we are here to help"
+    body="Innovation is key at Hawaiian Smiles. Invisalign clear aligners and Pitts 21 self-ligating braces deliver a more comfortable experience, often in a shorter treatment period — in a signature welcoming environment."
+    bullets={[
+      'Advanced 3D planning',
+      'Doctors who take time to explain',
+      'Four offices across Oʻahu and Hawaiʻi Island',
     ]}
+    actions={[{ label: 'Meet the doctors', href: '/about/doctors/' }]}
   />
 
   <Stats
-    title="By the numbers"
+    title="Trusted across the islands"
     items={[
-      { value: '18 yrs', label: 'Serving the region' },
-      { value: '4.9/5', label: 'Average review score' },
-      { value: '2 hrs', label: 'Typical callout response' },
+      { value: '4', label: 'Offices' },
+      { value: '2020–2025', label: 'Best Hawaii Dentist' },
+      { value: '8–5', label: 'Monday–Friday' },
     ]}
   />
 
   <Testimonials
     eyebrow="Reviews"
-    title="What clients say"
+    title="What patients say"
     items={[
       {
-        quote: 'Turned up when they said they would and fixed it on the first visit.',
-        name: 'Dana R.',
-        role: 'Homeowner',
+        quote:
+          'Recently got my braces and LET ME TELL YOU HOW AMAZING THESE PEOPLE ARE! Within the first month I noticed a very drastic change.',
+        name: 'Hayden Rodriguez',
         rating: 5,
       },
       {
-        quote: 'Clear pricing, no upselling, and they cleaned up after themselves.',
-        name: 'Mark T.',
-        role: 'Office manager',
+        quote:
+          'The staff made them feel welcomed and made getting braces a whole lot easier. Thank you Dr. Nayak and the whole Hawaiian Smiles office.',
+        name: 'Sarona Kawaauha',
         rating: 5,
       },
       {
-        quote: 'They handle all four of our sites now. Easiest contractor we work with.',
-        name: 'Priya S.',
-        role: 'Facilities lead',
+        quote:
+          'Very professional and personable staff. So easy to fill and sign forms from my phone. I’m so glad we went with Hawaiian Smiles.',
+        name: 'Christina Lokia',
         rating: 5,
       },
     ]}
   />
 
+  <ServicesGrid
+    background="muted"
+    eyebrow="Offices"
+    title="Four locations, one practice"
+    body="Call or text (808) 247-6039 for any office."
+    columns={4}
+    items={locations.map((location) => ({
+      icon: 'lucide:map-pin',
+      title: location.shortName,
+      body: `${location.street}, ${location.locality}`,
+      href: `/locations/${location.slug}/`,
+    }))}
+  />
+
   <FAQ eyebrow="FAQ" title="Common questions" items={faqs} schema={false} />
 
   <CTABanner
-    title="Ready to get started?"
-    body="Tell us what you need and we will come back to you the same day."
-    actions={[{ label: 'Request a quote', href: '/contact/' }]}
+    title="Ready for your Hawaiian smile?"
+    body="Request a complimentary consultation — in person or virtual. We will text you back."
+    actions={[
+      { label: 'Request an appointment', href: '/appointment/' },
+      { label: 'View locations', href: '/locations/', variant: 'inverse' },
+    ]}
   />
 </BaseLayout>

@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/blocks/Hero.astro';
+import Section from '../components/ui/Section.astro';
+import Container from '../components/ui/Container.astro';
+import Prose from '../components/ui/Prose.astro';
+import { site, formattedAddress } from '../config/site';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="How Hawaiian Smiles Orthodontics collects, uses, and protects personal information."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Privacy Policy', href: '/privacy/' },
+  ]}
+>
+  <Hero
+    eyebrow="Legal"
+    title="Privacy Policy"
+    body={`Last updated April 27, 2023. This policy applies to ${site.url} and the practice of ${site.legalName}, doing business as Hawaiian Smiles Orthodontics.`}
+  />
+
+  <Section>
+    <Container>
+      <Prose>
+        <h2>Collection of personal information</h2>
+        <p>
+          We may collect personal information when you use this website or contact us, including name,
+          email, mailing address, phone number, orthodontic and dental health information, and payment
+          details. We may also collect non-personal information such as IP address, browser type, and
+          device type.
+        </p>
+
+        <h2>Use of personal information</h2>
+        <p>We use your information to respond to inquiries, schedule appointments, provide treatment, process payments, send communications you may find useful, and improve our website and services.</p>
+
+        <h2>Sharing of personal information</h2>
+        <p>
+          We do not sell, rent, or trade your personal information. We may share it with employees and
+          contractors who need it to provide care, with service providers who help us operate, and with
+          law enforcement or government agencies when required by law.
+        </p>
+
+        <h2>Data retention and security</h2>
+        <p>
+          We retain information as long as needed for the purposes in this policy, or longer when the law
+          requires. We take reasonable steps to protect it, but no internet transmission is completely
+          secure.
+        </p>
+
+        <h2>Your privacy rights</h2>
+        <p>
+          You may request access, correction, or deletion of your personal information. California
+          residents may also request information about disclosures to third parties for direct marketing.
+          Contact us using the details below.
+        </p>
+
+        <h2>Do-Not-Track</h2>
+        <p>This website does not respond to Do-Not-Track signals from your browser.</p>
+
+        <h2>Contact</h2>
+        <p>
+          Hawaiian Smiles Orthodontics<br />
+          {formattedAddress}<br />
+          Phone: {site.business.phone}<br />
+          Email: <a href={`mailto:${site.business.email}`}>{site.business.email}</a>
+        </p>
+      </Prose>
+    </Container>
+  </Section>
+</BaseLayout>

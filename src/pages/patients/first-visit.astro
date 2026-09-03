@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/blocks/Hero.astro';
+import ProcessSteps from '../../components/blocks/ProcessSteps.astro';
+import FAQ from '../../components/blocks/FAQ.astro';
+import CTABanner from '../../components/blocks/CTABanner.astro';
+
+const faqs = [
+  {
+    question: 'Do I need a dentist referral?',
+    answer:
+      'No. Many patients are referred by their dentist, but you are welcome to schedule a consultation on your own.',
+  },
+  {
+    question: 'Should I complete forms first?',
+    answer:
+      'Yes if you can — adult and child new-patient forms are on our Registration Forms page. Email completed PDFs to oahusc@hawaiiansmilesortho.com before your visit.',
+  },
+];
+---
+
+<BaseLayout
+  title="Your First Visit"
+  description="What to expect at a complimentary orthodontic consultation with Hawaiian Smiles."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Patients', href: '/patients/' },
+    { name: 'Your First Visit', href: '/patients/first-visit/' },
+  ]}
+  faqs={faqs}
+>
+  <Hero
+    eyebrow="New patients"
+    title="Your first visit, without the guesswork"
+    body="We will look at your smile, talk through options, and give you a clear picture of time, appliances, and cost — with no pressure to start that day."
+    actions={[
+      { label: 'Request an appointment', href: '/appointment/' },
+      { label: 'Registration forms', href: '/patients/forms/', variant: 'secondary' },
+    ]}
+  />
+
+  <ProcessSteps
+    background="muted"
+    eyebrow="What to expect"
+    title="A consult that respects your time"
+    items={[
+      {
+        title: 'Get in touch',
+        body: 'Call, text, or send the appointment form. Tell us which office is most convenient.',
+      },
+      {
+        title: 'Share a little history',
+        body: 'Complete adult or child forms and bring insurance information if you have a plan.',
+      },
+      {
+        title: 'Exam and photos',
+        body: 'We evaluate teeth, bite, and jaws and capture records so the doctor can plan accurately.',
+      },
+      {
+        title: 'A clear plan',
+        body: 'You leave knowing recommended treatment, timing, and payment options.',
+      },
+    ]}
+  />
+
+  <FAQ eyebrow="FAQ" title="Before you come in" items={faqs} schema={false} />
+
+  <CTABanner
+    title="Book your complimentary consult"
+    body="In person or virtual — we will meet you where it is easiest."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+</BaseLayout>

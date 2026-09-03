@@ -13,6 +13,9 @@ interface Props extends Omit<BlockProps, 'titleLevel'> {
   actions?: BlockAction[];
   image?: ImageMetadata;
   imageAlt?: string;
+  /** Full-bleed photo behind a light-to-dark teal overlay (180deg). */
+  backdrop?: ImageMetadata;
+  backdropAlt?: string;
   /** Places the image first on desktop; small screens always stack image-first. */
   reverse?: boolean;
   bullets?: string[];
@@ -29,19 +32,62 @@ const {
   actions = [],
   image,
   imageAlt = '',
+  backdrop,
+  backdropAlt = '',
   reverse = false,
   bullets = [],
 } = Astro.props;
+
+const photoHero = Boolean(backdrop);
+const split = Boolean(image) && !photoHero;
 ---
 
-<Section background={background} spacing={spacing}>
-  <Container width={width} layout={image ? 'row' : 'stack'} align={align} gap="lg">
+<Section
+  background={photoHero ? 'inverse' : background}
+  spacing={spacing}
+  clip={photoHero}
+  class={photoHero ? 'relative' : undefined}
+>
+  {
+    backdrop && (
+      <>
+        <Image
+          src={backdrop}
+          alt={backdropAlt}
+          widths={[768, 1280, 1920]}
+          sizes="100vw"
+          loading="eager"
+          fetchpriority="high"
+          class="absolute inset-0 size-full object-cover"
+        />
+        <div
+          class="from-accent-400/70 to-neutral-950/90 absolute inset-0 bg-linear-to-b"
+          aria-hidden="true"
+        />
+      </>
+    )
+  }
+
+  <Container
+    width={width}
+    layout={split ? 'row' : 'stack'}
+    align={align}
+    gap="lg"
+    class={photoHero ? 'relative' : undefined}
+  >
     <div
-      class:list={['flex flex-col items-start gap-6', image && 'md:w-1/2', reverse && 'md:order-2']}
+      class:list={['flex flex-col items-start gap-6', split && 'md:w-1/2', reverse && 'md:order-2']}
     >
       {
         eyebrow && (
-          <p class="text-ink-brand text-sm font-semibold tracking-wide uppercase">{eyebrow}</p>
+          <p
+            class:list={[
+              'text-sm font-semibold tracking-wide uppercase',
+              photoHero ? 'text-ink-inverse/80' : 'text-ink-brand',
+            ]}
+          >
+            {eyebrow}
+          </p>
         )
       }
 
@@ -80,7 +126,7 @@ const {
     </div>
 
     {
-      image && (
+      split && image && (
         <div class:list={['w-full md:w-1/2', reverse && 'md:order-1']}>
           <Image
             src={image}

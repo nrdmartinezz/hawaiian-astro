@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/blocks/Hero.astro';
+import ContactBlock from '../components/blocks/ContactBlock.astro';
+import ServicesGrid from '../components/blocks/ServicesGrid.astro';
+import { locations, locationAddress } from '../config/locations';
+import { site } from '../config/site';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Call or text Hawaiian Smiles Orthodontics at (808) 247-6039. Offices in Kaneohe, Kailua-Kona, Kamuela, and Hilo."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Contact', href: '/contact/' },
+  ]}
+>
+  <Hero
+    eyebrow="Contact"
+    title="Call or text any of our four locations"
+    body={`During office hours, reach us by phone, text, or email. After hours, our answering service can help — and for trauma, text ${site.business.phone}.`}
+    actions={[
+      { label: `Call ${site.business.phone}`, href: `tel:${site.business.phoneHref}` },
+      { label: 'Request an appointment', href: '/appointment/', variant: 'secondary' },
+    ]}
+  />
+
+  <ContactBlock
+    background="muted"
+    eyebrow="Message us"
+    title="We would love to hear from you"
+    body="Share a little about your smile or your visit and we will follow up the same business day."
+  />
+
+  <ServicesGrid
+    title="Office addresses"
+    columns={2}
+    items={locations.map((location) => ({
+      icon: 'lucide:map-pin',
+      title: location.shortName,
+      body: locationAddress(location),
+      href: `/locations/${location.slug}/`,
+    }))}
+  />
+</BaseLayout>

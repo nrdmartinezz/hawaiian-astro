@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/blocks/Hero.astro';
+import ServicesGrid from '../../components/blocks/ServicesGrid.astro';
+import CTABanner from '../../components/blocks/CTABanner.astro';
+import { treatments } from '../../config/treatments';
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Treatments', href: '/treatments/' },
+];
+---
+
+<BaseLayout
+  title="Treatments"
+  description="Early treatment, adult treatment, Invisalign, self-ligating braces, retention, and emergency orthodontic care at Hawaiian Smiles."
+  breadcrumbs={breadcrumbs}
+>
+  <Hero
+    eyebrow="Treatments"
+    title="Orthodontics for every age and every smile"
+    body="From a child’s first evaluation to adult Invisalign, we plan treatment around your life — not the other way around."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+
+  <ServicesGrid
+    title="Explore your options"
+    items={treatments.map((treatment) => ({
+      icon: treatment.icon,
+      title: treatment.title,
+      body: treatment.summary,
+      href: `/treatments/${treatment.slug}/`,
+    }))}
+  />
+
+  <CTABanner
+    title="Not sure which treatment is right?"
+    body="A complimentary consultation will map the options for your smile."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+</BaseLayout>

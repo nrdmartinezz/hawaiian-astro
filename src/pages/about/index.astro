@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/blocks/Hero.astro';
+import FeatureSplit from '../../components/blocks/FeatureSplit.astro';
+import CTABanner from '../../components/blocks/CTABanner.astro';
+---
+
+<BaseLayout
+  title="Our Story"
+  description="Hawaiian Smiles Orthodontics continues Dr. Errol Yim’s 38-year legacy with Dr. Satya Nayak and a team serving Kaneohe, Kona, Kamuela, and Hilo."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about/' },
+  ]}
+>
+  <Hero
+    eyebrow="About"
+    title="Aloha-centered orthodontics, built on a 38-year legacy"
+    body="After serving Kaneohe, Kailua, and Kamuela for more than 38 years, Dr. Errol Y.W. Yim passed the practice to Dr. Satya Nayak in 2021. Patients still get the same safe, gentle, innovative care — with the latest technology."
+    actions={[
+      { label: 'Meet the doctors', href: '/about/doctors/' },
+      { label: 'Request an appointment', href: '/appointment/' },
+    ]}
+  />
+
+  <FeatureSplit
+    title="Continuing Dr. Yim’s legacy"
+    body="Dr. Yim was one of the first dentists in Hawaiʻi certified by the American Board of Orthodontics. Dr. Nayak inherited that commitment: cutting-edge treatment, unhurried explanations, and a visit that feels like ʻohana."
+    bullets={[
+      'Voted Best Hawaii Dentist 2020–2025',
+      'Offices on Oʻahu and Hawaiʻi Island',
+      'Invisalign Diamond Provider',
+    ]}
+    actions={[{ label: 'Meet the team', href: '/about/staff/' }]}
+  />
+
+  <CTABanner
+    title="Come see the legacy for yourself"
+    body="Schedule a consultation and meet the doctors who will walk with you through treatment."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+</BaseLayout>

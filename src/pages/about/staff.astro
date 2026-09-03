@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/blocks/Hero.astro';
+import Team from '../../components/blocks/Team.astro';
+import CTABanner from '../../components/blocks/CTABanner.astro';
+import { staff } from '../../config/team';
+---
+
+<BaseLayout
+  title="Meet the Staff"
+  description="Meet the treatment coordinators, smile architects, and financial team at Hawaiian Smiles Orthodontics."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about/' },
+    { name: 'Meet the Staff', href: '/about/staff/' },
+  ]}
+>
+  <Hero
+    eyebrow="The team"
+    title="The people who make visits feel like ʻohana"
+    body="Dr. Nayak and a highly skilled staff use the newest technology so every visit is rewarding and comfortable. We look forward to working with you and your ʻohana."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+
+  <Team title="Our staff" items={staff} columns={4} />
+
+  <CTABanner
+    title="Questions before you start?"
+    body="Call or text (808) 247-6039 — we are happy to help."
+    actions={[{ label: 'Contact us', href: '/contact/' }]}
+  />
+</BaseLayout>

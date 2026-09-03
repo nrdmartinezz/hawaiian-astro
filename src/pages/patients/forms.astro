@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/blocks/Hero.astro';
+import FeatureSplit from '../../components/blocks/FeatureSplit.astro';
+import CTABanner from '../../components/blocks/CTABanner.astro';
+import { site } from '../../config/site';
+---
+
+<BaseLayout
+  title="Registration Forms"
+  description="Adult and child new-patient forms for Hawaiian Smiles Orthodontics."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Patients', href: '/patients/' },
+    { name: 'Registration Forms', href: '/patients/forms/' },
+  ]}
+>
+  <Hero
+    eyebrow="Paperwork, handled"
+    title="Complete forms before your visit"
+    body={`Download or request the adult or child new-patient form, then email it to ${site.business.email} before your appointment. All submissions are sent over an encrypted connection.`}
+    actions={[
+      { label: 'Request an appointment', href: '/appointment/' },
+      { label: `Email ${site.business.email}`, href: `mailto:${site.business.email}`, variant: 'secondary' },
+    ]}
+  />
+
+  <FeatureSplit
+    title="Adult and child forms"
+    body="Please complete the form that matches the patient. If you would rather fill them out on paper in the office, arrive a few minutes early."
+    bullets={[
+      'Adult new-patient form',
+      'Child new-patient form',
+      `Email completed PDFs to ${site.business.email}`,
+    ]}
+    actions={[{ label: 'Contact the office', href: '/contact/' }]}
+  />
+
+  <CTABanner
+    title="Need a form sent to you?"
+    body="Text or email us and we will reply with the right packet."
+    actions={[{ label: 'Contact us', href: '/contact/' }]}
+  />
+</BaseLayout>

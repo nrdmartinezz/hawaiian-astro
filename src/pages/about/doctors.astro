@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/blocks/Hero.astro';
+import Team from '../../components/blocks/Team.astro';
+import CTABanner from '../../components/blocks/CTABanner.astro';
+import { doctors } from '../../config/team';
+---
+
+<BaseLayout
+  title="Meet the Doctors"
+  description="Meet Dr. Satya Nayak, Dr. Alyssa Shaikh, and Dr. Nicole Fernandez at Hawaiian Smiles Orthodontics."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about/' },
+    { name: 'Meet the Doctors', href: '/about/doctors/' },
+  ]}
+>
+  <Hero
+    eyebrow="The doctors"
+    title="Experienced orthodontists, caring and current"
+    body="Our doctors stay up to date on the latest treatment options so every patient has access to care that is safe, gentle, and effective."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+
+  <Team eyebrow="Doctors" title="Your smile team" items={doctors} columns={3} />
+
+  <CTABanner
+    title="Ready to meet in person?"
+    body="Complimentary consultations in Kaneohe, Kona, Kamuela, and Hilo."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+</BaseLayout>

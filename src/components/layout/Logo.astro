@@ -1,26 +1,31 @@
 ---
 import { site } from '../../config/site';
-import logoMark from '../../assets/logo.svg?url';
-import logoWordmark from '../../assets/logo-white.svg?url';
+import logoMark from '../../assets/logo-mark.svg?url';
+import logoColor from '../../assets/logo.svg?url';
+import logoWhite from '../../assets/logo-white.svg?url';
 
 interface Props {
-  variant?: 'mark' | 'wordmark';
+  variant?: 'lockup' | 'white' | 'mark';
   class?: string;
 }
 
-const { variant = 'mark', class: className } = Astro.props;
+const { variant = 'lockup', class: className } = Astro.props;
 ---
 
-{
-  variant === 'wordmark' ? (
-    <img src={logoWordmark} alt={site.name} width="200" height="125" class:list={['h-16 w-auto', className]} />
-  ) : (
-    <span class:list={['flex items-center gap-2', className]}>
-      <img src={logoMark} alt="" width="60" height="60" class="size-10" />
-      <span class="flex flex-col leading-tight">
-        <span class="font-heading font-semibold">Hawaiian Smiles</span>
-        <span class="text-ink-muted text-xs font-medium tracking-wide uppercase">Orthodontics</span>
+<a href="/" class:list={['inline-flex shrink-0 items-center no-underline', className]}>
+  {
+    variant === 'white' ? (
+      <img src={logoWhite} alt={site.name} width="200" height="125" class="h-14 w-auto max-md:h-11" />
+    ) : variant === 'mark' ? (
+      <span class="flex items-center gap-2">
+        <img src={logoMark} alt="" width="60" height="60" class="size-10" />
+        <span class="flex flex-col leading-tight">
+          <span class="font-heading text-ink-base font-semibold">Hawaiian Smiles</span>
+          <span class="text-ink-muted text-xs font-medium tracking-wide uppercase">Orthodontics</span>
+        </span>
       </span>
-    </span>
-  )
-}
+    ) : (
+      <img src={logoColor} alt={site.name} width="298" height="181" class="h-14 w-auto max-md:h-11" />
+    )
+  }
+</a>

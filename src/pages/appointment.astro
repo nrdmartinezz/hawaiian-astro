@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/blocks/Hero.astro';
+import ContactBlock from '../components/blocks/ContactBlock.astro';
+import { treatmentServices } from '../config/treatments';
+import { locations } from '../config/locations';
+import { site } from '../config/site';
+
+const offices = locations.map((location) => location.shortName);
+---
+
+<BaseLayout
+  title="Request an Appointment"
+  description="Request a complimentary in-person or virtual orthodontic consultation with Hawaiian Smiles."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Request an Appointment', href: '/appointment/' },
+  ]}
+>
+  <Hero
+    eyebrow="Let’s get started"
+    title="Request a complimentary consultation"
+    body={`In person or virtual. Call or text ${site.business.phone}, email ${site.business.email}, or send this form and we will reach out to schedule.`}
+    actions={[
+      { label: `Text ${site.business.phone}`, href: `sms:${site.business.phoneHref}` },
+      { label: 'Registration forms', href: '/patients/forms/', variant: 'secondary' },
+    ]}
+  />
+
+  <ContactBlock
+    background="muted"
+    eyebrow="Appointment request"
+    title="Tell us how to reach you"
+    body="Include the office that is most convenient and whether you prefer in-person or virtual."
+    services={[...offices, ...treatmentServices]}
+  />
+</BaseLayout>

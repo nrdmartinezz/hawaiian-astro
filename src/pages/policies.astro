@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/blocks/Hero.astro';
+import Section from '../components/ui/Section.astro';
+import Container from '../components/ui/Container.astro';
+import Prose from '../components/ui/Prose.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout
+  title="Policies"
+  description="Office hours, cancellation, and new-patient policies at Hawaiian Smiles Orthodontics."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Policies', href: '/policies/' },
+  ]}
+>
+  <Hero
+    eyebrow="Practice policies"
+    title="Hours, appointments, and cancellations"
+    body="Easy scheduling and regular hours keep treatment on track. Please read these policies before you book."
+  />
+
+  <Section>
+    <Container>
+      <Prose>
+        <h2>Office hours</h2>
+        <p>Monday–Friday, 8:00 a.m. to 5:00 p.m. The best number for every office is {site.business.phone}.</p>
+
+        <h2>Existing patients</h2>
+        <p>
+          Starting May 1, 2023, we require 48 hours’ notice to reschedule or cancel. Cancellations or
+          changes with less than 48 hours’ notice are subject to a $55 fee. We know life happens — call
+          us and we will work with you.
+        </p>
+
+        <h2>New patients</h2>
+        <p>
+          After two rescheduled or missed consults, a $150 deposit is required to reserve your next
+          appointment. That deposit is applied to your treatment fee if you start with our practice.
+        </p>
+
+        <h2>Emergencies</h2>
+        <p>
+          For pain, swelling, or bleeding from trauma after hours or on weekends, text a photo to{' '}
+          {site.business.phone}. You will be directed to the right contact for your office. Scheduling
+          requests are not taken on that line. We are closed Saturday, Sunday, and most major holidays.
+        </p>
+      </Prose>
+    </Container>
+  </Section>
+</BaseLayout>

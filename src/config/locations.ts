@@ -59,7 +59,7 @@ export const locations: PracticeLocation[] = [
     locality: 'Hilo',
     region: 'HI',
     postalCode: '96720',
-    mapsUrl: 'https://g.page/hawaiiansmilesortho-kamuela?gm',
+    mapsUrl: 'https://maps.google.com/?q=280+Ponahawai+St+101+Hilo+HI+96720',
     description:
       'Orthodontist in Hilo offering braces, Invisalign, and follow-up care on the east side of Hawaiʻi Island.',
     body: 'Our Hilo office brings Hawaiian Smiles to East Hawaiʻi so families do not have to drive to Kona for every visit.',

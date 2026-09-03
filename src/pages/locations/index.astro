@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/blocks/Hero.astro';
+import ServicesGrid from '../../components/blocks/ServicesGrid.astro';
+import CTABanner from '../../components/blocks/CTABanner.astro';
+import { locations, locationAddress } from '../../config/locations';
+import { site } from '../../config/site';
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Locations', href: '/locations/' },
+];
+---
+
+<BaseLayout
+  title="Locations"
+  description="Hawaiian Smiles Orthodontics offices in Kaneohe, Kailua-Kona, Kamuela, and Hilo. Call or text (808) 247-6039."
+  breadcrumbs={breadcrumbs}
+>
+  <Hero
+    eyebrow="Four offices"
+    title="Close to home on Oʻahu and Hawaiʻi Island"
+    body={`Call or text ${site.business.phone} for any location. Monday–Friday, 8:00 a.m. to 5:00 p.m.`}
+    actions={[
+      { label: 'Request an appointment', href: '/appointment/' },
+      { label: site.business.phone, href: `tel:${site.business.phoneHref}`, variant: 'secondary' },
+    ]}
+  />
+
+  <ServicesGrid
+    title="Find your office"
+    columns={2}
+    items={locations.map((location) => ({
+      icon: 'lucide:map-pin',
+      title: location.shortName,
+      body: locationAddress(location),
+      href: `/locations/${location.slug}/`,
+    }))}
+  />
+
+  <CTABanner
+    title="Ready to visit?"
+    body="Tell us which island you are on and we will get you on the schedule."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+</BaseLayout>
