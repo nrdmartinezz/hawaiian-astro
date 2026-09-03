@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/blocks/Hero.astro';
+import FeatureSplit from '../components/blocks/FeatureSplit.astro';
+import Pricing from '../components/blocks/Pricing.astro';
+import ValueGrid from '../components/blocks/ValueGrid.astro';
+import LogoCloud from '../components/blocks/LogoCloud.astro';
+import ServicesGrid from '../components/blocks/ServicesGrid.astro';
+import Testimonials from '../components/blocks/Testimonials.astro';
+import CTABanner from '../components/blocks/CTABanner.astro';
+import { site } from '../config/site';
+import { locations } from '../config/locations';
+import { awardLogos, affiliationLogos } from '../config/credentials';
+import { treatmentImages } from '../config/treatmentImages';
+import doctorNayak from '../assets/doctors/dr-satya-nayak.jpg';
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Why Choose Us', href: '/why-choose-us/' },
+];
+---
+
+<BaseLayout
+  title="Why Choose Us"
+  description="Board-certified specialists, 0% monthly plans from $80–$200, Pitts 21 braces, and Diamond Invisalign care for families across Oʻahu and Hawaiʻi Island."
+  breadcrumbs={breadcrumbs}
+>
+  <Hero
+    eyebrow="Why Choose Us"
+    title="Deeply rooted in family health and care"
+    body="Dr. Nayak’s care for keiki and families draws patients from all over Oʻahu and the Big Island. Finances should not stand in the way of a healthy, functional smile."
+    actions={[
+      { label: 'Request an appointment', href: '/appointment/' },
+      { label: 'See payment options', href: '/about/financial/', variant: 'secondary' },
+    ]}
+  />
+
+  <FeatureSplit
+    eyebrow="Our story"
+    title="A 50-year legacy of Hawaiian smiles"
+    image={doctorNayak}
+    imageAlt="Dr. Satya Nayak of Hawaiian Smiles Orthodontics"
+    bullets={[
+      'Continuing Dr. Errol Yim’s care since 1974',
+      'Dr. Satya Nayak has led the practice since 2018',
+      'The same goal: a healthy, straight, beautiful smile',
+    ]}
+    actions={[{ label: 'Meet the doctors', href: '/about/doctors/' }]}
+  >
+    <Fragment slot="body">
+      <p class="text-ink-muted max-w-reading text-[1rem]">
+        Since 1974, Dr. Errol Yim has been a cornerstone in providing healthcare to Kaneohe, Kailua
+        Kona, and Waimea. Now known as Hawaiian Smiles Orthodontics, formerly Yim Orthodontics, we
+        continue that legacy under Dr. Satya Nayak. After 47 years of service, Dr. Yim retired in
+        2021. Dr. Nayak collaborated side-by-side with him for five years.
+      </p>
+      <p class="text-ink-muted max-w-reading text-[1rem]">
+        Our goal remains steadfast — to make your orthodontic care as rewarding as possible, and to
+        deliver the healthy, straight, beautiful smile you have always wanted.
+      </p>
+    </Fragment>
+  </FeatureSplit>
+
+  <Pricing
+    background="muted"
+    eyebrow="Choose your experience"
+    title="Treatment that fits your smile and your budget"
+    body="We offer monthly 0% interest payment plans, with most patients paying between $80 and $200 per month based on their personal budget. Dr. Nayak believes finances should not stand in the way of a beautiful, functional smile."
+    items={[
+      {
+        name: 'Level 1',
+        price: '$1,895–$2,895',
+        body: 'Touch-up case',
+        features: [
+          'Previous braces or clear aligner treatment',
+          'Some shifting that needs a refresh',
+          '0% interest monthly plans available',
+        ],
+        action: { label: 'Free consultation', href: '/appointment/' },
+      },
+      {
+        name: 'Level 2',
+        price: '$5,280–$5,600',
+        body: 'Social Six',
+        featured: true,
+        features: [
+          'Moderate treatment for the aesthetics you want',
+          'Focused on the smile you see every day',
+          '0% interest monthly plans available',
+        ],
+        action: { label: 'Free consultation', href: '/appointment/' },
+      },
+      {
+        name: 'Level 3',
+        price: '$5,500–$8,200',
+        body: 'Comprehensive treatment',
+        features: [
+          'Aesthetics and function greatly improved',
+          'May include extra appliances and advanced care',
+          '0% interest monthly plans available',
+        ],
+        action: { label: 'Free consultation', href: '/appointment/' },
+      },
+    ]}
+  />
+
+  <ValueGrid
+    background="base"
+    eyebrow="The difference"
+    title="What sets Hawaiian Smiles apart"
+    body="Board-certified specialists, faster appliances, airway-conscious plans, and text-friendly care — with payment options that meet families where they are."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+    items={[
+      {
+        icon: 'lucide:badge-check',
+        title: 'Board-certified specialists',
+        body: 'Dr. Satya Nayak and Dr. Errol Yim are board-certified by the American Board of Orthodontics — a distinction fewer than half of American orthodontists achieve, through written and oral exams and treated case studies.',
+      },
+      {
+        icon: 'lucide:timer',
+        title: 'Faster, more comfortable treatment',
+        body: 'We are the only Pitts 21 provider in Hawaiʻi, and a top 1% Invisalign provider in North America. Self-ligating braces and clear aligners mean a shorter, more comfortable experience and less time in the chair.',
+      },
+      {
+        icon: 'lucide:wind',
+        title: 'Fewer extractions for you and your child',
+        body: 'Dr. Nayak’s airway-conscious training means his plan will most likely include fewer extractions when a healthy result is possible. Come for a free consult if another office has recommended four or more extractions.',
+      },
+      {
+        icon: 'lucide:wallet',
+        title: 'Flexible, 0% payment options',
+        body: 'Insurance or none — we offer flexible down payments and in-house arrangements at 0% interest. Once you are part of the family, automatic and text-message payments help you skip an extra trip to the office.',
+      },
+      {
+        icon: 'lucide:smartphone',
+        title: 'Text us any time',
+        body: `Life is busy. Text the office at ${site.business.phone} day or night to schedule, reschedule, or chat with our team. You can reach us when it works for you.`,
+      },
+      {
+        icon: 'lucide:gem',
+        title: 'Diamond+ Invisalign provider',
+        body: 'Diamond Plus is one of Align Technology’s highest tiers — top 1% of Invisalign providers nationwide — earned through a large volume of cases and skill with complex malocclusions.',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      What sets <em>Hawaiian Smiles</em> apart
+    </Fragment>
+  </ValueGrid>
+
+  <FeatureSplit
+    background="muted"
+    eyebrow="Pitts 21 & Invisalign"
+    title="Faster treatments with self-ligating braces and clear aligners"
+    image={treatmentImages.invisalign}
+    imageAlt="A smiling patient holding a clear Invisalign aligner"
+    bullets={[
+      'Only Pitts 21 provider in Hawaiʻi',
+      'Diamond Plus — top 1% of Invisalign providers nationwide',
+      'Shorter, more comfortable visits',
+      'Nearly invisible aligners when you want them',
+    ]}
+    actions={[
+      { label: 'Pitts 21 braces', href: '/treatments/braces/' },
+      { label: 'Invisalign', href: '/treatments/invisalign/', variant: 'secondary' },
+    ]}
+  >
+    <Fragment slot="body">
+      <p class="text-ink-muted max-w-reading text-[1rem]">
+        As the only Pitts 21 provider in Hawaiʻi, we can offer a faster, more comfortable
+        orthodontic experience and a more esthetically pleasing smile. These self-ligating braces
+        are the result of years of innovation.
+      </p>
+      <p class="text-ink-muted max-w-reading text-[1rem]">
+        Diamond Plus is one of Align Technology’s highest tiers. It is earned by completing a very
+        large volume of Invisalign cases — typically hundreds per year — with consistent results and
+        deep expertise treating complex malocclusions. That means less time at each visit, more time
+        for your daily routine, and aligners that are nearly invisible.
+      </p>
+    </Fragment>
+  </FeatureSplit>
+
+  <LogoCloud
+    groups={[
+      { label: 'Award Recognition', items: awardLogos, size: 'lg', class: 'opacity-50' },
+      { label: 'Professional Affiliations', items: affiliationLogos, size: 'md' },
+    ]}
+  />
+
+  <ServicesGrid
+    background="muted"
+    eyebrow="Four offices"
+    title="Convenient locations across Hawaiʻi"
+    body="Hawaiʻi, we have you covered. Visit us on Oʻahu in Kaneohe and on the Big Island in Kailua-Kona, Kamuela, and Hilo."
+    columns={4}
+    items={locations.map((location) => ({
+      icon: 'lucide:map-pin',
+      title: location.shortName,
+      body: `${location.street}, ${location.locality}`,
+      href: `/locations/${location.slug}/`,
+    }))}
+  />
+
+  <Testimonials
+    background="base"
+    eyebrow="Reviews"
+    title="What patients say"
+    items={[
+      {
+        quote:
+          'My experience at Hawaiian Smiles with Dr. Nayak and his team has been exceptional. I felt heard and treated as an individual, not just a client. When a doctor puts his patients’ needs first, you know he takes his oath seriously.',
+        name: 'Margarita Chilla',
+        rating: 5,
+      },
+      {
+        quote:
+          'I can highly recommend Dr. Yim and his wonderful team! The office works like a well oiled machine. I’m very pleased with both the service and the price. But what I’m most happy about is my beautiful straight white teeth.',
+        name: 'Norm Stuard',
+        rating: 5,
+      },
+      {
+        quote:
+          'Dr. Yim and his staff are so great that words can’t describe them. Every time we visit for a follow-up we feel like we’re at a family reunion. Our family is indebted to them for everything they have done for our daughter.',
+        name: 'John Poggensee',
+        rating: 5,
+      },
+    ]}
+  />
+
+  <CTABanner
+    title="Ready to see if Hawaiian Smiles is the right fit?"
+    body="Request a complimentary consultation — in person or virtual. We will text you back."
+    actions={[
+      { label: 'Request an appointment', href: '/appointment/' },
+      { label: 'View locations', href: '/locations/', variant: 'inverse' },
+    ]}
+  />
+</BaseLayout>

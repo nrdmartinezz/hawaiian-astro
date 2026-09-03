@@ -46,11 +46,9 @@ const split = Boolean(image) && !photoHero;
   background={photoHero ? 'inverse' : background}
   spacing={photoHero ? 'none' : spacing}
   clip={photoHero}
-  class={
-    photoHero
-      ? 'relative -mt-[var(--header-h,5rem)] pt-[calc(var(--spacing-section-lg)+var(--header-h,5rem))] pb-section-lg'
-      : undefined
-  }
+  class={photoHero
+    ? 'relative -mt-[var(--header-h,5rem)] pt-[calc(var(--spacing-section-lg)+var(--header-h,5rem))] pb-section-lg'
+    : undefined}
 >
   {
     backdrop && (
@@ -65,7 +63,7 @@ const split = Boolean(image) && !photoHero;
           class="absolute inset-0 size-full object-cover"
         />
         <div
-          class="from-accent-600/60 to-neutral-950 absolute inset-0 bg-linear-to-b"
+          class="from-accent-600/60 absolute inset-0 bg-linear-to-b to-neutral-950"
           aria-hidden="true"
         />
       </>

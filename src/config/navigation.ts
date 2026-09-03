@@ -62,7 +62,8 @@ const ageTreatments = treatmentLinks.filter((link) =>
   ['early-treatment', 'adult-treatment', 'airway'].some((slug) => link.href.includes(slug)),
 );
 const applianceTreatments = treatmentLinks.filter(
-  (link) => !['early-treatment', 'adult-treatment', 'airway'].some((slug) => link.href.includes(slug)),
+  (link) =>
+    !['early-treatment', 'adult-treatment', 'airway'].some((slug) => link.href.includes(slug)),
 );
 
 const officeLinks: NavLink[] = locations.map((location) => ({
@@ -104,6 +105,7 @@ export const navigation: NavigationConfig = {
         kind: 'links',
         links: [
           { label: 'Our Story', href: '/about/' },
+          { label: 'Why Choose Us', href: '/why-choose-us/' },
           { label: 'Meet the Doctors', href: '/about/doctors/' },
           { label: 'Meet the Staff', href: '/about/staff/' },
           { label: 'Financial Information', href: '/about/financial/' },
@@ -141,6 +143,7 @@ export const navigation: NavigationConfig = {
       heading: 'Patients',
       links: [
         { label: 'Your First Visit', href: '/patients/first-visit/' },
+        { label: 'Why Choose Us', href: '/why-choose-us/' },
         { label: 'Registration Forms', href: '/patients/forms/' },
         { label: 'Referrals', href: '/patients/referrals/' },
         { label: 'Blog', href: '/blog/' },

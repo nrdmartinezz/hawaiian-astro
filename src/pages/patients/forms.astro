@@ -21,7 +21,11 @@ import { site } from '../../config/site';
     body={`Download or request the adult or child new-patient form, then email it to ${site.business.email} before your appointment. All submissions are sent over an encrypted connection.`}
     actions={[
       { label: 'Request an appointment', href: '/appointment/' },
-      { label: `Email ${site.business.email}`, href: `mailto:${site.business.email}`, variant: 'secondary' },
+      {
+        label: `Email ${site.business.email}`,
+        href: `mailto:${site.business.email}`,
+        variant: 'secondary',
+      },
     ]}
   />
 
