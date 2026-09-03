@@ -61,7 +61,7 @@ const split = Boolean(image) && !photoHero;
           class="absolute inset-0 size-full object-cover"
         />
         <div
-          class="from-accent-400/70 to-neutral-950/90 absolute inset-0 bg-linear-to-b"
+          class="from-accent-600/90 to-neutral-950 absolute inset-0 bg-linear-to-b"
           aria-hidden="true"
         />
       </>
@@ -91,7 +91,9 @@ const split = Boolean(image) && !photoHero;
         )
       }
 
-      <Heading level={1}>{title}</Heading>
+      <Heading level={1}>
+        <slot name="title">{title}</slot>
+      </Heading>
 
       {body && <p class="max-w-reading text-lg opacity-90">{body}</p>}
 

@@ -46,7 +46,7 @@ const faqs = [
     backdrop={heroImage}
     backdropAlt=""
     eyebrow="Kaneohe · Kailua-Kona · Kamuela · Hilo"
-    title="Beautiful, healthy smiles across Hawaiʻi"
+    title="Changing Lives, One Smile at a time"
     body="Voted Best Hawaii Dentist 2020–2025. Braces, Invisalign, and early treatment with cutting-edge technology and a whole lot of aloha."
     bullets={[
       'Complimentary in-person or virtual consults',
@@ -57,7 +57,11 @@ const faqs = [
       { label: 'Request an appointment', href: '/appointment/' },
       { label: site.business.phone, href: `tel:${site.business.phoneHref}`, variant: 'inverse' },
     ]}
-  />
+  >
+    <Fragment slot="title">
+      Changing Lives, <em class="not-italic text-accent-400">One Smile</em> at a time.
+    </Fragment>
+  </Hero>
 
   <ServicesGrid
     eyebrow="Treatments"
