@@ -24,4 +24,6 @@ export interface BlockAction {
   variant?: 'primary' | 'secondary' | 'ghost' | 'inverse' | 'accent' | 'outline';
   /** Optional Lucide icon name, rendered leading in the button. */
   icon?: string;
+  /** Suggested filename when the link downloads a file. */
+  download?: string;
 }

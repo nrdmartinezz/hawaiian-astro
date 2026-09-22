@@ -4,6 +4,7 @@ import Hero from '../components/blocks/Hero.astro';
 import ContactBlock from '../components/blocks/ContactBlock.astro';
 import { treatmentServices } from '../config/treatments';
 import { locations } from '../config/locations';
+import { patientFormActions } from '../config/patientForms';
 import { site } from '../config/site';
 
 const offices = locations.map((location) => location.shortName);
@@ -23,7 +24,7 @@ const offices = locations.map((location) => location.shortName);
     body={`In person or virtual. Call or text ${site.business.phone}, email ${site.business.email}, or send this form and we will reach out to schedule.`}
     actions={[
       { label: `Text ${site.business.phone}`, href: `sms:${site.business.phoneHref}` },
-      { label: 'Registration forms', href: '/patients/forms/', variant: 'secondary' },
+      ...patientFormActions('secondary'),
     ]}
   />
 

@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/blocks/Hero.astro';
 import ServicesGrid from '../../components/blocks/ServicesGrid.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
+import { patientFormActions, patientForms } from '../../config/patientForms';
 ---
 
 <BaseLayout
@@ -17,7 +18,10 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
     eyebrow="Patients"
     title="Everything you need before you walk in"
     body="New patient forms, what to expect at your first visit, and how to refer a friend or colleague."
-    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+    actions={[
+      { label: 'Request an appointment', href: '/appointment/' },
+      ...patientFormActions('secondary'),
+    ]}
   />
 
   <ServicesGrid
@@ -35,6 +39,13 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
         body: 'Adult and child forms — complete them before you arrive.',
         href: '/patients/forms/',
       },
+      ...patientForms.map((form) => ({
+        icon: 'lucide:file-text',
+        title: form.title,
+        body: form.body,
+        href: form.href,
+        download: form.download,
+      })),
       {
         icon: 'lucide:heart-handshake',
         title: 'Referrals',
@@ -52,7 +63,10 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
 
   <CTABanner
     title="New here?"
-    body="Request a consult and we will send forms ahead of your visit."
-    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+    body="Request a consult, or download a new-patient form and email it before you arrive."
+    actions={[
+      { label: 'Request an appointment', href: '/appointment/' },
+      ...patientFormActions('outline'),
+    ]}
   />
 </BaseLayout>

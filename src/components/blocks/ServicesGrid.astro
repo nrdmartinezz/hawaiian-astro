@@ -17,6 +17,8 @@ export interface ServiceItem {
   image?: ImageMetadata;
   imageAlt?: string;
   cta?: string;
+  /** Suggested filename when `href` downloads a file. */
+  download?: string;
 }
 
 interface Props extends BlockProps {
@@ -74,6 +76,7 @@ const headingLevel = titleLevel === 2 ? 3 : 4;
               <li class="min-h-96 min-w-0 max-xl:basis-1/3 max-md:basis-full xl:flex-1">
                 <Tag
                   href={item.href}
+                  download={item.download}
                   class:list={[
                     'text-ink-inverse relative flex h-full min-h-96 flex-col overflow-hidden no-underline',
                     item.href && 'group',
@@ -117,7 +120,11 @@ const headingLevel = titleLevel === 2 ? 3 : 4;
               )}
               <Heading level={headingLevel} size="md">
                 {item.href ? (
-                  <a href={item.href} class="text-ink-base no-underline hover:underline">
+                  <a
+                    href={item.href}
+                    download={item.download}
+                    class="text-ink-base no-underline hover:underline"
+                  >
                     {item.title}
                   </a>
                 ) : (

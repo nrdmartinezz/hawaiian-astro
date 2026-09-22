@@ -5,6 +5,7 @@
  */
 
 import { locations } from './locations';
+import { patientFormLinks } from './patientForms';
 import { treatments } from './treatments';
 
 export interface NavLink {
@@ -13,6 +14,8 @@ export interface NavLink {
   description?: string;
   /** astro-icon name, e.g. 'lucide:wrench'. */
   icon?: string;
+  /** Suggested filename when the link downloads a file. */
+  download?: string;
 }
 
 export interface MegaColumn {
@@ -116,13 +119,45 @@ export const navigation: NavigationConfig = {
       label: 'Patients',
       href: '/patients/',
       panel: {
-        kind: 'links',
-        links: [
-          { label: 'Your First Visit', href: '/patients/first-visit/' },
-          { label: 'Registration Forms', href: '/patients/forms/' },
-          { label: 'Referrals', href: '/patients/referrals/' },
-          { label: 'Blog', href: '/blog/' },
+        kind: 'mega',
+        columns: [
+          {
+            heading: 'For patients',
+            links: [
+              {
+                label: 'Your First Visit',
+                href: '/patients/first-visit/',
+                description: 'What happens at a complimentary consultation.',
+                icon: 'lucide:calendar-check',
+              },
+              {
+                label: 'Registration Forms',
+                href: '/patients/forms/',
+                description: 'Adult and child forms to complete before you arrive.',
+                icon: 'lucide:clipboard-pen',
+              },
+              {
+                label: 'Referrals',
+                href: '/patients/referrals/',
+                description: 'Refer a patient or a neighbor.',
+                icon: 'lucide:heart-handshake',
+              },
+              {
+                label: 'Blog',
+                href: '/blog/',
+                description: 'Guides on braces, Invisalign, and retainers.',
+                icon: 'lucide:newspaper',
+              },
+            ],
+          },
+          { heading: 'New-patient forms', links: patientFormLinks() },
         ],
+        featured: {
+          title: 'Complete them before you arrive',
+          body: 'Download the form that matches the patient and email the PDF before your appointment.',
+          href: '/patients/forms/',
+          cta: 'Registration forms',
+        },
       },
     },
     { label: 'Contact', href: '/contact/' },
@@ -149,6 +184,10 @@ export const navigation: NavigationConfig = {
         { label: 'Book Appointment', href: '/appointment/' },
         { label: 'Virtual Consultation', href: '/appointment/' },
         { label: 'Registration Forms', href: '/patients/forms/' },
+        ...patientFormLinks().map((link) => ({
+          ...link,
+          label: link.href.includes('Child') ? 'Child Patient Forms' : 'Adult Patient Forms',
+        })),
         { label: 'Referrals', href: '/patients/referrals/' },
         { label: 'Privacy Policy', href: '/privacy/' },
       ],

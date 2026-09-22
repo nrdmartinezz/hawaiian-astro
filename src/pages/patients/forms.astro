@@ -9,22 +9,8 @@ import Heading from '../../components/ui/Heading.astro';
 import Button from '../../components/ui/Button.astro';
 import BlockHeader from '../../components/blocks/BlockHeader.astro';
 import { Icon } from 'astro-icon/components';
+import { patientForms } from '../../config/patientForms';
 import { site } from '../../config/site';
-
-const forms = [
-  {
-    title: 'Adult new-patient form',
-    body: 'For patients 18 and older. Complete it and email the PDF before your appointment.',
-    href: '/forms/2026-edited-policyJuly-Adult-New-Patient-.pdf',
-    download: 'Hawaiian-Smiles-Adult-New-Patient-Form.pdf',
-  },
-  {
-    title: 'Child new-patient form',
-    body: 'For patients under 18. A parent or guardian should complete and sign it.',
-    href: '/forms/2026-edited-JulyNP_Packet_Child_Final.pdf',
-    download: 'Hawaiian-Smiles-Child-New-Patient-Form.pdf',
-  },
-];
 ---
 
 <BaseLayout
@@ -60,7 +46,7 @@ const forms = [
 
       <ul class="grid w-full gap-6 sm:grid-cols-2">
         {
-          forms.map((form) => (
+          patientForms.map((form) => (
             <Card as="li" variant="outlined">
               <Icon name="lucide:file-text" class="text-brand-600 size-8" aria-hidden="true" />
               <Heading level={3} size="md">

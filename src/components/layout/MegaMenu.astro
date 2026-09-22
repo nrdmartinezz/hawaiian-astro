@@ -75,6 +75,7 @@ const triggerClass =
                     <li>
                       <a
                         href={link.href}
+                        download={link.download}
                         aria-current={isCurrent(link.href) ? 'page' : undefined}
                         class="text-ink-base aria-[current=page]:text-ink-brand flex min-h-11 items-center rounded-md px-3 whitespace-nowrap no-underline hover:bg-neutral-100 aria-[current=page]:font-medium"
                       >
@@ -130,6 +131,7 @@ const triggerClass =
                           <li>
                             <a
                               href={link.href}
+                              download={link.download}
                               aria-current={isCurrent(link.href) ? 'page' : undefined}
                               class="group/link text-ink-base aria-[current=page]:text-ink-brand flex gap-3 rounded-md p-2 no-underline hover:bg-neutral-100"
                             >

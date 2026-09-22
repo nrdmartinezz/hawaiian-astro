@@ -4,6 +4,8 @@ import Hero from '../../components/blocks/Hero.astro';
 import ProcessSteps from '../../components/blocks/ProcessSteps.astro';
 import FAQ from '../../components/blocks/FAQ.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
+import { patientFormActions } from '../../config/patientForms';
+import { site } from '../../config/site';
 
 const faqs = [
   {
@@ -14,7 +16,7 @@ const faqs = [
   {
     question: 'Should I complete forms first?',
     answer:
-      'Yes if you can — adult and child new-patient forms are on our Registration Forms page. Email completed PDFs to oahusc@hawaiiansmilesortho.com before your visit.',
+      `Yes if you can. Download the adult or child new-patient form, then email the completed PDF to ${site.business.email} before your visit.`,
   },
 ];
 ---
@@ -35,7 +37,7 @@ const faqs = [
     body="We will look at your smile, talk through options, and give you a clear picture of time, appliances, and cost — with no pressure to start that day."
     actions={[
       { label: 'Request an appointment', href: '/appointment/' },
-      { label: 'Registration forms', href: '/patients/forms/', variant: 'secondary' },
+      ...patientFormActions('secondary'),
     ]}
   />
 
@@ -50,7 +52,7 @@ const faqs = [
       },
       {
         title: 'Share a little history',
-        body: 'Complete adult or child forms and bring insurance information if you have a plan.',
+        body: 'Download the adult or child new-patient form and bring insurance information if you have a plan.',
       },
       {
         title: 'Exam and photos',
@@ -63,7 +65,13 @@ const faqs = [
     ]}
   />
 
-  <FAQ eyebrow="FAQ" title="Before you come in" items={faqs} schema={false} />
+  <FAQ
+    eyebrow="FAQ"
+    title="Before you come in"
+    items={faqs}
+    schema={false}
+    actions={patientFormActions('secondary')}
+  />
 
   <CTABanner
     title="Book your complimentary consult"

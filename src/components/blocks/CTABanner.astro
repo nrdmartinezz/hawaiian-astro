@@ -5,6 +5,7 @@ import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
 import Heading from '../ui/Heading.astro';
 import Button from '../ui/Button.astro';
+import { Icon } from 'astro-icon/components';
 import type { BlockProps, BlockAction } from './types';
 
 interface Props extends BlockProps {
@@ -90,7 +91,13 @@ const defaultVariant = photo
     <div class:list={['flex flex-wrap gap-3', align === 'center' && 'justify-center']}>
       {
         actions.map((action) => (
-          <Button href={action.href} variant={action.variant ?? defaultVariant} size="lg">
+          <Button
+            href={action.href}
+            download={action.download}
+            variant={action.variant ?? defaultVariant}
+            size="lg"
+          >
+            {action.icon && <Icon name={action.icon} class="size-5" aria-hidden="true" />}
             {action.label}
           </Button>
         ))
