@@ -23,30 +23,71 @@ the same page.
 
 ## First-time server setup
 
-1. Create the domain or subdomain in cPanel; note the document root
-   (usually `public_html/` or `public_html/subdomain/`).
+Two cPanel hosts, two GitHub Environments — never one shared FTP account.
+
+**Staging** is the hostname stored in that environment's `SITE_URL`. Every push
+to `main` deploys here. **Production** is `https://hawaiiansmilesortho.com`. It
+deploys only when you run the workflow by hand.
+
+For each host:
+
+1. Create the domain or subdomain in cPanel; note the document root.
 2. Issue the SSL certificate (AutoSSL) **before** the first deploy — `.htaccess`
    force-redirects to HTTPS and will loop against a missing certificate.
-3. Create an FTP account scoped to the document root.
-4. Add repository secrets in GitHub → Settings → Secrets → Actions:
+3. Create an FTP account **scoped to that document root**. Staging and production
+   must not share an account. The account home is the upload target (`./`).
 
-   | Secret           | Value                                    |
-   | ---------------- | ---------------------------------------- |
-   | `FTP_SERVER`     | `ftp.example.com`                        |
-   | `FTP_USERNAME`   | The scoped FTP account                   |
-   | `FTP_PASSWORD`   | Its password                             |
-   | `FTP_SERVER_DIR` | `public_html/` (trailing slash required) |
+### GitHub Environments
 
-5. Update `site` in `astro.config.mjs` and the `Sitemap:` line in
-   `public/robots.txt` to the real domain.
+Create Environments named `staging` and `production` under
+Settings → Environments. Put secrets **on the environment**, not at repository
+level, so a job cannot pick up the other host's FTP account.
+
+| Secret           | `staging`                | `production`                                |
+| ---------------- | ------------------------ | ------------------------------------------- |
+| `SITE_URL`       | Staging origin, no slash | `https://hawaiiansmilesortho.com`           |
+| `ALLOW_INDEXING` | `false`                  | `true` when the live site should be indexed |
+| `FTP_HOST`       | cPanel FTP hostname      | cPanel FTP hostname                         |
+| `FTP_USER`       | Scoped FTP account       | Scoped FTP account                          |
+| `FTP_PW`         | Its password             | Its password                                |
+
+`SITE_URL` and `ALLOW_INDEXING` may be environment variables instead of secrets;
+the workflow reads secrets first, then variables. FTP values should stay secrets.
+
+`SITE_URL` is the build-time origin: canonicals, Open Graph, schema, and the
+sitemap all follow it. `ALLOW_INDEXING=false` forces `noindex`, emits a
+`Disallow: /` robots.txt, and skips analytics tags. `robots.txt` is generated
+at build (`src/pages/robots.txt.ts`) — there is no static `public/robots.txt`.
+
+On `production`, enable required reviewers so a promote cannot run without
+approval.
 
 ## Deploying
 
-`.github/workflows/deploy.yml` runs on every push to `main`: install → `verify`
-→ `build` → FTP upload of `dist/`. The `verify` gate means a type error or
-malformed frontmatter fails in CI instead of shipping.
+`.github/workflows/deploy.yml`:
 
-Manual fallback: `npm run build` and upload the contents of `dist/`.
+- **Push to `main`** → environment `staging` → FTPS upload of `dist/`.
+- **Actions → Deploy → Run workflow** → choose `staging` or `production`. The
+  dropdown defaults to `staging`.
+
+Each run: install → `verify` → PHPMailer → `build` (with that environment's
+`SITE_URL` / `ALLOW_INDEXING`) → FTP upload of `dist/`. A type error or malformed
+frontmatter fails in CI instead of shipping.
+
+### Promote to live (after staging looks right)
+
+1. Open the Deploy workflow → Run workflow → target `production`.
+2. Approve the environment if reviewers are required.
+3. Confirm the live hostname, HTTPS, forms, and that `robots.txt` allows indexing.
+
+Manual fallback:
+
+```bash
+SITE_URL=https://staging.example.com ALLOW_INDEXING=false npm run build
+```
+
+Then upload the contents of `dist/`. Use the real staging origin in place of the
+example host.
 
 ## What `.htaccess` does
 

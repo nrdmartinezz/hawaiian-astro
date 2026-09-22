@@ -20,7 +20,10 @@ export type SchemaBusinessType =
   | 'RealEstateAgent';
 
 export interface SiteConfig {
-  /** Absolute origin, no trailing slash. Must match `site` in astro.config.mjs. */
+  /**
+   * Absolute origin, no trailing slash. Taken from astro.config `site`
+   * (`SITE_URL` at build time, production origin as the local fallback).
+   */
   url: string;
   name: string;
   legalName?: string;
@@ -87,16 +90,12 @@ export interface SiteConfig {
 
   /** 'none' is correct for US-only clients. Switch to 'banner' only when required. */
   consent: 'none' | 'banner';
-
-  /**
-   * Site-wide noindex. Keep true while this build is on a live host for
-   * development or client review. Flip to false before launch.
-   */
-  noindex: boolean;
 }
 
+const PRODUCTION_ORIGIN = 'https://hawaiiansmilesortho.com';
+
 export const site: SiteConfig = {
-  url: 'https://hawaiiansmilesortho.com',
+  url: (import.meta.env.SITE ?? PRODUCTION_ORIGIN).replace(/\/$/, ''),
   name: 'Hawaiian Smiles Orthodontics',
   legalName: 'Satyaprasad Nayak DMD MS Inc',
   tagline: 'Beautiful, healthy smiles across Hawaiʻi.',
@@ -146,8 +145,6 @@ export const site: SiteConfig = {
   },
 
   consent: 'none',
-
-  noindex: true,
 };
 
 export const formattedAddress = [
@@ -157,3 +154,6 @@ export const formattedAddress = [
 
 /** No configured ID means the analytics bundle is never mounted at all. */
 export const hasAnalytics = Object.values(site.analytics).some(Boolean);
+
+/** Staging / preview builds must not be indexed or emit production tags. */
+export const allowIndexing = import.meta.env.PUBLIC_ALLOW_INDEXING === 'true';

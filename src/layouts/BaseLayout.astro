@@ -9,7 +9,7 @@ import Header, { type HeaderSticky } from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import RecaptchaV3 from '../components/forms/RecaptchaV3.astro';
 import SiteFormHandler from '../components/forms/SiteFormHandler.astro';
-import { site, hasAnalytics } from '../config/site';
+import { allowIndexing, hasAnalytics, site } from '../config/site';
 
 interface Props {
   title?: string;
@@ -39,7 +39,7 @@ const { breadcrumbs, faqs, service, sticky = 'sticky', overlay = false, ...seo }
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    {!site.noindex && <link rel="sitemap" href="/sitemap-index.xml" />}
+    {allowIndexing && <link rel="sitemap" href="/sitemap-index.xml" />}
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
     <link rel="preconnect" href="https://p.typekit.net" crossorigin />
     <link rel="stylesheet" href="https://use.typekit.net/xzq1vrf.css" />
@@ -53,7 +53,7 @@ const { breadcrumbs, faqs, service, sticky = 'sticky', overlay = false, ...seo }
 
     <SEO {...seo} />
     <Schema breadcrumbs={breadcrumbs} faqs={faqs} service={service} />
-    {hasAnalytics && <Analytics />}
+    {hasAnalytics && allowIndexing && <Analytics />}
 
     <slot name="head" />
   </head>

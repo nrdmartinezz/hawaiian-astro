@@ -17,11 +17,11 @@ until a project needs one.
 | `src/config/navigation.ts`                      | Nav tree, header CTA, footer and legal links             | required   |
 | `tokens/*.json`                                 | Replace the demo brand — theme regenerates on next build | required   |
 | `public/favicon.svg` + `src/assets/logo.svg`    | Client marks                                             | required   |
-| `public/robots.txt`                             | Point the `Sitemap:` line at the real domain             | required   |
-| `astro.config.mjs` → `site`                     | Production origin, no trailing slash                     | required   |
+| `astro.config.mjs` → `SITE_URL` fallback        | Production origin, no trailing slash                     | required   |
+| GitHub Environments `staging` / `production`    | `SITE_URL`, `ALLOW_INDEXING`, per-host FTP secrets       | to publish |
 | `site.ts` → `formEndpoint` / `recaptchaSiteKey` | PHP form handler + reCAPTCHA v3 site key                 | optional   |
 | `site.ts` → `analytics` / `verification`        | Per-platform IDs — blank means that vendor ships nothing | optional   |
-| `.github/workflows/deploy.yml`                  | FTP host/path secrets                                    | to publish |
+| `.github/workflows/deploy.yml`                  | Push to `main` → staging; Run workflow → production      | to publish |
 | `_templates/collection/`                        | Copy only if the site needs a blog or similar            | optional   |
 
 ## Commands
@@ -78,6 +78,12 @@ Responsive is **desktop-first** using Tailwind `max-*` variants. See `docs/RESPO
 
 ## Deploying
 
-Static output in `dist/` uploads as-is. `public/.htaccess` handles HTTPS, non-www, trailing
-slashes, compression, cache headers, and the 404. `trailingSlash: 'always'` + `build.format:
-'directory'` are pinned together — changing one without the other breaks URLs on Apache.
+Push to `main` FTPS-uploads `dist/` to the staging host (`SITE_URL` on the `staging`
+environment). Production (`https://hawaiiansmilesortho.com`) is a manual **Actions →
+Deploy → Run workflow** with target `production`. Environment `SITE_URL` /
+`ALLOW_INDEXING` drive canonicals, robots, and analytics; staging is noindex. See
+`docs/HOSTING.md`.
+
+`public/.htaccess` handles HTTPS, non-www, trailing slashes, compression, cache
+headers, and the 404. `trailingSlash: 'always'` + `build.format: 'directory'` are
+pinned together — changing one without the other breaks URLs on Apache.

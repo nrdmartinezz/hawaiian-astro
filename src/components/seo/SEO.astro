@@ -1,5 +1,5 @@
 ---
-import { site } from '../../config/site';
+import { allowIndexing, site } from '../../config/site';
 
 interface Props {
   title?: string;
@@ -26,7 +26,7 @@ const {
   modifiedTime,
 } = Astro.props;
 
-const shouldNoindex = noindex || site.noindex;
+const shouldNoindex = noindex || !allowIndexing;
 
 const pageTitle = !title
   ? `${site.name} — ${site.tagline}`
