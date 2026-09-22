@@ -18,8 +18,12 @@ interface Props {
 
 const { currentPath } = Astro.props;
 
-const isCurrent = (href: string) =>
-  href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+const isCurrent = (href: string) => {
+  if (href === '/') return currentPath === '/';
+  if (!currentPath.startsWith(href)) return false;
+  const rest = currentPath.slice(href.length);
+  return rest === '' || rest === '/';
+};
 
 const triggerClass =
   'inline-flex min-h-11 items-center gap-1 rounded-md px-3 text-base no-underline text-ink-base hover:bg-neutral-100 aria-[current=page]:text-ink-brand aria-[current=page]:font-medium';
@@ -107,21 +111,21 @@ const triggerClass =
 
             <div
               id={panelId}
-              class="mega-panel mega-panel-center border-line-base bg-surface-base absolute top-full z-10 w-max rounded-lg border p-4 shadow-lg"
+              class="mega-panel mega-panel-center border-line-base bg-surface-base absolute top-full z-10 w-max max-w-[calc(100vw-2rem)] rounded-lg border p-4 shadow-lg"
             >
               <div
                 class:list={[
-                  'grid w-max max-h-[70vh] gap-x-8 gap-y-6 overflow-y-auto',
+                  'grid w-full max-h-[70vh] gap-x-8 gap-y-6 overflow-y-auto',
                   // Tablet halves the desktop column count; the panel must
                   // survive 768px because the mega menu runs there too.
-                  'grid-cols-[repeat(2,max-content)]',
+                  'grid-cols-[repeat(2,minmax(0,16rem))]',
                   desktopColumns >= 4
-                    ? 'lg:grid-cols-[repeat(4,max-content)]'
-                    : 'lg:grid-cols-[repeat(3,max-content)]',
+                    ? 'lg:grid-cols-[repeat(4,minmax(0,15rem))]'
+                    : 'lg:grid-cols-[repeat(3,minmax(0,18rem))]',
                 ]}
               >
                   {columns.map((column) => (
-                    <div class="flex w-max max-w-xs flex-col gap-2">
+                    <div class="flex min-w-0 flex-col gap-2">
                       {column.heading && (
                         <h2 class="text-ink-muted text-sm font-semibold tracking-wide uppercase">
                           {column.heading}
@@ -157,7 +161,7 @@ const triggerClass =
                   ))}
 
                   {featured && (
-                    <div class="bg-surface-muted flex w-max max-w-xs flex-col items-start gap-2 rounded-lg p-5 max-lg:col-span-2 max-lg:w-full max-lg:max-w-none">
+                    <div class="bg-surface-muted flex min-w-0 flex-col items-start gap-2 rounded-lg p-5 max-lg:col-span-2">
                       <h2 class="font-semibold">{featured.title}</h2>
                       <p class="text-ink-muted text-sm">{featured.body}</p>
                       <a

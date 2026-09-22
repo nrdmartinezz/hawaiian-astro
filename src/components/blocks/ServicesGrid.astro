@@ -113,26 +113,29 @@ const headingLevel = titleLevel === 2 ? 3 : 4;
             );
           }
 
+          const linked = Boolean(item.href);
           return (
-            <Card as="li" variant="outlined">
-              {item.icon && (
-                <Icon name={item.icon} class="text-brand-600 size-8" aria-hidden="true" />
-              )}
-              <Heading level={headingLevel} size="md">
-                {item.href ? (
-                  <a
-                    href={item.href}
-                    download={item.download}
-                    class="text-ink-base no-underline hover:underline"
-                  >
-                    {item.title}
-                  </a>
-                ) : (
-                  item.title
+            <li class="flex">
+              <Card
+                as={linked ? 'a' : 'div'}
+                href={item.href}
+                download={item.download}
+                variant="outlined"
+                class:list={[
+                  'w-full',
+                  linked &&
+                    'text-ink-base no-underline transition-colors hover:border-brand-600 focus-visible:border-brand-600',
+                ]}
+              >
+                {item.icon && (
+                  <Icon name={item.icon} class="text-brand-600 size-8" aria-hidden="true" />
                 )}
-              </Heading>
-              <p class="text-ink-muted">{item.body}</p>
-            </Card>
+                <Heading level={headingLevel} size="md">
+                  {item.title}
+                </Heading>
+                <p class="text-ink-muted">{item.body}</p>
+              </Card>
+            </li>
           );
         })
       }

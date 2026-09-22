@@ -55,34 +55,52 @@ export interface NavigationConfig {
   legal: NavLink[];
 }
 
+/** Short enough to stay on one line beside the icon in a mega column. */
+const treatmentNavDescriptions: Record<string, string> = {
+  'early-treatment': 'First visit by age 7.',
+  'adult-treatment': 'Braces or clear aligners.',
+  airway: 'Jaws and breathing.',
+  braces: 'A door, not elastic ties.',
+  emergency: 'When to call the office.',
+  retention: 'Keep the new smile.',
+  'teeth-whitening': 'In-office and take-home.',
+};
+
 const treatmentLinks: NavLink[] = treatments.map((treatment) => ({
   label: treatment.title,
   href: `/treatments/${treatment.slug}/`,
-  description: treatment.summary,
+  description: treatmentNavDescriptions[treatment.slug] ?? treatment.summary,
   icon: treatment.icon,
 }));
 
 const ageTreatments = treatmentLinks.filter((link) =>
   ['early-treatment', 'adult-treatment', 'airway'].some((slug) => link.href.includes(slug)),
 );
-const applianceTreatments = [
+const applianceTreatments = treatmentLinks.filter(
+  (link) =>
+    !['early-treatment', 'adult-treatment', 'airway', 'invisalign'].some((slug) =>
+      link.href.includes(slug),
+    ),
+);
+
+const invisalignLinks: NavLink[] = [
   {
     label: 'Invisalign',
     href: invisalignPath(),
-    description: 'Clear aligners, and who they are for.',
+    description: 'How clear aligners work.',
     icon: 'lucide:sparkles',
   },
   ...invisalignAudiences.map((audience) => ({
     label: audience.title,
     href: invisalignPath(audience.slug),
+    description:
+      audience.slug === 'adult'
+        ? 'Fits work and photos.'
+        : audience.slug === 'teen'
+          ? 'Hard to see at school.'
+          : 'Ages 6 to 10.',
     icon: audience.icon,
   })),
-  ...treatmentLinks.filter(
-    (link) =>
-      !['early-treatment', 'adult-treatment', 'airway', 'invisalign'].some((slug) =>
-        link.href.includes(slug),
-      ),
-  ),
 ];
 
 const officeLinks: NavLink[] = locations.map((location) => ({
@@ -100,6 +118,7 @@ export const navigation: NavigationConfig = {
         columns: [
           { heading: 'For every age', links: ageTreatments },
           { heading: 'Appliances', links: applianceTreatments },
+          { heading: 'Invisalign', links: invisalignLinks },
         ],
         featured: {
           title: 'Not sure where to start?',

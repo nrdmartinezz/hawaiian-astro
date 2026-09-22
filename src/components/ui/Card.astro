@@ -3,8 +3,8 @@ import type { HTMLAttributes } from 'astro/types';
 
 export type CardVariant = 'plain' | 'outlined' | 'elevated';
 
-interface Props extends Omit<HTMLAttributes<'div'>, 'class'> {
-  as?: 'div' | 'article' | 'li';
+interface Props extends Omit<HTMLAttributes<'a'>, 'class'> {
+  as?: 'div' | 'article' | 'li' | 'a';
   variant?: CardVariant;
   padded?: boolean;
   class?: string;
