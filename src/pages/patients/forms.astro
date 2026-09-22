@@ -53,12 +53,7 @@ import { site } from '../../config/site';
                 {form.title}
               </Heading>
               <p class="text-ink-muted">{form.body}</p>
-              <Button
-                href={form.href}
-                download={form.download}
-                variant="secondary"
-                class="mt-auto"
-              >
+              <Button href={form.href} download={form.download} variant="secondary" class="mt-auto">
                 <Icon name="lucide:download" class="size-4" aria-hidden="true" />
                 Download PDF
               </Button>
@@ -68,7 +63,9 @@ import { site } from '../../config/site';
       </ul>
 
       <p class="text-ink-muted">
-        Email completed PDFs to <a href={`mailto:${site.business.email}`} class="text-ink-brand">{site.business.email}</a>.
+        Email completed PDFs to <a href={`mailto:${site.business.email}`} class="text-ink-brand"
+          >{site.business.email}</a
+        >.
       </p>
     </Container>
   </Section>

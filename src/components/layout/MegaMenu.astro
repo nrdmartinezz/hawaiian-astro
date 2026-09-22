@@ -115,7 +115,7 @@ const triggerClass =
             >
               <div
                 class:list={[
-                  'grid w-full max-h-[70vh] gap-x-8 gap-y-6 overflow-y-auto',
+                  'grid max-h-[70vh] w-full gap-x-8 gap-y-6 overflow-y-auto',
                   // Tablet halves the desktop column count; the panel must
                   // survive 768px because the mega menu runs there too.
                   'grid-cols-[repeat(2,minmax(0,16rem))]',
@@ -124,56 +124,56 @@ const triggerClass =
                     : 'lg:grid-cols-[repeat(3,minmax(0,18rem))]',
                 ]}
               >
-                  {columns.map((column) => (
-                    <div class="flex min-w-0 flex-col gap-2">
-                      {column.heading && (
-                        <h2 class="text-ink-muted text-sm font-semibold tracking-wide uppercase">
-                          {column.heading}
-                        </h2>
-                      )}
-                      <ul class="flex flex-col">
-                        {column.links.map((link) => (
-                          <li>
-                            <a
-                              href={link.href}
-                              download={link.download}
-                              aria-current={isCurrent(link.href) ? 'page' : undefined}
-                              class="group/link text-ink-base aria-[current=page]:text-ink-brand flex gap-3 rounded-md p-2 no-underline hover:bg-neutral-100"
-                            >
-                              {link.icon && (
-                                <Icon
-                                  name={link.icon}
-                                  class="text-brand-600 mt-0.5 size-5 shrink-0"
-                                  aria-hidden="true"
-                                />
+                {columns.map((column) => (
+                  <div class="flex min-w-0 flex-col gap-2">
+                    {column.heading && (
+                      <h2 class="text-ink-muted text-sm font-semibold tracking-wide uppercase">
+                        {column.heading}
+                      </h2>
+                    )}
+                    <ul class="flex flex-col">
+                      {column.links.map((link) => (
+                        <li>
+                          <a
+                            href={link.href}
+                            download={link.download}
+                            aria-current={isCurrent(link.href) ? 'page' : undefined}
+                            class="group/link text-ink-base aria-[current=page]:text-ink-brand flex gap-3 rounded-md p-2 no-underline hover:bg-neutral-100"
+                          >
+                            {link.icon && (
+                              <Icon
+                                name={link.icon}
+                                class="text-brand-600 mt-0.5 size-5 shrink-0"
+                                aria-hidden="true"
+                              />
+                            )}
+                            <span class="flex flex-col">
+                              <span class="font-medium">{link.label}</span>
+                              {link.description && (
+                                <span class="text-ink-muted text-sm">{link.description}</span>
                               )}
-                              <span class="flex flex-col">
-                                <span class="font-medium">{link.label}</span>
-                                {link.description && (
-                                  <span class="text-ink-muted text-sm">{link.description}</span>
-                                )}
-                              </span>
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+                            </span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
 
-                  {featured && (
-                    <div class="bg-surface-muted flex min-w-0 flex-col items-start gap-2 rounded-lg p-5 max-lg:col-span-2">
-                      <h2 class="font-semibold">{featured.title}</h2>
-                      <p class="text-ink-muted text-sm">{featured.body}</p>
-                      <a
-                        href={featured.href}
-                        class="text-ink-brand mt-auto inline-flex min-h-11 items-center gap-1 font-medium"
-                      >
-                        {featured.cta}
-                        <Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
-                      </a>
-                    </div>
-                  )}
-                </div>
+                {featured && (
+                  <div class="bg-surface-muted flex min-w-0 flex-col items-start gap-2 rounded-lg p-5 max-lg:col-span-2">
+                    <h2 class="font-semibold">{featured.title}</h2>
+                    <p class="text-ink-muted text-sm">{featured.body}</p>
+                    <a
+                      href={featured.href}
+                      class="text-ink-brand mt-auto inline-flex min-h-11 items-center gap-1 font-medium"
+                    >
+                      {featured.cta}
+                      <Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" />
+                    </a>
+                  </div>
+                )}
+              </div>
             </div>
           </li>
         );

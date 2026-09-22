@@ -44,7 +44,8 @@ export const treatments: Treatment[] = [
     slug: 'early-treatment',
     title: 'Early Treatment',
     eyebrow: 'Children',
-    summary: 'A first visit by age 7, so growing smiles are guided before problems get harder to treat.',
+    summary:
+      'A first visit by age 7, so growing smiles are guided before problems get harder to treat.',
     leadTitle: 'The best time to start is early',
     body: 'There is no age limit for orthodontic treatment, and for children it is best to start as early as possible. The American Association of Orthodontists recommends a first visit no later than age 7.',
     bullets: [
@@ -112,7 +113,8 @@ export const treatments: Treatment[] = [
     slug: 'adult-treatment',
     title: 'Adult Treatment',
     eyebrow: 'Adults',
-    summary: 'Healthy teeth can be straightened at any age — with braces or clear aligners that fit a busy week.',
+    summary:
+      'Healthy teeth can be straightened at any age — with braces or clear aligners that fit a busy week.',
     leadTitle: 'You are not too old for a better bite',
     body: 'Orthodontics is not just for teens. You can start as long as your teeth and gums are healthy. We treat adults with the same range of appliances we offer younger patients.',
     bullets: [
@@ -208,7 +210,8 @@ export const treatments: Treatment[] = [
     slug: 'braces',
     title: 'Self-Ligating Brackets',
     eyebrow: 'Pitts21',
-    summary: 'Braces that hold the wire with a small door instead of elastic ties — less friction, easier cleaning, often a shorter treatment.',
+    summary:
+      'Braces that hold the wire with a small door instead of elastic ties — less friction, easier cleaning, often a shorter treatment.',
     leadTitle: 'Less friction, more comfortable days',
     body: 'Self-ligating braces still use brackets and a wire, but the brackets are different. A small door holds the archwire, instead of the elastic ties on traditional braces. Less friction means a more comfortable experience, and many patients finish sooner.',
     bullets: [
@@ -249,7 +252,8 @@ export const treatments: Treatment[] = [
     slug: 'emergency',
     title: 'Emergency Care',
     eyebrow: 'When it cannot wait',
-    summary: 'Soreness is normal. Swelling, bleeding, and trauma are not — here is how to tell the difference.',
+    summary:
+      'Soreness is normal. Swelling, bleeding, and trauma are not — here is how to tell the difference.',
     leadTitle: 'Most “emergencies” can wait until we see you',
     body: 'Appliances take some getting used to. Soreness when you start, and again after an adjustment, is common and usually mild. Some problems should not wait, and some are uncomfortable but not dangerous.',
     bullets: [
@@ -317,7 +321,8 @@ export const treatments: Treatment[] = [
     slug: 'retainers',
     title: 'Retainers',
     eyebrow: 'After treatment',
-    summary: 'Retainers keep the smile you just finished. Full-time at first, then nights for the long run.',
+    summary:
+      'Retainers keep the smile you just finished. Full-time at first, then nights for the long run.',
     leadTitle: 'The day the braces come off is not the last day',
     body: 'That day is worth celebrating. Retainers keep the smile straight after braces or Invisalign. They hold the teeth while the bone and gums settle, and they keep them there afterward.',
     bullets: [
@@ -362,7 +367,8 @@ export const treatments: Treatment[] = [
     slug: 'teeth-whitening',
     title: 'Teeth Whitening',
     eyebrow: 'Brightness',
-    summary: 'In-office, touch-up, and take-home whitening — professional strength, with us supervising.',
+    summary:
+      'In-office, touch-up, and take-home whitening — professional strength, with us supervising.',
     leadTitle: 'A brighter smile, done safely',
     body: 'Your smile is the first thing people see. Store kits exist, and a dentist or orthodontist is still the safer way to get a noticeable change. We offer professional whitening for patients who want it alongside their orthodontic care.',
     bullets: [
@@ -377,7 +383,11 @@ export const treatments: Treatment[] = [
         price: '$350',
         cadence: '/ 1 hour',
         body: 'Sit in the chair. We handle the rest.',
-        features: ['Up to 8 shades brighter', 'Gentle and effective', 'Light-accelerated whitening'],
+        features: [
+          'Up to 8 shades brighter',
+          'Gentle and effective',
+          'Light-accelerated whitening',
+        ],
         featured: true,
       },
       {
@@ -392,7 +402,11 @@ export const treatments: Treatment[] = [
         price: '$25',
         cadence: '/ tube',
         body: 'Gel for use with your retainers. It does not replace toothpaste.',
-        features: ['Simple to apply', 'Little to no sensitivity for most people', 'Up to 5 shades lighter'],
+        features: [
+          'Simple to apply',
+          'Little to no sensitivity for most people',
+          'Up to 5 shades lighter',
+        ],
       },
     ],
     faqs: [

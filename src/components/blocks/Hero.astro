@@ -112,10 +112,7 @@ const split = Boolean(image) && !photoHero;
               <li class="flex items-start gap-3">
                 <Icon
                   name="lucide:circle-check"
-                  class:list={[
-                    'mt-1 size-5 shrink-0',
-                    photoHero ? 'text-brand-500' : 'opacity-80',
-                  ]}
+                  class:list={['mt-1 size-5 shrink-0', photoHero ? 'text-brand-500' : 'opacity-80']}
                   aria-hidden="true"
                 />
                 <span class:list={[photoHero && 'text-white/50']}>{bullet}</span>

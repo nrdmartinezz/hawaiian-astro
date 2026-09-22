@@ -108,11 +108,11 @@ const faqs = [
       .map((slug) => treatments.find((treatment) => treatment.slug === slug))
       .filter((treatment) => treatment != null)
       .map((treatment) => ({
-      title: treatment.title,
-      body: treatment.summary,
-      href: `/treatments/${treatment.slug}/`,
-      image: treatmentImages[treatment.slug],
-    }))}
+        title: treatment.title,
+        body: treatment.summary,
+        href: `/treatments/${treatment.slug}/`,
+        image: treatmentImages[treatment.slug],
+      }))}
   />
 
   <ValueGrid
@@ -221,9 +221,8 @@ const faqs = [
     ]}
   >
     <Fragment slot="title">
-      Using cutting edge treatment options and the very best in technology, we provide every
-      patient with a <em class="not-italic">beautiful, healthy smile</em> that they can't wait to
-      show off.
+      Using cutting edge treatment options and the very best in technology, we provide every patient
+      with a <em class="not-italic">beautiful, healthy smile</em> that they can't wait to show off.
     </Fragment>
     <Fragment slot="body">
       <p class="text-ink-muted max-w-reading text-[1rem]">

@@ -61,12 +61,7 @@ const defaultVariant = photo
     )
   }
 
-  <Container
-    width={width}
-    align={align}
-    gap="md"
-    class={photo ? 'relative' : undefined}
-  >
+  <Container width={width} align={align} gap="md" class={photo ? 'relative' : undefined}>
     {
       eyebrow && (
         <p
@@ -86,7 +81,11 @@ const defaultVariant = photo
 
     {photo && <span class="bg-brand-500 h-px w-16" aria-hidden="true" />}
 
-    {body && <p class:list={['max-w-reading text-lg', photo ? 'text-white/75' : 'opacity-90']}>{body}</p>}
+    {
+      body && (
+        <p class:list={['max-w-reading text-lg', photo ? 'text-white/75' : 'opacity-90']}>{body}</p>
+      )
+    }
 
     <div class:list={['flex flex-wrap gap-3', align === 'center' && 'justify-center']}>
       {

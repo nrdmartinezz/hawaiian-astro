@@ -50,7 +50,8 @@ export const invisalignFaqs: FaqItem[] = [
   },
   {
     question: 'Will they affect my speech?',
-    answer: 'There is a short adjustment. The more you talk with them in, the faster speech settles.',
+    answer:
+      'There is a short adjustment. The more you talk with them in, the faster speech settles.',
   },
   {
     question: 'Does it hurt?',
@@ -78,8 +79,7 @@ export const invisalignAudiences: InvisalignAudience[] = [
     navLabel: 'Adults',
     title: 'Invisalign for Adults',
     eyebrow: 'Adults',
-    summary:
-      'Clear aligners that stay out of the way of work, photos, and a full calendar.',
+    summary: 'Clear aligners that stay out of the way of work, photos, and a full calendar.',
     leadTitle: 'You are not too old for a clearer way to straighten',
     paragraphs: [
       'Invisalign for adults is orthodontic treatment with very little disruption. You spend less time in the chair and more time on the rest of your week. The trays are clear, comfortable, and removable.',

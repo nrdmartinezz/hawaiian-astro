@@ -15,13 +15,7 @@ const { variant = 'lockup', class: className } = Astro.props;
 <a href="/" class:list={['inline-flex shrink-0 items-center no-underline', className]}>
   {
     variant === 'white' ? (
-      <img
-        src={logoWhite}
-        alt={site.name}
-        width="200"
-        height="125"
-        class="h-24 w-auto"
-      />
+      <img src={logoWhite} alt={site.name} width="200" height="125" class="h-24 w-auto" />
     ) : variant === 'mark' ? (
       <span class="flex items-center gap-2">
         <img src={logoMark} alt="" width="60" height="60" class="size-10" />

@@ -9,7 +9,10 @@ const PRODUCTION_ORIGIN = 'https://hawaiiansmilesortho.com';
 
 /** Astro's `site` option must be an absolute http(s) URL or `astro check` reports "Invalid url". */
 function resolveSiteUrl(value) {
-  let raw = (value ?? '').trim().replace(/^\uFEFF/, '').replace(/^['"]+|['"]+$/g, '');
+  let raw = (value ?? '')
+    .trim()
+    .replace(/^\uFEFF/, '')
+    .replace(/^['"]+|['"]+$/g, '');
   if (!raw) return PRODUCTION_ORIGIN;
   if (raw.startsWith('//')) raw = `https:${raw}`;
   else if (!/^[a-z][a-z\d+.-]*:/i.test(raw)) raw = `https://${raw}`;

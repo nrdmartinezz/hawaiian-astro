@@ -113,43 +113,41 @@ const columnClass = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-3' }[columns];
             ))}
           </div>
 
-          {
-            items.length > 1 && (
-              <div class="flex items-center gap-4">
-                <button
-                  type="button"
-                  data-prev
-                  class="text-ink-inverse hover:bg-ink-inverse/10 inline-flex size-11 items-center justify-center rounded-full"
-                  aria-label="Previous review"
-                >
-                  <Icon name="lucide:chevron-left" class="size-6" aria-hidden="true" />
-                </button>
+          {items.length > 1 && (
+            <div class="flex items-center gap-4">
+              <button
+                type="button"
+                data-prev
+                class="text-ink-inverse hover:bg-ink-inverse/10 inline-flex size-11 items-center justify-center rounded-full"
+                aria-label="Previous review"
+              >
+                <Icon name="lucide:chevron-left" class="size-6" aria-hidden="true" />
+              </button>
 
-                <div class="flex items-center" role="tablist" aria-label="Reviews">
-                  {items.map((item, index) => (
-                    <button
-                      type="button"
-                      data-dot={index}
-                      aria-label={`Show review from ${item.name}`}
-                      aria-current={index === 0 ? 'true' : undefined}
-                      class="group inline-flex size-11 items-center justify-center"
-                    >
-                      <span class="bg-ink-inverse/40 group-aria-current:bg-ink-inverse size-2.5 rounded-full" />
-                    </button>
-                  ))}
-                </div>
-
-                <button
-                  type="button"
-                  data-next
-                  class="text-ink-inverse hover:bg-ink-inverse/10 inline-flex size-11 items-center justify-center rounded-full"
-                  aria-label="Next review"
-                >
-                  <Icon name="lucide:chevron-right" class="size-6" aria-hidden="true" />
-                </button>
+              <div class="flex items-center" role="tablist" aria-label="Reviews">
+                {items.map((item, index) => (
+                  <button
+                    type="button"
+                    data-dot={index}
+                    aria-label={`Show review from ${item.name}`}
+                    aria-current={index === 0 ? 'true' : undefined}
+                    class="group inline-flex size-11 items-center justify-center"
+                  >
+                    <span class="bg-ink-inverse/40 group-aria-current:bg-ink-inverse size-2.5 rounded-full" />
+                  </button>
+                ))}
               </div>
-            )
-          }
+
+              <button
+                type="button"
+                data-next
+                class="text-ink-inverse hover:bg-ink-inverse/10 inline-flex size-11 items-center justify-center rounded-full"
+                aria-label="Next review"
+              >
+                <Icon name="lucide:chevron-right" class="size-6" aria-hidden="true" />
+              </button>
+            </div>
+          )}
         </>
       ) : (
         <ul class:list={['grid w-full gap-6', columnClass]}>
