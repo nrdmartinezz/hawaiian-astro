@@ -6,6 +6,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 import legacyBlogRedirects from './src/config/legacyBlogRedirects.json' with { type: 'json' };
 
+/** Old WordPress post URLs, including the four rewritten drafts. */
+
 const EXCLUDED_FROM_SITEMAP = ['/thank-you/', '/styleguide/'];
 const PRODUCTION_ORIGIN = 'https://hawaiiansmilesortho.com';
 
@@ -51,6 +53,12 @@ export default defineConfig({
   redirects: {
     '/treatments/retention/': '/treatments/retainers/',
     ...legacyBlogRedirects,
+    '/adults-and-braces-not-just-for-kids-anymore/':
+      '/blog/adults-and-braces-not-just-for-kids-anymore/',
+    '/dont-forget-your-retainer-this-summer/': '/blog/dont-forget-your-retainer-this-summer/',
+    '/caring-for-your-smile-after-invisalign-treatment/':
+      '/blog/caring-for-your-smile-after-invisalign-treatment/',
+    '/more-adults-are-opting-for-invisalign/': '/blog/more-adults-are-opting-for-invisalign/',
   },
   integrations: [
     mdx(),
