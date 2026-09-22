@@ -55,7 +55,9 @@ level, so a job cannot pick up the other host's FTP account.
 the workflow reads secrets first, then variables. FTP values should stay secrets.
 
 `SITE_URL` is the build-time origin: canonicals, Open Graph, schema, and the
-sitemap all follow it. `ALLOW_INDEXING=false` forces `noindex`, emits a
+sitemap all follow it. Use a full origin (`https://example.com`). A hostname
+with no scheme is treated as `https://`; anything else fails `astro check`
+with `Invalid url`. `ALLOW_INDEXING=false` forces `noindex`, emits a
 `Disallow: /` robots.txt, and skips analytics tags. `robots.txt` is generated
 at build (`src/pages/robots.txt.ts`) — there is no static `public/robots.txt`.
 

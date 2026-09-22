@@ -7,7 +7,28 @@ import tailwindcss from '@tailwindcss/vite';
 const EXCLUDED_FROM_SITEMAP = ['/thank-you/', '/styleguide/'];
 const PRODUCTION_ORIGIN = 'https://hawaiiansmilesortho.com';
 
-const siteUrl = (process.env.SITE_URL ?? PRODUCTION_ORIGIN).replace(/\/$/, '');
+/** Astro's `site` option must be an absolute http(s) URL or `astro check` reports "Invalid url". */
+function resolveSiteUrl(value) {
+  let raw = (value ?? '').trim().replace(/^\uFEFF/, '').replace(/^['"]+|['"]+$/g, '');
+  if (!raw) return PRODUCTION_ORIGIN;
+  if (raw.startsWith('//')) raw = `https:${raw}`;
+  else if (!/^[a-z][a-z\d+.-]*:/i.test(raw)) raw = `https://${raw}`;
+
+  let url;
+  try {
+    url = new URL(raw);
+  } catch {
+    throw new Error(
+      'SITE_URL must be an origin like https://example.com. Astro rejected the configured value (Invalid url).',
+    );
+  }
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+    throw new Error(`SITE_URL must use http or https. Received protocol ${url.protocol}`);
+  }
+  return url.origin;
+}
+
+const siteUrl = resolveSiteUrl(process.env.SITE_URL);
 const allowIndexing =
   process.env.ALLOW_INDEXING === 'true' ||
   (process.env.ALLOW_INDEXING !== 'false' && siteUrl === PRODUCTION_ORIGIN);

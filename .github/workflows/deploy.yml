@@ -43,6 +43,10 @@ jobs:
             echo "::error::SITE_URL is not set on this GitHub Environment (Settings → Environments)."
             exit 1
           fi
+          case "$SITE_URL" in
+            http://*|https://*) ;;
+            *) echo "SITE_URL has no scheme; the build will use https://." ;;
+          esac
           if [ -z "$ALLOW_INDEXING" ]; then
             echo "::error::ALLOW_INDEXING is not set on this GitHub Environment (Settings → Environments)."
             exit 1
