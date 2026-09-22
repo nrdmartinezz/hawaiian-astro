@@ -1,5 +1,6 @@
 ---
 import type { GetStaticPaths, Page } from 'astro';
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/ui/Section.astro';
 import Container from '../../components/ui/Container.astro';
@@ -44,20 +45,37 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeZ
       <ul class="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
           page.data.map((entry) => (
-            <Card as="li" variant="outlined">
-              <p class="text-ink-muted text-sm">
-                <time datetime={entry.data.publishDate.toISOString()}>
-                  {dateFormat.format(entry.data.publishDate)}
-                </time>
-                {entry.data.category && <span> · {entry.data.category}</span>}
-              </p>
-              <Heading level={2} size="md">
-                <a href={`/blog/${entry.id}/`} class="text-ink-base no-underline hover:underline">
-                  {entry.data.title}
-                </a>
-              </Heading>
-              <p class="text-ink-muted">{entry.data.description}</p>
-            </Card>
+            <li class="flex">
+              <Card
+                as="a"
+                href={`/blog/${entry.id}/`}
+                variant="outlined"
+                padded={false}
+                class="h-full w-full overflow-hidden text-ink-base no-underline transition-colors hover:border-brand-600 focus-visible:border-brand-600"
+              >
+                {entry.data.heroImage && (
+                  <Image
+                    src={entry.data.heroImage}
+                    alt=""
+                    widths={[480, 768]}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    class="aspect-[3/2] block w-full object-cover"
+                  />
+                )}
+                <div class="flex flex-col gap-3 p-6">
+                  <p class="text-ink-muted text-sm">
+                    <time datetime={entry.data.publishDate.toISOString()}>
+                      {dateFormat.format(entry.data.publishDate)}
+                    </time>
+                    {entry.data.category && <span> · {entry.data.category}</span>}
+                  </p>
+                  <Heading level={2} size="md">
+                    {entry.data.title}
+                  </Heading>
+                  <p class="text-ink-muted">{entry.data.description}</p>
+                </div>
+              </Card>
+            </li>
           ))
         }
       </ul>
