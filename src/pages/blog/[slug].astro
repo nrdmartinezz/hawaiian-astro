@@ -26,7 +26,7 @@ interface Props {
 const { entry, all } = Astro.props;
 const { Content } = await render(entry);
 
-const dateFormat = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
+const dateFormat = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeZone: 'UTC' });
 const suggestions = related(all, entry);
 ---
 

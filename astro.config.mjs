@@ -4,6 +4,8 @@ import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 import tailwindcss from '@tailwindcss/vite';
 
+import legacyBlogRedirects from './src/config/legacyBlogRedirects.json' with { type: 'json' };
+
 const EXCLUDED_FROM_SITEMAP = ['/thank-you/', '/styleguide/'];
 const PRODUCTION_ORIGIN = 'https://hawaiiansmilesortho.com';
 
@@ -48,6 +50,7 @@ export default defineConfig({
   build: { format: 'directory' },
   redirects: {
     '/treatments/retention/': '/treatments/retainers/',
+    ...legacyBlogRedirects,
   },
   integrations: [
     mdx(),
