@@ -314,12 +314,12 @@ export const treatments: Treatment[] = [
     ],
   },
   {
-    slug: 'retention',
-    title: 'Retention',
+    slug: 'retainers',
+    title: 'Retainers',
     eyebrow: 'After treatment',
     summary: 'Retainers keep the smile you just finished. Full-time at first, then nights for the long run.',
     leadTitle: 'The day the braces come off is not the last day',
-    body: 'That day is worth celebrating. Keeping the smile straight is still part of treatment. A retainer holds the teeth while the bone and gums settle, and it keeps them there afterward.',
+    body: 'That day is worth celebrating. Retainers keep the smile straight after braces or Invisalign. They hold the teeth while the bone and gums settle, and they keep them there afterward.',
     bullets: [
       'Full-time wear for about two years for most patients',
       'Checkups every 3–6 months during that time',

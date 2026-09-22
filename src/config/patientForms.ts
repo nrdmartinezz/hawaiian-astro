@@ -27,12 +27,18 @@ export const patientForms: PatientForm[] = [
   },
 ];
 
+/** Short enough to stay on one line beside the icon in a mega column. */
+const patientFormNavDescriptions: Record<string, string> = {
+  'Adult new-patient form': 'Ages 18 and older.',
+  'Child new-patient form': 'Under 18, parent signs.',
+};
+
 export function patientFormLinks() {
   return patientForms.map((form) => ({
     label: form.title,
     href: form.href,
     download: form.download,
-    description: form.body,
+    description: patientFormNavDescriptions[form.title] ?? form.body,
     icon: 'lucide:file-text',
   }));
 }

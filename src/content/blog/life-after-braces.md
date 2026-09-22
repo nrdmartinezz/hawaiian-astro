@@ -1,9 +1,9 @@
 ---
-title: 'Life after braces: retention and keeping your smile'
+title: 'Life after braces: retainers and keeping your smile'
 description: 'The day braces come off is not the finish line. Here is how retainers protect the smile you just earned.'
 publishDate: 2026-05-20
 author: Hawaiian Smiles Orthodontics
-category: Retention
+category: Retainers
 tags:
   - retainers
   - braces

@@ -4,7 +4,7 @@ import adult from '../assets/treatments/treatment-02.jpg';
 import invisalign from '../assets/treatments/treatment-03.jpg';
 import braces from '../assets/treatments/treatment-04.jpg';
 import emergency from '../assets/treatments/treatment-05.jpg';
-import retention from '../assets/treatments/treatment-06.jpg';
+import retainers from '../assets/treatments/treatment-06.jpg';
 
 export const treatmentImages: Record<string, ImageMetadata> = {
   'early-treatment': early,
@@ -13,6 +13,6 @@ export const treatmentImages: Record<string, ImageMetadata> = {
   invisalign,
   braces,
   emergency,
-  retention,
+  retainers,
   'teeth-whitening': adult,
 };

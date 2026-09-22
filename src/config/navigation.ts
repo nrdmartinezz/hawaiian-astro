@@ -62,7 +62,7 @@ const treatmentNavDescriptions: Record<string, string> = {
   airway: 'Jaws and breathing.',
   braces: 'A door, not elastic ties.',
   emergency: 'When to call the office.',
-  retention: 'Keep the new smile.',
+  retainers: 'Keep the new smile.',
   'teeth-whitening': 'In-office and take-home.',
 };
 
@@ -162,25 +162,25 @@ export const navigation: NavigationConfig = {
               {
                 label: 'Your First Visit',
                 href: '/patients/first-visit/',
-                description: 'What happens at a complimentary consultation.',
+                description: 'What to expect.',
                 icon: 'lucide:calendar-check',
               },
               {
                 label: 'Registration Forms',
                 href: '/patients/forms/',
-                description: 'Adult and child forms to complete before you arrive.',
+                description: 'Complete before you arrive.',
                 icon: 'lucide:clipboard-pen',
               },
               {
                 label: 'Referrals',
                 href: '/patients/referrals/',
-                description: 'Refer a patient or a neighbor.',
+                description: 'Send a neighbor our way.',
                 icon: 'lucide:heart-handshake',
               },
               {
                 label: 'Blog',
                 href: '/blog/',
-                description: 'Guides on braces, Invisalign, and retainers.',
+                description: 'Braces and aligner tips.',
                 icon: 'lucide:newspaper',
               },
             ],
@@ -189,7 +189,7 @@ export const navigation: NavigationConfig = {
         ],
         featured: {
           title: 'Complete them before you arrive',
-          body: 'Download the form that matches the patient and email the PDF before your appointment.',
+          body: 'Email the matching PDF before your appointment.',
           href: '/patients/forms/',
           cta: 'Registration forms',
         },
