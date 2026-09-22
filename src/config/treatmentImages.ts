@@ -14,4 +14,5 @@ export const treatmentImages: Record<string, ImageMetadata> = {
   braces,
   emergency,
   retention,
+  'teeth-whitening': adult,
 };

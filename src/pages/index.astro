@@ -104,7 +104,10 @@ const faqs = [
     eyebrow="Treatments"
     title="Care for every smile"
     body="Children, teens, and adults — from first visits to retainers."
-    items={treatments.slice(0, 6).map((treatment) => ({
+    items={['early-treatment', 'adult-treatment', 'invisalign', 'braces', 'emergency', 'retention']
+      .map((slug) => treatments.find((treatment) => treatment.slug === slug))
+      .filter((treatment) => treatment != null)
+      .map((treatment) => ({
       title: treatment.title,
       body: treatment.summary,
       href: `/treatments/${treatment.slug}/`,

@@ -91,6 +91,7 @@ const triggerClass =
 
         const columns = item.panel.columns;
         const featured = item.panel.featured;
+        const desktopColumns = columns.length + (featured ? 1 : 0);
 
         return (
           <li class="mega-item static">
@@ -114,9 +115,9 @@ const triggerClass =
                   // Tablet halves the desktop column count; the panel must
                   // survive 768px because the mega menu runs there too.
                   'grid-cols-[repeat(2,max-content)]',
-                  featured
-                    ? 'lg:grid-cols-[repeat(3,max-content)]'
-                    : 'lg:grid-cols-[repeat(4,max-content)]',
+                  desktopColumns >= 4
+                    ? 'lg:grid-cols-[repeat(4,max-content)]'
+                    : 'lg:grid-cols-[repeat(3,max-content)]',
                 ]}
               >
                   {columns.map((column) => (

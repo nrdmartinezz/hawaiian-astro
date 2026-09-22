@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/blocks/Hero.astro';
+import FeatureSplit from '../../../components/blocks/FeatureSplit.astro';
+import ProcessSteps from '../../../components/blocks/ProcessSteps.astro';
+import ServicesGrid from '../../../components/blocks/ServicesGrid.astro';
+import ValueGrid from '../../../components/blocks/ValueGrid.astro';
+import FAQ from '../../../components/blocks/FAQ.astro';
+import CTABanner from '../../../components/blocks/CTABanner.astro';
+import { invisalignAudiences, invisalignFaqs, invisalignPath } from '../../../config/invisalign';
+import { treatmentImages } from '../../../config/treatmentImages';
+
+const image = treatmentImages.invisalign;
+---
+
+<BaseLayout
+  title="Invisalign"
+  description="Clear, comfortable, removable Invisalign aligners for adults, teens, and growing children at Hawaiian Smiles."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Treatments', href: '/treatments/' },
+    { name: 'Invisalign', href: invisalignPath() },
+  ]}
+  service={{
+    name: 'Invisalign',
+    description: 'Clear aligners for adults, teens, and growing children.',
+  }}
+  faqs={invisalignFaqs}
+>
+  <Hero
+    eyebrow="Clear aligners"
+    title="Invisalign that fits the age, not just the bite"
+    body="Clear, comfortable trays for adults, teens, and growing children. A 3D plan you can preview, then a new set every week or two."
+    actions={[
+      { label: 'Request an appointment', href: '/appointment/' },
+      { label: 'All treatments', href: '/treatments/', variant: 'secondary' },
+    ]}
+  />
+
+  <FeatureSplit
+    eyebrow="How it works"
+    title="A series of trays, each one a small step"
+    image={image}
+    imageAlt="A smiling patient holding a clear Invisalign aligner"
+    bullets={[
+      'Almost invisible, and removable to eat and brush',
+      'About 22 hours a day, then the next tray in 1–2 weeks',
+      'Smooth, BPA-free plastic',
+    ]}
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  >
+    <Fragment slot="body">
+      <p class="text-ink-muted max-w-reading text-[1rem]">
+        Each tray is set up for a specific movement and guides the teeth toward the plan. A digital
+        scan builds a 3D model we use to diagnose the bite, design the trays, and show you the
+        smile at the end.
+      </p>
+      <p class="text-ink-muted max-w-reading text-[1rem]">
+        There are no wires to tighten, so many patients have fewer visits. The trays only work when
+        they are in your mouth — that is the tradeoff for being able to take them out.
+      </p>
+    </Fragment>
+  </FeatureSplit>
+
+  <ProcessSteps
+    background="muted"
+    eyebrow="The visit"
+    title="From scan to retainer"
+    items={[
+      {
+        title: 'Digital scan',
+        body: 'We map the teeth and the bite. No goopy impression for most patients.',
+      },
+      {
+        title: 'A plan you can see',
+        body: 'The software previews the finished smile before the first tray is made.',
+      },
+      {
+        title: 'Wear and switch',
+        body: 'Each set stays in about 22 hours a day for one to two weeks, then you move to the next.',
+      },
+      {
+        title: 'Keep the result',
+        body: 'When the trays are done, nighttime retainers hold the smile.',
+      },
+    ]}
+  />
+
+  <ServicesGrid
+    eyebrow="Who it is for"
+    title="Three versions of the same idea"
+    body="The trays change with the patient. Pick the age that fits, or we will at the consult."
+    columns={3}
+    items={invisalignAudiences.map((audience) => ({
+      title: audience.title,
+      body: audience.summary,
+      href: invisalignPath(audience.slug),
+      icon: audience.icon,
+    }))}
+  />
+
+  <ValueGrid
+    background="muted"
+    eyebrow="Compared with braces"
+    title="What patients notice day to day"
+    items={[
+      {
+        icon: 'lucide:eye-off',
+        title: 'Hard to see',
+        body: 'Discreet enough for work, school, and photos. Most people will not notice you are in treatment.',
+      },
+      {
+        icon: 'lucide:utensils',
+        title: 'No food list',
+        body: 'Remove the trays, eat, then brush before they go back in. Nothing can pop a bracket off.',
+      },
+      {
+        icon: 'lucide:clock',
+        title: 'Shorter visits',
+        body: 'No wires to change, so checkups are usually every five to six weeks and do not take as long.',
+      },
+      {
+        icon: 'lucide:gem',
+        title: 'Diamond provider',
+        body: 'We plan a high volume of Invisalign cases, including bites that used to mean braces only.',
+      },
+    ]}
+  />
+
+  <FAQ
+    eyebrow="FAQ"
+    title="Questions about Invisalign"
+    items={invisalignFaqs}
+    schema={false}
+  />
+
+  <CTABanner
+    title="See if aligners fit your smile"
+    body="Complimentary in-person and virtual consultations. Call or text (808) 247-6039."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+</BaseLayout>

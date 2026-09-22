@@ -4,8 +4,9 @@
  * upgrade is additive rather than a rewrite.
  */
 
+import { invisalignAudiences, invisalignPath } from './invisalign';
 import { locations } from './locations';
-import { patientFormLinks } from './patientForms';
+import { patientFormLinks, patientForms } from './patientForms';
 import { treatments } from './treatments';
 
 export interface NavLink {
@@ -64,10 +65,25 @@ const treatmentLinks: NavLink[] = treatments.map((treatment) => ({
 const ageTreatments = treatmentLinks.filter((link) =>
   ['early-treatment', 'adult-treatment', 'airway'].some((slug) => link.href.includes(slug)),
 );
-const applianceTreatments = treatmentLinks.filter(
-  (link) =>
-    !['early-treatment', 'adult-treatment', 'airway'].some((slug) => link.href.includes(slug)),
-);
+const applianceTreatments = [
+  {
+    label: 'Invisalign',
+    href: invisalignPath(),
+    description: 'Clear aligners, and who they are for.',
+    icon: 'lucide:sparkles',
+  },
+  ...invisalignAudiences.map((audience) => ({
+    label: audience.title,
+    href: invisalignPath(audience.slug),
+    icon: audience.icon,
+  })),
+  ...treatmentLinks.filter(
+    (link) =>
+      !['early-treatment', 'adult-treatment', 'airway', 'invisalign'].some((slug) =>
+        link.href.includes(slug),
+      ),
+  ),
+];
 
 const officeLinks: NavLink[] = locations.map((location) => ({
   label: location.shortName,
@@ -184,9 +200,10 @@ export const navigation: NavigationConfig = {
         { label: 'Book Appointment', href: '/appointment/' },
         { label: 'Virtual Consultation', href: '/appointment/' },
         { label: 'Registration Forms', href: '/patients/forms/' },
-        ...patientFormLinks().map((link) => ({
-          ...link,
-          label: link.href.includes('Child') ? 'Child Patient Forms' : 'Adult Patient Forms',
+        ...patientForms.map((form) => ({
+          label: form.ctaLabel,
+          href: form.href,
+          download: form.download,
         })),
         { label: 'Referrals', href: '/patients/referrals/' },
         { label: 'Privacy Policy', href: '/privacy/' },

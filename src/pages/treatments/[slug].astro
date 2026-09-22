@@ -2,14 +2,22 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/blocks/Hero.astro';
 import FeatureSplit from '../../components/blocks/FeatureSplit.astro';
+import FAQ from '../../components/blocks/FAQ.astro';
+import Pricing from '../../components/blocks/Pricing.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
+import Section from '../../components/ui/Section.astro';
+import Container from '../../components/ui/Container.astro';
+import Heading from '../../components/ui/Heading.astro';
 import { treatments } from '../../config/treatments';
+import { treatmentImages } from '../../config/treatmentImages';
 
 export function getStaticPaths() {
-  return treatments.map((treatment) => ({
-    params: { slug: treatment.slug },
-    props: { treatment },
-  }));
+  return treatments
+    .filter((treatment) => treatment.slug !== 'invisalign')
+    .map((treatment) => ({
+      params: { slug: treatment.slug },
+      props: { treatment },
+    }));
 }
 
 interface Props {
@@ -18,6 +26,7 @@ interface Props {
 
 const { treatment } = Astro.props;
 const href = `/treatments/${treatment.slug}/`;
+const image = treatmentImages[treatment.slug];
 ---
 
 <BaseLayout
@@ -41,11 +50,100 @@ const href = `/treatments/${treatment.slug}/`;
   />
 
   <FeatureSplit
-    title={`About ${treatment.title.toLowerCase()}`}
+    title={treatment.leadTitle}
     body={treatment.body}
     bullets={treatment.bullets}
+    image={image}
+    imageAlt=""
     actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
   />
+
+  {
+    treatment.sections && treatment.sections.length > 0 && (
+      <Section background="muted">
+        <Container width="reading" gap="lg">
+          {treatment.sections.map((section) => (
+            <div class="flex w-full flex-col gap-4">
+              <Heading level={2} size="xl" weight="normal">
+                {section.title}
+              </Heading>
+              {section.paragraphs.map((paragraph) => (
+                <p class="text-ink-muted text-[1rem]">{paragraph}</p>
+              ))}
+              {section.bullets && section.bullets.length > 0 && (
+                <ul class="flex flex-col gap-2">
+                  {section.bullets.map((bullet) => (
+                    <li class="text-ink-muted flex items-start gap-3">
+                      <span
+                        class="bg-brand-500 mt-2 size-1.5 shrink-0 rounded-full"
+                        aria-hidden="true"
+                      />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </Container>
+      </Section>
+    )
+  }
+
+  {
+    treatment.pricing && (
+      <Pricing
+        eyebrow="Whitening options"
+        title="Choose how bright you want to go"
+        body="Professional whitening at the office, or gel you use at home with your retainers."
+        items={treatment.pricing.map((tier) => ({
+          ...tier,
+          action: { label: 'Request an appointment', href: '/appointment/' },
+        }))}
+      />
+    )
+  }
+
+  {
+    treatment.downloads && treatment.downloads.length > 0 && (
+      <Section>
+        <Container width="reading" gap="md">
+          <Heading level={2} size="xl" weight="normal">
+            Retainer consent forms
+          </Heading>
+          <p class="text-ink-muted text-[1rem]">
+            Download the form that matches your treatment, then bring it with you when appliances
+            come off.
+          </p>
+          <ul class="flex flex-col gap-2">
+            {treatment.downloads.map((file) => (
+              <li>
+                <a
+                  href={file.href}
+                  class="text-brand-600 font-medium underline-offset-4 hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {file.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </Section>
+    )
+  }
+
+  {
+    treatment.faqs && treatment.faqs.length > 0 && (
+      <FAQ
+        eyebrow="FAQ"
+        title={`Questions about ${treatment.title.toLowerCase()}`}
+        items={treatment.faqs}
+        background={treatment.sections?.length ? 'base' : 'muted'}
+      />
+    )
+  }
 
   <CTABanner
     title="Let’s look at your smile together"

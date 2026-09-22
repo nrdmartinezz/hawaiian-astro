@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Hero from '../../../components/blocks/Hero.astro';
+import FeatureSplit from '../../../components/blocks/FeatureSplit.astro';
+import ProcessSteps from '../../../components/blocks/ProcessSteps.astro';
+import ValueGrid from '../../../components/blocks/ValueGrid.astro';
+import ServicesGrid from '../../../components/blocks/ServicesGrid.astro';
+import FAQ from '../../../components/blocks/FAQ.astro';
+import CTABanner from '../../../components/blocks/CTABanner.astro';
+import { invisalignAudiences, invisalignPath } from '../../../config/invisalign';
+import { treatmentImages } from '../../../config/treatmentImages';
+
+export function getStaticPaths() {
+  return invisalignAudiences.map((audience) => ({
+    params: { audience: audience.slug },
+    props: { audience },
+  }));
+}
+
+interface Props {
+  audience: (typeof invisalignAudiences)[number];
+}
+
+const { audience } = Astro.props;
+const href = invisalignPath(audience.slug);
+const others = invisalignAudiences.filter((item) => item.slug !== audience.slug);
+---
+
+<BaseLayout
+  title={audience.title}
+  description={audience.summary}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Treatments', href: '/treatments/' },
+    { name: 'Invisalign', href: invisalignPath() },
+    { name: audience.navLabel, href },
+  ]}
+  service={{ name: audience.title, description: audience.summary }}
+  faqs={audience.faqs}
+>
+  <Hero
+    eyebrow={audience.eyebrow}
+    title={audience.title}
+    body={audience.summary}
+    actions={[
+      { label: 'Request an appointment', href: '/appointment/' },
+      { label: 'All Invisalign', href: invisalignPath(), variant: 'secondary' },
+    ]}
+  />
+
+  <FeatureSplit
+    title={audience.leadTitle}
+    image={treatmentImages.invisalign}
+    imageAlt=""
+    bullets={audience.bullets}
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  >
+    <Fragment slot="body">
+      {
+        audience.paragraphs.map((paragraph) => (
+          <p class="text-ink-muted max-w-reading text-[1rem]">{paragraph}</p>
+        ))
+      }
+    </Fragment>
+  </FeatureSplit>
+
+  {
+    audience.values && (
+      <ValueGrid
+        background="muted"
+        eyebrow={audience.eyebrow}
+        title="What this option is built for"
+        items={audience.values}
+      />
+    )
+  }
+
+  {
+    audience.steps && (
+      <ProcessSteps
+        background={audience.values ? 'base' : 'muted'}
+        eyebrow="How it goes"
+        title={audience.slug === 'children' ? 'Expansion, one stage at a time' : 'What to expect'}
+        items={audience.steps}
+      />
+    )
+  }
+
+  {
+    audience.faqs && (
+      <FAQ
+        eyebrow="FAQ"
+        title={`Questions about ${audience.title}`}
+        items={audience.faqs}
+        schema={false}
+        background="muted"
+      />
+    )
+  }
+
+  <ServicesGrid
+    eyebrow="Invisalign"
+    title="The other ages"
+    columns={2}
+    items={others.map((item) => ({
+      title: item.title,
+      body: item.summary,
+      href: invisalignPath(item.slug),
+      icon: item.icon,
+    }))}
+  />
+
+  <CTABanner
+    title="Let’s look at your smile together"
+    body="Complimentary in-person and virtual consultations. Call or text (808) 247-6039."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+</BaseLayout>
