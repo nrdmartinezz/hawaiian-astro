@@ -9,7 +9,6 @@
  * Open/close intent delay is CSS transition-delay so the no-JS baseline keeps
  * it. JS layers keyboard control, Escape, outside click, and touch toggling.
  */
-import Container from '../ui/Container.astro';
 import { navigation } from '../../config/navigation';
 import { Icon } from 'astro-icon/components';
 
@@ -26,7 +25,7 @@ const triggerClass =
   'inline-flex min-h-11 items-center gap-1 rounded-md px-3 text-base no-underline text-ink-base hover:bg-neutral-100 aria-[current=page]:text-ink-brand aria-[current=page]:font-medium';
 ---
 
-<nav aria-label="Primary" class="mega hidden md:block">
+<nav aria-label="Primary" class="mega relative hidden md:block">
   <ul class="flex items-center gap-1">
     {
       navigation.primary.map((item, index) => {
@@ -46,9 +45,7 @@ const triggerClass =
           );
         }
 
-        // Simple link lists sit under the trigger at content width. Mega
-        // panels stay header-width, so those items are `static` and the
-        // panel positions against the header instead.
+        // Every dropdown sits under its trigger and sizes to its content.
         if (item.panel.kind === 'links') {
           // Last dropdown aligns to the trigger's right edge so it can't
           // overflow the viewport on tablet, next to the header CTA.
@@ -108,20 +105,21 @@ const triggerClass =
 
             <div
               id={panelId}
-              class="mega-panel border-line-base bg-surface-base absolute inset-x-0 top-full border-b shadow-lg"
+              class="mega-panel mega-panel-center border-line-base bg-surface-base absolute top-full z-10 w-max rounded-lg border p-4 shadow-lg"
             >
-              <Container gap="none" class="max-h-[70vh] overflow-y-auto py-8">
-                <div
-                  class:list={[
-                    'grid w-full gap-x-8 gap-y-6',
-                    // Tablet halves the desktop column count; the panel must
-                    // survive 768px because the mega menu runs there too.
-                    'grid-cols-2',
-                    featured ? 'lg:grid-cols-3' : 'lg:grid-cols-4',
-                  ]}
-                >
+              <div
+                class:list={[
+                  'grid w-max max-h-[70vh] gap-x-8 gap-y-6 overflow-y-auto',
+                  // Tablet halves the desktop column count; the panel must
+                  // survive 768px because the mega menu runs there too.
+                  'grid-cols-[repeat(2,max-content)]',
+                  featured
+                    ? 'lg:grid-cols-[repeat(3,max-content)]'
+                    : 'lg:grid-cols-[repeat(4,max-content)]',
+                ]}
+              >
                   {columns.map((column) => (
-                    <div class="flex flex-col gap-2">
+                    <div class="flex w-max max-w-xs flex-col gap-2">
                       {column.heading && (
                         <h2 class="text-ink-muted text-sm font-semibold tracking-wide uppercase">
                           {column.heading}
@@ -156,7 +154,7 @@ const triggerClass =
                   ))}
 
                   {featured && (
-                    <div class="bg-surface-muted flex flex-col items-start gap-2 rounded-lg p-5 max-lg:col-span-2">
+                    <div class="bg-surface-muted flex w-max max-w-xs flex-col items-start gap-2 rounded-lg p-5 max-lg:col-span-2 max-lg:w-full max-lg:max-w-none">
                       <h2 class="font-semibold">{featured.title}</h2>
                       <p class="text-ink-muted text-sm">{featured.body}</p>
                       <a
@@ -169,7 +167,6 @@ const triggerClass =
                     </div>
                   )}
                 </div>
-              </Container>
             </div>
           </li>
         );
@@ -227,6 +224,28 @@ const triggerClass =
 
   .mega-item[data-open='true'] > button > .mega-chevron {
     transform: rotate(180deg);
+  }
+
+  /* Wide panels center on the nav so they stay on screen. The shared
+     open/hover rules set transform, so the horizontal shift has to be
+     repeated in every state. */
+  .mega-panel-center {
+    left: 50%;
+    transform: translate(-50%, -0.25rem);
+  }
+
+  @media (hover: hover) {
+    .mega-item:hover > .mega-panel-center {
+      transform: translateX(-50%);
+    }
+  }
+
+  :global(html:not(.js)) .mega-item:focus-within > .mega-panel-center {
+    transform: translateX(-50%);
+  }
+
+  .mega-item[data-open='true'] > .mega-panel-center {
+    transform: translateX(-50%);
   }
 
   @media (prefers-reduced-motion: reduce) {

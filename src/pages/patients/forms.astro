@@ -1,9 +1,30 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/blocks/Hero.astro';
-import FeatureSplit from '../../components/blocks/FeatureSplit.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
+import Section from '../../components/ui/Section.astro';
+import Container from '../../components/ui/Container.astro';
+import Card from '../../components/ui/Card.astro';
+import Heading from '../../components/ui/Heading.astro';
+import Button from '../../components/ui/Button.astro';
+import BlockHeader from '../../components/blocks/BlockHeader.astro';
+import { Icon } from 'astro-icon/components';
 import { site } from '../../config/site';
+
+const forms = [
+  {
+    title: 'Adult new-patient form',
+    body: 'For patients 18 and older. Complete it and email the PDF before your appointment.',
+    href: '/forms/2026-edited-policyJuly-Adult-New-Patient-.pdf',
+    download: 'Hawaiian-Smiles-Adult-New-Patient-Form.pdf',
+  },
+  {
+    title: 'Child new-patient form',
+    body: 'For patients under 18. A parent or guardian should complete and sign it.',
+    href: '/forms/2026-edited-JulyNP_Packet_Child_Final.pdf',
+    download: 'Hawaiian-Smiles-Child-New-Patient-Form.pdf',
+  },
+];
 ---
 
 <BaseLayout
@@ -29,16 +50,42 @@ import { site } from '../../config/site';
     ]}
   />
 
-  <FeatureSplit
-    title="Adult and child forms"
-    body="Please complete the form that matches the patient. If you would rather fill them out on paper in the office, arrive a few minutes early."
-    bullets={[
-      'Adult new-patient form',
-      'Child new-patient form',
-      `Email completed PDFs to ${site.business.email}`,
-    ]}
-    actions={[{ label: 'Contact the office', href: '/contact/' }]}
-  />
+  <Section background="muted">
+    <Container gap="lg">
+      <BlockHeader
+        eyebrow="Download"
+        title="Adult and child forms"
+        body="Please complete the form that matches the patient. If you would rather fill them out on paper in the office, arrive a few minutes early."
+      />
+
+      <ul class="grid w-full gap-6 sm:grid-cols-2">
+        {
+          forms.map((form) => (
+            <Card as="li" variant="outlined">
+              <Icon name="lucide:file-text" class="text-brand-600 size-8" aria-hidden="true" />
+              <Heading level={3} size="md">
+                {form.title}
+              </Heading>
+              <p class="text-ink-muted">{form.body}</p>
+              <Button
+                href={form.href}
+                download={form.download}
+                variant="secondary"
+                class="mt-auto"
+              >
+                <Icon name="lucide:download" class="size-4" aria-hidden="true" />
+                Download PDF
+              </Button>
+            </Card>
+          ))
+        }
+      </ul>
+
+      <p class="text-ink-muted">
+        Email completed PDFs to <a href={`mailto:${site.business.email}`} class="text-ink-brand">{site.business.email}</a>.
+      </p>
+    </Container>
+  </Section>
 
   <CTABanner
     title="Need a form sent to you?"

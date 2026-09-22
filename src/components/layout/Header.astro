@@ -41,8 +41,8 @@ const positioned = sticky !== 'static';
     overlay
       ? 'data-[scrolled=true]:border-line-base data-[scrolled=true]:bg-surface-base border-transparent bg-transparent'
       : 'border-line-base bg-surface-base',
-    // The mega panel is absolutely positioned against the header, so the header
-    // must be a positioned ancestor even when it isn't sticky.
+    // Dropdowns position against their triggers. A static header still needs a
+    // positioning context so those panels stay attached to the bar.
     positioned ? 'sticky top-0' : 'relative',
   ]}
 >
