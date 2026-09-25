@@ -4,7 +4,7 @@ import Hero from '../../../components/blocks/Hero.astro';
 import FeatureSplit from '../../../components/blocks/FeatureSplit.astro';
 import ProcessSteps from '../../../components/blocks/ProcessSteps.astro';
 import ServicesGrid from '../../../components/blocks/ServicesGrid.astro';
-import ValueGrid from '../../../components/blocks/ValueGrid.astro';
+import InvisalignBracesCompare from '../../../components/blocks/InvisalignBracesCompare.astro';
 import FAQ from '../../../components/blocks/FAQ.astro';
 import CTABanner from '../../../components/blocks/CTABanner.astro';
 import { invisalignAudiences, invisalignPath } from '../../../config/invisalign';
@@ -101,33 +101,7 @@ const invisalignFaqs = await getFaqsFor(invisalignPath());
     }))}
   />
 
-  <ValueGrid
-    background="muted"
-    eyebrow="Compared with braces"
-    title="What patients notice day to day"
-    items={[
-      {
-        icon: 'lucide:eye-off',
-        title: 'Hard to see',
-        body: 'Discreet enough for work, school, and photos. Most people will not notice you are in treatment.',
-      },
-      {
-        icon: 'lucide:utensils',
-        title: 'No food list',
-        body: 'Remove the trays, eat, then brush before they go back in. Nothing can pop a bracket off.',
-      },
-      {
-        icon: 'lucide:clock',
-        title: 'Shorter visits',
-        body: 'No wires to change, so checkups are usually every five to six weeks and do not take as long.',
-      },
-      {
-        icon: 'lucide:gem',
-        title: 'Diamond provider',
-        body: 'We plan a high volume of Invisalign cases, including bites that used to mean braces only.',
-      },
-    ]}
-  />
+  <InvisalignBracesCompare focus="invisalign" />
 
   <FAQ eyebrow="FAQ" title="Questions about Invisalign" items={invisalignFaqs} schema={false} />
 

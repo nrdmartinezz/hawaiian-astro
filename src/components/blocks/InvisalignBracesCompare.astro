@@ -1,0 +1,180 @@
+---
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+import Heading from '../ui/Heading.astro';
+import ValueGrid from './ValueGrid.astro';
+import FeatureSplit from './FeatureSplit.astro';
+import { treatmentImages } from '../../config/treatmentImages';
+
+interface Props {
+  /** Which treatment this page is about, so the intro leads with that option. */
+  focus: 'invisalign' | 'braces';
+}
+
+const { focus } = Astro.props;
+
+const rows = [
+  ['Visibility', 'Nearly invisible', 'Brackets and a wire you can see'],
+  ['On or off', 'Removable for meals and brushing', 'Fixed until treatment is done'],
+  ['Comfort', 'Smooth plastic, little irritation', 'Soreness after placement and adjustments; wax for a poking spot'],
+  ['Food', 'No food list — trays come out', 'Skip hard, sticky, and chewy foods'],
+  ['Visits', 'Fewer checkups; no wires to change', 'Adjustments about every 4–8 weeks'],
+  ['Your part', 'About 22 hours a day, or progress slows', 'They work whether you remember them'],
+  ['Complex bites', 'Many cases, not every severe one', 'Precise control for severe crowding and bite problems'],
+];
+---
+
+<Section>
+  <Container gap="lg">
+    <div class="flex max-w-reading flex-col gap-5">
+      <p class="text-brand-500 text-sm font-semibold tracking-wide uppercase">Invisalign or braces</p>
+      <Heading level={2} size="2xl" weight="normal">
+        {
+          focus === 'invisalign'
+            ? 'How clear aligners compare with braces'
+            : 'How braces compare with clear aligners'
+        }
+      </Heading>
+      <span class="bg-brand-500 h-1 w-16" aria-hidden="true"></span>
+      <p class="text-ink-muted text-[1rem]">
+        Both straighten teeth. Braces are fixed brackets and a wire, including the self-ligating
+        brackets we use. Invisalign is a series of clear, removable trays. We look at the bite, your
+        schedule, and whether you can wear trays most of the day, then recommend one.
+      </p>
+    </div>
+
+    <div class="border-line-base w-full overflow-x-auto rounded-lg border">
+      <table class="w-full min-w-[40rem] text-left text-sm">
+        <caption class="sr-only">Invisalign compared with braces</caption>
+        <thead class="bg-surface-muted">
+          <tr>
+            <th class="px-4 py-3 font-semibold" scope="col"> </th>
+            <th class="px-4 py-3 font-semibold" scope="col">Invisalign</th>
+            <th class="px-4 py-3 font-semibold" scope="col">Braces</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            rows.map(([aspect, aligners, braces]) => (
+              <tr class="border-line-base border-t">
+                <th class="px-4 py-3 font-medium" scope="row">
+                  {aspect}
+                </th>
+                <td class="text-ink-muted px-4 py-3">{aligners}</td>
+                <td class="text-ink-muted px-4 py-3">{braces}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </Container>
+</Section>
+
+<ValueGrid
+  background="muted"
+  eyebrow="Braces"
+  title="Why patients choose braces"
+  items={[
+    {
+      icon: 'lucide:crosshair',
+      title: 'Complex cases',
+      body: 'Braces handle severe crowding, spacing, and bite problems. The wire gives steady control over each tooth, including movements aligners cannot always make.',
+    },
+    {
+      icon: 'lucide:lock',
+      title: 'They stay on',
+      body: 'Fixed appliances press the teeth whether or not you remember them. Results are steady because the braces never come out for a meal.',
+    },
+    {
+      icon: 'lucide:sparkles',
+      title: 'Little daily upkeep',
+      body: 'After they go on, your job is brushing, flossing, and calling us if something breaks. We make the adjustments at your visits.',
+    },
+  ]}
+/>
+
+<ValueGrid
+  eyebrow="Braces"
+  title="What to plan for with braces"
+  items={[
+    {
+      icon: 'lucide:eye',
+      title: 'You can see them',
+      body: 'Self-ligating brackets are smaller and have rounded corners, and ceramic braces are a quieter option. They are still more visible than clear trays when you smile, talk, or eat.',
+    },
+    {
+      icon: 'lucide:utensils',
+      title: 'A food list',
+      body: 'Hard, sticky, and chewy foods can pop a bracket or bend a wire. Popcorn, gum, and hard candy are the usual ones to skip. We can repair a break, and they still happen.',
+    },
+    {
+      icon: 'lucide:bandage',
+      title: 'Soreness at the start',
+      body: 'Cheeks and teeth can be sore for a few days after the braces go on and after an adjustment. Wax, a cold compress, or an over-the-counter pain reliever usually covers it. It should not stay severe.',
+    },
+  ]}
+/>
+
+<ValueGrid
+  background="muted"
+  eyebrow="Invisalign"
+  title="Why patients choose clear aligners"
+  items={[
+    {
+      icon: 'lucide:eye-off',
+      title: 'Hard to see',
+      body: 'The trays are clear medical-grade plastic. Most people will not notice them in photos, at work, or at school.',
+    },
+    {
+      icon: 'lucide:utensils',
+      title: 'Eat what you like',
+      body: 'Take the trays out for meals, anything but water, and brushing. Nothing on the menu can snap a bracket. Brush before they go back in.',
+    },
+    {
+      icon: 'lucide:smile',
+      title: 'Smooth against the cheeks',
+      body: 'There are no brackets or wires to rub. Each set is made to fit your teeth. Expect pressure for a day or two when you start a new tray — that pressure is the teeth moving.',
+    },
+  ]}
+/>
+
+<ValueGrid
+  eyebrow="Invisalign"
+  title="What to plan for with aligners"
+  items={[
+    {
+      icon: 'lucide:clock',
+      title: 'Hours matter',
+      body: 'The trays only move teeth while they are in. Plan on about 22 hours a day. Shortchanging that time stretches treatment and can throw off the plan.',
+    },
+    {
+      icon: 'lucide:scan',
+      title: 'Not every bite',
+      body: 'Invisalign treats many cases, including some that used to mean braces only. Severe misalignment and some bite problems still need the control of fixed braces. We will say which one fits after the exam.',
+    },
+    {
+      icon: 'lucide:search',
+      title: 'Trays get lost',
+      body: 'They come out to eat, and a napkin is how they disappear. Keep the case with you. Call us if one is lost so we can tell you whether to go back a tray, move ahead, or come in for a replacement.',
+    },
+  ]}
+/>
+
+<FeatureSplit
+  background="muted"
+  eyebrow="At the consult"
+  title="We pick the appliance after we see the bite"
+  image={focus === 'invisalign' ? treatmentImages.invisalign : treatmentImages.braces}
+  imageAlt={focus === 'invisalign' ? 'Clear aligners' : 'Braces'}
+  body="Complexity, lifestyle, and whether you can wear trays most of the day decide it. Both finish with retainers. A complimentary consult is where we walk through which one fits."
+  bullets={[
+    'Exam, X-rays, and a look at the movements the teeth need',
+    'A straight answer if aligners are not enough',
+    'Braces and Invisalign pages if you want the details of one appliance',
+  ]}
+  actions={[
+    { label: 'Invisalign', href: '/treatments/invisalign/' },
+    { label: 'Braces', href: '/treatments/braces/', variant: 'secondary' },
+  ]}
+/>

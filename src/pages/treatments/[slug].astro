@@ -11,6 +11,7 @@ import Heading from '../../components/ui/Heading.astro';
 import { treatments } from '../../config/treatments';
 import { treatmentImages } from '../../config/treatmentImages';
 import { getFaqsFor } from '../../lib/faqs';
+import InvisalignBracesCompare from '../../components/blocks/InvisalignBracesCompare.astro';
 
 export function getStaticPaths() {
   return treatments
@@ -136,6 +137,8 @@ const faqs = treatment.slug === 'teeth-whitening' ? (treatment.faqs ?? []) : awa
       </Section>
     )
   }
+
+  {treatment.slug === 'braces' && <InvisalignBracesCompare focus="braces" />}
 
   {
     faqs.length > 0 && (
