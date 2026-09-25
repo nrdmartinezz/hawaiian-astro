@@ -16,18 +16,28 @@ const { focus } = Astro.props;
 const rows = [
   ['Visibility', 'Nearly invisible', 'Brackets and a wire you can see'],
   ['On or off', 'Removable for meals and brushing', 'Fixed until treatment is done'],
-  ['Comfort', 'Smooth plastic, little irritation', 'Soreness after placement and adjustments; wax for a poking spot'],
+  [
+    'Comfort',
+    'Smooth plastic, little irritation',
+    'Soreness after placement and adjustments; wax for a poking spot',
+  ],
   ['Food', 'No food list — trays come out', 'Skip hard, sticky, and chewy foods'],
   ['Visits', 'Fewer checkups; no wires to change', 'Adjustments about every 4–8 weeks'],
   ['Your part', 'About 22 hours a day, or progress slows', 'They work whether you remember them'],
-  ['Complex bites', 'Many cases, not every severe one', 'Precise control for severe crowding and bite problems'],
+  [
+    'Complex bites',
+    'Many cases, not every severe one',
+    'Precise control for severe crowding and bite problems',
+  ],
 ];
 ---
 
 <Section>
   <Container gap="lg">
-    <div class="flex max-w-reading flex-col gap-5">
-      <p class="text-brand-500 text-sm font-semibold tracking-wide uppercase">Invisalign or braces</p>
+    <div class="max-w-reading flex flex-col gap-5">
+      <p class="text-brand-500 text-sm font-semibold tracking-wide uppercase">
+        Invisalign or braces
+      </p>
       <Heading level={2} size="2xl" weight="normal">
         {
           focus === 'invisalign'

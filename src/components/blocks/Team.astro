@@ -61,10 +61,7 @@ const columnClass = {
                 widths={[240, 480]}
                 sizes="(max-width: 640px) 100vw, 25vw"
                 loading="lazy"
-                class:list={[
-                  'aspect-4/5 w-full rounded-lg object-cover',
-                  member.photoPosition,
-                ]}
+                class:list={['aspect-4/5 w-full rounded-lg object-cover', member.photoPosition]}
               />
             ) : (
               <div class="bg-surface-muted aspect-4/5 w-full rounded-lg" aria-hidden="true" />
