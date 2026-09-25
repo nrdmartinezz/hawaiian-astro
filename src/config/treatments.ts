@@ -80,34 +80,7 @@ export const treatments: Treatment[] = [
         ],
         bullets: ['Persistent thumb sucking', 'Tongue thrusting', 'Mouth breathing'],
       },
-    ],
-    faqs: [
-      {
-        question: 'What is early orthodontic treatment?',
-        answer:
-          'It is care that starts before all of the permanent teeth (except wisdom teeth) are in. We guide development while a child still has a mix of baby and permanent teeth.',
-      },
-      {
-        question: 'What is the best age to start?',
-        answer:
-          'Treatment can start as early as age 6. Many children are best assessed between 8 and 10, when baby teeth and permanent teeth are both present. For adults, age is not the limit — healthy teeth and gums are. Always start with an orthodontist before any plan.',
-      },
-      {
-        question: 'Will braces come off early?',
-        answer:
-          'No. The goal is a bite and tooth alignment that hold. Taking appliances off before treatment is finished can let teeth move back.',
-      },
-      {
-        question: 'Can we switch orthodontists during treatment?',
-        answer:
-          'Yes. If you move, or you would rather be seen somewhere else, tell us ahead of time and we will send your records. Choosing a practice you can stay with avoids interruptions.',
-      },
-      {
-        question: 'When is early treatment necessary?',
-        answer:
-          'It can keep a problem from turning into a longer, harder treatment later. It also guides growth and can prevent speech or breathing difficulties. We will tell you plainly if your child needs it, or if watching and waiting is the right plan.',
-      },
-    ],
+    ],
   },
   {
     slug: 'adult-treatment',
@@ -132,29 +105,7 @@ export const treatments: Treatment[] = [
           'The first visit is an exam. We recommend a plan for your bite and your goals, and those plans differ from person to person. Bring questions about timing, cost, and how soon you can start.',
         ],
       },
-    ],
-    faqs: [
-      {
-        question: 'What are the benefits of braces as an adult?',
-        answer:
-          'A more confident smile, lower risk of uneven wear and other oral-health problems, easier chewing, and in some cases better breathing and clearer speech.',
-      },
-      {
-        question: 'What do adult braces cost?',
-        answer:
-          'Oral-B publishes broad national ranges as a starting point: metal braces about $3,000–$7,000, ceramic braces $4,000–$8,000, lingual braces $8,000–$10,000, and Invisalign $4,000–$7,400. Your fee depends on the case. Ask us about insurance and financing before you decide.',
-      },
-      {
-        question: 'Which appliance is best for adults?',
-        answer:
-          'It depends on the bite and on what you want day to day — comfort and reliability, or something more discreet. We recommend the option that fits both.',
-      },
-      {
-        question: 'Is there a best age to start?',
-        answer:
-          'No. Adults can have other oral-health issues to sort out first, but age itself does not rule treatment out. We will tell you if anything needs attention before you start.',
-      },
-    ],
+    ],
   },
   {
     slug: 'airway',
@@ -234,19 +185,7 @@ export const treatments: Treatment[] = [
           'Pitts21 is an aesthetic self-ligating system that allows 3D control earlier and throughout treatment. Smile Arc Protection places the brackets slightly higher so the smile follows the curve of the lower lip.',
         ],
       },
-    ],
-    faqs: [
-      {
-        question: 'How long do self-ligating braces take?',
-        answer:
-          'Usually 12 to 30 months, depending on the bite. Your timeline comes from the exam, not from an average.',
-      },
-      {
-        question: 'Do they need tightening?',
-        answer:
-          'They do not use elastic ties that get tightened the old way, so visits are spaced further apart than with conventional braces. We still see you to check progress and change wires when the plan calls for it.',
-      },
-    ],
+    ],
   },
   {
     slug: 'emergency',
@@ -288,34 +227,7 @@ export const treatments: Treatment[] = [
           'General tooth pain or a tooth that feels loose',
         ],
       },
-    ],
-    faqs: [
-      {
-        question: 'What counts as an orthodontic emergency?',
-        answer:
-          'Alarming is not the same as urgent. Swelling around a painful tooth, or bleeding you cannot control, means emergency services first, then a call to us. When you are unsure, call.',
-      },
-      {
-        question: 'Is a broken bracket an emergency?',
-        answer:
-          'No. Cover it with wax if it is sharp, and contact us so we can replace it. It is an inconvenience, not an emergency.',
-      },
-      {
-        question: 'What if a bracket falls off?',
-        answer:
-          'Call to schedule a repair. Remove loose pieces so they are not swallowed, and cover the area with wax until we see you.',
-      },
-      {
-        question: 'When should I go to the ER?',
-        answer:
-          'Swallowed appliance parts, heavy bleeding, facial trauma, or swelling that could be an abscess. See a physician or the emergency room first, then let us know.',
-      },
-      {
-        question: 'What do you see most often?',
-        answer:
-          'Loose brackets, poking wires, food caught in the gums, significant soreness, swallowed pieces, and irritation or infection. Severity varies — if you are worried, call.',
-      },
-    ],
+    ],
   },
   {
     slug: 'retainers',

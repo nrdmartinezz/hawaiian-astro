@@ -1,0 +1,74 @@
+---
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/blocks/Hero.astro';
+import FAQ from '../components/blocks/FAQ.astro';
+import CTABanner from '../components/blocks/CTABanner.astro';
+import { getAllFaqs, getFaqsByTopic, toFaqItem } from '../lib/faqs';
+import { treatmentImages } from '../config/treatmentImages';
+import officeImage from '../assets/blog/632-Orthodontist-Kaneohe.jpg';
+import consultImage from '../assets/blog/553-Orthodontist-explanation.jpg';
+
+const topicImages: Record<string, { src: ImageMetadata; alt: string }> = {
+  Practice: { src: officeImage, alt: 'A patient visiting Hawaiian Smiles in Kaneohe' },
+  'General treatment': {
+    src: treatmentImages['early-treatment'],
+    alt: 'A smile during orthodontic treatment',
+  },
+  'Early treatment': {
+    src: treatmentImages['early-treatment'],
+    alt: 'A child ready for an early orthodontic visit',
+  },
+  'Invisalign First': {
+    src: treatmentImages.invisalign,
+    alt: 'Clear aligners for a growing smile',
+  },
+  Braces: { src: treatmentImages.braces, alt: 'Braces on a smile' },
+  Invisalign: { src: treatmentImages.invisalign, alt: 'Invisalign aligners' },
+  'Adult treatment': { src: treatmentImages['adult-treatment'], alt: 'An adult smile in treatment' },
+  Emergencies: { src: treatmentImages.emergency, alt: 'Orthodontic care at the office' },
+  Retention: { src: treatmentImages.retainers, alt: 'A finished smile after treatment' },
+  Insurance: { src: consultImage, alt: 'A consultation at Hawaiian Smiles' },
+  'Payment plans': { src: consultImage, alt: 'Talking through treatment options' },
+};
+
+const groups = await getFaqsByTopic();
+const faqs = (await getAllFaqs()).map(toFaqItem);
+---
+
+<BaseLayout
+  title="FAQ"
+  description="Answers about treatment, Invisalign, braces, visits, insurance, and payment plans at Hawaiian Smiles Orthodontics."
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'FAQ', href: '/faq/' },
+  ]}
+  faqs={faqs}
+>
+  <Hero
+    eyebrow="FAQ"
+    title="Questions we hear most"
+    body="Treatment, visits, emergencies, insurance, and payment plans. If your question is not here, call or text us."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+
+  {
+    groups.map((group, index) => (
+      <FAQ
+        eyebrow={index === 0 ? 'All questions' : undefined}
+        title={group.topic}
+        items={group.items}
+        image={topicImages[group.topic]?.src}
+        imageAlt={topicImages[group.topic]?.alt}
+        schema={false}
+        background={index % 2 === 0 ? 'base' : 'muted'}
+      />
+    ))
+  }
+
+  <CTABanner
+    title="Still have a question?"
+    body="Call or text (808) 247-6039, or request a complimentary consultation."
+    actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
+  />
+</BaseLayout>

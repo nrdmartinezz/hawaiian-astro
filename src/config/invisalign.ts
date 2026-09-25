@@ -1,4 +1,3 @@
-import type { FaqItem } from '../components/blocks/FAQ.astro';
 import type { ProcessStep } from '../components/blocks/ProcessSteps.astro';
 import type { ValueItem } from '../components/blocks/ValueGrid.astro';
 
@@ -15,59 +14,8 @@ export interface InvisalignAudience {
   icon: string;
   values?: ValueItem[];
   steps?: ProcessStep[];
-  faqs?: FaqItem[];
 }
 
-export const invisalignFaqs: FaqItem[] = [
-  {
-    question: 'What is Invisalign treatment?',
-    answer:
-      'A series of clear aligner trays that correct alignment. They are a form of braces, with a different way of moving teeth. We will tell you if they fit your case.',
-  },
-  {
-    question: 'How fast do teeth move?',
-    answer:
-      'Movement is gradual, which keeps discomfort lower than many people expect from braces. Most Invisalign treatment takes 12 to 18 months. Simpler cases can finish in 6 to 18 months.',
-  },
-  {
-    question: 'How much does Invisalign cost?',
-    answer:
-      'A common range is about $5,000 to $8,000, and it varies with the case. We will quote your plan before you start, including insurance and monthly options.',
-  },
-  {
-    question: 'Do the results last?',
-    answer:
-      'They are meant to. Trauma or gum disease can still move teeth, and teeth drift with age. Nighttime retainers are what keep the result.',
-  },
-  {
-    question: 'How often do I wear the aligners?',
-    answer: 'Up to 22 hours a day. Take them out to eat, drink anything but water, and brush.',
-  },
-  {
-    question: 'Are there food restrictions?',
-    answer:
-      'No. Remove the aligners, eat, then brush your teeth and the trays before they go back in. Gum will stick to the plastic, so take the trays out for that too.',
-  },
-  {
-    question: 'Will they affect my speech?',
-    answer:
-      'There is a short adjustment. The more you talk with them in, the faster speech settles.',
-  },
-  {
-    question: 'Does it hurt?',
-    answer:
-      'Expect pressure for a day or two each time you start a new tray. That pressure is the teeth moving.',
-  },
-  {
-    question: 'How do I clean the trays?',
-    answer:
-      'Brush them with a soft toothbrush and a clear cleanser. Skip hot water, which can warp the plastic.',
-  },
-  {
-    question: 'How often are appointments?',
-    answer: 'Usually every five to six weeks, so we can confirm the teeth are tracking the plan.',
-  },
-];
 
 /**
  * Audience pages under /treatments/invisalign/. Add an entry here to publish
@@ -149,24 +97,7 @@ export const invisalignAudiences: InvisalignAudience[] = [
         title: 'Keep the case with you',
         body: 'Clean trays with a soft toothbrush, liquid soap, and lukewarm water. A napkin is how aligners disappear.',
       },
-    ],
-    faqs: [
-      {
-        question: 'How is Invisalign Teen different?',
-        answer:
-          'Each teen tray has a wear indicator that changes color if it has not been used long enough, and teens often receive spare trays in case one is misplaced.',
-      },
-      {
-        question: 'Can my teen get Invisalign?',
-        answer:
-          'Many teens can. We still need to see them — some bites are too complex for aligners alone.',
-      },
-      {
-        question: 'What if a teen loses an aligner?',
-        answer:
-          'Call us. Going without trays lets teeth drift. A spare may already be in the series; we will tell you whether to move ahead, go back a tray, or come in.',
-      },
-    ],
+    ],
   },
   {
     slug: 'children',
@@ -225,24 +156,7 @@ export const invisalignAudiences: InvisalignAudience[] = [
         title: 'Wear and care',
         body: 'Full-time wear, off only to brush and floss. Cool water and a soft brush. Skip sticky foods and hot water. A lisp or a small gap between the front teeth can show up and then settle.',
       },
-    ],
-    faqs: [
-      {
-        question: 'When is Invisalign First used?',
-        answer:
-          'As Phase 1, typically between ages 6 and 10, while baby teeth and permanent teeth are both present. The goal is to guide growth and make room for the adult teeth.',
-      },
-      {
-        question: 'Will my child still need braces later?',
-        answer:
-          'Often yes. Early expansion and alignment usually make that later phase easier and shorter. We will say at the evaluation what the full plan looks like.',
-      },
-      {
-        question: 'Can they eat with an expander in?',
-        answer:
-          'Yes. Avoid sticky or chewy foods. Clean the expander with a soft toothbrush and cool water, never hot water.',
-      },
-    ],
+    ],
   },
 ];
 

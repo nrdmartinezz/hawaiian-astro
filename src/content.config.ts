@@ -23,4 +23,14 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { blog };
+const faqs = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/faqs' }),
+  schema: z.object({
+    question: z.string(),
+    topic: z.string(),
+    pages: z.array(z.string()).default([]),
+    order: z.number(),
+  }),
+});
+
+export const collections = { blog, faqs };

@@ -3,8 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/blocks/Hero.astro';
 import ServicesGrid from '../../components/blocks/ServicesGrid.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
+import FAQ from '../../components/blocks/FAQ.astro';
 import { treatments } from '../../config/treatments';
 import { treatmentImages } from '../../config/treatmentImages';
+import { getFaqsFor } from '../../lib/faqs';
+
+const faqs = await getFaqsFor('/treatments/');
 
 const breadcrumbs = [
   { name: 'Home', href: '/' },
@@ -16,6 +20,7 @@ const breadcrumbs = [
   title="Treatments"
   description="Early treatment, adult treatment, airway development, Invisalign, self-ligating braces, retainers, emergency care, and teeth whitening at Hawaiian Smiles."
   breadcrumbs={breadcrumbs}
+  faqs={faqs}
 >
   <Hero
     eyebrow="Treatments"
@@ -32,6 +37,13 @@ const breadcrumbs = [
       href: `/treatments/${treatment.slug}/`,
       image: treatmentImages[treatment.slug],
     }))}
+  />
+
+  <FAQ
+    eyebrow="FAQ"
+    title="Questions about treatment"
+    items={faqs}
+    schema={false}
   />
 
   <CTABanner

@@ -3,7 +3,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/blocks/Hero.astro';
 import Team from '../../components/blocks/Team.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
+import FAQ from '../../components/blocks/FAQ.astro';
 import { doctors } from '../../config/team';
+import { getFaqsFor } from '../../lib/faqs';
+
+const faqs = await getFaqsFor('/about/doctors/');
 ---
 
 <BaseLayout
@@ -14,6 +18,7 @@ import { doctors } from '../../config/team';
     { name: 'About', href: '/about/' },
     { name: 'Meet the Doctors', href: '/about/doctors/' },
   ]}
+  faqs={faqs}
 >
   <Hero
     eyebrow="The doctors"
@@ -23,6 +28,8 @@ import { doctors } from '../../config/team';
   />
 
   <Team eyebrow="Doctors" title="Your smile team" items={doctors} columns={3} />
+
+  <FAQ eyebrow="FAQ" title="Questions about our doctors" items={faqs} schema={false} />
 
   <CTABanner
     title="Ready to meet in person?"

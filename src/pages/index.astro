@@ -19,39 +19,9 @@ import { locations } from '../config/locations';
 import { awardLogos, affiliationLogos } from '../config/credentials';
 import heroImage from '../assets/hero.jpg';
 import doctorImage from '../assets/doctors/dr-satya-nayak.jpg';
+import { getFaqsFor } from '../lib/faqs';
 
-const faqs = [
-  {
-    question: 'What is an orthodontist?',
-    answer:
-      'An orthodontist is a dentist trained to diagnose, prevent, and treat teeth and jaw irregularities — for children, teens, and adults.',
-  },
-  {
-    question: 'How often will you need to visit the orthodontist?',
-    answer:
-      'With braces, most patients are seen every four to eight weeks. Invisalign visits are often similar, depending on your plan.',
-  },
-  {
-    question: 'What are the most common orthodontic problems?',
-    answer:
-      'Crowding, spacing, overbites, underbites, and crossbites are among the issues we treat most often — we will confirm yours at your consultation.',
-  },
-  {
-    question: 'When is the right time to see an orthodontist?',
-    answer:
-      'The American Association of Orthodontists recommends an evaluation by age 7. Adults are welcome any time — it is never too late for a healthy smile.',
-  },
-  {
-    question: 'How do I schedule an appointment with an orthodontist?',
-    answer:
-      'Request an appointment online or text (808) 247-6039. Complimentary in-person and virtual consults are available at all four offices.',
-  },
-  {
-    question: 'How much will my orthodontic treatment cost?',
-    answer:
-      'Fees depend on the complexity of your case, the appliance you choose, and the length of treatment. We review insurance, HSA/FSA, and interest-free monthly plans at your consultation.',
-  },
-];
+const faqs = await getFaqsFor('/');
 ---
 
 <BaseLayout

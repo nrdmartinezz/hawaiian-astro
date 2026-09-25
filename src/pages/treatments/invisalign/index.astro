@@ -7,10 +7,12 @@ import ServicesGrid from '../../../components/blocks/ServicesGrid.astro';
 import ValueGrid from '../../../components/blocks/ValueGrid.astro';
 import FAQ from '../../../components/blocks/FAQ.astro';
 import CTABanner from '../../../components/blocks/CTABanner.astro';
-import { invisalignAudiences, invisalignFaqs, invisalignPath } from '../../../config/invisalign';
+import { invisalignAudiences, invisalignPath } from '../../../config/invisalign';
 import { treatmentImages } from '../../../config/treatmentImages';
+import { getFaqsFor } from '../../../lib/faqs';
 
 const image = treatmentImages.invisalign;
+const invisalignFaqs = await getFaqsFor(invisalignPath());
 ---
 
 <BaseLayout

@@ -3,6 +3,8 @@
  * Native <details> accordion — no JS, keyboard-operable for free.
  * Emits FAQPage structured data unless `schema` is disabled.
  */
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
 import Heading from '../ui/Heading.astro';
@@ -21,6 +23,9 @@ interface Props extends BlockProps {
   schema?: boolean;
   /** Allows several answers open at once. */
   multiple?: boolean;
+  /** Sticks in the intro column while the questions scroll. */
+  image?: ImageMetadata;
+  imageAlt?: string;
 }
 
 const {
@@ -35,6 +40,8 @@ const {
   actions = [],
   schema = true,
   multiple = false,
+  image,
+  imageAlt = '',
 } = Astro.props;
 
 const hasIntro = Boolean(eyebrow || title || body || actions.length) || Astro.slots.has('title');
@@ -60,35 +67,52 @@ const jsonLd = {
     >
       {
         hasIntro && (
-          <div class="flex flex-col items-start gap-5 lg:w-5/12 lg:shrink-0">
-            {eyebrow && (
-              <p class="text-brand-500 text-sm font-semibold tracking-wide uppercase">{eyebrow}</p>
-            )}
+          <div class="flex flex-col items-start gap-5 lg:w-5/12 lg:shrink-0 lg:self-stretch">
+            <div
+              class:list={[
+                'flex flex-col items-start gap-5',
+                image && 'lg:sticky lg:top-28',
+              ]}
+            >
+              {eyebrow && (
+                <p class="text-brand-500 text-sm font-semibold tracking-wide uppercase">{eyebrow}</p>
+              )}
 
-            {(title || Astro.slots.has('title')) && (
-              <Heading level={titleLevel} size="2xl" weight="normal">
-                <slot name="title">{title}</slot>
-              </Heading>
-            )}
+              {(title || Astro.slots.has('title')) && (
+                <Heading level={titleLevel} size="2xl" weight="normal">
+                  <slot name="title">{title}</slot>
+                </Heading>
+              )}
 
-            <span class="bg-brand-500 h-1 w-16" aria-hidden="true" />
+              <span class="bg-brand-500 h-1 w-16" aria-hidden="true" />
 
-            {body && <p class="text-ink-muted max-w-reading text-[1rem]">{body}</p>}
+              {body && <p class="text-ink-muted max-w-reading text-[1rem]">{body}</p>}
 
-            {actions.length > 0 && (
-              <div class="flex flex-wrap gap-3">
-                {actions.map((action) => (
-                  <Button
-                    href={action.href}
-                    download={action.download}
-                    variant={action.variant ?? 'primary'}
-                  >
-                    {action.icon && <Icon name={action.icon} class="size-4" aria-hidden="true" />}
-                    {action.label}
-                  </Button>
-                ))}
-              </div>
-            )}
+              {actions.length > 0 && (
+                <div class="flex flex-wrap gap-3">
+                  {actions.map((action) => (
+                    <Button
+                      href={action.href}
+                      download={action.download}
+                      variant={action.variant ?? 'primary'}
+                    >
+                      {action.icon && <Icon name={action.icon} class="size-4" aria-hidden="true" />}
+                      {action.label}
+                    </Button>
+                  ))}
+                </div>
+              )}
+
+              {image && (
+                <Image
+                  src={image}
+                  alt={imageAlt}
+                  widths={[480, 768]}
+                  sizes="224px"
+                  class="mt-2 aspect-[4/3] w-56 max-w-full rounded-lg object-cover"
+                />
+              )}
+            </div>
           </div>
         )
       }

@@ -5,6 +5,10 @@ import Section from '../components/ui/Section.astro';
 import Container from '../components/ui/Container.astro';
 import Prose from '../components/ui/Prose.astro';
 import { site } from '../config/site';
+import FAQ from '../components/blocks/FAQ.astro';
+import { getFaqsFor } from '../lib/faqs';
+
+const faqs = await getFaqsFor('/policies/');
 ---
 
 <BaseLayout
@@ -14,6 +18,7 @@ import { site } from '../config/site';
     { name: 'Home', href: '/' },
     { name: 'Policies', href: '/policies/' },
   ]}
+  faqs={faqs}
 >
   <Hero
     eyebrow="Practice policies"
@@ -56,4 +61,6 @@ import { site } from '../config/site';
       </Prose>
     </Container>
   </Section>
+
+  <FAQ eyebrow="FAQ" title="Questions about our policies" items={faqs} schema={false} />
 </BaseLayout>

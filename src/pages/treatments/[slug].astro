@@ -10,6 +10,7 @@ import Container from '../../components/ui/Container.astro';
 import Heading from '../../components/ui/Heading.astro';
 import { treatments } from '../../config/treatments';
 import { treatmentImages } from '../../config/treatmentImages';
+import { getFaqsFor } from '../../lib/faqs';
 
 export function getStaticPaths() {
   return treatments
@@ -27,6 +28,8 @@ interface Props {
 const { treatment } = Astro.props;
 const href = `/treatments/${treatment.slug}/`;
 const image = treatmentImages[treatment.slug];
+const faqs =
+  treatment.slug === 'teeth-whitening' ? (treatment.faqs ?? []) : await getFaqsFor(href);
 ---
 
 <BaseLayout
@@ -38,6 +41,7 @@ const image = treatmentImages[treatment.slug];
     { name: treatment.title, href },
   ]}
   service={{ name: treatment.title, description: treatment.summary }}
+  faqs={faqs}
 >
   <Hero
     eyebrow={treatment.eyebrow}
@@ -135,11 +139,12 @@ const image = treatmentImages[treatment.slug];
   }
 
   {
-    treatment.faqs && treatment.faqs.length > 0 && (
+    faqs.length > 0 && (
       <FAQ
         eyebrow="FAQ"
         title={`Questions about ${treatment.title.toLowerCase()}`}
-        items={treatment.faqs}
+        items={faqs}
+        schema={false}
         background={treatment.sections?.length ? 'base' : 'muted'}
       />
     )

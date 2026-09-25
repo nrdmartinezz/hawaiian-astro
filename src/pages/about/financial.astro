@@ -4,6 +4,10 @@ import Hero from '../../components/blocks/Hero.astro';
 import FeatureSplit from '../../components/blocks/FeatureSplit.astro';
 import Pricing from '../../components/blocks/Pricing.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
+import FAQ from '../../components/blocks/FAQ.astro';
+import { getFaqsFor } from '../../lib/faqs';
+
+const faqs = await getFaqsFor('/about/financial/');
 ---
 
 <BaseLayout
@@ -14,6 +18,7 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
     { name: 'About', href: '/about/' },
     { name: 'Financial Information', href: '/about/financial/' },
   ]}
+  faqs={faqs}
 >
   <Hero
     eyebrow="Affordable care"
@@ -67,6 +72,8 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
       'No hard credit checks on select options',
     ]}
   />
+
+  <FAQ eyebrow="FAQ" title="Questions about cost and coverage" items={faqs} schema={false} />
 
   <CTABanner
     title="Have a benefits question?"

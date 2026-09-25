@@ -5,6 +5,10 @@ import ContactBlock from '../components/blocks/ContactBlock.astro';
 import ServicesGrid from '../components/blocks/ServicesGrid.astro';
 import { locations, locationAddress } from '../config/locations';
 import { site } from '../config/site';
+import FAQ from '../components/blocks/FAQ.astro';
+import { getFaqsFor } from '../lib/faqs';
+
+const faqs = await getFaqsFor('/contact/');
 ---
 
 <BaseLayout
@@ -14,6 +18,7 @@ import { site } from '../config/site';
     { name: 'Home', href: '/' },
     { name: 'Contact', href: '/contact/' },
   ]}
+  faqs={faqs}
 >
   <Hero
     eyebrow="Contact"
@@ -42,4 +47,6 @@ import { site } from '../config/site';
       href: `/locations/${location.slug}/`,
     }))}
   />
+
+  <FAQ eyebrow="FAQ" title="Questions about contacting us" items={faqs} schema={false} />
 </BaseLayout>

@@ -3,6 +3,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/blocks/Hero.astro';
 import FeatureSplit from '../../components/blocks/FeatureSplit.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
+import FAQ from '../../components/blocks/FAQ.astro';
+import { getFaqsFor } from '../../lib/faqs';
+
+const faqs = await getFaqsFor('/about/');
 ---
 
 <BaseLayout
@@ -12,6 +16,7 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about/' },
   ]}
+  faqs={faqs}
 >
   <Hero
     eyebrow="About"
@@ -33,6 +38,8 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
     ]}
     actions={[{ label: 'Meet the team', href: '/about/staff/' }]}
   />
+
+  <FAQ eyebrow="FAQ" title="Questions about our story" items={faqs} schema={false} />
 
   <CTABanner
     title="Come see the legacy for yourself"

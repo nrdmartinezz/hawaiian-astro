@@ -3,8 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/blocks/Hero.astro';
 import ServicesGrid from '../../components/blocks/ServicesGrid.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
+import FAQ from '../../components/blocks/FAQ.astro';
 import { locations, locationAddress } from '../../config/locations';
 import { site } from '../../config/site';
+import { getFaqsFor } from '../../lib/faqs';
+
+const faqs = await getFaqsFor('/locations/');
 
 const breadcrumbs = [
   { name: 'Home', href: '/' },
@@ -16,6 +20,7 @@ const breadcrumbs = [
   title="Locations"
   description="Hawaiian Smiles Orthodontics offices in Kaneohe, Kailua-Kona, Kamuela, and Hilo. Call or text (808) 247-6039."
   breadcrumbs={breadcrumbs}
+  faqs={faqs}
 >
   <Hero
     eyebrow="Four offices"
@@ -37,6 +42,8 @@ const breadcrumbs = [
       href: `/locations/${location.slug}/`,
     }))}
   />
+
+  <FAQ eyebrow="FAQ" title="Questions about our offices" items={faqs} schema={false} />
 
   <CTABanner
     title="Ready to visit?"

@@ -5,19 +5,9 @@ import ProcessSteps from '../../components/blocks/ProcessSteps.astro';
 import FAQ from '../../components/blocks/FAQ.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
 import { patientFormActions } from '../../config/patientForms';
-import { site } from '../../config/site';
+import { getFaqsFor } from '../../lib/faqs';
 
-const faqs = [
-  {
-    question: 'Do I need a dentist referral?',
-    answer:
-      'No. Many patients are referred by their dentist, but you are welcome to schedule a consultation on your own.',
-  },
-  {
-    question: 'Should I complete forms first?',
-    answer: `Yes if you can. Download the adult or child new-patient form, then email the completed PDF to ${site.business.email} before your visit.`,
-  },
-];
+const faqs = await getFaqsFor('/patients/first-visit/');
 ---
 
 <BaseLayout

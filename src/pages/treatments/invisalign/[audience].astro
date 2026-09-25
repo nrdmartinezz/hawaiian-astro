@@ -9,6 +9,7 @@ import FAQ from '../../../components/blocks/FAQ.astro';
 import CTABanner from '../../../components/blocks/CTABanner.astro';
 import { invisalignAudiences, invisalignPath } from '../../../config/invisalign';
 import { treatmentImages } from '../../../config/treatmentImages';
+import { getFaqsFor } from '../../../lib/faqs';
 
 export function getStaticPaths() {
   return invisalignAudiences.map((audience) => ({
@@ -24,6 +25,7 @@ interface Props {
 const { audience } = Astro.props;
 const href = invisalignPath(audience.slug);
 const others = invisalignAudiences.filter((item) => item.slug !== audience.slug);
+const faqs = await getFaqsFor(href);
 ---
 
 <BaseLayout
@@ -36,7 +38,7 @@ const others = invisalignAudiences.filter((item) => item.slug !== audience.slug)
     { name: audience.navLabel, href },
   ]}
   service={{ name: audience.title, description: audience.summary }}
-  faqs={audience.faqs}
+  faqs={faqs}
 >
   <Hero
     eyebrow={audience.eyebrow}
@@ -86,18 +88,6 @@ const others = invisalignAudiences.filter((item) => item.slug !== audience.slug)
     )
   }
 
-  {
-    audience.faqs && (
-      <FAQ
-        eyebrow="FAQ"
-        title={`Questions about ${audience.title}`}
-        items={audience.faqs}
-        schema={false}
-        background="muted"
-      />
-    )
-  }
-
   <ServicesGrid
     eyebrow="Invisalign"
     title="The other ages"
@@ -109,6 +99,18 @@ const others = invisalignAudiences.filter((item) => item.slug !== audience.slug)
       icon: item.icon,
     }))}
   />
+
+  {
+    faqs.length > 0 && (
+      <FAQ
+        eyebrow="FAQ"
+        title={`Questions about ${audience.title}`}
+        items={faqs}
+        schema={false}
+        background="muted"
+      />
+    )
+  }
 
   <CTABanner
     title="Let’s look at your smile together"

@@ -178,6 +178,12 @@ export const navigation: NavigationConfig = {
                 icon: 'lucide:heart-handshake',
               },
               {
+                label: 'FAQ',
+                href: '/faq/',
+                description: 'Treatment, visits, and cost.',
+                icon: 'lucide:circle-help',
+              },
+              {
                 label: 'Blog',
                 href: '/blog/',
                 description: 'Braces and aligner tips.',
@@ -224,6 +230,7 @@ export const navigation: NavigationConfig = {
           href: form.href,
           download: form.download,
         })),
+        { label: 'FAQ', href: '/faq/' },
         { label: 'Referrals', href: '/patients/referrals/' },
         { label: 'Privacy Policy', href: '/privacy/' },
       ],

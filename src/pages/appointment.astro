@@ -6,8 +6,11 @@ import { treatmentServices } from '../config/treatments';
 import { locations } from '../config/locations';
 import { patientFormActions } from '../config/patientForms';
 import { site } from '../config/site';
+import FAQ from '../components/blocks/FAQ.astro';
+import { getFaqsFor } from '../lib/faqs';
 
 const offices = locations.map((location) => location.shortName);
+const faqs = await getFaqsFor('/appointment/');
 ---
 
 <BaseLayout
@@ -17,6 +20,7 @@ const offices = locations.map((location) => location.shortName);
     { name: 'Home', href: '/' },
     { name: 'Request an Appointment', href: '/appointment/' },
   ]}
+  faqs={faqs}
 >
   <Hero
     eyebrow="Let’s get started"
@@ -34,5 +38,12 @@ const offices = locations.map((location) => location.shortName);
     title="Tell us how to reach you"
     body="Include the office that is most convenient and whether you prefer in-person or virtual."
     services={[...offices, ...treatmentServices]}
+  />
+
+  <FAQ
+    eyebrow="FAQ"
+    title="Questions about your consultation"
+    items={faqs}
+    schema={false}
   />
 </BaseLayout>

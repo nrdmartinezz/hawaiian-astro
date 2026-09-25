@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/blocks/Hero.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
+import FAQ from '../../components/blocks/FAQ.astro';
 import Section from '../../components/ui/Section.astro';
 import Container from '../../components/ui/Container.astro';
 import Card from '../../components/ui/Card.astro';
@@ -11,6 +12,9 @@ import BlockHeader from '../../components/blocks/BlockHeader.astro';
 import { Icon } from 'astro-icon/components';
 import { patientForms } from '../../config/patientForms';
 import { site } from '../../config/site';
+import { getFaqsFor } from '../../lib/faqs';
+
+const faqs = await getFaqsFor('/patients/forms/');
 ---
 
 <BaseLayout
@@ -21,6 +25,7 @@ import { site } from '../../config/site';
     { name: 'Patients', href: '/patients/' },
     { name: 'Registration Forms', href: '/patients/forms/' },
   ]}
+  faqs={faqs}
 >
   <Hero
     eyebrow="Paperwork, handled"
@@ -69,6 +74,8 @@ import { site } from '../../config/site';
       </p>
     </Container>
   </Section>
+
+  <FAQ eyebrow="FAQ" title="Questions about forms" items={faqs} schema={false} />
 
   <CTABanner
     title="Need a form sent to you?"

@@ -8,11 +8,15 @@ import LogoCloud from '../components/blocks/LogoCloud.astro';
 import ServicesGrid from '../components/blocks/ServicesGrid.astro';
 import Testimonials from '../components/blocks/Testimonials.astro';
 import CTABanner from '../components/blocks/CTABanner.astro';
+import FAQ from '../components/blocks/FAQ.astro';
 import { site } from '../config/site';
 import { locations } from '../config/locations';
 import { awardLogos, affiliationLogos } from '../config/credentials';
 import { treatmentImages } from '../config/treatmentImages';
 import doctorNayak from '../assets/doctors/dr-satya-nayak.jpg';
+import { getFaqsFor } from '../lib/faqs';
+
+const faqs = await getFaqsFor('/why-choose-us/');
 
 const breadcrumbs = [
   { name: 'Home', href: '/' },
@@ -24,6 +28,7 @@ const breadcrumbs = [
   title="Why Choose Us"
   description="Board-certified specialists, 0% monthly plans from $80–$200, Pitts 21 braces, and Diamond Invisalign care for families across Oʻahu and Hawaiʻi Island."
   breadcrumbs={breadcrumbs}
+  faqs={faqs}
 >
   <Hero
     eyebrow="Why Choose Us"
@@ -226,6 +231,8 @@ const breadcrumbs = [
       },
     ]}
   />
+
+  <FAQ eyebrow="FAQ" title="Questions about choosing us" items={faqs} schema={false} />
 
   <CTABanner
     title="Ready to see if Hawaiian Smiles is the right fit?"
