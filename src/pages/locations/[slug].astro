@@ -5,6 +5,7 @@ import FeatureSplit from '../../components/blocks/FeatureSplit.astro';
 import MapEmbed from '../../components/blocks/MapEmbed.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
 import { locations, locationAddress } from '../../config/locations';
+import { practiceImages } from '../../config/practiceImages';
 import { site } from '../../config/site';
 
 export function getStaticPaths() {
@@ -46,6 +47,8 @@ const href = `/locations/${location.slug}/`;
   <FeatureSplit
     reverse
     title="One practice, four doors"
+    image={practiceImages.nayakShaikhBeach}
+    imageAlt="Dr. Satya Nayak and Dr. Alyssa Shaikh on a Hawaiʻi beach"
     body="The same doctors, technology, and aloha at every office. Longer visits such as braces bonding and Invisalign delivery are scheduled at Kaneohe and Kona."
     bullets={[
       'Complimentary consultations',

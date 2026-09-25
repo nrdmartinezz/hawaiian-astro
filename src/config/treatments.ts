@@ -1,7 +1,18 @@
+import smileDisplay from '../images/smile-display.gif?url';
+import smileArc from '../images/smile-arc.gif?url';
+import smileLine from '../images/smile-line.gif?url';
+
+export interface TreatmentFigure {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 export interface TreatmentSection {
   title: string;
   paragraphs: string[];
   bullets?: string[];
+  figures?: TreatmentFigure[];
 }
 
 export interface TreatmentFaq {
@@ -183,6 +194,23 @@ export const treatments: Treatment[] = [
         paragraphs: [
           'We use Pitts21 self-ligating brackets. They are built for consistent results in a shorter treatment, with rounded corners for comfort and less friction on the teeth.',
           'Pitts21 is an aesthetic self-ligating system that allows 3D control earlier and throughout treatment. Smile Arc Protection places the brackets slightly higher so the smile follows the curve of the lower lip.',
+        ],
+        figures: [
+          {
+            src: smileLine,
+            alt: 'Animation of a straight line across the edges of the upper teeth',
+            caption: 'A flat line across the teeth',
+          },
+          {
+            src: smileArc,
+            alt: 'Animation of a curve that follows the lower lip',
+            caption: 'Edges that follow the lower lip',
+          },
+          {
+            src: smileDisplay,
+            alt: 'Animation measuring how much of the front teeth show in a smile',
+            caption: 'How much of the front teeth show',
+          },
         ],
       },
     ],

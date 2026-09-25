@@ -18,7 +18,7 @@ import { treatmentImages } from '../config/treatmentImages';
 import { locations } from '../config/locations';
 import { awardLogos, affiliationLogos } from '../config/credentials';
 import heroImage from '../assets/hero.jpg';
-import doctorImage from '../assets/doctors/dr-satya-nayak.jpg';
+import { practiceImages } from '../config/practiceImages';
 import { getFaqsFor } from '../lib/faqs';
 
 const faqs = await getFaqsFor('/');
@@ -183,7 +183,7 @@ const faqs = await getFaqsFor('/');
     eyebrow="Meet the Doctor"
     name="Dr. Satya Nayak"
     credentials="D.M.D., M.S. — Lead Orthodontist"
-    image={doctorImage}
+    image={practiceImages.nayakFernandez}
     imageAlt="Dr. Satya Nayak and Dr. Nicole Fernandez on a Hawaiʻi beach"
     actions={[
       { label: 'Meet the doctors', href: '/about/doctors/' },

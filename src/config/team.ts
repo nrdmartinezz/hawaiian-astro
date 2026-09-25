@@ -1,7 +1,13 @@
+import type { ImageMetadata } from 'astro';
+import { practiceImages } from './practiceImages';
+
 export interface TeamMember {
   name: string;
   role: string;
   bio: string;
+  photo?: ImageMetadata;
+  /** Tailwind object-position class when the photo is a wider portrait. */
+  photoPosition?: string;
 }
 
 export const doctors: TeamMember[] = [
@@ -9,16 +15,22 @@ export const doctors: TeamMember[] = [
     name: 'Dr. Satya Nayak',
     role: 'D.M.D., M.S.',
     bio: 'Dr. Nayak joined the practice in 2018. He earned his D.M.D. at the University of Pennsylvania, then completed orthodontic residency and a Master’s in Oral Biology at UNLV, plus a Master’s in dental biomaterials from the University at Buffalo.',
+    photo: practiceImages.nayakFernandez,
+    photoPosition: 'object-[72%_center]',
   },
   {
     name: 'Dr. Alyssa Shaikh',
     role: 'D.D.S., M.S.D.',
     bio: 'Dr. Alyssa trained at the University of Detroit Mercy and completed orthodontic residency at the University of Colorado. She brings a fun, welcoming chairside manner and a deep commitment to confident smiles.',
+    photo: practiceImages.shaikh,
+    photoPosition: 'object-[center_22%]',
   },
   {
     name: 'Dr. Nicole Fernandez',
     role: 'D.M.D., D.D.S.',
     bio: 'A Hawaiʻi native raised in Mililani and Mānoa, Dr. Nicole met Dr. Nayak in dental school at Penn. She focuses on 5-star patient experience from Oʻahu to the Big Island and assists with emergencies and aligner visits.',
+    photo: practiceImages.family,
+    photoPosition: 'object-[center_35%]',
   },
 ];
 

@@ -6,6 +6,7 @@ import Pricing from '../../components/blocks/Pricing.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
 import FAQ from '../../components/blocks/FAQ.astro';
 import { getFaqsFor } from '../../lib/faqs';
+import { practiceImages } from '../../config/practiceImages';
 
 const faqs = await getFaqsFor('/about/financial/');
 ---
@@ -65,6 +66,8 @@ const faqs = await getFaqsFor('/about/financial/');
   <FeatureSplit
     background="muted"
     title="Transparent from the first visit"
+    image={practiceImages.nayakShaikhPier}
+    imageAlt="Dr. Satya Nayak and Dr. Alyssa Shaikh under a pier in Hawaiʻi"
     body="Costs vary with the severity of the problem and the appliance you choose. Financing and payment are fully discussed at your first visit so you can make the best choice for your smile."
     bullets={[
       '0% in-house financing options',

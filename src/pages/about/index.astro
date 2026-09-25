@@ -5,6 +5,7 @@ import FeatureSplit from '../../components/blocks/FeatureSplit.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
 import FAQ from '../../components/blocks/FAQ.astro';
 import { getFaqsFor } from '../../lib/faqs';
+import { practiceImages } from '../../config/practiceImages';
 
 const faqs = await getFaqsFor('/about/');
 ---
@@ -31,6 +32,8 @@ const faqs = await getFaqsFor('/about/');
   <FeatureSplit
     title="Continuing Dr. Yim’s legacy"
     body="Dr. Yim was one of the first dentists in Hawaiʻi certified by the American Board of Orthodontics. Dr. Nayak inherited that commitment: cutting-edge treatment, unhurried explanations, and a visit that feels like ʻohana."
+    image={practiceImages.family}
+    imageAlt="Dr. Satya Nayak and Dr. Nicole Fernandez with their sons on a Hawaiʻi beach"
     bullets={[
       'Voted Best Hawaii Dentist 2020–2025',
       'Offices on Oʻahu and Hawaiʻi Island',

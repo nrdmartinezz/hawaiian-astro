@@ -63,34 +63,45 @@ const faqs = treatment.slug === 'teeth-whitening' ? (treatment.faqs ?? []) : awa
   />
 
   {
-    treatment.sections && treatment.sections.length > 0 && (
-      <Section background="muted">
-        <Container width="reading" gap="lg">
-          {treatment.sections.map((section) => (
-            <div class="flex w-full flex-col gap-4">
-              <Heading level={2} size="xl" weight="normal">
+    treatment.sections?.map((section, index) =>
+      section.figures && section.figures.length > 0 ? (
+        <Section background={index % 2 === 0 ? 'muted' : 'base'}>
+          <Container gap="lg">
+            <div class="flex w-full max-w-3xl flex-col gap-4">
+              <Heading level={2} size="2xl" weight="normal">
                 {section.title}
               </Heading>
+              <span class="bg-brand-500 h-1 w-16" aria-hidden="true" />
               {section.paragraphs.map((paragraph) => (
-                <p class="text-ink-muted text-[1rem]">{paragraph}</p>
+                <p class="text-ink-muted max-w-reading text-[1rem]">{paragraph}</p>
               ))}
-              {section.bullets && section.bullets.length > 0 && (
-                <ul class="flex flex-col gap-2">
-                  {section.bullets.map((bullet) => (
-                    <li class="text-ink-muted flex items-start gap-3">
-                      <span
-                        class="bg-brand-500 mt-2 size-1.5 shrink-0 rounded-full"
-                        aria-hidden="true"
-                      />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
             </div>
-          ))}
-        </Container>
-      </Section>
+            <ul class="grid w-full gap-6 md:grid-cols-3">
+              {section.figures.map((figure) => (
+                <li class="bg-surface-base flex flex-col gap-3 rounded-lg p-4">
+                  <img src={figure.src} alt={figure.alt} class="w-full rounded-md bg-white" />
+                  <p class="text-ink-base text-sm font-medium">{figure.caption}</p>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </Section>
+      ) : (
+        <FeatureSplit
+          title={section.title}
+          image={image}
+          imageAlt=""
+          reverse={index % 2 === 0}
+          background={index % 2 === 0 ? 'muted' : 'base'}
+          bullets={section.bullets}
+        >
+          <Fragment slot="body">
+            {section.paragraphs.map((paragraph) => (
+              <p class="text-ink-muted max-w-reading text-[1rem]">{paragraph}</p>
+            ))}
+          </Fragment>
+        </FeatureSplit>
+      ),
     )
   }
 

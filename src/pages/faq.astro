@@ -6,11 +6,13 @@ import FAQ from '../components/blocks/FAQ.astro';
 import CTABanner from '../components/blocks/CTABanner.astro';
 import { getAllFaqs, getFaqsByTopic, toFaqItem } from '../lib/faqs';
 import { treatmentImages } from '../config/treatmentImages';
-import officeImage from '../assets/blog/632-Orthodontist-Kaneohe.jpg';
-import consultImage from '../assets/blog/553-Orthodontist-explanation.jpg';
+import { practiceImages } from '../config/practiceImages';
 
 const topicImages: Record<string, { src: ImageMetadata; alt: string }> = {
-  Practice: { src: officeImage, alt: 'A patient visiting Hawaiian Smiles in Kaneohe' },
+  Practice: {
+    src: practiceImages.family,
+    alt: 'Dr. Satya Nayak and Dr. Nicole Fernandez with their sons',
+  },
   'General treatment': {
     src: treatmentImages['early-treatment'],
     alt: 'A smile during orthodontic treatment',
@@ -31,8 +33,11 @@ const topicImages: Record<string, { src: ImageMetadata; alt: string }> = {
   },
   Emergencies: { src: treatmentImages.emergency, alt: 'Orthodontic care at the office' },
   Retention: { src: treatmentImages.retainers, alt: 'A finished smile after treatment' },
-  Insurance: { src: consultImage, alt: 'A consultation at Hawaiian Smiles' },
-  'Payment plans': { src: consultImage, alt: 'Talking through treatment options' },
+  Insurance: { src: practiceImages.shaikh, alt: 'Dr. Alyssa Shaikh of Hawaiian Smiles' },
+  'Payment plans': {
+    src: practiceImages.nayakShaikhPierFront,
+    alt: 'Dr. Satya Nayak and Dr. Alyssa Shaikh',
+  },
 };
 
 const groups = await getFaqsByTopic();

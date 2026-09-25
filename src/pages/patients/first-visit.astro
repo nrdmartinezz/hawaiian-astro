@@ -6,6 +6,7 @@ import FAQ from '../../components/blocks/FAQ.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
 import { patientFormActions } from '../../config/patientForms';
 import { getFaqsFor } from '../../lib/faqs';
+import { practiceImages } from '../../config/practiceImages';
 
 const faqs = await getFaqsFor('/patients/first-visit/');
 ---
@@ -23,6 +24,8 @@ const faqs = await getFaqsFor('/patients/first-visit/');
   <Hero
     eyebrow="New patients"
     title="Your first visit, without the guesswork"
+    image={practiceImages.nayakShaikhPierPose}
+    imageAlt="Dr. Satya Nayak and Dr. Alyssa Shaikh on a Hawaiʻi beach"
     body="We will look at your smile, talk through options, and give you a clear picture of time, appliances, and cost — with no pressure to start that day."
     actions={[
       { label: 'Request an appointment', href: '/appointment/' },

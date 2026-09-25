@@ -13,7 +13,7 @@ import { site } from '../config/site';
 import { locations } from '../config/locations';
 import { awardLogos, affiliationLogos } from '../config/credentials';
 import { treatmentImages } from '../config/treatmentImages';
-import doctorNayak from '../assets/doctors/dr-satya-nayak.jpg';
+import { practiceImages } from '../config/practiceImages';
 import { getFaqsFor } from '../lib/faqs';
 
 const faqs = await getFaqsFor('/why-choose-us/');
@@ -43,8 +43,8 @@ const breadcrumbs = [
   <FeatureSplit
     eyebrow="Our story"
     title="A 50-year legacy of Hawaiian smiles"
-    image={doctorNayak}
-    imageAlt="Dr. Satya Nayak of Hawaiian Smiles Orthodontics"
+    image={practiceImages.family}
+    imageAlt="Dr. Satya Nayak and Dr. Nicole Fernandez with their sons on a Hawaiʻi beach"
     bullets={[
       'Continuing Dr. Errol Yim’s care since 1974',
       'Dr. Satya Nayak has led the practice since 2018',
