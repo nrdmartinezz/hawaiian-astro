@@ -1,8 +1,8 @@
 ---
-question: "What should I bring to my first visit, including new-patient forms and insurance information?"
-topic: "Practice"
+question: 'What should I bring to my first visit, including new-patient forms and insurance information?'
+topic: 'Practice'
 pages:
-  - "/patients/first-visit/"
+  - '/patients/first-visit/'
 order: 11
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "What should I do if my retainer is lost, broken, or no longer fits?"
-topic: "Retention"
+question: 'What should I do if my retainer is lost, broken, or no longer fits?'
+topic: 'Retention'
 pages:
-  - "/treatments/retainers/"
+  - '/treatments/retainers/'
 order: 6
 ---
 

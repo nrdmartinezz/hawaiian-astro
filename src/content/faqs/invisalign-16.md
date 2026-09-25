@@ -1,8 +1,8 @@
 ---
-question: "How can parents support a teen who is responsible for removable aligners?"
-topic: "Invisalign"
+question: 'How can parents support a teen who is responsible for removable aligners?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/teen/'
 order: 16
 ---
 

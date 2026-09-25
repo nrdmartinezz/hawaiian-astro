@@ -1,8 +1,8 @@
 ---
-question: "Could self-ligating brackets mean shorter or less frequent appointments for some patients?"
-topic: "Braces"
+question: 'Could self-ligating brackets mean shorter or less frequent appointments for some patients?'
+topic: 'Braces'
 pages:
-  - "/treatments/braces/"
+  - '/treatments/braces/'
 order: 6
 ---
 

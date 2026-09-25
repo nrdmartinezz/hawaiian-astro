@@ -1,8 +1,8 @@
 ---
-question: "How should I clean and store my retainer?"
-topic: "Retention"
+question: 'How should I clean and store my retainer?'
+topic: 'Retention'
 pages:
-  - "/treatments/retainers/"
+  - '/treatments/retainers/'
 order: 5
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "What happens if my insurance claim is delayed, denied, or paid for less than expected?"
-topic: "Insurance"
+question: 'What happens if my insurance claim is delayed, denied, or paid for less than expected?'
+topic: 'Insurance'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 10
 ---
 

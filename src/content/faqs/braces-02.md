@@ -1,8 +1,8 @@
 ---
-question: "What is the difference between traditional metal braces and ceramic braces?"
-topic: "Braces"
+question: 'What is the difference between traditional metal braces and ceramic braces?'
+topic: 'Braces'
 pages:
-  - "/treatments/braces/"
+  - '/treatments/braces/'
 order: 2
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "What should I do if I have swelling, severe pain, an infection, or uncontrolled bleeding?"
-topic: "Emergencies"
+question: 'What should I do if I have swelling, severe pain, an infection, or uncontrolled bleeding?'
+topic: 'Emergencies'
 pages:
-  - "/treatments/emergency/"
+  - '/treatments/emergency/'
 order: 5
 ---
 

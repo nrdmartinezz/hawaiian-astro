@@ -1,8 +1,8 @@
 ---
-question: "The site lists example fees and monthly-payment ranges; what would my actual fee and payment schedule be after insurance and discounts?"
-topic: "Payment plans"
+question: 'The site lists example fees and monthly-payment ranges; what would my actual fee and payment schedule be after insurance and discounts?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 12
 ---
 

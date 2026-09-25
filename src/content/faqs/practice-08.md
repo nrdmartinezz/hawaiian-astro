@@ -1,10 +1,10 @@
 ---
-question: "Is the first consultation at Hawaiian Smiles Orthodontics free?"
-topic: "Practice"
+question: 'Is the first consultation at Hawaiian Smiles Orthodontics free?'
+topic: 'Practice'
 pages:
-  - "/"
-  - "/why-choose-us/"
-  - "/patients/first-visit/"
+  - '/'
+  - '/why-choose-us/'
+  - '/patients/first-visit/'
 order: 8
 ---
 

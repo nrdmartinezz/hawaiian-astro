@@ -1,8 +1,8 @@
 ---
-question: "When should a child have an orthodontic evaluation?"
-topic: "Early treatment"
+question: 'When should a child have an orthodontic evaluation?'
+topic: 'Early treatment'
 pages:
-  - "/treatments/early-treatment/"
+  - '/treatments/early-treatment/'
 order: 1
 ---
 

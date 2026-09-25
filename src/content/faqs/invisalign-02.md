@@ -1,10 +1,10 @@
 ---
-question: "How does the practice use digital scans and 3D planning for Invisalign treatment?"
-topic: "Invisalign"
+question: 'How does the practice use digital scans and 3D planning for Invisalign treatment?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/"
-  - "/treatments/invisalign/adult/"
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/'
+  - '/treatments/invisalign/adult/'
+  - '/treatments/invisalign/teen/'
 order: 2
 ---
 

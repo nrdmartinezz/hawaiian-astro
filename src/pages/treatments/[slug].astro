@@ -28,8 +28,7 @@ interface Props {
 const { treatment } = Astro.props;
 const href = `/treatments/${treatment.slug}/`;
 const image = treatmentImages[treatment.slug];
-const faqs =
-  treatment.slug === 'teeth-whitening' ? (treatment.faqs ?? []) : await getFaqsFor(href);
+const faqs = treatment.slug === 'teeth-whitening' ? (treatment.faqs ?? []) : await getFaqsFor(href);
 ---
 
 <BaseLayout

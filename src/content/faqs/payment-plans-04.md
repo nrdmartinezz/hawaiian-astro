@@ -1,8 +1,8 @@
 ---
-question: "Can I use health savings account or flexible spending account funds for orthodontic care?"
-topic: "Payment plans"
+question: 'Can I use health savings account or flexible spending account funds for orthodontic care?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 4
 ---
 

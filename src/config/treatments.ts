@@ -80,7 +80,7 @@ export const treatments: Treatment[] = [
         ],
         bullets: ['Persistent thumb sucking', 'Tongue thrusting', 'Mouth breathing'],
       },
-    ],
+    ],
   },
   {
     slug: 'adult-treatment',
@@ -105,7 +105,7 @@ export const treatments: Treatment[] = [
           'The first visit is an exam. We recommend a plan for your bite and your goals, and those plans differ from person to person. Bring questions about timing, cost, and how soon you can start.',
         ],
       },
-    ],
+    ],
   },
   {
     slug: 'airway',
@@ -185,7 +185,7 @@ export const treatments: Treatment[] = [
           'Pitts21 is an aesthetic self-ligating system that allows 3D control earlier and throughout treatment. Smile Arc Protection places the brackets slightly higher so the smile follows the curve of the lower lip.',
         ],
       },
-    ],
+    ],
   },
   {
     slug: 'emergency',
@@ -227,7 +227,7 @@ export const treatments: Treatment[] = [
           'General tooth pain or a tooth that feels loose',
         ],
       },
-    ],
+    ],
   },
   {
     slug: 'retainers',

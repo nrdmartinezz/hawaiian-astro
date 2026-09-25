@@ -1,9 +1,9 @@
 ---
-question: "What communities does Hawaiian Smiles Orthodontics serve from its Oahu and Big Island offices?"
-topic: "Practice"
+question: 'What communities does Hawaiian Smiles Orthodontics serve from its Oahu and Big Island offices?'
+topic: 'Practice'
 pages:
-  - "/contact/"
-  - "/locations/"
+  - '/contact/'
+  - '/locations/'
 order: 4
 ---
 

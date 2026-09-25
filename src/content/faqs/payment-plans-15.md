@@ -1,8 +1,8 @@
 ---
-question: "Are replacement aligners, lost retainers, retainer repairs, or additional appliances included in my arrangement?"
-topic: "Payment plans"
+question: 'Are replacement aligners, lost retainers, retainer repairs, or additional appliances included in my arrangement?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 15
 ---
 

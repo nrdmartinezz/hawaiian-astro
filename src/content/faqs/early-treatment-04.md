@@ -1,8 +1,8 @@
 ---
-question: "What dental or jaw concerns may lead Hawaiian Smiles to recommend Phase 1 treatment?"
-topic: "Early treatment"
+question: 'What dental or jaw concerns may lead Hawaiian Smiles to recommend Phase 1 treatment?'
+topic: 'Early treatment'
 pages:
-  - "/treatments/early-treatment/"
+  - '/treatments/early-treatment/'
 order: 4
 ---
 

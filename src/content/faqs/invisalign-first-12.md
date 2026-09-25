@@ -1,8 +1,8 @@
 ---
-question: "How does the orthodontist decide whether Invisalign First is appropriate for a child?"
-topic: "Invisalign First"
+question: 'How does the orthodontist decide whether Invisalign First is appropriate for a child?'
+topic: 'Invisalign First'
 pages:
-  - "/treatments/invisalign/children/"
+  - '/treatments/invisalign/children/'
 order: 12
 ---
 

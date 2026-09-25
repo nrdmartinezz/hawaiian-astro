@@ -1,8 +1,8 @@
 ---
-question: "What happens if my insurance carrier changes during treatment?"
-topic: "Insurance"
+question: 'What happens if my insurance carrier changes during treatment?'
+topic: 'Insurance'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 9
 ---
 

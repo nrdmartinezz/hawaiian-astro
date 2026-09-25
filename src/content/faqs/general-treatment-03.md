@@ -1,8 +1,8 @@
 ---
-question: "What happens during the examination and X-rays used to create a treatment plan?"
-topic: "General treatment"
+question: 'What happens during the examination and X-rays used to create a treatment plan?'
+topic: 'General treatment'
 pages:
-  - "/treatments/"
+  - '/treatments/'
 order: 3
 ---
 

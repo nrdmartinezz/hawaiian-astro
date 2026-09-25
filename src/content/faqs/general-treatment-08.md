@@ -1,8 +1,8 @@
 ---
-question: "How should I brush and floss while wearing braces or aligners?"
-topic: "General treatment"
+question: 'How should I brush and floss while wearing braces or aligners?'
+topic: 'General treatment'
 pages:
-  - "/treatments/"
+  - '/treatments/'
 order: 8
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "Do self-ligating brackets require tightening or other regular adjustments?"
-topic: "Braces"
+question: 'Do self-ligating brackets require tightening or other regular adjustments?'
+topic: 'Braces'
 pages:
-  - "/treatments/braces/"
+  - '/treatments/braces/'
 order: 8
 ---
 

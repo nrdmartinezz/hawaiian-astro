@@ -1,8 +1,8 @@
 ---
-question: "How do self-ligating brackets differ from braces that use elastic ties?"
-topic: "Braces"
+question: 'How do self-ligating brackets differ from braces that use elastic ties?'
+topic: 'Braces'
 pages:
-  - "/treatments/braces/"
+  - '/treatments/braces/'
 order: 4
 ---
 

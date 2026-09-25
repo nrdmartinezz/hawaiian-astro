@@ -1,8 +1,8 @@
 ---
-question: "How might an adult’s treatment time differ from a teen’s treatment time?"
-topic: "Adult treatment"
+question: 'How might an adult’s treatment time differ from a teen’s treatment time?'
+topic: 'Adult treatment'
 pages:
-  - "/treatments/adult-treatment/"
+  - '/treatments/adult-treatment/'
 order: 7
 ---
 

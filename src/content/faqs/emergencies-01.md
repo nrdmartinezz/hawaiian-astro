@@ -1,8 +1,8 @@
 ---
-question: "What counts as an orthodontic emergency at Hawaiian Smiles?"
-topic: "Emergencies"
+question: 'What counts as an orthodontic emergency at Hawaiian Smiles?'
+topic: 'Emergencies'
 pages:
-  - "/treatments/emergency/"
+  - '/treatments/emergency/'
 order: 1
 ---
 

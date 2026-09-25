@@ -1,8 +1,8 @@
 ---
-question: "What orthodontic problems can Hawaiian Smiles Orthodontics treat?"
-topic: "General treatment"
+question: 'What orthodontic problems can Hawaiian Smiles Orthodontics treat?'
+topic: 'General treatment'
 pages:
-  - "/treatments/"
+  - '/treatments/'
 order: 1
 ---
 

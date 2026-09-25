@@ -1,8 +1,8 @@
 ---
-question: "How does Invisalign First compare with traditional braces for a young child?"
-topic: "Invisalign First"
+question: 'How does Invisalign First compare with traditional braces for a young child?'
+topic: 'Invisalign First'
 pages:
-  - "/treatments/invisalign/children/"
+  - '/treatments/invisalign/children/'
 order: 4
 ---
 

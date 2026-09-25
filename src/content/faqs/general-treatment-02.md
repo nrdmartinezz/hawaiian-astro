@@ -1,8 +1,8 @@
 ---
-question: "How does an orthodontist decide whether a child, teen, or adult needs treatment?"
-topic: "General treatment"
+question: 'How does an orthodontist decide whether a child, teen, or adult needs treatment?'
+topic: 'General treatment'
 pages:
-  - "/treatments/"
+  - '/treatments/'
 order: 2
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "How will I receive a detailed estimate of my out-of-pocket cost?"
-topic: "Insurance"
+question: 'How will I receive a detailed estimate of my out-of-pocket cost?'
+topic: 'Insurance'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 8
 ---
 

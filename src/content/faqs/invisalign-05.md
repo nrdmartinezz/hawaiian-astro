@@ -1,10 +1,10 @@
 ---
-question: "Can I remove Invisalign aligners to eat, drink, brush, and floss?"
-topic: "Invisalign"
+question: 'Can I remove Invisalign aligners to eat, drink, brush, and floss?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/"
-  - "/treatments/invisalign/adult/"
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/'
+  - '/treatments/invisalign/adult/'
+  - '/treatments/invisalign/teen/'
 order: 5
 ---
 

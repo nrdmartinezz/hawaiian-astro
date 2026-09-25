@@ -1,9 +1,9 @@
 ---
-question: "How does the Hawaiian Smiles virtual consultation process work?"
-topic: "Practice"
+question: 'How does the Hawaiian Smiles virtual consultation process work?'
+topic: 'Practice'
 pages:
-  - "/patients/first-visit/"
-  - "/appointment/"
+  - '/patients/first-visit/'
+  - '/appointment/'
 order: 14
 ---
 

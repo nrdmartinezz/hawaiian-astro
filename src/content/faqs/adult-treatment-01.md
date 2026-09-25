@@ -1,8 +1,8 @@
 ---
-question: "Can adults begin orthodontic treatment if they have healthy teeth and gums?"
-topic: "Adult treatment"
+question: 'Can adults begin orthodontic treatment if they have healthy teeth and gums?'
+topic: 'Adult treatment'
 pages:
-  - "/treatments/adult-treatment/"
+  - '/treatments/adult-treatment/'
 order: 1
 ---
 

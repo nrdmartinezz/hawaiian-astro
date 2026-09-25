@@ -1,8 +1,8 @@
 ---
-question: "What should I do if I lose an Invisalign aligner during treatment?"
-topic: "Emergencies"
+question: 'What should I do if I lose an Invisalign aligner during treatment?'
+topic: 'Emergencies'
 pages:
-  - "/treatments/emergency/"
+  - '/treatments/emergency/'
 order: 6
 ---
 

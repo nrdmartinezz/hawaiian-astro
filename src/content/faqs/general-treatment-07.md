@@ -1,8 +1,8 @@
 ---
-question: "What can I do if my teeth feel sore after an appointment?"
-topic: "General treatment"
+question: 'What can I do if my teeth feel sore after an appointment?'
+topic: 'General treatment'
 pages:
-  - "/treatments/"
+  - '/treatments/'
 order: 7
 ---
 

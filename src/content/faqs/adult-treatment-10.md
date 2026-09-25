@@ -1,8 +1,8 @@
 ---
-question: "What will the orthodontist review before recommending a treatment plan for an adult?"
-topic: "Adult treatment"
+question: 'What will the orthodontist review before recommending a treatment plan for an adult?'
+topic: 'Adult treatment'
 pages:
-  - "/treatments/adult-treatment/"
+  - '/treatments/adult-treatment/'
 order: 10
 ---
 

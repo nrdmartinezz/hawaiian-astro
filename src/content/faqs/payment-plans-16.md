@@ -1,9 +1,9 @@
 ---
-question: "Is a deposit required to reserve a new-patient consultation after repeated missed or rescheduled visits?"
-topic: "Payment plans"
+question: 'Is a deposit required to reserve a new-patient consultation after repeated missed or rescheduled visits?'
+topic: 'Payment plans'
 pages:
-  - "/policies/"
-  - "/about/financial/"
+  - '/policies/'
+  - '/about/financial/'
 order: 16
 ---
 

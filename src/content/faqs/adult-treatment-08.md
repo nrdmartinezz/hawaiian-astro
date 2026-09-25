@@ -1,8 +1,8 @@
 ---
-question: "Can adult patients request a more discreet treatment option?"
-topic: "Adult treatment"
+question: 'Can adult patients request a more discreet treatment option?'
+topic: 'Adult treatment'
 pages:
-  - "/treatments/adult-treatment/"
+  - '/treatments/adult-treatment/'
 order: 8
 ---
 

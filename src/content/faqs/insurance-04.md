@@ -1,8 +1,8 @@
 ---
-question: "What may my insurance plan cover for braces, Invisalign, early treatment, or retainers?"
-topic: "Insurance"
+question: 'What may my insurance plan cover for braces, Invisalign, early treatment, or retainers?'
+topic: 'Insurance'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 4
 ---
 

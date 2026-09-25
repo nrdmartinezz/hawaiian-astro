@@ -1,8 +1,8 @@
 ---
-question: "Are temporary pressure or speech changes normal when a child begins palate expansion?"
-topic: "Invisalign First"
+question: 'Are temporary pressure or speech changes normal when a child begins palate expansion?'
+topic: 'Invisalign First'
 pages:
-  - "/treatments/invisalign/children/"
+  - '/treatments/invisalign/children/'
 order: 10
 ---
 

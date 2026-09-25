@@ -1,8 +1,8 @@
 ---
-question: "What payment options does Hawaiian Smiles offer for orthodontic treatment?"
-topic: "Payment plans"
+question: 'What payment options does Hawaiian Smiles offer for orthodontic treatment?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 1
 ---
 

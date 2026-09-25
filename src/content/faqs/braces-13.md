@@ -1,8 +1,8 @@
 ---
-question: "What level of soreness or pressure is common after braces are placed or adjusted?"
-topic: "Braces"
+question: 'What level of soreness or pressure is common after braces are placed or adjusted?'
+topic: 'Braces'
 pages:
-  - "/treatments/braces/"
+  - '/treatments/braces/'
 order: 13
 ---
 

@@ -1,9 +1,9 @@
 ---
-question: "Which Hawaiian Smiles office is closest to me in Kaneohe, Kailua-Kona, Kamuela, or Hilo?"
-topic: "Practice"
+question: 'Which Hawaiian Smiles office is closest to me in Kaneohe, Kailua-Kona, Kamuela, or Hilo?'
+topic: 'Practice'
 pages:
-  - "/contact/"
-  - "/locations/"
+  - '/contact/'
+  - '/locations/'
 order: 3
 ---
 

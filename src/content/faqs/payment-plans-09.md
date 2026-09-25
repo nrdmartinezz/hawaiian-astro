@@ -1,8 +1,8 @@
 ---
-question: "What services and appliances are included in the quoted treatment fee?"
-topic: "Payment plans"
+question: 'What services and appliances are included in the quoted treatment fee?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 9
 ---
 

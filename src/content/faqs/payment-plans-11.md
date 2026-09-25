@@ -1,9 +1,9 @@
 ---
-question: "The website lists example tiers such as touch-up, Social Six, and comprehensive treatment; which tier, if any, fits my needs?"
-topic: "Payment plans"
+question: 'The website lists example tiers such as touch-up, Social Six, and comprehensive treatment; which tier, if any, fits my needs?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
-  - "/why-choose-us/"
+  - '/about/financial/'
+  - '/why-choose-us/'
 order: 11
 ---
 

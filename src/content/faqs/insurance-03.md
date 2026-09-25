@@ -1,8 +1,8 @@
 ---
-question: "How does the practice estimate what my orthodontic plan may cover?"
-topic: "Insurance"
+question: 'How does the practice estimate what my orthodontic plan may cover?'
+topic: 'Insurance'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 3
 ---
 

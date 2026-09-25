@@ -1,8 +1,8 @@
 ---
-question: "What is early orthodontic treatment, and how is it different from full treatment later?"
-topic: "Early treatment"
+question: 'What is early orthodontic treatment, and how is it different from full treatment later?'
+topic: 'Early treatment'
 pages:
-  - "/treatments/early-treatment/"
+  - '/treatments/early-treatment/'
 order: 2
 ---
 

@@ -16,7 +16,6 @@ export interface InvisalignAudience {
   steps?: ProcessStep[];
 }
 
-
 /**
  * Audience pages under /treatments/invisalign/. Add an entry here to publish
  * another child page — the route and the overview cards both read this list.
@@ -97,7 +96,7 @@ export const invisalignAudiences: InvisalignAudience[] = [
         title: 'Keep the case with you',
         body: 'Clean trays with a soft toothbrush, liquid soap, and lukewarm water. A napkin is how aligners disappear.',
       },
-    ],
+    ],
   },
   {
     slug: 'children',
@@ -156,7 +155,7 @@ export const invisalignAudiences: InvisalignAudience[] = [
         title: 'Wear and care',
         body: 'Full-time wear, off only to brush and floss. Cool water and a soft brush. Skip sticky foods and hot water. A lisp or a small gap between the front teeth can show up and then settle.',
       },
-    ],
+    ],
   },
 ];
 

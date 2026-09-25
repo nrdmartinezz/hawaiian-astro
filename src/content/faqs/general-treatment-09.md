@@ -1,8 +1,8 @@
 ---
-question: "Can I play sports or an instrument during orthodontic treatment?"
-topic: "General treatment"
+question: 'Can I play sports or an instrument during orthodontic treatment?'
+topic: 'General treatment'
 pages:
-  - "/treatments/"
+  - '/treatments/'
 order: 9
 ---
 

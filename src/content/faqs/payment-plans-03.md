@@ -1,8 +1,8 @@
 ---
-question: "How is the down payment determined for my treatment plan?"
-topic: "Payment plans"
+question: 'How is the down payment determined for my treatment plan?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 3
 ---
 

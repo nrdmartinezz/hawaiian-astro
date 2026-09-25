@@ -1,8 +1,8 @@
 ---
-question: "How long might treatment with self-ligating brackets take for my case?"
-topic: "Braces"
+question: 'How long might treatment with self-ligating brackets take for my case?'
+topic: 'Braces'
 pages:
-  - "/treatments/braces/"
+  - '/treatments/braces/'
 order: 7
 ---
 

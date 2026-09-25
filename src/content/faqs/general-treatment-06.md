@@ -1,8 +1,8 @@
 ---
-question: "How often will I need appointments during treatment?"
-topic: "General treatment"
+question: 'How often will I need appointments during treatment?'
+topic: 'General treatment'
 pages:
-  - "/treatments/"
+  - '/treatments/'
 order: 6
 ---
 

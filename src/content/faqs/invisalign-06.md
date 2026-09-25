@@ -1,10 +1,10 @@
 ---
-question: "What can I drink while wearing Invisalign aligners?"
-topic: "Invisalign"
+question: 'What can I drink while wearing Invisalign aligners?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/"
-  - "/treatments/invisalign/adult/"
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/'
+  - '/treatments/invisalign/adult/'
+  - '/treatments/invisalign/teen/'
 order: 6
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "Does Hawaiian Smiles Orthodontics check my orthodontic insurance benefits before my consultation?"
-topic: "Insurance"
+question: 'Does Hawaiian Smiles Orthodontics check my orthodontic insurance benefits before my consultation?'
+topic: 'Insurance'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 1
 ---
 

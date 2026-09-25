@@ -1,8 +1,8 @@
 ---
-question: "Does Hawaiian Smiles submit orthodontic claims on the patient’s behalf?"
-topic: "Insurance"
+question: 'Does Hawaiian Smiles submit orthodontic claims on the patient’s behalf?'
+topic: 'Insurance'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 7
 ---
 

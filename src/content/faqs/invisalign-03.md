@@ -1,9 +1,9 @@
 ---
-question: "How many hours each day should an adult or teen wear Invisalign aligners?"
-topic: "Invisalign"
+question: 'How many hours each day should an adult or teen wear Invisalign aligners?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/adult/"
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/adult/'
+  - '/treatments/invisalign/teen/'
 order: 3
 ---
 

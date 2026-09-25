@@ -1,8 +1,8 @@
 ---
-question: "When should I go to an emergency room instead of waiting for an orthodontic appointment?"
-topic: "Emergencies"
+question: 'When should I go to an emergency room instead of waiting for an orthodontic appointment?'
+topic: 'Emergencies'
 pages:
-  - "/treatments/emergency/"
+  - '/treatments/emergency/'
 order: 2
 ---
 

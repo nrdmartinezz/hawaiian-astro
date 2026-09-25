@@ -1,8 +1,8 @@
 ---
-question: "Are retainers, replacement appliances, emergency visits, or missed appointments handled separately from the main treatment fee?"
-topic: "Insurance"
+question: 'Are retainers, replacement appliances, emergency visits, or missed appointments handled separately from the main treatment fee?'
+topic: 'Insurance'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 12
 ---
 

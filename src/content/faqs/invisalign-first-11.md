@@ -1,8 +1,8 @@
 ---
-question: "What should parents do if a child loses or damages an Invisalign First appliance?"
-topic: "Invisalign First"
+question: 'What should parents do if a child loses or damages an Invisalign First appliance?'
+topic: 'Invisalign First'
 pages:
-  - "/treatments/invisalign/children/"
+  - '/treatments/invisalign/children/'
 order: 11
 ---
 

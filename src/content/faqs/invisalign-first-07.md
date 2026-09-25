@@ -1,8 +1,8 @@
 ---
-question: "How much time each day does a child need to wear Invisalign First?"
-topic: "Invisalign First"
+question: 'How much time each day does a child need to wear Invisalign First?'
+topic: 'Invisalign First'
 pages:
-  - "/treatments/invisalign/children/"
+  - '/treatments/invisalign/children/'
 order: 7
 ---
 

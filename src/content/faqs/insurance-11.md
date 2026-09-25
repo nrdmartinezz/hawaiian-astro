@@ -1,8 +1,8 @@
 ---
-question: "Does the practice accept patients who do not have dental insurance?"
-topic: "Insurance"
+question: 'Does the practice accept patients who do not have dental insurance?'
+topic: 'Insurance'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 11
 ---
 

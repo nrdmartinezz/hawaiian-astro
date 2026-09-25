@@ -1,8 +1,8 @@
 ---
-question: "Does Hawaiian Smiles offer a pay-in-full discount?"
-topic: "Payment plans"
+question: 'Does Hawaiian Smiles offer a pay-in-full discount?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 5
 ---
 

@@ -1,9 +1,9 @@
 ---
-question: "Are retainer repairs or replacements included in my treatment fee, or are they billed separately?"
-topic: "Retention"
+question: 'Are retainer repairs or replacements included in my treatment fee, or are they billed separately?'
+topic: 'Retention'
 pages:
-  - "/treatments/retainers/"
-  - "/about/financial/"
+  - '/treatments/retainers/'
+  - '/about/financial/'
 order: 8
 ---
 

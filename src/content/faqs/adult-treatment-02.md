@@ -1,8 +1,8 @@
 ---
-question: "What orthodontic options are available for adults at Hawaiian Smiles?"
-topic: "Adult treatment"
+question: 'What orthodontic options are available for adults at Hawaiian Smiles?'
+topic: 'Adult treatment'
 pages:
-  - "/treatments/adult-treatment/"
+  - '/treatments/adult-treatment/'
 order: 2
 ---
 

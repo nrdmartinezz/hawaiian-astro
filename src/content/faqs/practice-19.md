@@ -1,8 +1,8 @@
 ---
-question: "What makes Hawaiian Smiles’ patient experience different for busy families?"
-topic: "Practice"
+question: 'What makes Hawaiian Smiles’ patient experience different for busy families?'
+topic: 'Practice'
 pages:
-  - "/why-choose-us/"
+  - '/why-choose-us/'
 order: 19
 ---
 

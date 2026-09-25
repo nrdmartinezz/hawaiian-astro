@@ -1,8 +1,8 @@
 ---
-question: "How long might orthodontic treatment take for my individual bite and alignment needs?"
-topic: "General treatment"
+question: 'How long might orthodontic treatment take for my individual bite and alignment needs?'
+topic: 'General treatment'
 pages:
-  - "/treatments/"
+  - '/treatments/'
 order: 4
 ---
 

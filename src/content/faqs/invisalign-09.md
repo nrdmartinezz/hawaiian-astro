@@ -1,8 +1,8 @@
 ---
-question: "How does Invisalign Teen differ from adult Invisalign treatment?"
-topic: "Invisalign"
+question: 'How does Invisalign Teen differ from adult Invisalign treatment?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/teen/'
 order: 9
 ---
 

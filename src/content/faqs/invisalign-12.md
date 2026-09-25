@@ -1,9 +1,9 @@
 ---
-question: "Can Invisalign fit around school, work, travel, sports, or playing an instrument?"
-topic: "Invisalign"
+question: 'Can Invisalign fit around school, work, travel, sports, or playing an instrument?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/adult/"
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/adult/'
+  - '/treatments/invisalign/teen/'
 order: 12
 ---
 

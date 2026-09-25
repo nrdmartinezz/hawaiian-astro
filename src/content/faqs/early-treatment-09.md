@@ -1,8 +1,8 @@
 ---
-question: "Will a child who receives early treatment still need braces or aligners later?"
-topic: "Early treatment"
+question: 'Will a child who receives early treatment still need braces or aligners later?'
+topic: 'Early treatment'
 pages:
-  - "/treatments/early-treatment/"
+  - '/treatments/early-treatment/'
 order: 9
 ---
 

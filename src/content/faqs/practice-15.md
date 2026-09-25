@@ -1,9 +1,9 @@
 ---
-question: "What is Nayak Track, and can it reduce the number of in-office visits?"
-topic: "Practice"
+question: 'What is Nayak Track, and can it reduce the number of in-office visits?'
+topic: 'Practice'
 pages:
-  - "/why-choose-us/"
-  - "/appointment/"
+  - '/why-choose-us/'
+  - '/appointment/'
 order: 15
 ---
 

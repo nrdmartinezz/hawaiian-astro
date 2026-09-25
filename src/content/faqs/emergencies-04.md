@@ -1,8 +1,8 @@
 ---
-question: "How can orthodontic wax help with a poking wire or bracket while I wait for care?"
-topic: "Emergencies"
+question: 'How can orthodontic wax help with a poking wire or bracket while I wait for care?'
+topic: 'Emergencies'
 pages:
-  - "/treatments/emergency/"
+  - '/treatments/emergency/'
 order: 4
 ---
 

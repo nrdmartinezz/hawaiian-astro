@@ -1,8 +1,8 @@
 ---
-question: "How do traditional braces move teeth and improve a bite?"
-topic: "Braces"
+question: 'How do traditional braces move teeth and improve a bite?'
+topic: 'Braces'
 pages:
-  - "/treatments/braces/"
+  - '/treatments/braces/'
 order: 1
 ---
 

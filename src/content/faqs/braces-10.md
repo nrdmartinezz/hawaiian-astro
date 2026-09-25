@@ -1,8 +1,8 @@
 ---
-question: "How can I clean around brackets and wires after meals?"
-topic: "Braces"
+question: 'How can I clean around brackets and wires after meals?'
+topic: 'Braces'
 pages:
-  - "/treatments/braces/"
+  - '/treatments/braces/'
 order: 10
 ---
 

@@ -1,9 +1,9 @@
 ---
-question: "What happens if a patient does not wear Invisalign for the recommended number of hours?"
-topic: "Invisalign"
+question: 'What happens if a patient does not wear Invisalign for the recommended number of hours?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/adult/"
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/adult/'
+  - '/treatments/invisalign/teen/'
 order: 15
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "What happens to my payment plan if treatment takes longer than first estimated?"
-topic: "Payment plans"
+question: 'What happens to my payment plan if treatment takes longer than first estimated?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 14
 ---
 

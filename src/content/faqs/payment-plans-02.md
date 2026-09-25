@@ -1,8 +1,8 @@
 ---
-question: "Does the practice offer in-house interest-free monthly payment plans?"
-topic: "Payment plans"
+question: 'Does the practice offer in-house interest-free monthly payment plans?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 2
 ---
 

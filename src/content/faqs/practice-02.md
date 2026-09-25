@@ -1,8 +1,8 @@
 ---
-question: "Does Hawaiian Smiles Orthodontics treat children, teens, and adults?"
-topic: "Practice"
+question: 'Does Hawaiian Smiles Orthodontics treat children, teens, and adults?'
+topic: 'Practice'
 pages:
-  - "/"
+  - '/'
 order: 2
 ---
 

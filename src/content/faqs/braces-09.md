@@ -1,8 +1,8 @@
 ---
-question: "What foods should I avoid while wearing braces?"
-topic: "Braces"
+question: 'What foods should I avoid while wearing braces?'
+topic: 'Braces'
 pages:
-  - "/treatments/braces/"
+  - '/treatments/braces/'
 order: 9
 ---
 

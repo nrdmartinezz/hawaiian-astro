@@ -1,8 +1,8 @@
 ---
-question: "Can a child eat while wearing an Invisalign First palatal expander?"
-topic: "Invisalign First"
+question: 'Can a child eat while wearing an Invisalign First palatal expander?'
+topic: 'Invisalign First'
 pages:
-  - "/treatments/invisalign/children/"
+  - '/treatments/invisalign/children/'
 order: 8
 ---
 

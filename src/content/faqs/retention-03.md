@@ -1,8 +1,8 @@
 ---
-question: "Why might the practice recommend part-time retainer wear for the long term?"
-topic: "Retention"
+question: 'Why might the practice recommend part-time retainer wear for the long term?'
+topic: 'Retention'
 pages:
-  - "/treatments/retainers/"
+  - '/treatments/retainers/'
 order: 3
 ---
 

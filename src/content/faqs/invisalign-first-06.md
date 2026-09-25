@@ -1,8 +1,8 @@
 ---
-question: "What happens during the digital scan used to create Invisalign First expanders?"
-topic: "Invisalign First"
+question: 'What happens during the digital scan used to create Invisalign First expanders?'
+topic: 'Invisalign First'
 pages:
-  - "/treatments/invisalign/children/"
+  - '/treatments/invisalign/children/'
 order: 6
 ---
 

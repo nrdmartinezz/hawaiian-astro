@@ -1,8 +1,8 @@
 ---
-question: "What orthodontic treatments are available at Hawaiian Smiles Orthodontics?"
-topic: "Practice"
+question: 'What orthodontic treatments are available at Hawaiian Smiles Orthodontics?'
+topic: 'Practice'
 pages:
-  - "/"
+  - '/'
 order: 1
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "How does the orthodontist decide whether braces or clear aligners are a better fit?"
-topic: "Braces"
+question: 'How does the orthodontist decide whether braces or clear aligners are a better fit?'
+topic: 'Braces'
 pages:
-  - "/treatments/braces/"
+  - '/treatments/braces/'
 order: 14
 ---
 

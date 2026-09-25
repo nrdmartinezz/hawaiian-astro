@@ -1,8 +1,8 @@
 ---
-question: "How can early treatment help with crowding, crossbites, protruding teeth, or severe underbites?"
-topic: "Early treatment"
+question: 'How can early treatment help with crowding, crossbites, protruding teeth, or severe underbites?'
+topic: 'Early treatment'
 pages:
-  - "/treatments/early-treatment/"
+  - '/treatments/early-treatment/'
 order: 5
 ---
 

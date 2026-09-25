@@ -1,10 +1,10 @@
 ---
-question: "How often do patients usually change to the next Invisalign aligner?"
-topic: "Invisalign"
+question: 'How often do patients usually change to the next Invisalign aligner?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/"
-  - "/treatments/invisalign/adult/"
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/'
+  - '/treatments/invisalign/adult/'
+  - '/treatments/invisalign/teen/'
 order: 4
 ---
 

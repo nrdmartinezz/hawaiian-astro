@@ -1,8 +1,8 @@
 ---
-question: "How does Hawaiian Smiles help patients handle an orthodontic emergency?"
-topic: "Practice"
+question: 'How does Hawaiian Smiles help patients handle an orthodontic emergency?'
+topic: 'Practice'
 pages:
-  - "/treatments/emergency/"
+  - '/treatments/emergency/'
 order: 18
 ---
 

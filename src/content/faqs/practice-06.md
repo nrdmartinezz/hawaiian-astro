@@ -1,8 +1,8 @@
 ---
-question: "What education and orthodontic training do the doctors at Hawaiian Smiles have?"
-topic: "Practice"
+question: 'What education and orthodontic training do the doctors at Hawaiian Smiles have?'
+topic: 'Practice'
 pages:
-  - "/about/doctors/"
+  - '/about/doctors/'
 order: 6
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "What are Pitts21 self-ligating brackets?"
-topic: "Braces"
+question: 'What are Pitts21 self-ligating brackets?'
+topic: 'Braces'
 pages:
-  - "/treatments/braces/"
+  - '/treatments/braces/'
 order: 3
 ---
 

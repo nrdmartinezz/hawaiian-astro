@@ -1,8 +1,8 @@
 ---
-question: "What can I expect during my first orthodontic visit?"
-topic: "Practice"
+question: 'What can I expect during my first orthodontic visit?'
+topic: 'Practice'
 pages:
-  - "/patients/first-visit/"
+  - '/patients/first-visit/'
 order: 7
 ---
 

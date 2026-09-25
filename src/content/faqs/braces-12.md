@@ -1,8 +1,8 @@
 ---
-question: "How can I protect my braces while playing contact sports?"
-topic: "Braces"
+question: 'How can I protect my braces while playing contact sports?'
+topic: 'Braces'
 pages:
-  - "/treatments/braces/"
+  - '/treatments/braces/'
 order: 12
 ---
 

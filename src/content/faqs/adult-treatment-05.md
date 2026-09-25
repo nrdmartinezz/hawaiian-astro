@@ -1,8 +1,8 @@
 ---
-question: "How can orthodontic treatment fit around work, meetings, travel, or family responsibilities?"
-topic: "Adult treatment"
+question: 'How can orthodontic treatment fit around work, meetings, travel, or family responsibilities?'
+topic: 'Adult treatment'
 pages:
-  - "/treatments/adult-treatment/"
+  - '/treatments/adult-treatment/'
 order: 5
 ---
 

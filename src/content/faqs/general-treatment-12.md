@@ -1,8 +1,8 @@
 ---
-question: "How will the orthodontist decide which treatment option fits my goals and oral health?"
-topic: "General treatment"
+question: 'How will the orthodontist decide which treatment option fits my goals and oral health?'
+topic: 'General treatment'
 pages:
-  - "/treatments/"
+  - '/treatments/'
 order: 12
 ---
 

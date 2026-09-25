@@ -1,8 +1,8 @@
 ---
-question: "What should adults know about soreness, speech, eating, and cleaning during treatment?"
-topic: "Adult treatment"
+question: 'What should adults know about soreness, speech, eating, and cleaning during treatment?'
+topic: 'Adult treatment'
 pages:
-  - "/treatments/adult-treatment/"
+  - '/treatments/adult-treatment/'
 order: 9
 ---
 

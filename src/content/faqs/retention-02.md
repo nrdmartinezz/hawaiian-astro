@@ -1,8 +1,8 @@
 ---
-question: "How long might I need to wear my retainer full time?"
-topic: "Retention"
+question: 'How long might I need to wear my retainer full time?'
+topic: 'Retention'
 pages:
-  - "/treatments/retainers/"
+  - '/treatments/retainers/'
 order: 2
 ---
 

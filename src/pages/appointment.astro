@@ -40,10 +40,5 @@ const faqs = await getFaqsFor('/appointment/');
     services={[...offices, ...treatmentServices]}
   />
 
-  <FAQ
-    eyebrow="FAQ"
-    title="Questions about your consultation"
-    items={faqs}
-    schema={false}
-  />
+  <FAQ eyebrow="FAQ" title="Questions about your consultation" items={faqs} schema={false} />
 </BaseLayout>

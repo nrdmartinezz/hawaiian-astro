@@ -1,8 +1,8 @@
 ---
-question: "What does the practice mean when it describes Pitts21 brackets as an aesthetic self-ligating system?"
-topic: "Braces"
+question: 'What does the practice mean when it describes Pitts21 brackets as an aesthetic self-ligating system?'
+topic: 'Braces'
 pages:
-  - "/treatments/braces/"
+  - '/treatments/braces/'
 order: 5
 ---
 

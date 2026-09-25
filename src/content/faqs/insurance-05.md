@@ -1,8 +1,8 @@
 ---
-question: "Does my plan have an orthodontic deductible, coinsurance, waiting period, or lifetime maximum?"
-topic: "Insurance"
+question: 'Does my plan have an orthodontic deductible, coinsurance, waiting period, or lifetime maximum?'
+topic: 'Insurance'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 5
 ---
 

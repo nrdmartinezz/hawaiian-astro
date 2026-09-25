@@ -1,8 +1,8 @@
 ---
-question: "How long might a child wait between Phase 1 treatment and a later treatment phase?"
-topic: "Early treatment"
+question: 'How long might a child wait between Phase 1 treatment and a later treatment phase?'
+topic: 'Early treatment'
 pages:
-  - "/treatments/early-treatment/"
+  - '/treatments/early-treatment/'
 order: 8
 ---
 

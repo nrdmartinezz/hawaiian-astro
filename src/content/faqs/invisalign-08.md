@@ -1,10 +1,10 @@
 ---
-question: "Is Invisalign appropriate for every orthodontic problem, or does candidacy depend on the case?"
-topic: "Invisalign"
+question: 'Is Invisalign appropriate for every orthodontic problem, or does candidacy depend on the case?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/"
-  - "/treatments/invisalign/adult/"
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/'
+  - '/treatments/invisalign/adult/'
+  - '/treatments/invisalign/teen/'
 order: 8
 ---
 

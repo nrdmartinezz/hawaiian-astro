@@ -1,8 +1,8 @@
 ---
-question: "What are the practice’s regular office hours, and how do appointment changes work?"
-topic: "Practice"
+question: 'What are the practice’s regular office hours, and how do appointment changes work?'
+topic: 'Practice'
 pages:
-  - "/policies/"
+  - '/policies/'
 order: 17
 ---
 

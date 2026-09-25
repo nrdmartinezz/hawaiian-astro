@@ -1,8 +1,8 @@
 ---
-question: "Does an early evaluation always mean that a child needs treatment right away?"
-topic: "Early treatment"
+question: 'Does an early evaluation always mean that a child needs treatment right away?'
+topic: 'Early treatment'
 pages:
-  - "/treatments/early-treatment/"
+  - '/treatments/early-treatment/'
 order: 3
 ---
 

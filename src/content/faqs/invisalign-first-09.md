@@ -1,8 +1,8 @@
 ---
-question: "How should a child clean Invisalign First aligners or expanders?"
-topic: "Invisalign First"
+question: 'How should a child clean Invisalign First aligners or expanders?'
+topic: 'Invisalign First'
 pages:
-  - "/treatments/invisalign/children/"
+  - '/treatments/invisalign/children/'
 order: 9
 ---
 

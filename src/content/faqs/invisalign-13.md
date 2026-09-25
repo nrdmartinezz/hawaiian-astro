@@ -1,10 +1,10 @@
 ---
-question: "Does Invisalign usually require fewer office visits than braces?"
-topic: "Invisalign"
+question: 'Does Invisalign usually require fewer office visits than braces?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/"
-  - "/treatments/invisalign/adult/"
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/'
+  - '/treatments/invisalign/adult/'
+  - '/treatments/invisalign/teen/'
 order: 13
 ---
 

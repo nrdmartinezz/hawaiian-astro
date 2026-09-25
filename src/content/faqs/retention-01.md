@@ -1,8 +1,8 @@
 ---
-question: "Why are retainers important after braces or Invisalign treatment?"
-topic: "Retention"
+question: 'Why are retainers important after braces or Invisalign treatment?'
+topic: 'Retention'
 pages:
-  - "/treatments/retainers/"
+  - '/treatments/retainers/'
 order: 1
 ---
 

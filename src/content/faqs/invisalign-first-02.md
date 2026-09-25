@@ -1,8 +1,8 @@
 ---
-question: "How is Invisalign First used as a Phase 1 treatment for children around ages six to ten?"
-topic: "Invisalign First"
+question: 'How is Invisalign First used as a Phase 1 treatment for children around ages six to ten?'
+topic: 'Invisalign First'
 pages:
-  - "/treatments/invisalign/children/"
+  - '/treatments/invisalign/children/'
 order: 2
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "What oral-health concerns should be checked before an adult starts orthodontic treatment?"
-topic: "Adult treatment"
+question: 'What oral-health concerns should be checked before an adult starts orthodontic treatment?'
+topic: 'Adult treatment'
 pages:
-  - "/treatments/adult-treatment/"
+  - '/treatments/adult-treatment/'
 order: 6
 ---
 

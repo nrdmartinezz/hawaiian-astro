@@ -1,8 +1,8 @@
 ---
-question: "Do I need a referral from my dentist to schedule an orthodontic consultation?"
-topic: "Practice"
+question: 'Do I need a referral from my dentist to schedule an orthodontic consultation?'
+topic: 'Practice'
 pages:
-  - "/patients/first-visit/"
+  - '/patients/first-visit/'
 order: 9
 ---
 

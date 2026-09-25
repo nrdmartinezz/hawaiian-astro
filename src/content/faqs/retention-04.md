@@ -1,8 +1,8 @@
 ---
-question: "How often are retainer follow-up appointments scheduled after treatment?"
-topic: "Retention"
+question: 'How often are retainer follow-up appointments scheduled after treatment?'
+topic: 'Retention'
 pages:
-  - "/treatments/retainers/"
+  - '/treatments/retainers/'
 order: 4
 ---
 

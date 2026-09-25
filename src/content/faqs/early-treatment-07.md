@@ -1,8 +1,8 @@
 ---
-question: "Can early treatment address habits such as thumb sucking, tongue thrusting, or mouth breathing?"
-topic: "Early treatment"
+question: 'Can early treatment address habits such as thumb sucking, tongue thrusting, or mouth breathing?'
+topic: 'Early treatment'
 pages:
-  - "/treatments/early-treatment/"
+  - '/treatments/early-treatment/'
 order: 7
 ---
 

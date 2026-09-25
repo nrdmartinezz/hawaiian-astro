@@ -1,10 +1,10 @@
 ---
-question: "How does Invisalign clear aligner treatment work?"
-topic: "Invisalign"
+question: 'How does Invisalign clear aligner treatment work?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/"
-  - "/treatments/invisalign/adult/"
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/'
+  - '/treatments/invisalign/adult/'
+  - '/treatments/invisalign/teen/'
 order: 1
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "Does the practice offer financing for Invisalign, braces, early treatment, and other listed services?"
-topic: "Payment plans"
+question: 'Does the practice offer financing for Invisalign, braces, early treatment, and other listed services?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 13
 ---
 

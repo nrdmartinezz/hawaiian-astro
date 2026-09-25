@@ -1,8 +1,8 @@
 ---
-question: "What are Invisalign Teen compliance indicators, and how do they help track wear?"
-topic: "Invisalign"
+question: 'What are Invisalign Teen compliance indicators, and how do they help track wear?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/teen/'
 order: 10
 ---
 

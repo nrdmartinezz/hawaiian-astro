@@ -1,10 +1,10 @@
 ---
-question: "How can I contact Hawaiian Smiles by phone or text to schedule an appointment?"
-topic: "Practice"
+question: 'How can I contact Hawaiian Smiles by phone or text to schedule an appointment?'
+topic: 'Practice'
 pages:
-  - "/"
-  - "/contact/"
-  - "/locations/"
+  - '/'
+  - '/contact/'
+  - '/locations/'
 order: 16
 ---
 

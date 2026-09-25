@@ -1,8 +1,8 @@
 ---
-question: "What should I do if an orthodontic appliance breaks or begins to bother my mouth?"
-topic: "General treatment"
+question: 'What should I do if an orthodontic appliance breaks or begins to bother my mouth?'
+topic: 'General treatment'
 pages:
-  - "/treatments/"
+  - '/treatments/'
 order: 10
 ---
 

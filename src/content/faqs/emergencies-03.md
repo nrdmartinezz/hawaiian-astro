@@ -1,8 +1,8 @@
 ---
-question: "What should I do about a loose or broken bracket, band, or wire?"
-topic: "Emergencies"
+question: 'What should I do about a loose or broken bracket, band, or wire?'
+topic: 'Emergencies'
 pages:
-  - "/treatments/emergency/"
+  - '/treatments/emergency/'
 order: 3
 ---
 

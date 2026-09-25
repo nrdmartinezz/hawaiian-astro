@@ -1,8 +1,8 @@
 ---
-question: "Does the practice offer a sibling discount when more than one family member receives treatment?"
-topic: "Payment plans"
+question: 'Does the practice offer a sibling discount when more than one family member receives treatment?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 6
 ---
 

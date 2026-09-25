@@ -1,8 +1,8 @@
 ---
-question: "What insurance information should I provide before my first visit?"
-topic: "Insurance"
+question: 'What insurance information should I provide before my first visit?'
+topic: 'Insurance'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 2
 ---
 

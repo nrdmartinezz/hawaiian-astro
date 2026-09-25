@@ -1,9 +1,9 @@
 ---
-question: "Can I complete Hawaiian Smiles’ new-patient forms online before my appointment?"
-topic: "Practice"
+question: 'Can I complete Hawaiian Smiles’ new-patient forms online before my appointment?'
+topic: 'Practice'
 pages:
-  - "/patients/first-visit/"
-  - "/patients/forms/"
+  - '/patients/first-visit/'
+  - '/patients/forms/'
 order: 12
 ---
 

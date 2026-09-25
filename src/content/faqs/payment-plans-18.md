@@ -1,8 +1,8 @@
 ---
-question: "What payment methods can I use for my monthly orthodontic account?"
-topic: "Payment plans"
+question: 'What payment methods can I use for my monthly orthodontic account?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 18
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "Will my insurance benefit apply differently to a child, teen, or adult treatment plan?"
-topic: "Insurance"
+question: 'Will my insurance benefit apply differently to a child, teen, or adult treatment plan?'
+topic: 'Insurance'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 6
 ---
 

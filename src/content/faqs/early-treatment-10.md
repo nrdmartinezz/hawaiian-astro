@@ -1,8 +1,8 @@
 ---
-question: "How can parents help a child care for an orthodontic appliance?"
-topic: "Early treatment"
+question: 'How can parents help a child care for an orthodontic appliance?'
+topic: 'Early treatment'
 pages:
-  - "/treatments/early-treatment/"
+  - '/treatments/early-treatment/'
 order: 10
 ---
 

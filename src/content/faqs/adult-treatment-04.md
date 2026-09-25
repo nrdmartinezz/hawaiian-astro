@@ -1,8 +1,8 @@
 ---
-question: "How can adults compare braces, self-ligating brackets, and Invisalign?"
-topic: "Adult treatment"
+question: 'How can adults compare braces, self-ligating brackets, and Invisalign?'
+topic: 'Adult treatment'
 pages:
-  - "/treatments/adult-treatment/"
+  - '/treatments/adult-treatment/'
 order: 4
 ---
 

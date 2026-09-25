@@ -1,8 +1,8 @@
 ---
-question: "What factors can change the length of an orthodontic treatment plan?"
-topic: "General treatment"
+question: 'What factors can change the length of an orthodontic treatment plan?'
+topic: 'General treatment'
 pages:
-  - "/treatments/"
+  - '/treatments/'
 order: 5
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "What should I do if a bracket comes loose or a wire begins to poke?"
-topic: "Braces"
+question: 'What should I do if a bracket comes loose or a wire begins to poke?'
+topic: 'Braces'
 pages:
-  - "/treatments/braces/"
+  - '/treatments/braces/'
 order: 11
 ---
 

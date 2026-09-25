@@ -1,8 +1,8 @@
 ---
-question: "Can adult treatment address teeth that have shifted since earlier braces or aligners?"
-topic: "Adult treatment"
+question: 'Can adult treatment address teeth that have shifted since earlier braces or aligners?'
+topic: 'Adult treatment'
 pages:
-  - "/treatments/adult-treatment/"
+  - '/treatments/adult-treatment/'
 order: 3
 ---
 

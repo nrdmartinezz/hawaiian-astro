@@ -1,8 +1,8 @@
 ---
-question: "Can patients make payments or receive payment help by text message?"
-topic: "Payment plans"
+question: 'Can patients make payments or receive payment help by text message?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
+  - '/about/financial/'
 order: 8
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "How does the Invisalign First Palatal Expander System widen the upper arch?"
-topic: "Invisalign First"
+question: 'How does the Invisalign First Palatal Expander System widen the upper arch?'
+topic: 'Invisalign First'
 pages:
-  - "/treatments/invisalign/children/"
+  - '/treatments/invisalign/children/'
 order: 5
 ---
 

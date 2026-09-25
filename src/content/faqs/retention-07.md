@@ -1,8 +1,8 @@
 ---
-question: "Can teeth shift after orthodontic treatment even when the braces have been removed?"
-topic: "Retention"
+question: 'Can teeth shift after orthodontic treatment even when the braces have been removed?'
+topic: 'Retention'
 pages:
-  - "/treatments/retainers/"
+  - '/treatments/retainers/'
 order: 7
 ---
 

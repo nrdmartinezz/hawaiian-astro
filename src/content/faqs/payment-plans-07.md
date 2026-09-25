@@ -1,9 +1,9 @@
 ---
-question: "Can monthly automatic payments be arranged at 0% interest?"
-topic: "Payment plans"
+question: 'Can monthly automatic payments be arranged at 0% interest?'
+topic: 'Payment plans'
 pages:
-  - "/about/financial/"
-  - "/why-choose-us/"
+  - '/about/financial/'
+  - '/why-choose-us/'
 order: 7
 ---
 

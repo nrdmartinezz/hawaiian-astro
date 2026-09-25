@@ -1,8 +1,8 @@
 ---
-question: "Can Invisalign First help with spacing, crowding, narrow arches, or developing bite problems?"
-topic: "Invisalign First"
+question: 'Can Invisalign First help with spacing, crowding, narrow arches, or developing bite problems?'
+topic: 'Invisalign First'
 pages:
-  - "/treatments/invisalign/children/"
+  - '/treatments/invisalign/children/'
 order: 3
 ---
 

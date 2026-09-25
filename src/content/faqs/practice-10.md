@@ -1,8 +1,8 @@
 ---
-question: "Can I start orthodontic treatment on the day of my consultation?"
-topic: "Practice"
+question: 'Can I start orthodontic treatment on the day of my consultation?'
+topic: 'Practice'
 pages:
-  - "/patients/first-visit/"
+  - '/patients/first-visit/'
 order: 10
 ---
 

@@ -1,8 +1,8 @@
 ---
-question: "What should a teen do if an Invisalign aligner is lost or damaged?"
-topic: "Invisalign"
+question: 'What should a teen do if an Invisalign aligner is lost or damaged?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/teen/'
 order: 11
 ---
 

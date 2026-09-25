@@ -1,9 +1,9 @@
 ---
-question: "If a consultation deposit is required, is it applied to the treatment fee when treatment begins?"
-topic: "Payment plans"
+question: 'If a consultation deposit is required, is it applied to the treatment fee when treatment begins?'
+topic: 'Payment plans'
 pages:
-  - "/policies/"
-  - "/about/financial/"
+  - '/policies/'
+  - '/about/financial/'
 order: 17
 ---
 

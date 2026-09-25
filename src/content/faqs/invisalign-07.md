@@ -1,10 +1,10 @@
 ---
-question: "How should I clean Invisalign aligners without damaging them?"
-topic: "Invisalign"
+question: 'How should I clean Invisalign aligners without damaging them?'
+topic: 'Invisalign'
 pages:
-  - "/treatments/invisalign/"
-  - "/treatments/invisalign/adult/"
-  - "/treatments/invisalign/teen/"
+  - '/treatments/invisalign/'
+  - '/treatments/invisalign/adult/'
+  - '/treatments/invisalign/teen/'
 order: 7
 ---
 
