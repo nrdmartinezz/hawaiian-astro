@@ -1,44 +1,9 @@
 ---
-import type { ImageMetadata } from 'astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/blocks/Hero.astro';
 import FAQ from '../components/blocks/FAQ.astro';
 import CTABanner from '../components/blocks/CTABanner.astro';
 import { getAllFaqs, getFaqsByTopic, toFaqItem } from '../lib/faqs';
-import { treatmentImages } from '../config/treatmentImages';
-import { practiceImages } from '../config/practiceImages';
-
-const topicImages: Record<string, { src: ImageMetadata; alt: string }> = {
-  Practice: {
-    src: practiceImages.family,
-    alt: 'Dr. Satya Nayak and Dr. Nicole Fernandez with their sons',
-  },
-  'General treatment': {
-    src: treatmentImages['early-treatment'],
-    alt: 'A smile during orthodontic treatment',
-  },
-  'Early treatment': {
-    src: treatmentImages['early-treatment'],
-    alt: 'A child ready for an early orthodontic visit',
-  },
-  'Invisalign First': {
-    src: treatmentImages.invisalign,
-    alt: 'Clear aligners for a growing smile',
-  },
-  Braces: { src: treatmentImages.braces, alt: 'Braces on a smile' },
-  Invisalign: { src: treatmentImages.invisalign, alt: 'Invisalign aligners' },
-  'Adult treatment': {
-    src: treatmentImages['adult-treatment'],
-    alt: 'An adult smile in treatment',
-  },
-  Emergencies: { src: treatmentImages.emergency, alt: 'Orthodontic care at the office' },
-  Retention: { src: treatmentImages.retainers, alt: 'A finished smile after treatment' },
-  Insurance: { src: practiceImages.shaikh, alt: 'Dr. Alyssa Shaikh of Hawaiian Smiles' },
-  'Payment plans': {
-    src: practiceImages.nayakShaikhPierFront,
-    alt: 'Dr. Satya Nayak and Dr. Alyssa Shaikh',
-  },
-};
 
 const groups = await getFaqsByTopic();
 const faqs = (await getAllFaqs()).map(toFaqItem);
@@ -66,8 +31,6 @@ const faqs = (await getAllFaqs()).map(toFaqItem);
         eyebrow={index === 0 ? 'All questions' : undefined}
         title={group.topic}
         items={group.items}
-        image={topicImages[group.topic]?.src}
-        imageAlt={topicImages[group.topic]?.alt}
         schema={false}
         background={index % 2 === 0 ? 'base' : 'muted'}
       />
