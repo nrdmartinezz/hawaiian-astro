@@ -25,12 +25,13 @@ const address = locationAddress(location);
 const href = `/locations/${location.slug}/`;
 const seo = locationSeo[location.slug];
 if (!seo) throw new Error(`Missing SEO copy for location ${location.slug}`);
+const photo = pageImages.locations[location.slug as keyof typeof pageImages.locations];
 ---
 
 <BaseLayout
   title={seo.title}
   description={seo.description}
-  image={pageImages.locations[location.slug].src}
+  image={photo.src}
   imageAlt={`Hawaiian Smiles Orthodontics in ${location.shortName}`}
   locationSlug={location.slug}
   breadcrumbs={[
@@ -53,7 +54,7 @@ if (!seo) throw new Error(`Missing SEO copy for location ${location.slug}`);
   <FeatureSplit
     reverse
     title="One practice, four doors"
-    image={pageImages.locations[location.slug]}
+    image={photo}
     imageAlt="Dr. Satya Nayak and Dr. Alyssa Shaikh on a Hawaiʻi beach"
     body="The same doctors, technology, and aloha at every office. Longer visits such as braces bonding and Invisalign delivery are scheduled at Kaneohe and Kona."
     bullets={[

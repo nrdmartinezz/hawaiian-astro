@@ -26,6 +26,8 @@ interface Props {
 const { audience } = Astro.props;
 const seo = invisalignSeo[audience.slug];
 if (!seo) throw new Error(`Missing SEO copy for Invisalign ${audience.slug}`);
+const photo =
+  pageImages.invisalign.audiences[audience.slug as keyof typeof pageImages.invisalign.audiences];
 const href = invisalignPath(audience.slug);
 const others = invisalignAudiences.filter((item) => item.slug !== audience.slug);
 const faqs = await getFaqsFor(href);
@@ -34,7 +36,7 @@ const faqs = await getFaqsFor(href);
 <BaseLayout
   title={seo.title}
   description={seo.description}
-  image={pageImages.invisalign.audiences[audience.slug].src}
+  image={photo.src}
   imageAlt={audience.title}
   breadcrumbs={[
     { name: 'Home', href: '/' },
@@ -57,7 +59,7 @@ const faqs = await getFaqsFor(href);
 
   <FeatureSplit
     title={audience.leadTitle}
-    image={pageImages.invisalign.audiences[audience.slug]}
+    image={photo}
     imageAlt=""
     bullets={audience.bullets}
     actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
