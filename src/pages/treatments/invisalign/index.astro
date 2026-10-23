@@ -8,10 +8,10 @@ import InvisalignBracesCompare from '../../../components/blocks/InvisalignBraces
 import FAQ from '../../../components/blocks/FAQ.astro';
 import CTABanner from '../../../components/blocks/CTABanner.astro';
 import { invisalignAudiences, invisalignPath } from '../../../config/invisalign';
-import { treatmentImages } from '../../../config/treatmentImages';
+import { practiceImages } from '../../../config/practiceImages';
 import { getFaqsFor } from '../../../lib/faqs';
 
-const image = treatmentImages.invisalign;
+const image = practiceImages.nayakShaikhPierFront;
 const invisalignFaqs = await getFaqsFor(invisalignPath());
 ---
 
@@ -34,7 +34,7 @@ const invisalignFaqs = await getFaqsFor(invisalignPath());
     title="Invisalign that fits the age, not just the bite"
     body="Clear, comfortable trays for adults, teens, and growing children. A 3D plan you can preview, then a new set every week or two."
     actions={[
-      { label: 'Request an appointment', href: '/appointment/' },
+      { label: 'Request a free appointment', href: '/appointment/' },
       { label: 'All treatments', href: '/treatments/', variant: 'secondary' },
     ]}
   />
@@ -43,7 +43,7 @@ const invisalignFaqs = await getFaqsFor(invisalignPath());
     eyebrow="How it works"
     title="A series of trays, each one a small step"
     image={image}
-    imageAlt="A smiling patient holding a clear Invisalign aligner"
+    imageAlt="Dr. Satya Nayak and Dr. Alyssa Shaikh on a Hawaiʻi beach"
     bullets={[
       'Almost invisible, and removable to eat and brush',
       'About 22 hours a day, then the next tray in 1–2 weeks',

@@ -18,6 +18,7 @@ import { treatmentImages } from '../config/treatmentImages';
 import { locations } from '../config/locations';
 import { awardLogos, affiliationLogos } from '../config/credentials';
 import heroImage from '../assets/hero.jpg';
+import invisalignAligner from '../assets/invisalign-smile.jpg';
 import { practiceImages } from '../config/practiceImages';
 import { getFaqsFor } from '../lib/faqs';
 
@@ -32,8 +33,8 @@ const faqs = await getFaqsFor('/');
   overlay
 >
   <Hero
-    backdrop={heroImage}
-    backdropAlt=""
+    backdrop={practiceImages.nayakShaikhBeachWide}
+    backdropAlt="Dr. Satya Nayak and Dr. Alyssa Shaikh standing on a Hawaiʻi beach"
     eyebrow="Kaneohe · Kailua-Kona · Kamuela · Hilo"
     title="Changing Lives, One Smile at a time"
     body="Voted Best Hawaii Dentist 2020–2025. Braces, Invisalign, and early treatment with cutting-edge technology and a whole lot of aloha."
@@ -43,7 +44,7 @@ const faqs = await getFaqsFor('/');
       'Text-friendly scheduling at (808) 247-6039',
     ]}
     actions={[
-      { label: 'Request an appointment', href: '/appointment/' },
+      { label: 'Request a free appointment', href: '/appointment/' },
       {
         label: site.business.phone,
         href: `tel:${site.business.phoneHref}`,
@@ -134,8 +135,8 @@ const faqs = await getFaqsFor('/');
   <FeatureSplit
     eyebrow="Clear Aligner Therapy"
     title="Invisalign® Virtually Invisible. Remarkably Effective."
-    image={treatmentImages.invisalign}
-    imageAlt="A smiling patient holding a clear Invisalign aligner"
+    image={invisalignAligner}
+    imageAlt="Smiling woman holding a clear Invisalign aligner"
     bullets={[
       'Virtually invisible clear trays',
       'Removable for eating and brushing',

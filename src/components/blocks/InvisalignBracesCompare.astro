@@ -126,50 +126,56 @@ const rows = [
   ]}
 />
 
-<ValueGrid
-  background="muted"
-  eyebrow="Invisalign"
-  title="Why patients choose clear aligners"
-  items={[
-    {
-      icon: 'lucide:eye-off',
-      title: 'Hard to see',
-      body: 'The trays are clear medical-grade plastic. Most people will not notice them in photos, at work, or at school.',
-    },
-    {
-      icon: 'lucide:utensils',
-      title: 'Eat what you like',
-      body: 'Take the trays out for meals, anything but water, and brushing. Nothing on the menu can snap a bracket. Brush before they go back in.',
-    },
-    {
-      icon: 'lucide:smile',
-      title: 'Smooth against the cheeks',
-      body: 'There are no brackets or wires to rub. Each set is made to fit your teeth. Expect pressure for a day or two when you start a new tray — that pressure is the teeth moving.',
-    },
-  ]}
-/>
+{
+  focus === 'invisalign' && (
+    <>
+      <ValueGrid
+        background="muted"
+        eyebrow="Invisalign"
+        title="Why patients choose clear aligners"
+        items={[
+          {
+            icon: 'lucide:eye-off',
+            title: 'Hard to see',
+            body: 'The trays are clear medical-grade plastic. Most people will not notice them in photos, at work, or at school.',
+          },
+          {
+            icon: 'lucide:utensils',
+            title: 'Eat what you like',
+            body: 'Take the trays out for meals, anything but water, and brushing. Nothing on the menu can snap a bracket. Brush before they go back in.',
+          },
+          {
+            icon: 'lucide:smile',
+            title: 'Smooth against the cheeks',
+            body: 'There are no brackets or wires to rub. Each set is made to fit your teeth. Expect pressure for a day or two when you start a new tray — that pressure is the teeth moving.',
+          },
+        ]}
+      />
 
-<ValueGrid
-  eyebrow="Invisalign"
-  title="What to plan for with aligners"
-  items={[
-    {
-      icon: 'lucide:clock',
-      title: 'Hours matter',
-      body: 'The trays only move teeth while they are in. Plan on about 22 hours a day. Shortchanging that time stretches treatment and can throw off the plan.',
-    },
-    {
-      icon: 'lucide:scan',
-      title: 'Not every bite',
-      body: 'Invisalign treats many cases, including some that used to mean braces only. Severe misalignment and some bite problems still need the control of fixed braces. We will say which one fits after the exam.',
-    },
-    {
-      icon: 'lucide:search',
-      title: 'Trays get lost',
-      body: 'They come out to eat, and a napkin is how they disappear. Keep the case with you. Call us if one is lost so we can tell you whether to go back a tray, move ahead, or come in for a replacement.',
-    },
-  ]}
-/>
+      <ValueGrid
+        eyebrow="Invisalign"
+        title="What to plan for with aligners"
+        items={[
+          {
+            icon: 'lucide:clock',
+            title: 'Hours matter',
+            body: 'The trays only move teeth while they are in. Plan on about 22 hours a day. Shortchanging that time stretches treatment and can throw off the plan.',
+          },
+          {
+            icon: 'lucide:scan',
+            title: 'Not every bite',
+            body: 'Invisalign treats many cases, including some that used to mean braces only. Severe misalignment and some bite problems still need the control of fixed braces. We will say which one fits after the exam.',
+          },
+          {
+            icon: 'lucide:search',
+            title: 'Trays get lost',
+            body: 'They come out to eat, and a napkin is how they disappear. Keep the case with you. Call us if one is lost so we can tell you whether to go back a tray, move ahead, or come in for a replacement.',
+          },
+        ]}
+      />
+    </>
+  )
+}
 
 <FeatureSplit
   background="muted"

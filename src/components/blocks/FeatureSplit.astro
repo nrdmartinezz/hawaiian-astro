@@ -42,10 +42,11 @@ const {
             <Image
               src={image}
               alt={imageAlt}
-              widths={[480, 768, 1024]}
-              sizes="(max-width: 768px) 100vw, 50vw"
+              widths={[768, 1024, 1600]}
+              sizes="(max-width: 768px) 100vw, 1024px"
+              quality={90}
               loading="lazy"
-              class="h-full min-h-72 w-full rounded-lg object-cover"
+              class="h-full min-h-72 w-full rounded-lg object-cover object-center"
             />
           ) : (
             <div class="bg-surface-muted h-full min-h-72 w-full rounded-lg" aria-hidden="true" />
