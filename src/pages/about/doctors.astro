@@ -5,7 +5,7 @@ import Team from '../../components/blocks/Team.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
 import FAQ from '../../components/blocks/FAQ.astro';
 import { doctors } from '../../config/team';
-import { practiceImages } from '../../config/practiceImages';
+import { pageImages } from '../../config/pageImages';
 import { getFaqsFor } from '../../lib/faqs';
 
 const faqs = await getFaqsFor('/about/doctors/');
@@ -25,7 +25,7 @@ const faqs = await getFaqsFor('/about/doctors/');
     eyebrow="The doctors"
     title="Experienced orthodontists, caring and current"
     body="Our doctors stay up to date on the latest treatment options so every patient has access to care that is safe, gentle, and effective."
-    image={practiceImages.nayakShaikhPierFront}
+    image={pageImages.doctors.hero}
     imageAlt="Dr. Satya Nayak and Dr. Alyssa Shaikh on a Hawaiʻi beach"
     actions={[{ label: 'Request a free appointment', href: '/appointment/' }]}
   />

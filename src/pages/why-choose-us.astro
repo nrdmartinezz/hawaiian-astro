@@ -12,8 +12,7 @@ import FAQ from '../components/blocks/FAQ.astro';
 import { site } from '../config/site';
 import { locations } from '../config/locations';
 import { awardLogos, affiliationLogos } from '../config/credentials';
-import { treatmentImages } from '../config/treatmentImages';
-import { practiceImages } from '../config/practiceImages';
+import { pageImages } from '../config/pageImages';
 import { getFaqsFor } from '../lib/faqs';
 
 const faqs = await getFaqsFor('/why-choose-us/');
@@ -43,7 +42,7 @@ const breadcrumbs = [
   <FeatureSplit
     eyebrow="Our story"
     title="A 50-year legacy of Hawaiian smiles"
-    image={practiceImages.family}
+    image={pageImages.whyChooseUs.story}
     imageAlt="Dr. Satya Nayak and Dr. Nicole Fernandez with their sons on a Hawaiʻi beach"
     bullets={[
       'Continuing Dr. Errol Yim’s care since 1974',
@@ -157,7 +156,7 @@ const breadcrumbs = [
     background="muted"
     eyebrow="Pitts 21 & Invisalign"
     title="Faster treatments with self-ligating braces and clear aligners"
-    image={treatmentImages.invisalign}
+    image={pageImages.whyChooseUs.aligners}
     imageAlt="A smiling patient holding a clear Invisalign aligner"
     bullets={[
       'Only Pitts 21 provider in Hawaiʻi',

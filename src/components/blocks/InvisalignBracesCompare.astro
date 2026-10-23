@@ -4,7 +4,7 @@ import Container from '../ui/Container.astro';
 import Heading from '../ui/Heading.astro';
 import ValueGrid from './ValueGrid.astro';
 import FeatureSplit from './FeatureSplit.astro';
-import { treatmentImages } from '../../config/treatmentImages';
+import { pageImages } from '../../config/pageImages';
 
 interface Props {
   /** Which treatment this page is about, so the intro leads with that option. */
@@ -181,7 +181,7 @@ const rows = [
   background="muted"
   eyebrow="At the consult"
   title="We pick the appliance after we see the bite"
-  image={focus === 'invisalign' ? treatmentImages.invisalign : treatmentImages.braces}
+  image={focus === 'invisalign' ? pageImages.compare.invisalign : pageImages.compare.braces}
   imageAlt={focus === 'invisalign' ? 'Clear aligners' : 'Braces'}
   body="Complexity, lifestyle, and whether you can wear trays most of the day decide it. Both finish with retainers. A complimentary consult is where we walk through which one fits."
   bullets={[

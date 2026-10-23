@@ -8,10 +8,10 @@ import InvisalignBracesCompare from '../../../components/blocks/InvisalignBraces
 import FAQ from '../../../components/blocks/FAQ.astro';
 import CTABanner from '../../../components/blocks/CTABanner.astro';
 import { invisalignAudiences, invisalignPath } from '../../../config/invisalign';
-import { practiceImages } from '../../../config/practiceImages';
+import { pageImages } from '../../../config/pageImages';
 import { getFaqsFor } from '../../../lib/faqs';
 
-const image = practiceImages.nayakShaikhPierFront;
+const image = pageImages.invisalign.overview;
 const invisalignFaqs = await getFaqsFor(invisalignPath());
 ---
 

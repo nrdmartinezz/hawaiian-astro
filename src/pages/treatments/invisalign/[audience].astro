@@ -8,7 +8,7 @@ import ServicesGrid from '../../../components/blocks/ServicesGrid.astro';
 import FAQ from '../../../components/blocks/FAQ.astro';
 import CTABanner from '../../../components/blocks/CTABanner.astro';
 import { invisalignAudiences, invisalignPath } from '../../../config/invisalign';
-import { treatmentImages } from '../../../config/treatmentImages';
+import { pageImages } from '../../../config/pageImages';
 import { getFaqsFor } from '../../../lib/faqs';
 
 export function getStaticPaths() {
@@ -52,7 +52,7 @@ const faqs = await getFaqsFor(href);
 
   <FeatureSplit
     title={audience.leadTitle}
-    image={treatmentImages.invisalign}
+    image={pageImages.invisalign.audiences[audience.slug]}
     imageAlt=""
     bullets={audience.bullets}
     actions={[{ label: 'Request an appointment', href: '/appointment/' }]}
