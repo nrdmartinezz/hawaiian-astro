@@ -1,8 +1,8 @@
 ---
 /**
- * Facade pattern: renders a static placeholder and only loads the Google Maps
- * iframe on click. An eager map iframe costs ~700KB and several hundred ms of
- * main-thread time on every page it appears.
+ * Facade pattern: renders a static placeholder and loads the Google Maps iframe
+ * only when the map scrolls into view. An eager map iframe costs ~700KB and
+ * several hundred ms of main-thread time on every page it appears.
  */
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
@@ -51,14 +51,13 @@ const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${enc
       style={`height:${height}`}
       data-src={embedSrc}
     >
-      <button
-        type="button"
-        class="text-ink-base absolute inset-0 flex cursor-pointer flex-col items-center justify-center gap-3 p-6 text-center"
+      <div
+        class="text-ink-base pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center"
+        aria-hidden="true"
       >
-        <Icon name="lucide:map-pin" class="text-brand-600 size-10" aria-hidden="true" />
-        <span class="font-medium">Load map</span>
+        <Icon name="lucide:map-pin" class="text-brand-600 size-10" />
         <span class="text-ink-muted max-w-reading text-sm">{query}</span>
-      </button>
+      </div>
     </div>
 
     <div class="flex flex-wrap gap-4 text-sm">
@@ -73,15 +72,35 @@ const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${enc
 </Section>
 
 <script>
-  for (const facade of document.querySelectorAll<HTMLElement>('.map-facade')) {
-    facade.querySelector('button')?.addEventListener('click', () => {
-      const iframe = document.createElement('iframe');
-      iframe.src = facade.dataset.src ?? '';
-      iframe.title = 'Location map';
-      iframe.loading = 'lazy';
-      iframe.referrerPolicy = 'no-referrer-when-downgrade';
-      iframe.className = 'absolute inset-0 h-full w-full border-0';
-      facade.replaceChildren(iframe);
-    });
+  const loadMap = (facade: HTMLElement) => {
+    if (facade.dataset.loaded === 'true') return;
+    facade.dataset.loaded = 'true';
+
+    const iframe = document.createElement('iframe');
+    iframe.src = facade.dataset.src ?? '';
+    iframe.title = 'Location map';
+    iframe.loading = 'lazy';
+    iframe.referrerPolicy = 'no-referrer-when-downgrade';
+    iframe.className = 'absolute inset-0 h-full w-full border-0';
+    facade.replaceChildren(iframe);
+  };
+
+  const facades = document.querySelectorAll<HTMLElement>('.map-facade');
+
+  if (!('IntersectionObserver' in window)) {
+    facades.forEach(loadMap);
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          loadMap(entry.target as HTMLElement);
+          observer.unobserve(entry.target);
+        }
+      },
+      { rootMargin: '200px 0px' },
+    );
+
+    facades.forEach((facade) => observer.observe(facade));
   }
 </script>
