@@ -2,6 +2,7 @@ node_modules/
 dist/
 .astro/
 .lighthouseci/
+.responsive-check/
 tools/composer.phar
 tools/phpmailer.tar.gz
 scripts/php/cacert.pem
