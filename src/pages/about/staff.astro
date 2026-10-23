@@ -3,12 +3,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/blocks/Hero.astro';
 import Team from '../../components/blocks/Team.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
+import { pageSeo } from '../../config/seo';
 import { staff } from '../../config/team';
 ---
 
 <BaseLayout
-  title="Meet the Staff"
-  description="Meet the treatment coordinators, smile architects, and financial team at Hawaiian Smiles Orthodontics."
+  title={pageSeo.staff.title}
+  description={pageSeo.staff.description}
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about/' },

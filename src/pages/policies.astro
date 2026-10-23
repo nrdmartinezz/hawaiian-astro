@@ -4,6 +4,7 @@ import Hero from '../components/blocks/Hero.astro';
 import Section from '../components/ui/Section.astro';
 import Container from '../components/ui/Container.astro';
 import Prose from '../components/ui/Prose.astro';
+import { pageSeo } from '../config/seo';
 import { site } from '../config/site';
 import FAQ from '../components/blocks/FAQ.astro';
 import { getFaqsFor } from '../lib/faqs';
@@ -12,8 +13,8 @@ const faqs = await getFaqsFor('/policies/');
 ---
 
 <BaseLayout
-  title="Policies"
-  description="Office hours, cancellation, and new-patient policies at Hawaiian Smiles Orthodontics."
+  title={pageSeo.policies.title}
+  description={pageSeo.policies.description}
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'Policies', href: '/policies/' },

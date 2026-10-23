@@ -6,6 +6,7 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
 import FAQ from '../../components/blocks/FAQ.astro';
 import { treatments } from '../../config/treatments';
 import { treatmentImages } from '../../config/treatmentImages';
+import { pageSeo } from '../../config/seo';
 import { getFaqsFor } from '../../lib/faqs';
 
 const faqs = await getFaqsFor('/treatments/');
@@ -17,8 +18,8 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="Treatments"
-  description="Early treatment, adult treatment, airway development, Invisalign, self-ligating braces, retainers, emergency care, and teeth whitening at Hawaiian Smiles."
+  title={pageSeo.treatments.title}
+  description={pageSeo.treatments.description}
   breadcrumbs={breadcrumbs}
   faqs={faqs}
 >

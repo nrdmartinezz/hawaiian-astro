@@ -13,6 +13,7 @@ import { site } from '../config/site';
 import { locations } from '../config/locations';
 import { awardLogos, affiliationLogos } from '../config/credentials';
 import { pageImages } from '../config/pageImages';
+import { pageSeo } from '../config/seo';
 import { getFaqsFor } from '../lib/faqs';
 
 const faqs = await getFaqsFor('/why-choose-us/');
@@ -24,8 +25,10 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="Why Choose Us"
-  description="Board-certified specialists, 0% monthly plans from $80–$200, Pitts 21 braces, and Diamond Invisalign care for families across Oʻahu and Hawaiʻi Island."
+  title={pageSeo.whyChooseUs.title}
+  description={pageSeo.whyChooseUs.description}
+  image={pageImages.whyChooseUs.story.src}
+  imageAlt="The Hawaiian Smiles family on a beach"
   breadcrumbs={breadcrumbs}
   faqs={faqs}
 >

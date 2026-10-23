@@ -2,7 +2,12 @@
 import '../styles/global.css';
 
 import SEO from '../components/seo/SEO.astro';
-import Schema, { type BreadcrumbEntry, type FaqEntry } from '../components/seo/Schema.astro';
+import Schema, {
+  type ArticleEntry,
+  type BreadcrumbEntry,
+  type FaqEntry,
+  type PersonEntry,
+} from '../components/seo/Schema.astro';
 import Analytics from '../components/analytics/Analytics.astro';
 import CookieConsent from '../components/analytics/CookieConsent.astro';
 import Header, { type HeaderSticky } from '../components/layout/Header.astro';
@@ -24,12 +29,25 @@ interface Props {
   breadcrumbs?: BreadcrumbEntry[];
   faqs?: FaqEntry[];
   service?: { name: string; description?: string };
+  locationSlug?: string;
+  people?: PersonEntry[];
+  article?: ArticleEntry;
   sticky?: HeaderSticky;
   /** Float the header over a photo hero until the page is scrolled. */
   overlay?: boolean;
 }
 
-const { breadcrumbs, faqs, service, sticky = 'sticky', overlay = false, ...seo } = Astro.props;
+const {
+  breadcrumbs,
+  faqs,
+  service,
+  locationSlug,
+  people,
+  article,
+  sticky = 'sticky',
+  overlay = false,
+  ...seo
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -39,7 +57,9 @@ const { breadcrumbs, faqs, service, sticky = 'sticky', overlay = false, ...seo }
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#49206e" />
     {allowIndexing && <link rel="sitemap" href="/sitemap-index.xml" />}
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} Blog`} href="/rss.xml" />
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
     <link rel="preconnect" href="https://p.typekit.net" crossorigin />
     <link rel="stylesheet" href="https://use.typekit.net/xzq1vrf.css" />
@@ -52,7 +72,14 @@ const { breadcrumbs, faqs, service, sticky = 'sticky', overlay = false, ...seo }
     </script>
 
     <SEO {...seo} />
-    <Schema breadcrumbs={breadcrumbs} faqs={faqs} service={service} />
+    <Schema
+      breadcrumbs={breadcrumbs}
+      faqs={faqs}
+      service={service}
+      locationSlug={locationSlug}
+      people={people}
+      article={article}
+    />
     {hasAnalytics && allowIndexing && <Analytics />}
 
     <slot name="head" />

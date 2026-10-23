@@ -4,12 +4,13 @@ import Hero from '../components/blocks/Hero.astro';
 import Section from '../components/ui/Section.astro';
 import Container from '../components/ui/Container.astro';
 import Prose from '../components/ui/Prose.astro';
+import { pageSeo } from '../config/seo';
 import { site, formattedAddress } from '../config/site';
 ---
 
 <BaseLayout
-  title="Privacy Policy"
-  description="How Hawaiian Smiles Orthodontics collects, uses, and protects personal information."
+  title={pageSeo.privacy.title}
+  description={pageSeo.privacy.description}
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'Privacy Policy', href: '/privacy/' },

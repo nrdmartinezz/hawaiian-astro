@@ -4,6 +4,7 @@ import Hero from '../components/blocks/Hero.astro';
 import ContactBlock from '../components/blocks/ContactBlock.astro';
 import ServicesGrid from '../components/blocks/ServicesGrid.astro';
 import { locations, locationAddress } from '../config/locations';
+import { pageSeo } from '../config/seo';
 import { site } from '../config/site';
 import FAQ from '../components/blocks/FAQ.astro';
 import { getFaqsFor } from '../lib/faqs';
@@ -12,8 +13,8 @@ const faqs = await getFaqsFor('/contact/');
 ---
 
 <BaseLayout
-  title="Contact"
-  description="Call or text Hawaiian Smiles Orthodontics at (808) 247-6039. Offices in Kaneohe, Kailua-Kona, Kamuela, and Hilo."
+  title={pageSeo.contact.title}
+  description={pageSeo.contact.description}
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'Contact', href: '/contact/' },

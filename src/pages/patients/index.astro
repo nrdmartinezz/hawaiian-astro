@@ -4,11 +4,12 @@ import Hero from '../../components/blocks/Hero.astro';
 import ServicesGrid from '../../components/blocks/ServicesGrid.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
 import { patientFormActions, patientForms } from '../../config/patientForms';
+import { pageSeo } from '../../config/seo';
 ---
 
 <BaseLayout
-  title="Patients"
-  description="First-visit tips, registration forms, and referral information for Hawaiian Smiles Orthodontics patients."
+  title={pageSeo.patients.title}
+  description={pageSeo.patients.description}
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'Patients', href: '/patients/' },

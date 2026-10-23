@@ -7,13 +7,16 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
 import FAQ from '../../components/blocks/FAQ.astro';
 import { getFaqsFor } from '../../lib/faqs';
 import { pageImages } from '../../config/pageImages';
+import { pageSeo } from '../../config/seo';
 
 const faqs = await getFaqsFor('/about/financial/');
 ---
 
 <BaseLayout
-  title="Financial Information"
-  description="Insurance, interest-free monthly plans, HSA/FSA, and sibling discounts at Hawaiian Smiles Orthodontics."
+  title={pageSeo.financial.title}
+  description={pageSeo.financial.description}
+  image={pageImages.financial.split.src}
+  imageAlt="Dr. Satya Nayak and Dr. Alyssa Shaikh"
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about/' },

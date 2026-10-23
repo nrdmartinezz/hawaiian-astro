@@ -5,6 +5,7 @@ import ServicesGrid from '../../components/blocks/ServicesGrid.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
 import FAQ from '../../components/blocks/FAQ.astro';
 import { locations, locationAddress } from '../../config/locations';
+import { pageSeo } from '../../config/seo';
 import { site } from '../../config/site';
 import { getFaqsFor } from '../../lib/faqs';
 
@@ -17,8 +18,8 @@ const breadcrumbs = [
 ---
 
 <BaseLayout
-  title="Locations"
-  description="Hawaiian Smiles Orthodontics offices in Kaneohe, Kailua-Kona, Kamuela, and Hilo. Call or text (808) 247-6039."
+  title={pageSeo.locations.title}
+  description={pageSeo.locations.description}
   breadcrumbs={breadcrumbs}
   faqs={faqs}
 >

@@ -3,11 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/blocks/Hero.astro';
 import ContactBlock from '../../components/blocks/ContactBlock.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
+import { pageSeo } from '../../config/seo';
 ---
 
 <BaseLayout
-  title="Referrals"
-  description="Refer a patient or a friend to Hawaiian Smiles Orthodontics."
+  title={pageSeo.referrals.title}
+  description={pageSeo.referrals.description}
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'Patients', href: '/patients/' },

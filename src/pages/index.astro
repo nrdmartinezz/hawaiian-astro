@@ -12,6 +12,7 @@ import LocationCards from '../components/blocks/LocationCards.astro';
 import FAQ from '../components/blocks/FAQ.astro';
 import CTABanner from '../components/blocks/CTABanner.astro';
 import { patientFormActions } from '../config/patientForms';
+import { pageSeo } from '../config/seo';
 import { site } from '../config/site';
 import { treatments } from '../config/treatments';
 import { treatmentImages } from '../config/treatmentImages';
@@ -24,9 +25,11 @@ const faqs = await getFaqsFor('/');
 ---
 
 <BaseLayout
-  titleExact
-  title={`${site.name} — ${site.tagline}`}
-  description={site.description}
+  titleExact={pageSeo.home.titleExact}
+  title={pageSeo.home.title}
+  description={pageSeo.home.description}
+  image={pageImages.home.hero.src}
+  imageAlt="Dr. Satya Nayak and Dr. Alyssa Shaikh standing on a Hawaiʻi beach"
   faqs={faqs}
   overlay
 >

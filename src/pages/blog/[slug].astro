@@ -37,6 +37,14 @@ const suggestions = related(all, entry);
   image={entry.data.heroImage?.src}
   publishedTime={entry.data.publishDate.toISOString()}
   modifiedTime={entry.data.updatedDate?.toISOString()}
+  article={{
+    headline: entry.data.title,
+    description: entry.data.description,
+    datePublished: entry.data.publishDate.toISOString(),
+    dateModified: entry.data.updatedDate?.toISOString(),
+    image: entry.data.heroImage?.src,
+    author: entry.data.author,
+  }}
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'Patients', href: '/patients/' },

@@ -9,6 +9,7 @@ import FAQ from '../../../components/blocks/FAQ.astro';
 import CTABanner from '../../../components/blocks/CTABanner.astro';
 import { invisalignAudiences, invisalignPath } from '../../../config/invisalign';
 import { pageImages } from '../../../config/pageImages';
+import { invisalignSeo } from '../../../config/seo';
 import { getFaqsFor } from '../../../lib/faqs';
 
 export function getStaticPaths() {
@@ -23,14 +24,18 @@ interface Props {
 }
 
 const { audience } = Astro.props;
+const seo = invisalignSeo[audience.slug];
+if (!seo) throw new Error(`Missing SEO copy for Invisalign ${audience.slug}`);
 const href = invisalignPath(audience.slug);
 const others = invisalignAudiences.filter((item) => item.slug !== audience.slug);
 const faqs = await getFaqsFor(href);
 ---
 
 <BaseLayout
-  title={audience.title}
-  description={audience.summary}
+  title={seo.title}
+  description={seo.description}
+  image={pageImages.invisalign.audiences[audience.slug].src}
+  imageAlt={audience.title}
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'Treatments', href: '/treatments/' },

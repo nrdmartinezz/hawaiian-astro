@@ -100,7 +100,7 @@ export const site: SiteConfig = {
   legalName: 'Satyaprasad Nayak DMD MS Inc',
   tagline: 'Beautiful, healthy smiles across Hawaiʻi.',
   description:
-    'Hawaiian Smiles Orthodontics provides braces, Invisalign, and early treatment for children, teens, and adults at offices in Kaneohe, Kailua-Kona, Kamuela, and Hilo. Voted Best Hawaii Dentist 2020–2025.',
+    'Braces, Invisalign, and early treatment for children, teens, and adults at Hawaiian Smiles Orthodontics. Kaneohe, Kailua-Kona, Kamuela, and Hilo. Call (808) 247-6039.',
   locale: 'en-US',
 
   business: {
@@ -125,21 +125,21 @@ export const site: SiteConfig = {
     instagram: 'https://www.instagram.com/hawaiiansmilesortho/',
   },
 
-  defaultOgImage: '/og-default.png',
+  defaultOgImage: '/og-default.jpg',
 
   formEndpoint: '/api/submit.php',
   recaptchaSiteKey: '6LcjJtwtAAAAAOqMaI9JKpPnfD5EpUUHqHMcpL0s',
 
   analytics: {
     ga4: '',
-    gtm: '',
+    gtm: 'GTM-KRD26P6',
     metaPixel: '',
     bingUet: '',
     clarity: '',
   },
 
   verification: {
-    google: '',
+    google: 'zLNutMuxcWMjn7ajcDQb0bhWzL7bZIw56K1EuypguMI',
     bing: '',
     meta: '',
   },

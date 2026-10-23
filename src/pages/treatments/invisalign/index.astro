@@ -9,6 +9,7 @@ import FAQ from '../../../components/blocks/FAQ.astro';
 import CTABanner from '../../../components/blocks/CTABanner.astro';
 import { invisalignAudiences, invisalignPath } from '../../../config/invisalign';
 import { pageImages } from '../../../config/pageImages';
+import { pageSeo } from '../../../config/seo';
 import { getFaqsFor } from '../../../lib/faqs';
 
 const image = pageImages.invisalign.overview;
@@ -16,8 +17,10 @@ const invisalignFaqs = await getFaqsFor(invisalignPath());
 ---
 
 <BaseLayout
-  title="Invisalign"
-  description="Clear, comfortable, removable Invisalign aligners for adults, teens, and growing children at Hawaiian Smiles."
+  title={pageSeo.invisalign.title}
+  description={pageSeo.invisalign.description}
+  image={image.src}
+  imageAlt="Dr. Satya Nayak and Dr. Alyssa Shaikh"
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'Treatments', href: '/treatments/' },

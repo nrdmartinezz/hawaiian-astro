@@ -1,6 +1,6 @@
 ---
 title: 'Why Do You Need Orthodontics For Your Smile?'
-description: 'If you need an orthodontist for your beautiful smile, Get in touch with the experts at Hawaiian Smiles Orthodontics. To Set an appointment, call us at 808-900-4275.'
+description: 'If you need an orthodontist for your beautiful smile, get in touch with Hawaiian Smiles Orthodontics. To set an appointment, call (808) 247-6039.'
 publishDate: 2021-09-20
 updatedDate: 2022-09-13
 draft: false

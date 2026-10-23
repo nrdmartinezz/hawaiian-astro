@@ -6,14 +6,23 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
 import FAQ from '../../components/blocks/FAQ.astro';
 import { doctors } from '../../config/team';
 import { pageImages } from '../../config/pageImages';
+import { pageSeo } from '../../config/seo';
 import { getFaqsFor } from '../../lib/faqs';
 
 const faqs = await getFaqsFor('/about/doctors/');
 ---
 
 <BaseLayout
-  title="Meet the Doctors"
-  description="Meet Dr. Satya Nayak, Dr. Alyssa Shaikh, and Dr. Nicole Fernandez at Hawaiian Smiles Orthodontics."
+  title={pageSeo.doctors.title}
+  description={pageSeo.doctors.description}
+  image={pageImages.doctors.hero.src}
+  imageAlt="Dr. Satya Nayak and Dr. Alyssa Shaikh on a Hawaiʻi beach"
+  people={doctors.map((doctor) => ({
+    name: doctor.name,
+    jobTitle: doctor.role,
+    description: doctor.bio,
+    image: doctor.photo?.src,
+  }))}
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about/' },

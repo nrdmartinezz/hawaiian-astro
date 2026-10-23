@@ -1,4 +1,5 @@
 ---
+import { locations } from '../../config/locations';
 import { site } from '../../config/site';
 
 export interface BreadcrumbEntry {
@@ -11,16 +12,79 @@ export interface FaqEntry {
   answer: string;
 }
 
+export interface PersonEntry {
+  name: string;
+  jobTitle: string;
+  description: string;
+  image?: string;
+}
+
+export interface ArticleEntry {
+  headline: string;
+  description?: string;
+  datePublished: string;
+  dateModified?: string;
+  image?: string;
+  author?: string;
+}
+
 interface Props {
   breadcrumbs?: BreadcrumbEntry[];
   faqs?: FaqEntry[];
   service?: { name: string; description?: string };
+  /** Office slug. The page's main entity becomes that office. */
+  locationSlug?: string;
+  people?: PersonEntry[];
+  article?: ArticleEntry;
 }
 
-const { breadcrumbs, faqs, service } = Astro.props;
+const { breadcrumbs, faqs, service, locationSlug, people, article } = Astro.props;
 
 const businessId = `${site.url}/#business`;
 const abs = (path: string) => new URL(path, site.url).href;
+const pageUrl = abs(Astro.url.pathname);
+
+const postal = (address: {
+  street: string;
+  locality: string;
+  region: string;
+  postalCode: string;
+  country?: string;
+}) => ({
+  '@type': 'PostalAddress',
+  streetAddress: address.street,
+  addressLocality: address.locality,
+  addressRegion: address.region,
+  postalCode: address.postalCode,
+  addressCountry: address.country ?? 'US',
+});
+
+const officeId = (slug: string) => `${site.url}/locations/${slug}/#office`;
+
+const offices = locations.map((location) => ({
+  '@type': 'Dentist',
+  '@id': officeId(location.slug),
+  name: `Hawaiian Smiles Orthodontics — ${location.shortName}`,
+  url: abs(`/locations/${location.slug}/`),
+  telephone: site.business.phone,
+  parentOrganization: { '@id': businessId },
+  address: postal({
+    street: location.street,
+    locality: location.locality,
+    region: location.region,
+    postalCode: location.postalCode,
+  }),
+  ...(location.slug === 'kaneohe' && site.business.geo
+    ? {
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: site.business.geo.latitude,
+          longitude: site.business.geo.longitude,
+        },
+      }
+    : {}),
+  openingHours: site.business.hours,
+}));
 
 const graph: Record<string, unknown>[] = [
   {
@@ -30,18 +94,13 @@ const graph: Record<string, unknown>[] = [
     legalName: site.legalName,
     description: site.description,
     url: site.url,
+    logo: abs('/apple-touch-icon.png'),
+    image: abs(site.defaultOgImage),
     telephone: site.business.phone,
     email: site.business.email,
     ...(site.business.fax && { faxNumber: site.business.fax }),
     priceRange: site.business.priceRange,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: site.business.address.street,
-      addressLocality: site.business.address.locality,
-      addressRegion: site.business.address.region,
-      postalCode: site.business.address.postalCode,
-      addressCountry: site.business.address.country,
-    },
+    address: postal(site.business.address),
     ...(site.business.geo && {
       geo: {
         '@type': 'GeoCoordinates',
@@ -50,17 +109,37 @@ const graph: Record<string, unknown>[] = [
       },
     }),
     openingHours: site.business.hours,
+    areaServed: {
+      '@type': 'AdministrativeArea',
+      name: 'Hawaii',
+    },
     sameAs: Object.values(site.social).filter(Boolean),
+    location: offices.map((office) => ({ '@id': office['@id'] })),
   },
+  ...offices,
   {
     '@type': 'WebSite',
     '@id': `${site.url}/#website`,
     url: site.url,
     name: site.name,
+    description: site.description,
     publisher: { '@id': businessId },
     inLanguage: site.locale,
   },
 ];
+
+if (locationSlug) {
+  graph.push({
+    '@type': 'WebPage',
+    '@id': `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: locations.find((location) => location.slug === locationSlug)?.name,
+    isPartOf: { '@id': `${site.url}/#website` },
+    about: { '@id': businessId },
+    mainEntity: { '@id': officeId(locationSlug) },
+    inLanguage: site.locale,
+  });
+}
 
 if (breadcrumbs?.length) {
   graph.push({
@@ -91,7 +170,35 @@ if (service) {
     name: service.name,
     description: service.description,
     provider: { '@id': businessId },
-    areaServed: site.business.address.region,
+    areaServed: 'Hawaii',
+  });
+}
+
+if (people?.length) {
+  for (const person of people) {
+    graph.push({
+      '@type': 'Person',
+      name: person.name,
+      jobTitle: person.jobTitle,
+      description: person.description,
+      ...(person.image && { image: abs(person.image) }),
+      worksFor: { '@id': businessId },
+    });
+  }
+}
+
+if (article) {
+  graph.push({
+    '@type': 'BlogPosting',
+    headline: article.headline,
+    description: article.description,
+    datePublished: article.datePublished,
+    ...(article.dateModified && { dateModified: article.dateModified }),
+    ...(article.image && { image: abs(article.image) }),
+    author: article.author ? { '@type': 'Person', name: article.author } : { '@id': businessId },
+    publisher: { '@id': businessId },
+    mainEntityOfPage: pageUrl,
+    inLanguage: site.locale,
   });
 }
 

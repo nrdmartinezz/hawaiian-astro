@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/blocks/Hero.astro';
 import FAQ from '../components/blocks/FAQ.astro';
 import CTABanner from '../components/blocks/CTABanner.astro';
+import { pageSeo } from '../config/seo';
 import { getAllFaqs, getFaqsByTopic, toFaqItem } from '../lib/faqs';
 
 const groups = await getFaqsByTopic();
@@ -10,8 +11,8 @@ const faqs = (await getAllFaqs()).map(toFaqItem);
 ---
 
 <BaseLayout
-  title="FAQ"
-  description="Answers about treatment, Invisalign, braces, visits, insurance, and payment plans at Hawaiian Smiles Orthodontics."
+  title={pageSeo.faq.title}
+  description={pageSeo.faq.description}
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'FAQ', href: '/faq/' },

@@ -11,6 +11,7 @@ import Button from '../../components/ui/Button.astro';
 import BlockHeader from '../../components/blocks/BlockHeader.astro';
 import { Icon } from 'astro-icon/components';
 import { patientForms } from '../../config/patientForms';
+import { pageSeo } from '../../config/seo';
 import { site } from '../../config/site';
 import { getFaqsFor } from '../../lib/faqs';
 
@@ -18,8 +19,8 @@ const faqs = await getFaqsFor('/patients/forms/');
 ---
 
 <BaseLayout
-  title="Registration Forms"
-  description="Adult and child new-patient forms for Hawaiian Smiles Orthodontics."
+  title={pageSeo.forms.title}
+  description={pageSeo.forms.description}
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'Patients', href: '/patients/' },

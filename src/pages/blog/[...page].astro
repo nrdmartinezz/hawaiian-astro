@@ -6,6 +6,7 @@ import Section from '../../components/ui/Section.astro';
 import Container from '../../components/ui/Container.astro';
 import Heading from '../../components/ui/Heading.astro';
 import Card from '../../components/ui/Card.astro';
+import { pageSeo } from '../../config/seo';
 import { getPublished, type Entry } from '../../lib/blog';
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
@@ -23,8 +24,8 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeZ
 ---
 
 <BaseLayout
-  title="Blog"
-  description="Orthodontic guides from Hawaiian Smiles — braces, Invisalign, early treatment, and life after retainers."
+  title={pageSeo.blog.title}
+  description={pageSeo.blog.description}
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'Patients', href: '/patients/' },

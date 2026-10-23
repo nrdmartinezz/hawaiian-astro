@@ -5,6 +5,7 @@ import ContactBlock from '../components/blocks/ContactBlock.astro';
 import { treatmentServices } from '../config/treatments';
 import { locations } from '../config/locations';
 import { patientFormActions } from '../config/patientForms';
+import { pageSeo } from '../config/seo';
 import { site } from '../config/site';
 import FAQ from '../components/blocks/FAQ.astro';
 import { getFaqsFor } from '../lib/faqs';
@@ -14,8 +15,8 @@ const faqs = await getFaqsFor('/appointment/');
 ---
 
 <BaseLayout
-  title="Request an Appointment"
-  description="Request a complimentary in-person or virtual orthodontic consultation with Hawaiian Smiles."
+  title={pageSeo.appointment.title}
+  description={pageSeo.appointment.description}
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'Request an Appointment', href: '/appointment/' },

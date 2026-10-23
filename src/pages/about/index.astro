@@ -6,13 +6,16 @@ import CTABanner from '../../components/blocks/CTABanner.astro';
 import FAQ from '../../components/blocks/FAQ.astro';
 import { getFaqsFor } from '../../lib/faqs';
 import { pageImages } from '../../config/pageImages';
+import { pageSeo } from '../../config/seo';
 
 const faqs = await getFaqsFor('/about/');
 ---
 
 <BaseLayout
-  title="Our Story"
-  description="Hawaiian Smiles Orthodontics continues Dr. Errol Yim’s 38-year legacy with Dr. Satya Nayak and a team serving Kaneohe, Kona, Kamuela, and Hilo."
+  title={pageSeo.about.title}
+  description={pageSeo.about.description}
+  image={pageImages.about.story.src}
+  imageAlt="The Hawaiian Smiles family on a beach"
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about/' },

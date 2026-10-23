@@ -5,6 +5,7 @@ import icon from 'astro-icon';
 import tailwindcss from '@tailwindcss/vite';
 
 import legacyBlogRedirects from './src/config/legacyBlogRedirects.json' with { type: 'json' };
+import legacyPageRedirects from './src/config/legacyPageRedirects.json' with { type: 'json' };
 
 /** Old WordPress post URLs, including the four rewritten drafts. */
 
@@ -52,6 +53,7 @@ export default defineConfig({
   build: { format: 'directory' },
   redirects: {
     '/treatments/retention/': '/treatments/retainers/',
+    ...legacyPageRedirects,
     ...legacyBlogRedirects,
     '/adults-and-braces-not-just-for-kids-anymore/':
       '/blog/adults-and-braces-not-just-for-kids-anymore/',

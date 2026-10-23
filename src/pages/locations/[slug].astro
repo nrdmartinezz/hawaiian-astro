@@ -6,6 +6,7 @@ import MapEmbed from '../../components/blocks/MapEmbed.astro';
 import CTABanner from '../../components/blocks/CTABanner.astro';
 import { locations, locationAddress } from '../../config/locations';
 import { pageImages } from '../../config/pageImages';
+import { locationSeo } from '../../config/seo';
 import { site } from '../../config/site';
 
 export function getStaticPaths() {
@@ -22,11 +23,16 @@ interface Props {
 const { location } = Astro.props;
 const address = locationAddress(location);
 const href = `/locations/${location.slug}/`;
+const seo = locationSeo[location.slug];
+if (!seo) throw new Error(`Missing SEO copy for location ${location.slug}`);
 ---
 
 <BaseLayout
-  title={`${location.shortName} Orthodontist`}
-  description={location.description}
+  title={seo.title}
+  description={seo.description}
+  image={pageImages.locations[location.slug].src}
+  imageAlt={`Hawaiian Smiles Orthodontics in ${location.shortName}`}
+  locationSlug={location.slug}
   breadcrumbs={[
     { name: 'Home', href: '/' },
     { name: 'Locations', href: '/locations/' },
