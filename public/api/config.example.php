@@ -10,6 +10,12 @@
 return [
     'recaptcha_secret' => 'YOUR_RECAPTCHA_SECRET_KEY',
     'notify_to' => 'oahusc@hawaiiansmilesortho.com',
+    // Hidden copies of every form notification. Omit this key to use the
+    // defaults in lib/mailer.php. Set to [] to send with no BCC.
+    'bcc' => [
+        'nate@newpatientgroup.com',
+        'verifybu@webpro.com',
+    ],
     'from_email' => 'oahusc@hawaiiansmilesortho.com',
     'from_name' => 'Hawaiian Smiles Orthodontics',
     'site_url' => 'https://hawaiiansmilesortho.com',

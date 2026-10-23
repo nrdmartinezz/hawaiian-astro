@@ -170,7 +170,31 @@ function parseEmailList(string|array $value): array
     return $emails;
 }
 
-function sendMail(array $config, string|array $to, string $toName, string $subject, string $htmlBody, ?string $replyTo = null, ?string $replyToName = null): void
+/**
+ * BCC on every form notification. Used when the mail config has no `bcc` key,
+ * so production secrets outside the repo still copy these addresses.
+ *
+ * @return list<string>
+ */
+function defaultNotificationBcc(): array
+{
+    return [
+        'nate@newpatientgroup.com',
+        'verifybu@webpro.com',
+    ];
+}
+
+/** @return list<string> */
+function notificationBcc(array $config): array
+{
+    if (array_key_exists('bcc', $config)) {
+        return parseEmailList($config['bcc']);
+    }
+
+    return defaultNotificationBcc();
+}
+
+function sendMail(array $config, string|array $to, string $toName, string $subject, string $htmlBody, ?string $replyTo = null, ?string $replyToName = null, string|array|null $bcc = null): void
 {
     $mail = new PHPMailer(true);
     $recipients = parseEmailList($to);
@@ -186,6 +210,15 @@ function sendMail(array $config, string|array $to, string $toName, string $subje
         foreach ($recipients as $index => $address) {
             $mail->addAddress($address, $index === 0 ? $toName : '');
         }
+
+        if ($bcc !== null) {
+            foreach (parseEmailList($bcc) as $address) {
+                if (!in_array($address, $recipients, true)) {
+                    $mail->addBCC($address);
+                }
+            }
+        }
+
         $mail->isHTML(true);
         $mail->Subject = $subject;
         $mail->Body = $htmlBody;

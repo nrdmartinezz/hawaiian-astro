@@ -54,6 +54,7 @@ in production).
 | ------------------ | ----------------------------------------------- |
 | `recaptcha_secret` | Google reCAPTCHA v3 secret                      |
 | `notify_to`        | Where lead notifications go (string or array)   |
+| `bcc`              | Hidden copies of every form notification        |
 | `from_email`       | From address on outbound mail                   |
 | `from_name`        | From display name                               |
 | `site_url`         | Optional — used in email templates              |
@@ -85,6 +86,14 @@ If any SMTP field is blank, the handler falls back to `mail()`.
 ```
 
 All addresses receive the internal notification. Invalid entries are skipped.
+
+### BCC
+
+Every form notification is also BCC'd. If `bcc` is omitted, the handler uses the
+defaults in `public/api/lib/mailer.php` (`nate@newpatientgroup.com` and
+`verifybu@webpro.com`). Set `bcc` to override that list, or to `[]` to send with
+no BCC. Addresses already in `notify_to` are not added again. Autoreplies to the
+submitter are not BCC'd.
 
 ## Per-form settings
 
