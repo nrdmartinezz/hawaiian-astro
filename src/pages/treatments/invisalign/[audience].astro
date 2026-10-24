@@ -19,9 +19,9 @@ export function getStaticPaths() {
   }));
 }
 
-interface Props {
-  audience: (typeof invisalignAudiences)[number];
-}
+// interface Props {
+//   audience: (typeof invisalignAudiences)[number];
+// }
 
 const { audience } = Astro.props;
 const seo = invisalignSeo[audience.slug];

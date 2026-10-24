@@ -16,9 +16,9 @@ export function getStaticPaths() {
   }));
 }
 
-interface Props {
-  location: (typeof locations)[number];
-}
+// interface Props {
+//   location: (typeof locations)[number];
+// }
 
 const { location } = Astro.props;
 const address = locationAddress(location);

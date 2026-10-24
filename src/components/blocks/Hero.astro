@@ -59,7 +59,7 @@ const actionVariant = (variant: BlockAction['variant']): BlockAction['variant'] 
   class:list={[
     'relative',
     bleed &&
-      '-mt-[var(--header-h,5rem)] pt-[calc(var(--spacing-section-lg)+var(--header-h,5rem))] pb-section-lg',
+      'pb-section-lg -mt-[var(--header-h,5rem)] pt-[calc(var(--spacing-section-lg)+var(--header-h,5rem))]',
   ]}
 >
   {
@@ -84,13 +84,7 @@ const actionVariant = (variant: BlockAction['variant']): BlockAction['variant'] 
   }
   {leaves && <HeroLeaves />}
 
-  <Container
-    width={width}
-    layout={split ? 'row' : 'stack'}
-    align={align}
-    gap="lg"
-    class="relative"
-  >
+  <Container width={width} layout={split ? 'row' : 'stack'} align={align} gap="lg" class="relative">
     <div
       class:list={['flex flex-col items-start gap-6', split && 'md:w-1/2', reverse && 'md:order-2']}
     >
