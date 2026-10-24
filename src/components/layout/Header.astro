@@ -6,8 +6,8 @@
  * The nav slots are filled by MegaMenu (md and up) and MobileNav (below md),
  * both reading src/config/navigation.ts — one tree, two renderings.
  *
- * overlay: transparent bar over a photo hero until the page is scrolled, then
- * the solid sticky treatment. Pages without a photo hero leave this off.
+ * overlay: transparent bar over an inverse hero until the page is scrolled, then
+ * the solid sticky treatment. Pages without that hero leave this off.
  * The contact strip sits above this bar in document flow and is not sticky.
  */
 import Container from '../ui/Container.astro';
@@ -92,7 +92,7 @@ const positioned = sticky !== 'static';
     box-shadow: var(--shadow-sm);
   }
 
-  /* Floating overlay: white type over the photo until the bar solidifies. */
+  /* Floating overlay: white type over the inverse hero until the bar solidifies. */
   header[data-overlay='true']:not([data-scrolled='true']) :global(.logo-name) {
     color: var(--color-ink-inverse);
   }

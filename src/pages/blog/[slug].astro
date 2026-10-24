@@ -52,9 +52,13 @@ const suggestions = related(all, entry);
     { name: entry.data.title, href: `/blog/${entry.id}/` },
   ]}
 >
-  <Section background="muted" spacing="md">
+  <Section
+    background="inverse"
+    spacing="none"
+    class="pb-section-lg relative -mt-[var(--header-h,5rem)] pt-[calc(var(--spacing-section-lg)+var(--header-h,5rem))]"
+  >
     <Container width="narrow" gap="sm">
-      <p class="text-ink-muted text-sm">
+      <p class="text-ink-inverse/80 text-sm">
         <time datetime={entry.data.publishDate.toISOString()}>
           {dateFormat.format(entry.data.publishDate)}
         </time>
@@ -62,7 +66,7 @@ const suggestions = related(all, entry);
         {entry.data.author && <span> · {entry.data.author}</span>}
       </p>
       <Heading level={1}>{entry.data.title}</Heading>
-      <p class="text-ink-muted text-lg">{entry.data.description}</p>
+      <p class="text-lg text-white/75">{entry.data.description}</p>
     </Container>
   </Section>
 

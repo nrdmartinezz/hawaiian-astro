@@ -54,7 +54,7 @@ const faqs = [
 ];
 ---
 
-<BaseLayout title="Style guide" noindex sticky="static">
+<BaseLayout title="Style guide" noindex sticky="static" overlay={false}>
   <Section background="base" spacing="sm">
     <Container gap="sm">
       <Heading level={1} size="xl">Style guide</Heading>
@@ -197,6 +197,7 @@ const faqs = [
   </Section>
 
   <Hero
+    bleed={false}
     eyebrow="Hero"
     title="Hero without an image"
     body="Stacks to a single column; with an image it becomes a two-up split."

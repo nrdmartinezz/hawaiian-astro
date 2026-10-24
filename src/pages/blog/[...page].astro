@@ -2,6 +2,7 @@
 import type { GetStaticPaths, Page } from 'astro';
 import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/blocks/Hero.astro';
 import Section from '../../components/ui/Section.astro';
 import Container from '../../components/ui/Container.astro';
 import Heading from '../../components/ui/Heading.astro';
@@ -32,14 +33,7 @@ const dateFormat = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeZ
     { name: 'Blog', href: '/blog/' },
   ]}
 >
-  <Section background="muted" spacing="md">
-    <Container gap="sm">
-      <Heading level={1}>Blog</Heading>
-      <p class="text-ink-muted max-w-reading text-lg">
-        Practical answers for families across Oʻahu and the Big Island.
-      </p>
-    </Container>
-  </Section>
+  <Hero title="Blog" body="Practical answers for families across Oʻahu and the Big Island." />
 
   <Section background="base" spacing="md">
     <Container gap="lg">

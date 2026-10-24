@@ -33,7 +33,7 @@ interface Props {
   people?: PersonEntry[];
   article?: ArticleEntry;
   sticky?: HeaderSticky;
-  /** Float the header over a photo hero until the page is scrolled. */
+  /** Float the header over the inverse hero until the page is scrolled. */
   overlay?: boolean;
 }
 
@@ -45,7 +45,7 @@ const {
   people,
   article,
   sticky = 'sticky',
-  overlay = false,
+  overlay = true,
   ...seo
 } = Astro.props;
 ---

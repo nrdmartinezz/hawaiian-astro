@@ -16,13 +16,17 @@ interface Props extends Omit<BlockProps, 'titleLevel'> {
   /** Full-bleed photo behind a light-to-dark teal overlay (180deg). */
   backdrop?: ImageMetadata;
   backdropAlt?: string;
+  /**
+   * Pull the band up under a transparent header. Off when the hero is not
+   * the first band on the page.
+   */
+  bleed?: boolean;
   /** Places the image first on desktop; small screens always stack image-first. */
   reverse?: boolean;
   bullets?: string[];
 }
 
 const {
-  background = 'muted',
   spacing = 'lg',
   align = 'start',
   width = 'page',
@@ -34,19 +38,23 @@ const {
   imageAlt = '',
   backdrop,
   backdropAlt = '',
+  bleed = true,
   reverse = false,
   bullets = [],
 } = Astro.props;
 
 const photoHero = Boolean(backdrop);
 const split = Boolean(image) && !photoHero;
+
+const actionVariant = (variant: BlockAction['variant']): BlockAction['variant'] =>
+  variant === 'secondary' ? 'outline' : variant;
 ---
 
 <Section
-  background={photoHero ? 'inverse' : background}
-  spacing={photoHero ? 'none' : spacing}
+  background="inverse"
+  spacing={bleed ? 'none' : spacing}
   clip={photoHero}
-  class={photoHero
+  class={bleed
     ? 'relative -mt-[var(--header-h,5rem)] pt-[calc(var(--spacing-section-lg)+var(--header-h,5rem))] pb-section-lg'
     : undefined}
 >
@@ -83,14 +91,7 @@ const split = Boolean(image) && !photoHero;
     >
       {
         eyebrow && (
-          <p
-            class:list={[
-              'text-sm font-semibold tracking-wide uppercase',
-              photoHero ? 'text-ink-inverse/80' : 'text-ink-brand',
-            ]}
-          >
-            {eyebrow}
-          </p>
+          <p class="text-ink-inverse/80 text-sm font-semibold tracking-wide uppercase">{eyebrow}</p>
         )
       }
 
@@ -98,13 +99,7 @@ const split = Boolean(image) && !photoHero;
         <slot name="title">{title}</slot>
       </Heading>
 
-      {
-        body && (
-          <p class:list={['max-w-reading text-lg', photoHero ? 'text-white/75' : 'opacity-90']}>
-            {body}
-          </p>
-        )
-      }
+      {body && <p class="max-w-reading text-lg text-white/75">{body}</p>}
 
       {
         bullets.length > 0 && (
@@ -113,10 +108,10 @@ const split = Boolean(image) && !photoHero;
               <li class="flex items-start gap-3">
                 <Icon
                   name="lucide:circle-check"
-                  class:list={['mt-1 size-5 shrink-0', photoHero ? 'text-brand-500' : 'opacity-80']}
+                  class="text-brand-500 mt-1 size-5 shrink-0"
                   aria-hidden="true"
                 />
-                <span class:list={[photoHero && 'text-white/50']}>{bullet}</span>
+                <span class="text-white/50">{bullet}</span>
               </li>
             ))}
           </ul>
@@ -130,7 +125,7 @@ const split = Boolean(image) && !photoHero;
               <Button
                 href={action.href}
                 download={action.download}
-                variant={action.variant ?? 'primary'}
+                variant={actionVariant(action.variant)}
                 size="lg"
               >
                 {action.icon && <Icon name={action.icon} class="size-5" aria-hidden="true" />}
