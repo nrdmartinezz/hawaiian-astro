@@ -95,6 +95,7 @@ const faqs = treatment.slug === 'teeth-whitening' ? (treatment.faqs ?? []) : awa
         </Section>
       ) : (
         <FeatureSplit
+          cornerLeaves={false}
           title={section.title}
           image={photos?.sections[section.title] ?? leadImage}
           imageAlt=""

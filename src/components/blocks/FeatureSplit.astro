@@ -7,6 +7,8 @@ import Heading from '../ui/Heading.astro';
 import Button from '../ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 import type { BlockProps, BlockAction } from './types';
+import topRightLeaves from '../../icons/top-right-pair-leaves.svg?url';
+import bottomLeftLeaves from '../../icons/bottom-left-single-leaves.svg?url';
 
 interface Props extends BlockProps {
   image?: ImageMetadata;
@@ -15,6 +17,8 @@ interface Props extends BlockProps {
   actions?: BlockAction[];
   /** Image right on desktop by default; small screens always stack image-first. */
   reverse?: boolean;
+  /** Corner leaves on the photo. Off for later images on the same page. */
+  cornerLeaves?: boolean;
 }
 
 const {
@@ -30,6 +34,7 @@ const {
   bullets = [],
   actions = [],
   reverse = false,
+  cornerLeaves = true,
 } = Astro.props;
 ---
 
@@ -37,21 +42,41 @@ const {
   <Container width={width} gap="lg">
     <div class="flex w-full flex-col gap-12 md:flex-row md:items-stretch md:gap-16">
       <div class:list={['w-full md:w-1/2', reverse ? 'md:order-2' : 'md:order-1']}>
-        {
-          image ? (
-            <Image
-              src={image}
-              alt={imageAlt}
-              widths={[768, 1024, 1600]}
-              sizes="(max-width: 768px) 100vw, 1024px"
-              quality={90}
-              loading="lazy"
-              class="h-full min-h-72 w-full rounded-lg object-cover object-center"
-            />
-          ) : (
-            <div class="bg-surface-muted h-full min-h-72 w-full rounded-lg" aria-hidden="true" />
-          )
-        }
+        <div class="relative h-full min-h-72">
+          {
+            image ? (
+              <Image
+                src={image}
+                alt={imageAlt}
+                widths={[768, 1024, 1600]}
+                sizes="(max-width: 768px) 100vw, 1024px"
+                quality={90}
+                loading="lazy"
+                class="h-full min-h-72 w-full rounded-lg object-cover object-center"
+              />
+            ) : (
+              <div class="bg-surface-muted h-full min-h-72 w-full rounded-lg" aria-hidden="true" />
+            )
+          }
+          {
+            image && cornerLeaves && (
+              <>
+                <img
+                  src={topRightLeaves}
+                  alt=""
+                  class="pointer-events-none absolute -top-[3%] -right-[4%] z-10 w-[30%]"
+                  aria-hidden="true"
+                />
+                <img
+                  src={bottomLeftLeaves}
+                  alt=""
+                  class="pointer-events-none absolute -bottom-[1%] -left-[1%] z-10 w-[30%]"
+                  aria-hidden="true"
+                />
+              </>
+            )
+          }
+        </div>
       </div>
 
       <div

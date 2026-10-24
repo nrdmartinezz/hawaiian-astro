@@ -3,6 +3,7 @@ import type { GetStaticPaths } from 'astro';
 import { Image } from 'astro:assets';
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroLeaves from '../../components/blocks/HeroLeaves.astro';
 import Section from '../../components/ui/Section.astro';
 import Container from '../../components/ui/Container.astro';
 import Heading from '../../components/ui/Heading.astro';
@@ -55,9 +56,11 @@ const suggestions = related(all, entry);
   <Section
     background="inverse"
     spacing="none"
+    clip
     class="pb-section-lg relative -mt-[var(--header-h,5rem)] pt-[calc(var(--spacing-section-lg)+var(--header-h,5rem))]"
   >
-    <Container width="narrow" gap="sm">
+    <HeroLeaves />
+    <Container width="narrow" gap="sm" class="relative">
       <p class="text-ink-inverse/80 text-sm">
         <time datetime={entry.data.publishDate.toISOString()}>
           {dateFormat.format(entry.data.publishDate)}
