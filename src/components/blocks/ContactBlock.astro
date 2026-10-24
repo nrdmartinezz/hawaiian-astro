@@ -14,6 +14,12 @@ import type { BlockProps } from './types';
 
 interface Props extends BlockProps {
   services?: string[];
+  /** Label for the services dropdown. */
+  servicesLabel?: string;
+  /** Empty-option text for the services dropdown. */
+  servicesPlaceholder?: string;
+  /** Options for an optional “How did you hear about us?” dropdown. */
+  hearAbout?: string[];
   showDetails?: boolean;
 }
 
@@ -26,6 +32,9 @@ const {
   body,
   titleLevel = 2,
   services = [],
+  servicesLabel = 'What do you need?',
+  servicesPlaceholder = 'Select a service',
+  hearAbout = [],
   showDetails = true,
 } = Astro.props;
 
@@ -73,16 +82,30 @@ const thankYou = new URL('/thank-you/', site.url).href;
             services.length > 0 && (
               <Field
                 name="service"
-                label="What do you need?"
+                label={servicesLabel}
                 type="select"
                 options={[
-                  { label: 'Select a service', value: '' },
+                  { label: servicesPlaceholder, value: '' },
                   ...services.map((service) => ({ label: service, value: service })),
                 ]}
               />
             )
           }
         </div>
+
+        {
+          hearAbout.length > 0 && (
+            <Field
+              name="hear_about_us"
+              label="How did you hear about us?"
+              type="select"
+              options={[
+                { label: 'Select one', value: '' },
+                ...hearAbout.map((source) => ({ label: source, value: source })),
+              ]}
+            />
+          )
+        }
 
         <Field
           name="message"

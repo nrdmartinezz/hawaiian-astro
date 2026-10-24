@@ -95,6 +95,17 @@ if ($services !== []) {
 
 $hearAboutDisplay = $hearAbout !== '' ? $hearAbout : '—';
 $phoneDisplay = $phone !== '' ? $phone : '—';
+$phoneDigits = preg_replace('/\D+/', '', $phone);
+$phoneRaw = is_string($phoneDigits) ? $phoneDigits : '';
+$phoneLinkStyle = 'font-size:18px;line-height:1.4;color:#18181b;font-weight:600;text-decoration:none;';
+$phoneTextStyle = 'font-size:18px;line-height:1.4;color:#1c1c1c;';
+if ($phoneRaw !== '') {
+    $phoneOpen = '<a href="tel:' . $phoneRaw . '" style="' . $phoneLinkStyle . '">';
+    $phoneClose = '</a>';
+} else {
+    $phoneOpen = '<span style="' . $phoneTextStyle . '">';
+    $phoneClose = '</span>';
+}
 
 $timezone = (string) ($config['timezone'] ?? 'America/New_York');
 $submittedAt = (new DateTimeImmutable('now', new DateTimeZone($timezone)))->format('M j, Y g:i A T');
@@ -108,6 +119,9 @@ $templateVars = [
     'email' => escapeHtml($email),
     'email_raw' => $email,
     'phone' => escapeHtml($phoneDisplay),
+    'phone_raw' => $phoneRaw,
+    'phone_open' => $phoneOpen,
+    'phone_close' => $phoneClose,
     'services' => escapeHtml($servicesDisplay),
     'hear_about_us' => escapeHtml($hearAboutDisplay),
     'message' => escapeHtml($message),

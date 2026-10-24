@@ -3,14 +3,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/blocks/Hero.astro';
 import ContactBlock from '../components/blocks/ContactBlock.astro';
 import { treatmentServices } from '../config/treatments';
-import { locations } from '../config/locations';
 import { patientFormActions } from '../config/patientForms';
 import { pageSeo } from '../config/seo';
 import { site } from '../config/site';
 import FAQ from '../components/blocks/FAQ.astro';
 import { getFaqsFor } from '../lib/faqs';
 
-const offices = locations.map((location) => location.shortName);
+const hearAbout = [
+  'Google',
+  'Friend or family',
+  'My dentist',
+  'Instagram',
+  'Facebook',
+  'Drove by the office',
+  'Insurance',
+  'Other',
+];
 const faqs = await getFaqsFor('/appointment/');
 ---
 
@@ -38,7 +46,10 @@ const faqs = await getFaqsFor('/appointment/');
     eyebrow="Appointment request"
     title="Tell us how to reach you"
     body="Include the office that is most convenient and whether you prefer in-person or virtual."
-    services={[...offices, ...treatmentServices]}
+    services={treatmentServices}
+    servicesLabel="Treatment"
+    servicesPlaceholder="Select a treatment"
+    hearAbout={hearAbout}
   />
 
   <FAQ eyebrow="FAQ" title="Questions about your consultation" items={faqs} schema={false} />
