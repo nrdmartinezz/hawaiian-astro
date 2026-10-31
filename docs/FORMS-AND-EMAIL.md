@@ -97,7 +97,7 @@ submitter are not BCC'd.
 
 ## Per-form settings
 
-Each form sends a hidden `form_type` field. The starter ships with `contact` only.
+Each form sends a hidden `form_type` field. This site uses `contact` and `referral`.
 
 Configure per form under the `forms` key:
 
@@ -167,9 +167,12 @@ Use inline CSS — email clients strip `<style>` blocks inconsistently.
 
 ## Form surfaces
 
-| `form_type` | Component            | Notification template       |
-| ----------- | -------------------- | --------------------------- |
-| `contact`   | `ContactBlock.astro` | `notification-contact.html` |
+| `form_type` | Component                  | Notification template        |
+| ----------- | -------------------------- | ---------------------------- |
+| `contact`   | `ContactBlock.astro`       | `notification-contact.html`  |
+| `referral`  | `src/pages/referral.astro` | `notification-referral.html` |
+
+Referral notifications go to `oahusc@hawaiiansmilesortho.com` (Reply-To is the referring office email). The referral template also includes patient name, date of birth, parent or guardian, contact info, insurance, last pano date, and the reason for referral. X-rays are not uploaded; the form asks providers to email them to `records@hawaiiansmilesortho.com`.
 
 Shared client-side wiring: `RecaptchaV3.astro` + `SiteFormHandler.astro` in `BaseLayout.astro`.
 

@@ -86,7 +86,7 @@ function allowedFormTypes(array $config): array
 {
     $configured = array_keys($config['forms'] ?? []);
 
-    return array_values(array_unique(array_merge(['contact'], $configured)));
+    return array_values(array_unique(array_merge(['contact', 'referral'], $configured)));
 }
 
 function getFormMailSettings(array $config, string $formType): array
@@ -99,6 +99,13 @@ function getFormMailSettings(array $config, string $formType): array
             'subject' => "New enquiry — {$fromName}",
             'autoreply_subject' => "We received your message — {$fromName}",
             'send_autoreply' => false,
+        ],
+        'referral' => [
+            'source_label' => 'Provider referral',
+            'subject' => 'New patient referral — Hawaiian Smiles Orthodontics',
+            'autoreply_subject' => 'We received your referral — Hawaiian Smiles Orthodontics',
+            'send_autoreply' => false,
+            'notify_to' => 'oahusc@hawaiiansmilesortho.com',
         ],
     ];
 

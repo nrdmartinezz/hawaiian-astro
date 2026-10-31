@@ -51,6 +51,8 @@ export interface NavigationConfig {
   primary: NavItem[];
   /** Right-hand call to action in the header. */
   cta?: { label: string; href: string };
+  /** Provider referral, shown beside the primary header call to action. */
+  referralCta?: { label: string; href: string };
   footer: { heading: string; links: NavLink[] }[];
   legal: NavLink[];
 }
@@ -173,8 +175,8 @@ export const navigation: NavigationConfig = {
               },
               {
                 label: 'Referrals',
-                href: '/patients/referrals/',
-                description: 'Send a neighbor our way.',
+                href: '/referral/',
+                description: 'For dentists and physicians.',
                 icon: 'lucide:heart-handshake',
               },
               {
@@ -205,6 +207,7 @@ export const navigation: NavigationConfig = {
   ],
 
   cta: { label: 'Book Now', href: '/appointment/' },
+  referralCta: { label: 'Refer to us', href: '/referral/' },
 
   footer: [
     {
@@ -231,7 +234,7 @@ export const navigation: NavigationConfig = {
           download: form.download,
         })),
         { label: 'FAQ', href: '/faq/' },
-        { label: 'Referrals', href: '/patients/referrals/' },
+        { label: 'Referrals', href: '/referral/' },
         { label: 'Privacy Policy', href: '/privacy/' },
       ],
     },

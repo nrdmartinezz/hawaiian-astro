@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/blocks/Hero.astro';
+import Section from '../components/ui/Section.astro';
+import Container from '../components/ui/Container.astro';
+import Field from '../components/ui/Field.astro';
+import FormMessage from '../components/ui/FormMessage.astro';
+import Button from '../components/ui/Button.astro';
+import BlockHeader from '../components/blocks/BlockHeader.astro';
+import { pageSeo } from '../config/seo';
+import { site } from '../config/site';
+
+const recordsEmail = 'records@hawaiiansmilesortho.com';
+const action = site.formEndpoint || '';
+const thankYou = new URL('/thank-you/', site.url).href;
+---
+
+<BaseLayout
+  title={pageSeo.referrals.title}
+  description={pageSeo.referrals.description}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Refer a Patient', href: '/referral/' },
+  ]}
+>
+  <Hero
+    eyebrow="For providers"
+    title="Refer a patient to us"
+    body="Send the patient’s details and our team will follow up. Please email X-rays separately — do not attach them to this form."
+  />
+
+  <Section background="muted">
+    <Container width="narrow" gap="lg">
+      <BlockHeader
+        eyebrow="Patient referral"
+        title="Send us the details"
+        body="Include who is referring, who we should expect, and why they are coming in."
+      />
+
+      {
+        !action && (
+          <p class="rounded-md border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900">
+            No <code>formEndpoint</code> in <code>src/config/site.ts</code> — this form will not
+            submit until one is set.
+          </p>
+        )
+      }
+
+      <form
+        id="referral-form"
+        action={action}
+        method="POST"
+        novalidate
+        class="flex w-full flex-col gap-4"
+        data-site-form
+        data-thank-you={thankYou}
+        data-track-source="referral-form"
+      >
+        {action && <input type="hidden" name="form_type" value="referral" />}
+
+        <div class="absolute left-[-9999px]" aria-hidden="true">
+          <label for="_gotcha">Leave this field empty</label>
+          <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <Field name="name" label="Referring doctor name" autocomplete="name" required />
+          <Field
+            name="email"
+            label="Referring office email"
+            type="email"
+            autocomplete="email"
+            required
+          />
+          <Field name="patient_name" label="Patient name" autocomplete="name" required />
+          <Field
+            name="patient_dob"
+            label="Patient date of birth"
+            autocomplete="bday"
+            placeholder="MM/DD/YYYY"
+            required
+          />
+          <Field name="guardian_name" label="Parent / guardian name" autocomplete="name" />
+          <Field
+            name="contact_info"
+            label="Parent / patient contact info"
+            type="text"
+            autocomplete="tel"
+            help="Phone or email is fine."
+            required
+          />
+          <Field name="insurance" label="Insurance" />
+          <Field
+            name="last_pano"
+            label="Last pano date"
+            placeholder="MM/DD/YYYY"
+            help="Approximate is fine."
+          />
+        </div>
+
+        <Field name="message" label="Reason for referral" type="textarea" required />
+
+        <p class="border-line-base bg-surface-base rounded-md border p-4 text-sm">
+          Please email X-rays to
+          <a href={`mailto:${recordsEmail}`} class="text-ink-brand font-medium">{recordsEmail}</a>.
+        </p>
+
+        <FormMessage />
+
+        <Button type="submit" size="lg" class="self-start">Send referral</Button>
+      </form>
+    </Container>
+  </Section>
+</BaseLayout>

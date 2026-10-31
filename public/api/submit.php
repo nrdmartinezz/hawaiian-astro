@@ -59,8 +59,22 @@ $phone = trim((string) ($_POST['phone'] ?? ''));
 $message = trim((string) ($_POST['message'] ?? ''));
 $hearAbout = trim((string) ($_POST['hear_about_us'] ?? ''));
 $service = trim((string) ($_POST['service'] ?? ''));
+$patientName = trim((string) ($_POST['patient_name'] ?? ''));
+$patientDob = trim((string) ($_POST['patient_dob'] ?? ''));
+$guardianName = trim((string) ($_POST['guardian_name'] ?? ''));
+$contactInfo = trim((string) ($_POST['contact_info'] ?? ''));
+$insurance = trim((string) ($_POST['insurance'] ?? ''));
+$lastPano = trim((string) ($_POST['last_pano'] ?? ''));
 
-if ($name === '' || $email === '' || $message === '') {
+$requiredMissing = $name === '' || $email === '' || $message === '';
+if ($formType === 'referral') {
+    $requiredMissing = $requiredMissing
+        || $patientName === ''
+        || $patientDob === ''
+        || $contactInfo === '';
+}
+
+if ($requiredMissing) {
     jsonError(400, 'Please fill in all required fields.');
 }
 
@@ -113,6 +127,10 @@ $submittedAt = (new DateTimeImmutable('now', new DateTimeZone($timezone)))->form
 $subjectLine = $formMail['subject'];
 $autoreplySubject = $formMail['autoreply_subject'];
 
+$show = static function (string $value): string {
+    return escapeHtml($value !== '' ? $value : '—');
+};
+
 $templateVars = [
     'subject_line' => escapeHtml($subjectLine),
     'name' => escapeHtml($name),
@@ -125,6 +143,12 @@ $templateVars = [
     'services' => escapeHtml($servicesDisplay),
     'hear_about_us' => escapeHtml($hearAboutDisplay),
     'message' => escapeHtml($message),
+    'patient_name' => $show($patientName),
+    'patient_dob' => $show($patientDob),
+    'guardian_name' => $show($guardianName),
+    'contact_info' => $show($contactInfo),
+    'insurance' => $show($insurance),
+    'last_pano' => $show($lastPano),
     'form_source' => escapeHtml($formSource),
     'submitted_at' => escapeHtml($submittedAt),
     'sender_ip' => escapeHtml($remoteIp),
@@ -140,7 +164,7 @@ try {
 
     sendMail(
         $config,
-        $config['notify_to'],
+        $formMail['notify_to'] ?? $config['notify_to'],
         $fromName,
         $subjectLine,
         $notificationHtml,

@@ -81,7 +81,7 @@ export const pageSeo = {
   referrals: {
     title: 'Refer a Patient to Us',
     description:
-      'Refer a patient or a friend to Hawaiian Smiles Orthodontics. Offices in Kaneohe, Kailua-Kona, Kamuela, and Hilo. Call (808) 247-6039.',
+      'Dentists and physicians can refer a patient to Hawaiian Smiles Orthodontics. Offices in Kaneohe, Kailua-Kona, Kamuela, and Hilo. Call (808) 247-6039.',
   },
   appointment: {
     title: 'Request an Appointment',

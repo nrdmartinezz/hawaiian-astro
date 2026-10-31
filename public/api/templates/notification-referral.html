@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>New patient referral — {{site_name}}</title>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f5;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1c1c1c;
+    "
+  >
+    <table
+      role="presentation"
+      width="100%"
+      cellspacing="0"
+      cellpadding="0"
+      style="background-color: #f4f4f5; padding: 32px 16px"
+    >
+      <tr>
+        <td align="center">
+          <table
+            role="presentation"
+            width="600"
+            cellspacing="0"
+            cellpadding="0"
+            style="
+              max-width: 600px;
+              width: 100%;
+              background-color: #ffffff;
+              border: 1px solid #e4e4e7;
+            "
+          >
+            <tr>
+              <td style="background-color: #18181b; padding: 28px 32px 24px">
+                <p
+                  style="
+                    margin: 0 0 8px;
+                    font-size: 11px;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                    color: #a1a1aa;
+                    font-weight: 600;
+                  "
+                >
+                  Provider referral
+                </p>
+                <h1 style="margin: 0; font-size: 24px; font-weight: 600; color: #ffffff">
+                  New patient referral
+                </h1>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 32px 0">
+                <p style="margin: 20px 0 0; font-size: 15px; line-height: 1.6; color: #52525b">
+                  A provider submitted a referral on
+                  <a
+                    href="{{site_url}}"
+                    style="color: #18181b; text-decoration: none; font-weight: 600"
+                    >{{site_url}}</a
+                  >.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 32px 0">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td style="padding: 16px 0; border-bottom: 1px solid #e4e4e7">
+                      <strong
+                        style="
+                          display: block;
+                          font-size: 11px;
+                          text-transform: uppercase;
+                          letter-spacing: 1px;
+                          color: #71717a;
+                          margin-bottom: 6px;
+                        "
+                        >Referring doctor</strong
+                      >
+                      <span
+                        style="font-size: 18px; line-height: 1.4; font-weight: 600; color: #1c1c1c"
+                        >{{name}}</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 0; border-bottom: 1px solid #e4e4e7">
+                      <strong
+                        style="
+                          display: block;
+                          font-size: 11px;
+                          text-transform: uppercase;
+                          letter-spacing: 1px;
+                          color: #71717a;
+                          margin-bottom: 6px;
+                        "
+                        >Referring office email</strong
+                      >
+                      <a
+                        href="mailto:{{email_raw}}"
+                        style="
+                          font-size: 18px;
+                          line-height: 1.4;
+                          color: #18181b;
+                          font-weight: 600;
+                          text-decoration: none;
+                          word-break: break-all;
+                        "
+                        >{{email}}</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 0; border-bottom: 1px solid #e4e4e7">
+                      <strong
+                        style="
+                          display: block;
+                          font-size: 11px;
+                          text-transform: uppercase;
+                          letter-spacing: 1px;
+                          color: #71717a;
+                          margin-bottom: 6px;
+                        "
+                        >Patient name</strong
+                      >
+                      <span
+                        style="font-size: 18px; line-height: 1.4; font-weight: 600; color: #1c1c1c"
+                        >{{patient_name}}</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 0; border-bottom: 1px solid #e4e4e7">
+                      <strong
+                        style="
+                          display: block;
+                          font-size: 11px;
+                          text-transform: uppercase;
+                          letter-spacing: 1px;
+                          color: #71717a;
+                          margin-bottom: 6px;
+                        "
+                        >Patient date of birth</strong
+                      >
+                      <span
+                        style="font-size: 18px; line-height: 1.4; font-weight: 600; color: #1c1c1c"
+                        >{{patient_dob}}</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 0; border-bottom: 1px solid #e4e4e7">
+                      <strong
+                        style="
+                          display: block;
+                          font-size: 11px;
+                          text-transform: uppercase;
+                          letter-spacing: 1px;
+                          color: #71717a;
+                          margin-bottom: 6px;
+                        "
+                        >Parent / guardian name</strong
+                      >
+                      <span
+                        style="font-size: 18px; line-height: 1.4; font-weight: 600; color: #1c1c1c"
+                        >{{guardian_name}}</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 0; border-bottom: 1px solid #e4e4e7">
+                      <strong
+                        style="
+                          display: block;
+                          font-size: 11px;
+                          text-transform: uppercase;
+                          letter-spacing: 1px;
+                          color: #71717a;
+                          margin-bottom: 6px;
+                        "
+                        >Parent / patient contact info</strong
+                      >
+                      <span
+                        style="font-size: 18px; line-height: 1.4; font-weight: 600; color: #1c1c1c"
+                        >{{contact_info}}</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 0; border-bottom: 1px solid #e4e4e7">
+                      <strong
+                        style="
+                          display: block;
+                          font-size: 11px;
+                          text-transform: uppercase;
+                          letter-spacing: 1px;
+                          color: #71717a;
+                          margin-bottom: 6px;
+                        "
+                        >Insurance</strong
+                      >
+                      <span
+                        style="font-size: 18px; line-height: 1.4; font-weight: 600; color: #1c1c1c"
+                        >{{insurance}}</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 16px 0; border-bottom: 1px solid #e4e4e7">
+                      <strong
+                        style="
+                          display: block;
+                          font-size: 11px;
+                          text-transform: uppercase;
+                          letter-spacing: 1px;
+                          color: #71717a;
+                          margin-bottom: 6px;
+                        "
+                        >Last pano date</strong
+                      >
+                      <span
+                        style="font-size: 18px; line-height: 1.4; font-weight: 600; color: #1c1c1c"
+                        >{{last_pano}}</span
+                      >
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 20px 32px 8px">
+                <table
+                  role="presentation"
+                  width="100%"
+                  cellspacing="0"
+                  cellpadding="0"
+                  style="border: 1px solid #e4e4e7"
+                >
+                  <tr>
+                    <td style="padding: 20px">
+                      <strong
+                        style="
+                          display: block;
+                          font-size: 11px;
+                          text-transform: uppercase;
+                          letter-spacing: 1px;
+                          color: #71717a;
+                          margin-bottom: 10px;
+                        "
+                        >Reason for referral</strong
+                      >
+                      <p
+                        style="
+                          margin: 0;
+                          font-size: 17px;
+                          line-height: 1.65;
+                          color: #1c1c1c;
+                          white-space: pre-wrap;
+                        "
+                      >
+                        {{message}}
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 32px 0">
+                <table
+                  role="presentation"
+                  width="100%"
+                  cellspacing="0"
+                  cellpadding="0"
+                  style="background-color: #f4f4f5"
+                >
+                  <tr>
+                    <td style="padding: 16px 20px">
+                      <strong
+                        style="
+                          display: block;
+                          font-size: 11px;
+                          text-transform: uppercase;
+                          letter-spacing: 1px;
+                          color: #71717a;
+                          margin-bottom: 8px;
+                        "
+                        >X-rays</strong
+                      >
+                      <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #1c1c1c">
+                        The provider was asked to email X-rays to
+                        <a
+                          href="mailto:records@hawaiiansmilesortho.com"
+                          style="color: #18181b; font-weight: 600; text-decoration: none"
+                          >records@hawaiiansmilesortho.com</a
+                        >.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 16px 32px 28px">
+                <table
+                  role="presentation"
+                  width="100%"
+                  cellspacing="0"
+                  cellpadding="0"
+                  style="background-color: #fafafa; border-left: 4px solid #18181b"
+                >
+                  <tr>
+                    <td style="padding: 14px 16px">
+                      <p style="margin: 0 0 6px; font-size: 13px; color: #52525b">
+                        <strong style="color: #1c1c1c">Reply to:</strong> {{email}}
+                      </p>
+                      <p style="margin: 0; font-size: 12px; line-height: 1.5; color: #71717a">
+                        {{form_source}} · {{submitted_at}}<br />
+                        Submitter IP: {{sender_ip}}
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 20px 32px 24px; background-color: #18181b; text-align: center">
+                <p style="margin: 0 0 4px; font-size: 13px; color: rgba(255, 255, 255, 0.75)">
+                  {{site_name}}
+                </p>
+                <p style="margin: 0; font-size: 13px">
+                  <a
+                    href="tel:{{site_phone_href}}"
+                    style="color: #ffffff; text-decoration: none; font-weight: 600"
+                    >{{site_phone}}</a
+                  >
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

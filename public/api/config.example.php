@@ -35,6 +35,12 @@ return [
             'notification' => 'notification-contact.html',
             // Autoreply disabled by default — set send_autoreply => true to enable.
         ],
+        'referral' => [
+            'subject' => 'New patient referral — Hawaiian Smiles Orthodontics',
+            'notification' => 'notification-referral.html',
+            'notify_to' => 'oahusc@hawaiiansmilesortho.com',
+            'send_autoreply' => false,
+        ],
     ],
 
     'recaptcha_min_score' => 0.5,

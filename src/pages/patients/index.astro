@@ -18,7 +18,7 @@ import { pageSeo } from '../../config/seo';
   <Hero
     eyebrow="Patients"
     title="Everything you need before you walk in"
-    body="New patient forms, what to expect at your first visit, and how to refer a friend or colleague."
+    body="New patient forms, what to expect at your first visit, and a referral form for dentists and physicians."
     actions={[
       { label: 'Request a free appointment', href: '/appointment/' },
       ...patientFormActions('secondary'),
@@ -50,8 +50,8 @@ import { pageSeo } from '../../config/seo';
       {
         icon: 'lucide:heart-handshake',
         title: 'Referrals',
-        body: 'Refer a patient or a neighbor. We will take good care of them.',
-        href: '/patients/referrals/',
+        body: 'Dentists and physicians can send a patient referral here.',
+        href: '/referral/',
       },
       {
         icon: 'lucide:newspaper',
