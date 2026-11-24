@@ -105,7 +105,10 @@ function getFormMailSettings(array $config, string $formType): array
             'subject' => 'New patient referral — Hawaiian Smiles Orthodontics',
             'autoreply_subject' => 'We received your referral — Hawaiian Smiles Orthodontics',
             'send_autoreply' => false,
-            'notify_to' => 'oahusc@hawaiiansmilesortho.com',
+            'notify_to' => [
+                'oahusc@hawaiiansmilesortho.com',
+                'records@hawaiiansmilesortho.com',
+            ],
         ],
     ];
 
@@ -125,6 +128,13 @@ function getFormMailSettings(array $config, string $formType): array
         $merged['send_autoreply'] = (bool) $config['send_autoreply'];
     } else {
         $merged['send_autoreply'] = false;
+    }
+
+    if ($formType === 'referral') {
+        $merged['notify_to'] = array_values(array_unique(array_merge(
+            parseEmailList($merged['notify_to'] ?? ''),
+            ['records@hawaiiansmilesortho.com'],
+        )));
     }
 
     return $merged;

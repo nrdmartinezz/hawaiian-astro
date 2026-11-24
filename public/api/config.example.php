@@ -38,7 +38,10 @@ return [
         'referral' => [
             'subject' => 'New patient referral — Hawaiian Smiles Orthodontics',
             'notification' => 'notification-referral.html',
-            'notify_to' => 'oahusc@hawaiiansmilesortho.com',
+            'notify_to' => [
+                'oahusc@hawaiiansmilesortho.com',
+                'records@hawaiiansmilesortho.com',
+            ],
             'send_autoreply' => false,
         ],
     ],

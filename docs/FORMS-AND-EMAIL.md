@@ -172,7 +172,7 @@ Use inline CSS — email clients strip `<style>` blocks inconsistently.
 | `contact`   | `ContactBlock.astro`       | `notification-contact.html`  |
 | `referral`  | `src/pages/referral.astro` | `notification-referral.html` |
 
-Referral notifications go to `oahusc@hawaiiansmilesortho.com` (Reply-To is the referring office email). The referral template also includes patient name, date of birth, parent or guardian, contact info, insurance, last pano date, and the reason for referral. X-rays are not uploaded; the form asks providers to email them to `records@hawaiiansmilesortho.com`.
+Referral notifications go to `oahusc@hawaiiansmilesortho.com` and `records@hawaiiansmilesortho.com` (Reply-To is the referring office email). The records address is always included, even when the live mail config lists only the office inbox. The referral template also includes patient name, date of birth, parent or guardian, contact info, insurance, last pano date, and the reason for referral. X-rays are not uploaded; the form asks providers to email them to `records@hawaiiansmilesortho.com`.
 
 Shared client-side wiring: `RecaptchaV3.astro` + `SiteFormHandler.astro` in `BaseLayout.astro`.
 
